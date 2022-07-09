@@ -1,0 +1,12 @@
+{
+  "files.exclude": {
+    "**/.eslintcache": false,
+    "**/yarn.lock": false,
+    ".vscode": false,
+    "dist": false,
+    "node_modules": false
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "autoimport.filesToScan": "**/*.{ts}"
+}
