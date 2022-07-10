@@ -4276,8 +4276,8 @@ export class UsersClient extends MonoCloudClientBase {
 /** * **jwt** - Jwt token
  * * **reference** - Reference token */
 export const AccessTokenTypes = {
-  jwt: 'jwt',
-  reference: 'reference',
+  Jwt: 'jwt',
+  Reference: 'reference',
 } as const;
 
 export type AccessTokenTypes =
@@ -4287,9 +4287,9 @@ export type AccessTokenTypes =
  * * **merge_if_verified**
  * * **always** */
 export const AccountMergeModes = {
-  off: 'off',
-  merge_if_verified: 'merge_if_verified',
-  always: 'always',
+  Off: 'off',
+  MergeIfVerified: 'merge_if_verified',
+  Always: 'always',
 } as const;
 
 export type AccountMergeModes =
@@ -4298,8 +4298,8 @@ export type AccountMergeModes =
 /** * **primary_email**
  * * **all_emails** */
 export const AccountMergeProperty = {
-  primary_email: 'primary_email',
-  all_emails: 'all_emails',
+  PrimaryEmail: 'primary_email',
+  AllEmails: 'all_emails',
 } as const;
 
 export type AccountMergeProperty =
@@ -4336,12 +4336,12 @@ export interface AccountProtectionUserLockoutOptions {
  * * **password**
  * * **device_code** */
 export const AllowedGrantTypes = {
-  implicit: 'implicit',
-  hybrid: 'hybrid',
-  authorization_code: 'authorization_code',
-  client_credentials: 'client_credentials',
-  password: 'password',
-  device_code: 'device_code',
+  Implicit: 'implicit',
+  Hybrid: 'hybrid',
+  AuthorizationCode: 'authorization_code',
+  ClientCredentials: 'client_credentials',
+  Password: 'password',
+  DeviceCode: 'device_code',
 } as const;
 
 export type AllowedGrantTypes =
@@ -4351,9 +4351,9 @@ export type AllowedGrantTypes =
  * * **username**
  * * **phone** */
 export const AllowedRegistrationMethods = {
-  email: 'email',
-  username: 'username',
-  phone: 'phone',
+  Email: 'email',
+  Username: 'username',
+  Phone: 'phone',
 } as const;
 
 export type AllowedRegistrationMethods =
@@ -4493,9 +4493,9 @@ export interface BrandingSmsOptions {
  * * **self_signed** - Verifies the self-signed certificate in the store against the certificate presented by the user
  * * **all** - Verifies both self-signed and chained certificates */
 export const CertificateTypes = {
-  chained: 'chained',
-  self_signed: 'self_signed',
-  all: 'all',
+  Chained: 'chained',
+  SelfSigned: 'self_signed',
+  All: 'all',
 } as const;
 
 export type CertificateTypes =
@@ -4827,7 +4827,7 @@ export interface CreateSecretRequest {
 
 /** * **numeric** */
 export const DeviceFlowCodeTypes = {
-  numeric: 'numeric',
+  Numeric: 'numeric',
 } as const;
 
 export type DeviceFlowCodeTypes =
@@ -4843,9 +4843,9 @@ export interface DeviceFlowOptions {
  * * **preferred**
  * * **discouraged** */
 export const FidoUserVerification = {
-  required: 'required',
-  preferred: 'preferred',
-  discouraged: 'discouraged',
+  Required: 'required',
+  Preferred: 'preferred',
+  Discouraged: 'discouraged',
 } as const;
 
 export type FidoUserVerification =
@@ -4931,10 +4931,10 @@ export interface KeyMaterial {
  * * **ecdsa**
  * * **rsa** */
 export const KeyMaterialTypes = {
-  x509: 'x509',
-  jwk: 'jwk',
-  ecdsa: 'ecdsa',
-  rsa: 'rsa',
+  X509: 'x509',
+  Jwk: 'jwk',
+  Ecdsa: 'ecdsa',
+  Rsa: 'rsa',
 } as const;
 
 export type KeyMaterialTypes =
@@ -4944,8 +4944,8 @@ export type KeyMaterialTypes =
  * * **signing** - The key can be used for signing new tokens.
  * * **validation** - The key can be used for validating the tokens. */
 export const KeyMaterialUses = {
-  signing: 'signing',
-  validation: 'validation',
+  Signing: 'signing',
+  Validation: 'validation',
 } as const;
 
 export type KeyMaterialUses =
@@ -4953,7 +4953,7 @@ export type KeyMaterialUses =
 
 /** * **english_us** */
 export const Languages = {
-  english_us: 'english_us',
+  EnglishUs: 'english_us',
 } as const;
 
 export type Languages = typeof Languages[keyof typeof Languages];
@@ -4991,12 +4991,12 @@ export interface LogContext {}
  * * **device**
  * * **notifications** */
 export const LogEventCategories = {
-  authentication: 'authentication',
-  token: 'token',
-  grants: 'grants',
-  error: 'error',
-  device: 'device',
-  notifications: 'notifications',
+  Authentication: 'authentication',
+  Token: 'token',
+  Grants: 'grants',
+  Error: 'error',
+  Device: 'device',
+  Notifications: 'notifications',
 } as const;
 
 export type LogEventCategories =
@@ -5036,41 +5036,39 @@ export type LogEventCategories =
  * * **device_authorization_failure**
  * * **passwordless_login_sent_event** */
 export const LogEventIds = {
-  authorization_success: 'authorization_success',
-  authorization_failure: 'authorization_failure',
-  resource_owner_authentication_success:
-    'resource_owner_authentication_success',
-  resource_owner_authentication_failure:
-    'resource_owner_authentication_failure',
-  client_authentication_success: 'client_authentication_success',
-  client_authentication_failure: 'client_authentication_failure',
-  api_authentication_success: 'api_authentication_success',
-  api_authentication_failure: 'api_authentication_failure',
-  user_logout_success: 'user_logout_success',
-  user_login_success: 'user_login_success',
-  user_login_failure: 'user_login_failure',
-  user_account_blocked: 'user_account_blocked',
-  user_account_ip_blocked: 'user_account_ip_blocked',
-  user_account_unblocked: 'user_account_unblocked',
-  user_account_ip_unblocked: 'user_account_ip_unblocked',
-  user_account_ip_unblocked_all: 'user_account_ip_unblocked_all',
-  user_password_reset: 'user_password_reset',
-  user_session_created: 'user_session_created',
-  user_session_renewed: 'user_session_renewed',
-  user_session_removed: 'user_session_removed',
-  token_issued_success: 'token_issued_success',
-  token_issued_failure: 'token_issued_failure',
-  token_revoked_success: 'token_revoked_success',
-  token_introspection_success: 'token_introspection_success',
-  token_introspection_failure: 'token_introspection_failure',
-  unhandled_exception: 'unhandled_exception',
-  invalid_client_configuration: 'invalid_client_configuration',
-  consent_granted: 'consent_granted',
-  consent_denied: 'consent_denied',
-  grants_revoked: 'grants_revoked',
-  device_authorization_success: 'device_authorization_success',
-  device_authorization_failure: 'device_authorization_failure',
-  passwordless_login_sent_event: 'passwordless_login_sent_event',
+  AuthorizationSuccess: 'authorization_success',
+  AuthorizationFailure: 'authorization_failure',
+  ResourceOwnerAuthenticationSuccess: 'resource_owner_authentication_success',
+  ResourceOwnerAuthenticationFailure: 'resource_owner_authentication_failure',
+  ClientAuthenticationSuccess: 'client_authentication_success',
+  ClientAuthenticationFailure: 'client_authentication_failure',
+  ApiAuthenticationSuccess: 'api_authentication_success',
+  ApiAuthenticationFailure: 'api_authentication_failure',
+  UserLogoutSuccess: 'user_logout_success',
+  UserLoginSuccess: 'user_login_success',
+  UserLoginFailure: 'user_login_failure',
+  UserAccountBlocked: 'user_account_blocked',
+  UserAccountIpBlocked: 'user_account_ip_blocked',
+  UserAccountUnblocked: 'user_account_unblocked',
+  UserAccountIpUnblocked: 'user_account_ip_unblocked',
+  UserAccountIpUnblockedAll: 'user_account_ip_unblocked_all',
+  UserPasswordReset: 'user_password_reset',
+  UserSessionCreated: 'user_session_created',
+  UserSessionRenewed: 'user_session_renewed',
+  UserSessionRemoved: 'user_session_removed',
+  TokenIssuedSuccess: 'token_issued_success',
+  TokenIssuedFailure: 'token_issued_failure',
+  TokenRevokedSuccess: 'token_revoked_success',
+  TokenIntrospectionSuccess: 'token_introspection_success',
+  TokenIntrospectionFailure: 'token_introspection_failure',
+  UnhandledException: 'unhandled_exception',
+  InvalidClientConfiguration: 'invalid_client_configuration',
+  ConsentGranted: 'consent_granted',
+  ConsentDenied: 'consent_denied',
+  GrantsRevoked: 'grants_revoked',
+  DeviceAuthorizationSuccess: 'device_authorization_success',
+  DeviceAuthorizationFailure: 'device_authorization_failure',
+  PasswordlessLoginSentEvent: 'passwordless_login_sent_event',
 } as const;
 
 export type LogEventIds = typeof LogEventIds[keyof typeof LogEventIds];
@@ -5080,10 +5078,10 @@ export type LogEventIds = typeof LogEventIds[keyof typeof LogEventIds];
  * * **information**
  * * **error** */
 export const LogEventTypes = {
-  success: 'success',
-  failure: 'failure',
-  information: 'information',
-  error: 'error',
+  Success: 'success',
+  Failure: 'failure',
+  Information: 'information',
+  Error: 'error',
 } as const;
 
 export type LogEventTypes = typeof LogEventTypes[keyof typeof LogEventTypes];
@@ -5100,8 +5098,8 @@ export interface LogSummary {
 /** * **username_password** - Both Username and Password (or password equvivalent) will be captured on the same screen if the Scheme supports it
  * * **username_first** - Username will be captured on the first screen and the Password (or equvivalent) will be captured on a different screen */
 export const LoginFlows = {
-  username_password: 'username_password',
-  username_first: 'username_first',
+  UsernamePassword: 'username_password',
+  UsernameFirst: 'username_first',
 } as const;
 
 export type LoginFlows = typeof LoginFlows[keyof typeof LoginFlows];
@@ -5178,9 +5176,9 @@ export interface MtlsOptions {
  * * **optional**
  * * **required** */
 export const MultiFactorRequirements = {
-  none: 'none',
-  optional: 'optional',
-  required: 'required',
+  None: 'none',
+  Optional: 'optional',
+  Required: 'required',
 } as const;
 
 export type MultiFactorRequirements =
@@ -5201,8 +5199,8 @@ export interface PaginationHeader {
 /** * **link**
  * * **code** */
 export const PasswordlessSendTypes = {
-  link: 'link',
-  code: 'code',
+  Link: 'link',
+  Code: 'code',
 } as const;
 
 export type PasswordlessSendTypes =
@@ -5831,10 +5829,10 @@ export interface PatchTenantRequest {
  * * **passwordless_sms**
  * * **otp** */
 export const PrimarySchemes = {
-  local: 'local',
-  passwordless_email: 'passwordless_email',
-  passwordless_sms: 'passwordless_sms',
-  otp: 'otp',
+  Local: 'local',
+  PasswordlessEmail: 'passwordless_email',
+  PasswordlessSms: 'passwordless_sms',
+  Otp: 'otp',
 } as const;
 
 export type PrimarySchemes = typeof PrimarySchemes[keyof typeof PrimarySchemes];
@@ -6018,8 +6016,8 @@ export interface ProviderUsernamePasswordOptions {
 /** * **reuse** - The refresh token handle will stay the same when refreshing tokens
  * * **one_time_only** - The refresh token handle will be updated when refreshing tokens */
 export const RefreshTokenUsageTypes = {
-  reuse: 'reuse',
-  one_time_only: 'one_time_only',
+  Reuse: 'reuse',
+  OneTimeOnly: 'one_time_only',
 } as const;
 
 export type RefreshTokenUsageTypes =
@@ -6073,9 +6071,9 @@ export interface RegistrationPasswordStrengthOptions {
  * * **always**
  * * **user_selected** */
 export const RememberConsentTypes = {
-  never: 'never',
-  always: 'always',
-  user_selected: 'user_selected',
+  Never: 'never',
+  Always: 'always',
+  UserSelected: 'user_selected',
 } as const;
 
 export type RememberConsentTypes =
@@ -6090,14 +6088,14 @@ export type RememberConsentTypes =
  * * **apple**
  * * **facebook** */
 export const SchemeNames = {
-  local: 'local',
-  passwordless_email: 'passwordless_email',
-  passwordless_sms: 'passwordless_sms',
-  otp: 'otp',
-  google: 'google',
-  git_hub: 'git_hub',
-  apple: 'apple',
-  facebook: 'facebook',
+  Local: 'local',
+  PasswordlessEmail: 'passwordless_email',
+  PasswordlessSms: 'passwordless_sms',
+  Otp: 'otp',
+  Google: 'google',
+  GitHub: 'git_hub',
+  Apple: 'apple',
+  Facebook: 'facebook',
 } as const;
 
 export type SchemeNames = typeof SchemeNames[keyof typeof SchemeNames];
@@ -6125,12 +6123,12 @@ export interface Secret {
  * * **jwk**
  * * **plain_text** */
 export const SecretTypes = {
-  shared_secret: 'shared_secret',
-  x509_thumbprint: 'x509_thumbprint',
-  x509_name: 'x509_name',
-  x509_certificate_base64: 'x509_certificate_base64',
-  jwk: 'jwk',
-  plain_text: 'plain_text',
+  SharedSecret: 'shared_secret',
+  X509Thumbprint: 'x509_thumbprint',
+  X509Name: 'x509_name',
+  X509CertificateBase64: 'x509_certificate_base64',
+  Jwk: 'jwk',
+  PlainText: 'plain_text',
 } as const;
 
 export type SecretTypes = typeof SecretTypes[keyof typeof SecretTypes];
@@ -6179,15 +6177,15 @@ export interface SignInRulesOptions {
  * * **es_384**
  * * **es_512** */
 export const SigningAlgorithms = {
-  rs_256: 'rs_256',
-  rs_384: 'rs_384',
-  rs_512: 'rs_512',
-  ps_256: 'ps_256',
-  ps_384: 'ps_384',
-  ps_512: 'ps_512',
-  es_256: 'es_256',
-  es_384: 'es_384',
-  es_512: 'es_512',
+  Rs256: 'rs_256',
+  Rs384: 'rs_384',
+  Rs512: 'rs_512',
+  Ps256: 'ps_256',
+  Ps384: 'ps_384',
+  Ps512: 'ps_512',
+  Es256: 'es_256',
+  Es384: 'es_384',
+  Es512: 'es_512',
 } as const;
 
 export type SigningAlgorithms =
@@ -6242,16 +6240,16 @@ export interface TenantPublicKey {
  * * **eu**
  * * **us** */
 export const TenantRegion = {
-  as: 'as',
-  eu: 'eu',
-  us: 'us',
+  As: 'as',
+  Eu: 'eu',
+  Us: 'us',
 } as const;
 
 export type TenantRegion = typeof TenantRegion[keyof typeof TenantRegion];
 
 /** * **default** */
 export const ThemeNames = {
-  default: 'default',
+  Default: 'default',
 } as const;
 
 export type ThemeNames = typeof ThemeNames[keyof typeof ThemeNames];
@@ -6259,8 +6257,8 @@ export type ThemeNames = typeof ThemeNames[keyof typeof ThemeNames];
 /** * **sliding** - When refreshing the token, the lifetime of the refresh token will be renewed (by the amount specified in "Sliding Refresh Token Lifetime" parameter). The lifetime will not exceed the time specified in the "Absolute Refresh Token Lifetime" parameter
  * * **absolute** - The refresh token will expire on a fixed point in time (specified by the "Absolute Refresh Token Lifetime" parameter) */
 export const TokenExpirationTypes = {
-  sliding: 'sliding',
-  absolute: 'absolute',
+  Sliding: 'sliding',
+  Absolute: 'absolute',
 } as const;
 
 export type TokenExpirationTypes =
@@ -6294,9 +6292,9 @@ export interface UpdateTrustStoreRevocationsRequest {
  * * **user_account**
  * * **none** */
 export const UserLockoutTypes = {
-  ip: 'ip',
-  user_account: 'user_account',
-  none: 'none',
+  Ip: 'ip',
+  UserAccount: 'user_account',
+  None: 'none',
 } as const;
 
 export type UserLockoutTypes =
@@ -6306,9 +6304,9 @@ export type UserLockoutTypes =
  * * **online** - Will check for revocation with root CA and intermediary CAs
  * * **offline** - Will check for revocation against the customer generated revocation list */
 export const X509RevocationMode = {
-  no_check: 'no_check',
-  online: 'online',
-  offline: 'offline',
+  NoCheck: 'no_check',
+  Online: 'online',
+  Offline: 'offline',
 } as const;
 
 export type X509RevocationMode =
