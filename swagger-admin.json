@@ -3054,7 +3054,7 @@
           },
           "max_failed_access_attempts": {
             "type": "integer",
-            "description": "Maximum Number of failed attempts a user account can have before\r\nthe user is locked out. The specified value is inclusive of the count.",
+            "description": "Maximum Number of failed attempts a user account can have before the user is locked out. The specified value is inclusive of the count.",
             "format": "int32",
             "example": 5
           },
@@ -3095,7 +3095,7 @@
           },
           "send_email_to_user": {
             "type": "boolean",
-            "description": "Send an E-Mail to the User's E-Mail address once any one of the UserLockoutType has been\r\ntriggered.",
+            "description": "Send an E-Mail to the User's E-Mail address once any one of the UserLockoutType has been triggered.",
             "example": true
           }
         },
@@ -3732,7 +3732,7 @@
           },
           "allow_access_tokens_via_browser": {
             "type": "boolean",
-            "description": "Controls whether access tokens are transmitted via the browser for this client.\r\nThis can prevent accidental leakage of access tokens when multiple response types are allowed."
+            "description": "Controls whether access tokens are transmitted via the browser for this client. This can prevent accidental leakage of access tokens when multiple response types are allowed."
           },
           "redirect_uris": {
             "uniqueItems": true,
@@ -3843,7 +3843,7 @@
           },
           "update_access_token_claims_on_refresh": {
             "type": "boolean",
-            "description": "Specifies a value indicating whether the access token (and its claims)\r\nshould be updated on a refresh token request"
+            "description": "Specifies a value indicating whether the access token (and its claims) should be updated on a refresh token request"
           },
           "refresh_token_expiration": {
             "type": "enum",
@@ -3897,7 +3897,7 @@
           },
           "always_send_client_claims": {
             "type": "boolean",
-            "description": "Specifies whether client claims should be always included in the access\r\ntokens - or only for client credentials flow."
+            "description": "Specifies whether client claims should be always included in the access tokens - or only for client credentials flow."
           },
           "client_claims_prefix": {
             "type": "string",
@@ -3918,7 +3918,7 @@
           },
           "user_sso_lifetime": {
             "type": "integer",
-            "description": "The maximum duration (in seconds) since the last time the user authenticated.\r\nYou can adjust the lifetime of a session token to control when and how often\r\na user is required to reenter credentials instead of being silently authenticated,\r\nwhen using a web application.",
+            "description": "The maximum duration (in seconds) since the last time the user authenticated. You can adjust the lifetime of a session token to control when and how often a user is required to reenter credentials instead of being silently authenticated, when using a web application.",
             "format": "int32",
             "nullable": true,
             "example": 604800
@@ -4397,7 +4397,7 @@
           },
           "allow_access_tokens_via_browser": {
             "type": "boolean",
-            "description": "Controls whether access tokens are transmitted via the browser for this client.\r\nThis can prevent accidental leakage of access tokens when multiple response types are allowed.",
+            "description": "Controls whether access tokens are transmitted via the browser for this client. This can prevent accidental leakage of access tokens when multiple response types are allowed.",
             "default": false
           },
           "redirect_uris": {
@@ -4536,7 +4536,7 @@
           },
           "update_access_token_claims_on_refresh": {
             "type": "boolean",
-            "description": "Specifies a value indicating whether the access token (and its claims)\r\nshould be updated on a refresh token request",
+            "description": "Specifies a value indicating whether the access token (and its claims) should be updated on a refresh token request",
             "default": false
           },
           "refresh_token_expiration": {
@@ -4595,7 +4595,7 @@
           },
           "always_send_client_claims": {
             "type": "boolean",
-            "description": "Specifies whether client claims should be always included in the access\r\ntokens - or only for client credentials flow.",
+            "description": "Specifies whether client claims should be always included in the access tokens - or only for client credentials flow.",
             "default": false
           },
           "client_claims_prefix": {
@@ -4621,7 +4621,7 @@
             "minimum": 0,
             "exclusiveMinimum": true,
             "type": "integer",
-            "description": "The maximum duration (in seconds) since the last time the user authenticated.\r\nYou can adjust the lifetime of a session token to control when and how often\r\na user is required to reenter credentials instead of being silently authenticated,\r\nwhen using a web application.",
+            "description": "The maximum duration (in seconds) since the last time the user authenticated. You can adjust the lifetime of a session token to control when and how often a user is required to reenter credentials instead of being silently authenticated, when using a web application.",
             "format": "int32",
             "nullable": true,
             "example": 604800
@@ -5211,7 +5211,7 @@
           "passwordless_login_sent_event"
         ],
         "type": "string",
-        "description": "* **authorization_success** - ///////////////////////////////////////////////////\r\nAuthentication related events\r\n///////////////////////////////////////////////////\r\n* **authorization_failure**\r\n* **resource_owner_authentication_success**\r\n* **resource_owner_authentication_failure**\r\n* **client_authentication_success**\r\n* **client_authentication_failure**\r\n* **api_authentication_success**\r\n* **api_authentication_failure**\r\n* **user_logout_success**\r\n* **user_login_success**\r\n* **user_login_failure**\r\n* **user_account_blocked**\r\n* **user_account_ip_blocked**\r\n* **user_account_unblocked**\r\n* **user_account_ip_unblocked**\r\n* **user_account_ip_unblocked_all**\r\n* **user_password_reset**\r\n* **user_session_created**\r\n* **user_session_renewed**\r\n* **user_session_removed**\r\n* **token_issued_success** - ///////////////////////////////////////////////////\r\nToken related events\r\n///////////////////////////////////////////////////\r\n* **token_issued_failure**\r\n* **token_revoked_success**\r\n* **token_introspection_success**\r\n* **token_introspection_failure**\r\n* **unhandled_exception** - ///////////////////////////////////////////////////\r\nError related events\r\n///////////////////////////////////////////////////\r\n* **invalid_client_configuration**\r\n* **consent_granted** - ///////////////////////////////////////////////////\r\nGrants related events\r\n///////////////////////////////////////////////////\r\n* **consent_denied**\r\n* **grants_revoked**\r\n* **device_authorization_success**\r\n* **device_authorization_failure**\r\n* **passwordless_login_sent_event** - ///////////////////////////////////////////////////\r\nNotification related events\r\n///////////////////////////////////////////////////"
+        "description": "* **authorization_success**\r\n* **authorization_failure**\r\n* **resource_owner_authentication_success**\r\n* **resource_owner_authentication_failure**\r\n* **client_authentication_success**\r\n* **client_authentication_failure**\r\n* **api_authentication_success**\r\n* **api_authentication_failure**\r\n* **user_logout_success**\r\n* **user_login_success**\r\n* **user_login_failure**\r\n* **user_account_blocked**\r\n* **user_account_ip_blocked**\r\n* **user_account_unblocked**\r\n* **user_account_ip_unblocked**\r\n* **user_account_ip_unblocked_all**\r\n* **user_password_reset**\r\n* **user_session_created**\r\n* **user_session_renewed**\r\n* **user_session_removed**\r\n* **token_issued_success**\r\n* **token_issued_failure**\r\n* **token_revoked_success**\r\n* **token_introspection_success**\r\n* **token_introspection_failure**\r\n* **unhandled_exception**\r\n* **invalid_client_configuration**\r\n* **consent_granted**\r\n* **consent_denied**\r\n* **grants_revoked**\r\n* **device_authorization_success**\r\n* **device_authorization_failure**\r\n* **passwordless_login_sent_event**"
       },
       "LogEventTypes": {
         "enum": [
@@ -5282,7 +5282,7 @@
         "properties": {
           "consent_required_for_offline_access": {
             "type": "boolean",
-            "description": "Since access tokens have finite lifetimes, refresh tokens allow requesting new access\r\ntokens without user interaction. The clients need to be explicitly authorized by the\r\nUser to request for refresh tokens. This option specifies if all the clients need\r\nConsent from the User for Offline Access.",
+            "description": "Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access.",
             "example": true
           },
           "allow_remember_me": {
@@ -5324,12 +5324,12 @@
                 "$ref": "#/components/schemas/PrimarySchemes"
               }
             ],
-            "description": "Primary Login Method to be shown on the Login screen\r\nThe value can be any one of the enabled Primary Login Method",
+            "description": "Primary Login Method to be shown on the Login screen. The value can be any one of the enabled Primary Login Method",
             "example": "local"
           },
           "secondary_login_methods_first": {
             "type": "boolean",
-            "description": "If enabled, Secondary Login Methods are shown on top and the Primary Login method\r\nis shown on bottom.",
+            "description": "If enabled, Secondary Login Methods are shown on top and the Primary Login method is shown on bottom.",
             "example": true
           },
           "secondary_login_methods_order": {
@@ -5372,7 +5372,7 @@
         "properties": {
           "automatic_redirect_after_sign_out": {
             "type": "boolean",
-            "description": "Specifies whether the user should be automatically redirected to the client\r\nspecified URL after sign out.",
+            "description": "Specifies whether the user should be automatically redirected to the client specified URL after sign out.",
             "example": true
           },
           "show_logout_prompt": {
@@ -5581,7 +5581,7 @@
             "minimum": 0,
             "exclusiveMinimum": true,
             "type": "integer",
-            "description": "Maximum Number of failed attempts a user account can have before\r\nthe user is locked out. The specified value is inclusive of the count.",
+            "description": "Maximum Number of failed attempts a user account can have before the user is locked out. The specified value is inclusive of the count.",
             "format": "int32",
             "example": 5
           },
@@ -5626,7 +5626,7 @@
           },
           "send_email_to_user": {
             "type": "boolean",
-            "description": "Send an E-Mail to the User's E-Mail address once any one of the UserLockoutType has been\r\ntriggered.",
+            "description": "Send an E-Mail to the User's E-Mail address once any one of the UserLockoutType has been triggered.",
             "example": true
           }
         },
@@ -6083,7 +6083,7 @@
           },
           "allow_access_tokens_via_browser": {
             "type": "boolean",
-            "description": "Controls whether access tokens are transmitted via the browser for this client.\r\nThis can prevent accidental leakage of access tokens when multiple response types are allowed."
+            "description": "Controls whether access tokens are transmitted via the browser for this client. This can prevent accidental leakage of access tokens when multiple response types are allowed."
           },
           "redirect_uris": {
             "uniqueItems": true,
@@ -6212,7 +6212,7 @@
           },
           "update_access_token_claims_on_refresh": {
             "type": "boolean",
-            "description": "Specifies a value indicating whether the access token (and its claims)\r\nshould be updated on a refresh token request"
+            "description": "Specifies a value indicating whether the access token (and its claims) should be updated on a refresh token request"
           },
           "refresh_token_expiration": {
             "type": "enum",
@@ -6266,7 +6266,7 @@
           },
           "always_send_client_claims": {
             "type": "boolean",
-            "description": "Specifies whether client claims should be always included in the access\r\ntokens - or only for client credentials flow."
+            "description": "Specifies whether client claims should be always included in the access tokens - or only for client credentials flow."
           },
           "client_claims_prefix": {
             "type": "string",
@@ -6290,7 +6290,7 @@
             "minimum": 0,
             "exclusiveMinimum": true,
             "type": "integer",
-            "description": "The maximum duration (in seconds) since the last time the user authenticated.\r\nYou can adjust the lifetime of a session token to control when and how often\r\na user is required to reenter credentials instead of being silently authenticated,\r\nwhen using a web application.",
+            "description": "The maximum duration (in seconds) since the last time the user authenticated. You can adjust the lifetime of a session token to control when and how often a user is required to reenter credentials instead of being silently authenticated, when using a web application.",
             "format": "int32",
             "nullable": true,
             "example": 604800
@@ -6551,7 +6551,7 @@
         "properties": {
           "consent_required_for_offline_access": {
             "type": "boolean",
-            "description": "Since access tokens have finite lifetimes, refresh tokens allow requesting new access\r\ntokens without user interaction. The clients need to be explicitly authorized by the\r\nUser to request for refresh tokens. This option specifies if all the clients need\r\nConsent from the User for Offline Access.",
+            "description": "Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access.",
             "example": true
           },
           "allow_remember_me": {
@@ -6588,12 +6588,12 @@
                 "$ref": "#/components/schemas/PrimarySchemes"
               }
             ],
-            "description": "Primary Login Method to be shown on the Login screen\r\nThe value can be any one of the enabled Primary Login Method",
+            "description": "Primary Login Method to be shown on the Login screen. The value can be any one of the enabled Primary Login Method",
             "example": "local"
           },
           "secondary_login_methods_first": {
             "type": "boolean",
-            "description": "If enabled, Secondary Login Methods are shown on top and the Primary Login method\r\nis shown on bottom.",
+            "description": "If enabled, Secondary Login Methods are shown on top and the Primary Login method is shown on bottom.",
             "example": true
           },
           "secondary_login_methods_order": {
@@ -6632,7 +6632,7 @@
         "properties": {
           "automatic_redirect_after_sign_out": {
             "type": "boolean",
-            "description": "Specifies whether the user should be automatically redirected to the client\r\nspecified URL after sign out.",
+            "description": "Specifies whether the user should be automatically redirected to the client specified URL after sign out.",
             "example": true
           },
           "show_logout_prompt": {
@@ -8414,7 +8414,7 @@
           },
           "domain_name": {
             "type": "string",
-            "description": "Tenant Domain.\r\nif the domain is myapp, the full Auth server url will look like https://myapp.monocloud.com",
+            "description": "If the domain is myapp, the full Auth server url will look like https://myapp.monocloud.com",
             "example": "myapp"
           },
           "project_name": {

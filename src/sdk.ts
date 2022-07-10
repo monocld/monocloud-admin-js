@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 /* eslint-disable @typescript-eslint/no-empty-interface */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -88,9 +89,9 @@ export class ClientsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processFindClientById(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processFindClientById(_response);
+      });
   }
 
   protected processFindClientById(
@@ -179,7 +180,9 @@ export class ClientsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) => this.processPatchClient(_response));
+      .then((_response: AxiosResponse) => {
+        return this.processPatchClient(_response);
+      });
   }
 
   protected processPatchClient(
@@ -247,7 +250,9 @@ export class ClientsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) => this.processDeleteClient(_response));
+      .then((_response: AxiosResponse) => {
+        return this.processDeleteClient(_response);
+      });
   }
 
   protected processDeleteClient(
@@ -326,9 +331,9 @@ export class ClientsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processFindClientSecretById(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processFindClientSecretById(_response);
+      });
   }
 
   protected processFindClientSecretById(
@@ -422,9 +427,9 @@ export class ClientsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processDeleteClientSecret(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processDeleteClientSecret(_response);
+      });
   }
 
   protected processDeleteClientSecret(
@@ -495,7 +500,9 @@ export class ClientsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) => this.processGetAllClients(_response));
+      .then((_response: AxiosResponse) => {
+        return this.processGetAllClients(_response);
+      });
   }
 
   protected processGetAllClients(
@@ -566,7 +573,9 @@ export class ClientsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) => this.processCreateClient(_response));
+      .then((_response: AxiosResponse) => {
+        return this.processCreateClient(_response);
+      });
   }
 
   protected processCreateClient(
@@ -659,9 +668,9 @@ export class ClientsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processCreateClientSecret(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processCreateClientSecret(_response);
+      });
   }
 
   protected processCreateClientSecret(
@@ -788,9 +797,9 @@ export class KeysClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processGetAllKeyMaterials(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processGetAllKeyMaterials(_response);
+      });
   }
 
   protected processGetAllKeyMaterials(
@@ -858,7 +867,9 @@ export class KeysClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) => this.processRotateKey(_response));
+      .then((_response: AxiosResponse) => {
+        return this.processRotateKey(_response);
+      });
   }
 
   protected processRotateKey(
@@ -935,7 +946,9 @@ export class KeysClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) => this.processRevokeKey(_response));
+      .then((_response: AxiosResponse) => {
+        return this.processRevokeKey(_response);
+      });
   }
 
   protected processRevokeKey(
@@ -1058,7 +1071,9 @@ export class LogsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) => this.processGetAllLogs(_response));
+      .then((_response: AxiosResponse) => {
+        return this.processGetAllLogs(_response);
+      });
   }
 
   protected processGetAllLogs(
@@ -1128,7 +1143,9 @@ export class LogsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) => this.processFindLogById(_response));
+      .then((_response: AxiosResponse) => {
+        return this.processFindLogById(_response);
+      });
   }
 
   protected processFindLogById(
@@ -1251,9 +1268,9 @@ export class OptionsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processPatchAuthenticationOptions(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processPatchAuthenticationOptions(_response);
+      });
   }
 
   protected processPatchAuthenticationOptions(
@@ -1322,9 +1339,9 @@ export class OptionsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processFindAuthenticationOptions(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processFindAuthenticationOptions(_response);
+      });
   }
 
   protected processFindAuthenticationOptions(
@@ -1399,9 +1416,9 @@ export class OptionsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processPatchBrandingOptions(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processPatchBrandingOptions(_response);
+      });
   }
 
   protected processPatchBrandingOptions(
@@ -1466,9 +1483,9 @@ export class OptionsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processFindBrandingOptions(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processFindBrandingOptions(_response);
+      });
   }
 
   protected processFindBrandingOptions(
@@ -1539,9 +1556,9 @@ export class OptionsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processPatchCommunicationOptions(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processPatchCommunicationOptions(_response);
+      });
   }
 
   protected processPatchCommunicationOptions(
@@ -1606,9 +1623,9 @@ export class OptionsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processFindCommunicationOptions(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processFindCommunicationOptions(_response);
+      });
   }
 
   protected processFindCommunicationOptions(
@@ -1679,9 +1696,9 @@ export class OptionsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processPatchDeviceFlowOptions(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processPatchDeviceFlowOptions(_response);
+      });
   }
 
   protected processPatchDeviceFlowOptions(
@@ -1746,9 +1763,9 @@ export class OptionsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processFindDeviceFlowOptions(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processFindDeviceFlowOptions(_response);
+      });
   }
 
   protected processFindDeviceFlowOptions(
@@ -1819,9 +1836,9 @@ export class OptionsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processPatchMtlsOptions(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processPatchMtlsOptions(_response);
+      });
   }
 
   protected processPatchMtlsOptions(
@@ -1886,9 +1903,9 @@ export class OptionsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processFindMtlsOptions(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processFindMtlsOptions(_response);
+      });
   }
 
   protected processFindMtlsOptions(
@@ -1997,9 +2014,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processFindApiResourceById(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processFindApiResourceById(_response);
+      });
   }
 
   protected processFindApiResourceById(
@@ -2088,9 +2105,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processPatchApiResource(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processPatchApiResource(_response);
+      });
   }
 
   protected processPatchApiResource(
@@ -2158,9 +2175,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processDeleteApiResource(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processDeleteApiResource(_response);
+      });
   }
 
   protected processDeleteApiResource(
@@ -2239,9 +2256,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processFindApiResourceSecretById(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processFindApiResourceSecretById(_response);
+      });
   }
 
   protected processFindApiResourceSecretById(
@@ -2335,9 +2352,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processDeleteApiResourceSecret(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processDeleteApiResourceSecret(_response);
+      });
   }
 
   protected processDeleteApiResourceSecret(
@@ -2403,9 +2420,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processFindApiScopeById(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processFindApiScopeById(_response);
+      });
   }
 
   protected processFindApiScopeById(
@@ -2494,7 +2511,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) => this.processPatchApiScope(_response));
+      .then((_response: AxiosResponse) => {
+        return this.processPatchApiScope(_response);
+      });
   }
 
   protected processPatchApiScope(
@@ -2562,9 +2581,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processDeleteApiScope(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processDeleteApiScope(_response);
+      });
   }
 
   protected processDeleteApiScope(
@@ -2630,9 +2649,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processFindIdentityResourceById(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processFindIdentityResourceById(_response);
+      });
   }
 
   protected processFindIdentityResourceById(
@@ -2721,9 +2740,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processPatchIdentityResource(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processPatchIdentityResource(_response);
+      });
   }
 
   protected processPatchIdentityResource(
@@ -2791,9 +2810,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processDeleteIdentityResource(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processDeleteIdentityResource(_response);
+      });
   }
 
   protected processDeleteIdentityResource(
@@ -2864,9 +2883,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processGetAllApiResources(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processGetAllApiResources(_response);
+      });
   }
 
   protected processGetAllApiResources(
@@ -2937,9 +2956,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processCreateApiResource(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processCreateApiResource(_response);
+      });
   }
 
   protected processCreateApiResource(
@@ -3027,9 +3046,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processGetAllApiScopes(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processGetAllApiScopes(_response);
+      });
   }
 
   protected processGetAllApiScopes(
@@ -3100,9 +3119,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processCreateApiScope(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processCreateApiScope(_response);
+      });
   }
 
   protected processCreateApiScope(
@@ -3190,9 +3209,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processGetAllIdentityResources(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processGetAllIdentityResources(_response);
+      });
   }
 
   protected processGetAllIdentityResources(
@@ -3263,9 +3282,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processCreateIdentityResource(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processCreateIdentityResource(_response);
+      });
   }
 
   protected processCreateIdentityResource(
@@ -3358,9 +3377,9 @@ export class ResourcesClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processCreateApiResourceSecret(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processCreateApiResourceSecret(_response);
+      });
   }
 
   protected processCreateApiResourceSecret(
@@ -3483,7 +3502,9 @@ export class TenantsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) => this.processPatchTenant(_response));
+      .then((_response: AxiosResponse) => {
+        return this.processPatchTenant(_response);
+      });
   }
 
   protected processPatchTenant(
@@ -3548,9 +3569,9 @@ export class TenantsClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processFindCurrentTenant(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processFindCurrentTenant(_response);
+      });
   }
 
   protected processFindCurrentTenant(
@@ -3667,9 +3688,9 @@ export class TrustStoreClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processGetAllCertificates(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processGetAllCertificates(_response);
+      });
   }
 
   protected processGetAllCertificates(
@@ -3757,9 +3778,9 @@ export class TrustStoreClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processUpdateCertificates(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processUpdateCertificates(_response);
+      });
   }
 
   protected processUpdateCertificates(
@@ -3854,9 +3875,9 @@ export class TrustStoreClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processGetAllRevocations(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processGetAllRevocations(_response);
+      });
   }
 
   protected processGetAllRevocations(
@@ -3944,9 +3965,9 @@ export class TrustStoreClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processUpdateRevocations(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processUpdateRevocations(_response);
+      });
   }
 
   protected processUpdateRevocations(
@@ -4095,9 +4116,9 @@ export class UsersClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processPatchCustomDataKey(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processPatchCustomDataKey(_response);
+      });
   }
 
   protected processPatchCustomDataKey(
@@ -4194,9 +4215,9 @@ export class UsersClient extends MonoCloudClientBase {
         }
         throw _error;
       })
-      .then((_response: AxiosResponse) =>
-        this.processPatchUserDataKey(_response)
-      );
+      .then((_response: AxiosResponse) => {
+        return this.processPatchUserDataKey(_response);
+      });
   }
 
   protected processPatchUserDataKey(
@@ -4254,26 +4275,35 @@ export class UsersClient extends MonoCloudClientBase {
 
 /** * **jwt** - Jwt token
  * * **reference** - Reference token */
-export enum AccessTokenTypes {
-  Jwt = 'jwt',
-  Reference = 'reference',
-}
+export const AccessTokenTypes = {
+  jwt: 'jwt',
+  reference: 'reference',
+} as const;
+
+export type AccessTokenTypes =
+  typeof AccessTokenTypes[keyof typeof AccessTokenTypes];
 
 /** * **off**
  * * **merge_if_verified**
  * * **always** */
-export enum AccountMergeModes {
-  Off = 'off',
-  Merge_if_verified = 'merge_if_verified',
-  Always = 'always',
-}
+export const AccountMergeModes = {
+  off: 'off',
+  merge_if_verified: 'merge_if_verified',
+  always: 'always',
+} as const;
+
+export type AccountMergeModes =
+  typeof AccountMergeModes[keyof typeof AccountMergeModes];
 
 /** * **primary_email**
  * * **all_emails** */
-export enum AccountMergeProperty {
-  Primary_email = 'primary_email',
-  All_emails = 'all_emails',
-}
+export const AccountMergeProperty = {
+  primary_email: 'primary_email',
+  all_emails: 'all_emails',
+} as const;
+
+export type AccountMergeProperty =
+  typeof AccountMergeProperty[keyof typeof AccountMergeProperty];
 
 /** The Account Protection response class */
 export interface AccountProtectionOptions {
@@ -4305,23 +4335,29 @@ export interface AccountProtectionUserLockoutOptions {
  * * **client_credentials**
  * * **password**
  * * **device_code** */
-export enum AllowedGrantTypes {
-  Implicit = 'implicit',
-  Hybrid = 'hybrid',
-  Authorization_code = 'authorization_code',
-  Client_credentials = 'client_credentials',
-  Password = 'password',
-  Device_code = 'device_code',
-}
+export const AllowedGrantTypes = {
+  implicit: 'implicit',
+  hybrid: 'hybrid',
+  authorization_code: 'authorization_code',
+  client_credentials: 'client_credentials',
+  password: 'password',
+  device_code: 'device_code',
+} as const;
+
+export type AllowedGrantTypes =
+  typeof AllowedGrantTypes[keyof typeof AllowedGrantTypes];
 
 /** * **email**
  * * **username**
  * * **phone** */
-export enum AllowedRegistrationMethods {
-  Email = 'email',
-  Username = 'username',
-  Phone = 'phone',
-}
+export const AllowedRegistrationMethods = {
+  email: 'email',
+  username: 'username',
+  phone: 'phone',
+} as const;
+
+export type AllowedRegistrationMethods =
+  typeof AllowedRegistrationMethods[keyof typeof AllowedRegistrationMethods];
 
 /** The Api Resource response class */
 export interface ApiResource {
@@ -4456,11 +4492,14 @@ export interface BrandingSmsOptions {
 /** * **chained** - Verifies the certificate with root CA and intermediary CAs
  * * **self_signed** - Verifies the self-signed certificate in the store against the certificate presented by the user
  * * **all** - Verifies both self-signed and chained certificates */
-export enum CertificateTypes {
-  Chained = 'chained',
-  Self_signed = 'self_signed',
-  All = 'all',
-}
+export const CertificateTypes = {
+  chained: 'chained',
+  self_signed: 'self_signed',
+  all: 'all',
+} as const;
+
+export type CertificateTypes =
+  typeof CertificateTypes[keyof typeof CertificateTypes];
 
 /** The Claim response class */
 export interface Claim {
@@ -4787,9 +4826,12 @@ export interface CreateSecretRequest {
 }
 
 /** * **numeric** */
-export enum DeviceFlowCodeTypes {
-  Numeric = 'numeric',
-}
+export const DeviceFlowCodeTypes = {
+  numeric: 'numeric',
+} as const;
+
+export type DeviceFlowCodeTypes =
+  typeof DeviceFlowCodeTypes[keyof typeof DeviceFlowCodeTypes];
 
 /** The Device Flow Options response class */
 export interface DeviceFlowOptions {
@@ -4800,11 +4842,14 @@ export interface DeviceFlowOptions {
 /** * **required**
  * * **preferred**
  * * **discouraged** */
-export enum FidoUserVerification {
-  Required = 'required',
-  Preferred = 'preferred',
-  Discouraged = 'discouraged',
-}
+export const FidoUserVerification = {
+  required: 'required',
+  preferred: 'preferred',
+  discouraged: 'discouraged',
+} as const;
+
+export type FidoUserVerification =
+  typeof FidoUserVerification[keyof typeof FidoUserVerification];
 
 /** The Branding Email Generic Template Options response class */
 export interface GenericBrandingEmailTemplateOptions {
@@ -4885,25 +4930,33 @@ export interface KeyMaterial {
  * * **jwk**
  * * **ecdsa**
  * * **rsa** */
-export enum KeyMaterialTypes {
-  X509 = 'x509',
-  Jwk = 'jwk',
-  Ecdsa = 'ecdsa',
-  Rsa = 'rsa',
-}
+export const KeyMaterialTypes = {
+  x509: 'x509',
+  jwk: 'jwk',
+  ecdsa: 'ecdsa',
+  rsa: 'rsa',
+} as const;
+
+export type KeyMaterialTypes =
+  typeof KeyMaterialTypes[keyof typeof KeyMaterialTypes];
 
 /** Specifies the purpose / use of the key
  * * **signing** - The key can be used for signing new tokens.
  * * **validation** - The key can be used for validating the tokens. */
-export enum KeyMaterialUses {
-  Signing = 'signing',
-  Validation = 'validation',
-}
+export const KeyMaterialUses = {
+  signing: 'signing',
+  validation: 'validation',
+} as const;
+
+export type KeyMaterialUses =
+  typeof KeyMaterialUses[keyof typeof KeyMaterialUses];
 
 /** * **english_us** */
-export enum Languages {
-  English_us = 'english_us',
-}
+export const Languages = {
+  english_us: 'english_us',
+} as const;
+
+export type Languages = typeof Languages[keyof typeof Languages];
 
 /** The Log response class */
 export interface Log {
@@ -4937,14 +4990,17 @@ export interface LogContext {}
  * * **error**
  * * **device**
  * * **notifications** */
-export enum LogEventCategories {
-  Authentication = 'authentication',
-  Token = 'token',
-  Grants = 'grants',
-  Error = 'error',
-  Device = 'device',
-  Notifications = 'notifications',
-}
+export const LogEventCategories = {
+  authentication: 'authentication',
+  token: 'token',
+  grants: 'grants',
+  error: 'error',
+  device: 'device',
+  notifications: 'notifications',
+} as const;
+
+export type LogEventCategories =
+  typeof LogEventCategories[keyof typeof LogEventCategories];
 
 /** * **authorization_success**
  * * **authorization_failure**
@@ -4979,52 +5035,58 @@ export enum LogEventCategories {
  * * **device_authorization_success**
  * * **device_authorization_failure**
  * * **passwordless_login_sent_event** */
-export enum LogEventIds {
-  Authorization_success = 'authorization_success',
-  Authorization_failure = 'authorization_failure',
-  Resource_owner_authentication_success = 'resource_owner_authentication_success',
-  Resource_owner_authentication_failure = 'resource_owner_authentication_failure',
-  Client_authentication_success = 'client_authentication_success',
-  Client_authentication_failure = 'client_authentication_failure',
-  Api_authentication_success = 'api_authentication_success',
-  Api_authentication_failure = 'api_authentication_failure',
-  User_logout_success = 'user_logout_success',
-  User_login_success = 'user_login_success',
-  User_login_failure = 'user_login_failure',
-  User_account_blocked = 'user_account_blocked',
-  User_account_ip_blocked = 'user_account_ip_blocked',
-  User_account_unblocked = 'user_account_unblocked',
-  User_account_ip_unblocked = 'user_account_ip_unblocked',
-  User_account_ip_unblocked_all = 'user_account_ip_unblocked_all',
-  User_password_reset = 'user_password_reset',
-  User_session_created = 'user_session_created',
-  User_session_renewed = 'user_session_renewed',
-  User_session_removed = 'user_session_removed',
-  Token_issued_success = 'token_issued_success',
-  Token_issued_failure = 'token_issued_failure',
-  Token_revoked_success = 'token_revoked_success',
-  Token_introspection_success = 'token_introspection_success',
-  Token_introspection_failure = 'token_introspection_failure',
-  Unhandled_exception = 'unhandled_exception',
-  Invalid_client_configuration = 'invalid_client_configuration',
-  Consent_granted = 'consent_granted',
-  Consent_denied = 'consent_denied',
-  Grants_revoked = 'grants_revoked',
-  Device_authorization_success = 'device_authorization_success',
-  Device_authorization_failure = 'device_authorization_failure',
-  Passwordless_login_sent_event = 'passwordless_login_sent_event',
-}
+export const LogEventIds = {
+  authorization_success: 'authorization_success',
+  authorization_failure: 'authorization_failure',
+  resource_owner_authentication_success:
+    'resource_owner_authentication_success',
+  resource_owner_authentication_failure:
+    'resource_owner_authentication_failure',
+  client_authentication_success: 'client_authentication_success',
+  client_authentication_failure: 'client_authentication_failure',
+  api_authentication_success: 'api_authentication_success',
+  api_authentication_failure: 'api_authentication_failure',
+  user_logout_success: 'user_logout_success',
+  user_login_success: 'user_login_success',
+  user_login_failure: 'user_login_failure',
+  user_account_blocked: 'user_account_blocked',
+  user_account_ip_blocked: 'user_account_ip_blocked',
+  user_account_unblocked: 'user_account_unblocked',
+  user_account_ip_unblocked: 'user_account_ip_unblocked',
+  user_account_ip_unblocked_all: 'user_account_ip_unblocked_all',
+  user_password_reset: 'user_password_reset',
+  user_session_created: 'user_session_created',
+  user_session_renewed: 'user_session_renewed',
+  user_session_removed: 'user_session_removed',
+  token_issued_success: 'token_issued_success',
+  token_issued_failure: 'token_issued_failure',
+  token_revoked_success: 'token_revoked_success',
+  token_introspection_success: 'token_introspection_success',
+  token_introspection_failure: 'token_introspection_failure',
+  unhandled_exception: 'unhandled_exception',
+  invalid_client_configuration: 'invalid_client_configuration',
+  consent_granted: 'consent_granted',
+  consent_denied: 'consent_denied',
+  grants_revoked: 'grants_revoked',
+  device_authorization_success: 'device_authorization_success',
+  device_authorization_failure: 'device_authorization_failure',
+  passwordless_login_sent_event: 'passwordless_login_sent_event',
+} as const;
+
+export type LogEventIds = typeof LogEventIds[keyof typeof LogEventIds];
 
 /** * **success**
  * * **failure**
  * * **information**
  * * **error** */
-export enum LogEventTypes {
-  Success = 'success',
-  Failure = 'failure',
-  Information = 'information',
-  Error = 'error',
-}
+export const LogEventTypes = {
+  success: 'success',
+  failure: 'failure',
+  information: 'information',
+  error: 'error',
+} as const;
+
+export type LogEventTypes = typeof LogEventTypes[keyof typeof LogEventTypes];
 
 /** The Log Summary response class */
 export interface LogSummary {
@@ -5037,10 +5099,12 @@ export interface LogSummary {
 
 /** * **username_password** - Both Username and Password (or password equvivalent) will be captured on the same screen if the Scheme supports it
  * * **username_first** - Username will be captured on the first screen and the Password (or equvivalent) will be captured on a different screen */
-export enum LoginFlows {
-  Username_password = 'username_password',
-  Username_first = 'username_first',
-}
+export const LoginFlows = {
+  username_password: 'username_password',
+  username_first: 'username_first',
+} as const;
+
+export type LoginFlows = typeof LoginFlows[keyof typeof LoginFlows];
 
 /** The Login Options response class */
 export interface LoginOptions {
@@ -5113,11 +5177,14 @@ export interface MtlsOptions {
 /** * **none**
  * * **optional**
  * * **required** */
-export enum MultiFactorRequirements {
-  None = 'none',
-  Optional = 'optional',
-  Required = 'required',
-}
+export const MultiFactorRequirements = {
+  none: 'none',
+  optional: 'optional',
+  required: 'required',
+} as const;
+
+export type MultiFactorRequirements =
+  typeof MultiFactorRequirements[keyof typeof MultiFactorRequirements];
 
 /** The Pagination Header response class */
 export interface PaginationHeader {
@@ -5133,10 +5200,13 @@ export interface PaginationHeader {
 
 /** * **link**
  * * **code** */
-export enum PasswordlessSendTypes {
-  Link = 'link',
-  Code = 'code',
-}
+export const PasswordlessSendTypes = {
+  link: 'link',
+  code: 'code',
+} as const;
+
+export type PasswordlessSendTypes =
+  typeof PasswordlessSendTypes[keyof typeof PasswordlessSendTypes];
 
 /** The Patch Account Protection Options Request class */
 export interface PatchAccountProtectionOptionsRequest {
@@ -5760,12 +5830,14 @@ export interface PatchTenantRequest {
  * * **passwordless_email**
  * * **passwordless_sms**
  * * **otp** */
-export enum PrimarySchemes {
-  Local = 'local',
-  Passwordless_email = 'passwordless_email',
-  Passwordless_sms = 'passwordless_sms',
-  Otp = 'otp',
-}
+export const PrimarySchemes = {
+  local: 'local',
+  passwordless_email: 'passwordless_email',
+  passwordless_sms: 'passwordless_sms',
+  otp: 'otp',
+} as const;
+
+export type PrimarySchemes = typeof PrimarySchemes[keyof typeof PrimarySchemes];
 
 /** The Apple Provider Options response class */
 export interface ProviderAppleOptions {
@@ -5945,10 +6017,13 @@ export interface ProviderUsernamePasswordOptions {
 
 /** * **reuse** - The refresh token handle will stay the same when refreshing tokens
  * * **one_time_only** - The refresh token handle will be updated when refreshing tokens */
-export enum RefreshTokenUsageTypes {
-  Reuse = 'reuse',
-  One_time_only = 'one_time_only',
-}
+export const RefreshTokenUsageTypes = {
+  reuse: 'reuse',
+  one_time_only: 'one_time_only',
+} as const;
+
+export type RefreshTokenUsageTypes =
+  typeof RefreshTokenUsageTypes[keyof typeof RefreshTokenUsageTypes];
 
 /** The Registration Account Merge Options response class */
 export interface RegistrationAccountMergeOptions {
@@ -5997,11 +6072,14 @@ export interface RegistrationPasswordStrengthOptions {
 /** * **never**
  * * **always**
  * * **user_selected** */
-export enum RememberConsentTypes {
-  Never = 'never',
-  Always = 'always',
-  User_selected = 'user_selected',
-}
+export const RememberConsentTypes = {
+  never: 'never',
+  always: 'always',
+  user_selected: 'user_selected',
+} as const;
+
+export type RememberConsentTypes =
+  typeof RememberConsentTypes[keyof typeof RememberConsentTypes];
 
 /** * **local**
  * * **passwordless_email**
@@ -6011,16 +6089,18 @@ export enum RememberConsentTypes {
  * * **git_hub**
  * * **apple**
  * * **facebook** */
-export enum SchemeNames {
-  Local = 'local',
-  Passwordless_email = 'passwordless_email',
-  Passwordless_sms = 'passwordless_sms',
-  Otp = 'otp',
-  Google = 'google',
-  Git_hub = 'git_hub',
-  Apple = 'apple',
-  Facebook = 'facebook',
-}
+export const SchemeNames = {
+  local: 'local',
+  passwordless_email: 'passwordless_email',
+  passwordless_sms: 'passwordless_sms',
+  otp: 'otp',
+  google: 'google',
+  git_hub: 'git_hub',
+  apple: 'apple',
+  facebook: 'facebook',
+} as const;
+
+export type SchemeNames = typeof SchemeNames[keyof typeof SchemeNames];
 
 /** The Client Secret response class */
 export interface Secret {
@@ -6044,14 +6124,16 @@ export interface Secret {
  * * **x509_certificate_base64**
  * * **jwk**
  * * **plain_text** */
-export enum SecretTypes {
-  Shared_secret = 'shared_secret',
-  X509_thumbprint = 'x509_thumbprint',
-  X509_name = 'x509_name',
-  X509_certificate_base64 = 'x509_certificate_base64',
-  Jwk = 'jwk',
-  Plain_text = 'plain_text',
-}
+export const SecretTypes = {
+  shared_secret: 'shared_secret',
+  x509_thumbprint: 'x509_thumbprint',
+  x509_name: 'x509_name',
+  x509_certificate_base64: 'x509_certificate_base64',
+  jwk: 'jwk',
+  plain_text: 'plain_text',
+} as const;
+
+export type SecretTypes = typeof SecretTypes[keyof typeof SecretTypes];
 
 /** The Secret response class */
 export interface SecretValue {
@@ -6096,17 +6178,20 @@ export interface SignInRulesOptions {
  * * **es_256**
  * * **es_384**
  * * **es_512** */
-export enum SigningAlgorithms {
-  Rs_256 = 'rs_256',
-  Rs_384 = 'rs_384',
-  Rs_512 = 'rs_512',
-  Ps_256 = 'ps_256',
-  Ps_384 = 'ps_384',
-  Ps_512 = 'ps_512',
-  Es_256 = 'es_256',
-  Es_384 = 'es_384',
-  Es_512 = 'es_512',
-}
+export const SigningAlgorithms = {
+  rs_256: 'rs_256',
+  rs_384: 'rs_384',
+  rs_512: 'rs_512',
+  ps_256: 'ps_256',
+  ps_384: 'ps_384',
+  ps_512: 'ps_512',
+  es_256: 'es_256',
+  es_384: 'es_384',
+  es_512: 'es_512',
+} as const;
+
+export type SigningAlgorithms =
+  typeof SigningAlgorithms[keyof typeof SigningAlgorithms];
 
 /** The Tenants response class */
 export interface Tenant {
@@ -6156,23 +6241,30 @@ export interface TenantPublicKey {
 /** * **as**
  * * **eu**
  * * **us** */
-export enum TenantRegion {
-  As = 'as',
-  Eu = 'eu',
-  Us = 'us',
-}
+export const TenantRegion = {
+  as: 'as',
+  eu: 'eu',
+  us: 'us',
+} as const;
+
+export type TenantRegion = typeof TenantRegion[keyof typeof TenantRegion];
 
 /** * **default** */
-export enum ThemeNames {
-  Default = 'default',
-}
+export const ThemeNames = {
+  default: 'default',
+} as const;
+
+export type ThemeNames = typeof ThemeNames[keyof typeof ThemeNames];
 
 /** * **sliding** - When refreshing the token, the lifetime of the refresh token will be renewed (by the amount specified in "Sliding Refresh Token Lifetime" parameter). The lifetime will not exceed the time specified in the "Absolute Refresh Token Lifetime" parameter
  * * **absolute** - The refresh token will expire on a fixed point in time (specified by the "Absolute Refresh Token Lifetime" parameter) */
-export enum TokenExpirationTypes {
-  Sliding = 'sliding',
-  Absolute = 'absolute',
-}
+export const TokenExpirationTypes = {
+  sliding: 'sliding',
+  absolute: 'absolute',
+} as const;
+
+export type TokenExpirationTypes =
+  typeof TokenExpirationTypes[keyof typeof TokenExpirationTypes];
 
 /** Trust Store Certificates Response */
 export interface TrustStoreCertificates {
@@ -6201,17 +6293,23 @@ export interface UpdateTrustStoreRevocationsRequest {
 /** * **ip**
  * * **user_account**
  * * **none** */
-export enum UserLockoutTypes {
-  Ip = 'ip',
-  User_account = 'user_account',
-  None = 'none',
-}
+export const UserLockoutTypes = {
+  ip: 'ip',
+  user_account: 'user_account',
+  none: 'none',
+} as const;
+
+export type UserLockoutTypes =
+  typeof UserLockoutTypes[keyof typeof UserLockoutTypes];
 
 /** * **no_check** - Will not check for revocation.
  * * **online** - Will check for revocation with root CA and intermediary CAs
  * * **offline** - Will check for revocation against the customer generated revocation list */
-export enum X509RevocationMode {
-  No_check = 'no_check',
-  Online = 'online',
-  Offline = 'offline',
-}
+export const X509RevocationMode = {
+  no_check: 'no_check',
+  online: 'online',
+  offline: 'offline',
+} as const;
+
+export type X509RevocationMode =
+  typeof X509RevocationMode[keyof typeof X509RevocationMode];
