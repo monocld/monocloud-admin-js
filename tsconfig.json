@@ -23,7 +23,6 @@
     "declaration": true,
     "downlevelIteration": true,
     "noEmit": true,
-    "importHelpers": true,
     "types": [
       "node",
     ],
