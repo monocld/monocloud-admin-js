@@ -3,6 +3,7 @@ import { MonoCloudConfig } from './models/monocloud-config';
 import {
   ClientsClient,
   KeysClient,
+  LogsClient,
   OptionsClient,
   ResourcesClient,
   TrustStoreClient,
@@ -19,12 +20,15 @@ export class MonoCloudManageClient {
 
   public readonly trustStore: TrustStoreClient;
 
+  public readonly logs: LogsClient;
+
   private constructor(options: MonoCloudConfig, baseDomain: string) {
     this.clients = new ClientsClient(options, `https://${baseDomain}`);
     this.options = new OptionsClient(options, `https://${baseDomain}`);
     this.resources = new ResourcesClient(options, `https://${baseDomain}`);
     this.keys = new KeysClient(options, `https://${baseDomain}`);
     this.trustStore = new TrustStoreClient(options, `https://${baseDomain}`);
+    this.logs = new LogsClient(options, `https://${baseDomain}`);
   }
 
   public static init(options?: MonoCloudConfig): MonoCloudManageClient {
