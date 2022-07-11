@@ -14,10 +14,11 @@ import type {
   AxiosResponse,
   CancelToken,
 } from 'axios';
-import { MonoCloudResponse } from './models/monocloud-response';
+import axiosRetry from 'axios-retry';
 import { isAxiosError, throwException } from './utils';
 import { MonoCloudClientBase } from './models/monocloud-client-base';
 import { MonoCloudConfig } from './models/monocloud-config';
+import { MonoCloudResponse } from './models/monocloud-response';
 
 export class ClientsClient extends MonoCloudClientBase {
   private instance: AxiosInstance;
@@ -53,6 +54,10 @@ export class ClientsClient extends MonoCloudClientBase {
     };
 
     this.instance = instance || axios.create(config);
+
+    if (configuration.config?.retry === true) {
+      axiosRetry(this.instance, { retries: 3 });
+    }
 
     this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : '';
   }
@@ -757,6 +762,10 @@ export class KeysClient extends MonoCloudClientBase {
 
     this.instance = instance || axios.create(config);
 
+    if (configuration.config?.retry === true) {
+      axiosRetry(this.instance, { retries: 3 });
+    }
+
     this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : '';
   }
 
@@ -1031,6 +1040,10 @@ export class LogsClient extends MonoCloudClientBase {
 
     this.instance = instance || axios.create(config);
 
+    if (configuration.config?.retry === true) {
+      axiosRetry(this.instance, { retries: 3 });
+    }
+
     this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : '';
   }
 
@@ -1231,6 +1244,10 @@ export class OptionsClient extends MonoCloudClientBase {
     };
 
     this.instance = instance || axios.create(config);
+
+    if (configuration.config?.retry === true) {
+      axiosRetry(this.instance, { retries: 3 });
+    }
 
     this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : '';
   }
@@ -1978,6 +1995,10 @@ export class ResourcesClient extends MonoCloudClientBase {
     };
 
     this.instance = instance || axios.create(config);
+
+    if (configuration.config?.retry === true) {
+      axiosRetry(this.instance, { retries: 3 });
+    }
 
     this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : '';
   }
@@ -3466,6 +3487,10 @@ export class TenantsClient extends MonoCloudClientBase {
 
     this.instance = instance || axios.create(config);
 
+    if (configuration.config?.retry === true) {
+      axiosRetry(this.instance, { retries: 3 });
+    }
+
     this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : '';
   }
 
@@ -3657,6 +3682,10 @@ export class TrustStoreClient extends MonoCloudClientBase {
     };
 
     this.instance = instance || axios.create(config);
+
+    if (configuration.config?.retry === true) {
+      axiosRetry(this.instance, { retries: 3 });
+    }
 
     this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : '';
   }
@@ -4070,6 +4099,10 @@ export class UsersClient extends MonoCloudClientBase {
     };
 
     this.instance = instance || axios.create(config);
+
+    if (configuration.config?.retry === true) {
+      axiosRetry(this.instance, { retries: 3 });
+    }
 
     this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : '';
   }
