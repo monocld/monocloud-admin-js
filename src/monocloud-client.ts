@@ -6,7 +6,9 @@ import {
   LogsClient,
   OptionsClient,
   ResourcesClient,
+  TenantsClient,
   TrustStoreClient,
+  UsersClient,
 } from './sdk';
 
 export class MonoCloudManageClient {
@@ -22,6 +24,10 @@ export class MonoCloudManageClient {
 
   public readonly logs: LogsClient;
 
+  public readonly users: UsersClient;
+
+  public readonly tenants: TenantsClient;
+
   private constructor(options: MonoCloudConfig, baseDomain: string) {
     this.clients = new ClientsClient(options, `https://${baseDomain}`);
     this.options = new OptionsClient(options, `https://${baseDomain}`);
@@ -29,6 +35,8 @@ export class MonoCloudManageClient {
     this.keys = new KeysClient(options, `https://${baseDomain}`);
     this.trustStore = new TrustStoreClient(options, `https://${baseDomain}`);
     this.logs = new LogsClient(options, `https://${baseDomain}`);
+    this.users = new UsersClient(options, `https://${baseDomain}`);
+    this.tenants = new TenantsClient(options, `https://${baseDomain}`);
   }
 
   public static init(options?: MonoCloudConfig): MonoCloudManageClient {
