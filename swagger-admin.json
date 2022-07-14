@@ -8681,15 +8681,23 @@
         "description": "Api key needed to access the endpoints. X-API-KEY: My_API_Key",
         "name": "X-API-KEY",
         "in": "header"
+      },
+      "X-TENANT-ID": {
+        "type": "apiKey",
+        "description": "Tenant Id needed to access the endpoints. X-TENANT-ID: My_Tenant_Id",
+        "name": "X-TENANT-ID",
+        "in": "header"
       }
     }
   },
   "security": [
     {
-      "Bearer": [ ]
+      "Bearer": [ ],
+      "X-TENANT-ID": [ ]
     },
     {
-      "X-API-KEY": [ ]
+      "X-API-KEY": [ ],
+      "X-TENANT-ID": [ ]
     }
   ]
 }
