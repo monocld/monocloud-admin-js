@@ -3,7 +3,7 @@ export class ValidationException<T = any> extends Error {
   constructor(
     public readonly message: string,
     public readonly errors: ValidationError<T>,
-    public readonly raw: Record<string, string[]>
+    public readonly raw: any
   ) {
     super();
   }

@@ -25,7 +25,7 @@ export class MonoCloudException extends Error {
         throw new ValidationException(
           response?.title ?? 'Validation error',
           unflatten(response.errors) as ValidationError<any>,
-          response.errors
+          response
         );
       }
       throw new BadRequestException(response?.title ?? 'Bad Request');
