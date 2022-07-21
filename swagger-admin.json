@@ -9025,7 +9025,6 @@
         "required": [
           "account_merging",
           "allowed_registration_methods",
-          "allowed_user_name_characters",
           "minimum_username_length",
           "password_strength",
           "require_email",
@@ -9085,19 +9084,6 @@
             "description": "Minimum Username Length",
             "format": "int32",
             "example": 3
-          },
-          "allowed_user_name_characters": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Allowed Username Characters",
-            "example": [
-              "A",
-              "B",
-              "C",
-              "D"
-            ]
           }
         },
         "additionalProperties": false,

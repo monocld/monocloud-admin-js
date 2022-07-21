@@ -6841,8 +6841,6 @@ export interface RegistrationOptions {
   require_username: boolean;
   /** Minimum Username Length */
   minimum_username_length: number;
-  /** Allowed Username Characters */
-  allowed_user_name_characters: string[];
 }
 
 /** The Registration Password Strength Options response class */
