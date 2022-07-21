@@ -211,6 +211,32 @@ export class ClientsClient extends MonoCloudClientBase {
         new MonoCloudResponse<Client>(status, _headers, result200)
       );
     }
+    if (status === 400) {
+      const _responseText = response.data;
+      let result400: any = null;
+      const resultData400 = _responseText;
+      result400 = resultData400;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
+      );
+    }
     if (status !== 200 && status !== 204) {
       const _responseText = response.data;
       return throwException(
@@ -617,6 +643,19 @@ export class ClientsClient extends MonoCloudClientBase {
         result400
       );
     }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
+      );
+    }
     if (status !== 200 && status !== 204) {
       const _responseText = response.data;
       return throwException(
@@ -710,6 +749,19 @@ export class ClientsClient extends MonoCloudClientBase {
         _responseText,
         _headers,
         result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
       );
     }
     if (status !== 200 && status !== 204) {
@@ -1315,6 +1367,32 @@ export class OptionsClient extends MonoCloudClientBase {
         )
       );
     }
+    if (status === 400) {
+      const _responseText = response.data;
+      let result400: any = null;
+      const resultData400 = _responseText;
+      result400 = resultData400;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
+      );
+    }
     if (status !== 200 && status !== 204) {
       const _responseText = response.data;
       return throwException(
@@ -1459,6 +1537,32 @@ export class OptionsClient extends MonoCloudClientBase {
         new MonoCloudResponse<BrandingOptions>(status, _headers, result200)
       );
     }
+    if (status === 400) {
+      const _responseText = response.data;
+      let result400: any = null;
+      const resultData400 = _responseText;
+      result400 = resultData400;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
+      );
+    }
     if (status !== 200 && status !== 204) {
       const _responseText = response.data;
       return throwException(
@@ -1597,6 +1701,32 @@ export class OptionsClient extends MonoCloudClientBase {
       result200 = resultData200;
       return Promise.resolve<MonoCloudResponse<CommunicationOptions>>(
         new MonoCloudResponse<CommunicationOptions>(status, _headers, result200)
+      );
+    }
+    if (status === 400) {
+      const _responseText = response.data;
+      let result400: any = null;
+      const resultData400 = _responseText;
+      result400 = resultData400;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
       );
     }
     if (status !== 200 && status !== 204) {
@@ -1739,6 +1869,32 @@ export class OptionsClient extends MonoCloudClientBase {
         new MonoCloudResponse<DeviceFlowOptions>(status, _headers, result200)
       );
     }
+    if (status === 400) {
+      const _responseText = response.data;
+      let result400: any = null;
+      const resultData400 = _responseText;
+      result400 = resultData400;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
+      );
+    }
     if (status !== 200 && status !== 204) {
       const _responseText = response.data;
       return throwException(
@@ -1877,6 +2033,32 @@ export class OptionsClient extends MonoCloudClientBase {
       result200 = resultData200;
       return Promise.resolve<MonoCloudResponse<MtlsOptions>>(
         new MonoCloudResponse<MtlsOptions>(status, _headers, result200)
+      );
+    }
+    if (status === 400) {
+      const _responseText = response.data;
+      let result400: any = null;
+      const resultData400 = _responseText;
+      result400 = resultData400;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
       );
     }
     if (status !== 200 && status !== 204) {
@@ -2150,6 +2332,32 @@ export class ResourcesClient extends MonoCloudClientBase {
       result200 = resultData200;
       return Promise.resolve<MonoCloudResponse<ApiResource>>(
         new MonoCloudResponse<ApiResource>(status, _headers, result200)
+      );
+    }
+    if (status === 400) {
+      const _responseText = response.data;
+      let result400: any = null;
+      const resultData400 = _responseText;
+      result400 = resultData400;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
       );
     }
     if (status !== 200 && status !== 204) {
@@ -2558,6 +2766,32 @@ export class ResourcesClient extends MonoCloudClientBase {
         new MonoCloudResponse<ApiScope>(status, _headers, result200)
       );
     }
+    if (status === 400) {
+      const _responseText = response.data;
+      let result400: any = null;
+      const resultData400 = _responseText;
+      result400 = resultData400;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
+      );
+    }
     if (status !== 200 && status !== 204) {
       const _responseText = response.data;
       return throwException(
@@ -2785,6 +3019,32 @@ export class ResourcesClient extends MonoCloudClientBase {
       result200 = resultData200;
       return Promise.resolve<MonoCloudResponse<IdentityResource>>(
         new MonoCloudResponse<IdentityResource>(status, _headers, result200)
+      );
+    }
+    if (status === 400) {
+      const _responseText = response.data;
+      let result400: any = null;
+      const resultData400 = _responseText;
+      result400 = resultData400;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
       );
     }
     if (status !== 200 && status !== 204) {
@@ -3016,6 +3276,19 @@ export class ResourcesClient extends MonoCloudClientBase {
         result400
       );
     }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
+      );
+    }
     if (status !== 200 && status !== 204) {
       const _responseText = response.data;
       return throwException(
@@ -3177,6 +3450,19 @@ export class ResourcesClient extends MonoCloudClientBase {
         _responseText,
         _headers,
         result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
       );
     }
     if (status !== 200 && status !== 204) {
@@ -3342,6 +3628,19 @@ export class ResourcesClient extends MonoCloudClientBase {
         result400
       );
     }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
+      );
+    }
     if (status !== 200 && status !== 204) {
       const _responseText = response.data;
       return throwException(
@@ -3435,6 +3734,19 @@ export class ResourcesClient extends MonoCloudClientBase {
         _responseText,
         _headers,
         result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
       );
     }
     if (status !== 200 && status !== 204) {
@@ -3551,6 +3863,32 @@ export class TenantsClient extends MonoCloudClientBase {
       result200 = resultData200;
       return Promise.resolve<MonoCloudResponse<Tenant>>(
         new MonoCloudResponse<Tenant>(status, _headers, result200)
+      );
+    }
+    if (status === 400) {
+      const _responseText = response.data;
+      let result400: any = null;
+      const resultData400 = _responseText;
+      result400 = resultData400;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
       );
     }
     if (status !== 200 && status !== 204) {
@@ -3863,6 +4201,19 @@ export class TrustStoreClient extends MonoCloudClientBase {
         result400
       );
     }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
+      );
+    }
     if (status !== 200 && status !== 204) {
       const _responseText = response.data;
       return throwException(
@@ -4050,6 +4401,19 @@ export class TrustStoreClient extends MonoCloudClientBase {
         result400
       );
     }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
+      );
+    }
     if (status !== 200 && status !== 204) {
       const _responseText = response.data;
       return throwException(
@@ -4105,6 +4469,341 @@ export class UsersClient extends MonoCloudClientBase {
     }
 
     this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : '';
+  }
+
+  /**
+   * Create a User
+   * @param {CreateUserRequest} body Request Body
+   * @return {Promise<MonoCloudResponse<User>>} Created
+   */
+  createUser(
+    body: CreateUserRequest,
+    cancelToken?: CancelToken | undefined
+  ): Promise<MonoCloudResponse<User>> {
+    let url_ = `${this.baseUrl}/v1/users`;
+    url_ = url_.replace(/[?&]$/, '');
+
+    const content_ = JSON.stringify(body);
+
+    const options_: AxiosRequestConfig = {
+      data: content_,
+      method: 'POST',
+      url: url_,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'text/plain',
+      },
+      cancelToken,
+    };
+
+    return this.instance
+      .request(options_)
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
+        }
+        throw _error;
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processCreateUser(_response);
+      });
+  }
+
+  protected processCreateUser(
+    response: AxiosResponse
+  ): Promise<MonoCloudResponse<User>> {
+    const { status } = response;
+    const _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (const k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
+        }
+      }
+    }
+    if (status === 201) {
+      const _responseText = response.data;
+      let result201: any = null;
+      const resultData201 = _responseText;
+      result201 = resultData201;
+      return Promise.resolve<MonoCloudResponse<User>>(
+        new MonoCloudResponse<User>(status, _headers, result201)
+      );
+    }
+    if (status === 400) {
+      const _responseText = response.data;
+      let result400: any = null;
+      const resultData400 = _responseText;
+      result400 = resultData400;
+      return throwException(
+        'Bad Request',
+        status,
+        _responseText,
+        _headers,
+        result400
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
+      );
+    }
+    if (status !== 200 && status !== 204) {
+      const _responseText = response.data;
+      return throwException(
+        'An unexpected server error occurred.',
+        status,
+        _responseText,
+        _headers
+      );
+    }
+    return Promise.resolve<MonoCloudResponse<User>>(
+      new MonoCloudResponse(status, _headers, null as any)
+    );
+  }
+
+  /**
+   * Get all the Users
+   * @param {number} page (optional)
+   * @param {number} size (optional)
+   * @return {Promise<MonoCloudResponse<UserSummary[]>>} Success
+   */
+  getAllUsers(
+    page?: number | undefined,
+    size?: number | undefined,
+    cancelToken?: CancelToken | undefined
+  ): Promise<MonoCloudResponse<UserSummary[]>> {
+    let url_ = `${this.baseUrl}/v1/users?`;
+    if (page === null) throw new Error("The parameter 'page' cannot be null.");
+    else if (page !== undefined)
+      url_ += `page=${encodeURIComponent(`${page}`)}&`;
+    if (size === null) throw new Error("The parameter 'size' cannot be null.");
+    else if (size !== undefined)
+      url_ += `size=${encodeURIComponent(`${size}`)}&`;
+    url_ = url_.replace(/[?&]$/, '');
+
+    const options_: AxiosRequestConfig = {
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'text/plain',
+      },
+      cancelToken,
+    };
+
+    return this.instance
+      .request(options_)
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
+        }
+        throw _error;
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetAllUsers(_response);
+      });
+  }
+
+  protected processGetAllUsers(
+    response: AxiosResponse
+  ): Promise<MonoCloudResponse<UserSummary[]>> {
+    const { status } = response;
+    const _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (const k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
+        }
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      const resultData200 = _responseText;
+      result200 = resultData200;
+      return Promise.resolve<MonoCloudResponse<UserSummary[]>>(
+        new MonoCloudResponse<UserSummary[]>(status, _headers, result200)
+      );
+    }
+    if (status !== 200 && status !== 204) {
+      const _responseText = response.data;
+      return throwException(
+        'An unexpected server error occurred.',
+        status,
+        _responseText,
+        _headers
+      );
+    }
+    return Promise.resolve<MonoCloudResponse<UserSummary[]>>(
+      new MonoCloudResponse(status, _headers, null as any)
+    );
+  }
+
+  /**
+   * Find a User by Id
+   * @param {string} user_id User Id
+   * @return {Promise<MonoCloudResponse<User>>} Success
+   */
+  findUserById(
+    user_id: string,
+    cancelToken?: CancelToken | undefined
+  ): Promise<MonoCloudResponse<User>> {
+    let url_ = `${this.baseUrl}/v1/users/{user_id}`;
+    if (
+      user_id === undefined ||
+      user_id === null ||
+      user_id.toString().trim() === ''
+    )
+      throw new Error("The parameter 'user_id' must be defined.");
+    url_ = url_.replace('{user_id}', encodeURIComponent(`${user_id}`));
+    url_ = url_.replace(/[?&]$/, '');
+
+    const options_: AxiosRequestConfig = {
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'text/plain',
+      },
+      cancelToken,
+    };
+
+    return this.instance
+      .request(options_)
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
+        }
+        throw _error;
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processFindUserById(_response);
+      });
+  }
+
+  protected processFindUserById(
+    response: AxiosResponse
+  ): Promise<MonoCloudResponse<User>> {
+    const { status } = response;
+    const _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (const k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
+        }
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      const resultData200 = _responseText;
+      result200 = resultData200;
+      return Promise.resolve<MonoCloudResponse<User>>(
+        new MonoCloudResponse<User>(status, _headers, result200)
+      );
+    }
+    if (status === 404) {
+      const _responseText = response.data;
+      let result404: any = null;
+      const resultData404 = _responseText;
+      result404 = resultData404;
+      return throwException(
+        'Not Found',
+        status,
+        _responseText,
+        _headers,
+        result404
+      );
+    }
+    if (status !== 200 && status !== 204) {
+      const _responseText = response.data;
+      return throwException(
+        'An unexpected server error occurred.',
+        status,
+        _responseText,
+        _headers
+      );
+    }
+    return Promise.resolve<MonoCloudResponse<User>>(
+      new MonoCloudResponse(status, _headers, null as any)
+    );
+  }
+
+  /**
+   * Delete a User
+   * @param {string} user_id User Id
+   * @return {Promise<MonoCloudResponse<void>>} No Content
+   */
+  deleteUser(
+    user_id: string,
+    cancelToken?: CancelToken | undefined
+  ): Promise<MonoCloudResponse<void>> {
+    let url_ = `${this.baseUrl}/v1/users/{user_id}`;
+    if (
+      user_id === undefined ||
+      user_id === null ||
+      user_id.toString().trim() === ''
+    )
+      throw new Error("The parameter 'user_id' must be defined.");
+    url_ = url_.replace('{user_id}', encodeURIComponent(`${user_id}`));
+    url_ = url_.replace(/[?&]$/, '');
+
+    const options_: AxiosRequestConfig = {
+      method: 'DELETE',
+      url: url_,
+      headers: {},
+      cancelToken,
+    };
+
+    return this.instance
+      .request(options_)
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
+        }
+        throw _error;
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processDeleteUser(_response);
+      });
+  }
+
+  protected processDeleteUser(
+    response: AxiosResponse
+  ): Promise<MonoCloudResponse<void>> {
+    const { status } = response;
+    const _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (const k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
+        }
+      }
+    }
+    if (status === 204) {
+      return Promise.resolve<MonoCloudResponse<void>>(
+        new MonoCloudResponse<void>(status, _headers, null as any)
+      );
+    }
+    if (status !== 200 && status !== 204) {
+      const _responseText = response.data;
+      return throwException(
+        'An unexpected server error occurred.',
+        status,
+        _responseText,
+        _headers
+      );
+    }
+    return Promise.resolve<MonoCloudResponse<void>>(
+      new MonoCloudResponse(status, _headers, null as any)
+    );
   }
 
   /**
@@ -4190,6 +4889,19 @@ export class UsersClient extends MonoCloudClientBase {
         _responseText,
         _headers,
         result404
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
       );
     }
     if (status !== 200 && status !== 204) {
@@ -4289,6 +5001,19 @@ export class UsersClient extends MonoCloudClientBase {
         _responseText,
         _headers,
         result404
+      );
+    }
+    if (status === 422) {
+      const _responseText = response.data;
+      let result422: any = null;
+      const resultData422 = _responseText;
+      result422 = resultData422;
+      return throwException(
+        'Client Error',
+        status,
+        _responseText,
+        _headers,
+        result422
       );
     }
     if (status !== 200 && status !== 204) {
@@ -4856,6 +5581,42 @@ export interface CreateSecretRequest {
   expiration?: number | null;
   /** Specifies type of secret */
   type: SecretTypes;
+}
+
+/** The Create User class model. */
+export interface CreateUserRequest {
+  /** End-User's preferred e-mail address. Its value MUST conform to the RFC 5322 [RFC5322] addr-spec syntax. */
+  email?: string | null;
+  /** "true" if the End-User's e-mail address has been verified; otherwise "false". */
+  email_verified?: boolean | null;
+  /** End-User's preferred telephone number. E.164 (https://www.itu.int/rec/T-REC-E.164/e) is RECOMMENDED as the format of this Claim, for example, +1 (425) 555-1212 or +56 (2) 687 2400. If the phone number contains an extension, it is RECOMMENDED that the extension be represented using the RFC 3966 [RFC3966] extension syntax, for example, +1 (604) 555-1234;ext=5678. */
+  phone_number?: string | null;
+  /** True if the End-User's phone number has been verified; otherwise false. When this Claim Value is true, this means that the OP took affirmative steps to ensure that this phone number was controlled by the End-User at the time the verification was performed. */
+  phone_number_verified?: boolean | null;
+  /** End-User's username. */
+  username?: string | null;
+  /** End-User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences. */
+  name?: string | null;
+  /** Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters. */
+  given_name?: string | null;
+  /** Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters. */
+  family_name?: string | null;
+  /** Middle name(s) of the End-User. Note that in some cultures, people can have multiple middle names; all can be present, with the names being separated by space characters. Also note that in some cultures, middle names are not used. */
+  middle_name?: string | null;
+  /** Casual name of the End-User that may or may not be the same as the given_name. For instance, a nickname value of Mike might be returned alongside a given_name value of Michael. */
+  nick_name?: string | null;
+  /** URL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image. */
+  picture?: string | null;
+  /** End-User's gender */
+  gender?: string | null;
+  /** Specifies whether the account has been confirmed. */
+  account_confirmed?: boolean | null;
+  /** User account password. */
+  password: string;
+  /** User's Custom Data */
+  custom_data: { [key: string]: any };
+  /** User's User Data */
+  user_data: { [key: string]: any };
 }
 
 /** * **numeric** */
@@ -6321,17 +7082,70 @@ export interface UpdateTrustStoreRevocationsRequest {
   revocations: string[];
 }
 
+/** The User response class */
+export interface User {
+  /** Unique identifier of the user. */
+  user_id: string;
+  /** Specifies whether the account has been confirmed. */
+  account_confirmed: boolean;
+  /** Specifies whether the account has been disabled. */
+  disabled: boolean;
+  /** User Data. */
+  user_data: { [key: string]: any };
+  /** Custom Data. */
+  custom_data: { [key: string]: any };
+  /** List of registered schemes of user. */
+  schemes: UserScheme[];
+  /** Specifies the creation time of the user (in Epoch). */
+  creation_time: number;
+  /** Specifies the last update time of the user (in Epoch). */
+  last_updated: number;
+}
+
 /** * **ip**
- * * **user_account**
- * * **none** */
+ * * **user_account** */
 export const UserLockoutTypes = {
   Ip: 'ip',
   UserAccount: 'user_account',
-  None: 'none',
 } as const;
 
 export type UserLockoutTypes =
   typeof UserLockoutTypes[keyof typeof UserLockoutTypes];
+
+export interface UserScheme {
+  /** Specifies whether the scheme is primary. */
+  is_primary: boolean;
+  /** Specifies the scheme name. */
+  scheme: SchemeNames;
+  /** Specifies the scheme user Id. */
+  scheme_user_id: string;
+  /** Claims related to the scheme. */
+  claims: { [key: string]: any };
+  /** Specifies the creation time of the scheme (in Epoch). */
+  creation_time: number;
+  /** Specifies the last update time of the scheme (in Epoch). */
+  last_updated: number;
+}
+
+/** The User response class */
+export interface UserSummary {
+  /** Unique identifier of the user. */
+  user_id: string;
+  /** Specifies whether the account has been confirmed. */
+  account_confirmed: boolean;
+  /** Specifies whether the account has been disabled. */
+  disabled: boolean;
+  /** User Data. */
+  user_data: { [key: string]: any };
+  /** Custom Data. */
+  custom_data: { [key: string]: any };
+  /** List of registered schemes of user. */
+  schemes: UserScheme[];
+  /** Specifies the creation time of the user (in Epoch). */
+  creation_time: number;
+  /** Specifies the last update time of the user (in Epoch). */
+  last_updated: number;
+}
 
 /** * **no_check** - Will not check for revocation.
  * * **online** - Will check for revocation with root CA and intermediary CAs

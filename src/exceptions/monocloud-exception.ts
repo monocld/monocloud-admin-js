@@ -23,13 +23,6 @@ export class MonoCloudException extends Error {
     _result?: any
   ): void {
     if (status === 400) {
-      if (response?.errors) {
-        throw new ModelStateException(
-          response?.title ?? 'Model State Error',
-          unflatten(response.errors) as ModelStateError<any>,
-          response
-        );
-      }
       throw new BadRequestException(response?.title ?? 'Bad Request', response);
     }
     if (status === 401) {
@@ -45,6 +38,13 @@ export class MonoCloudException extends Error {
       throw new ConflictException(
         response?.title ?? 'Conflict',
         response?.errors ?? [],
+        response
+      );
+    }
+    if (status === 422) {
+      throw new ModelStateException(
+        response?.title ?? 'Model State Error',
+        unflatten(response.errors) as ModelStateError<any>,
         response
       );
     }
