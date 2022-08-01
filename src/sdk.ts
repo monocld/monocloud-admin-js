@@ -5614,9 +5614,9 @@ export interface CreateUserRequest {
   /** User account password. */
   password: string;
   /** User's Custom Data */
-  custom_data: { [key: string]: any };
+  custom_data?: { [key: string]: any } | null;
   /** User's User Data */
-  user_data: { [key: string]: any };
+  user_data?: { [key: string]: any } | null;
 }
 
 /** * **numeric** */
@@ -5988,6 +5988,22 @@ export interface PaginationHeader {
   has_previous: boolean;
   /** Specfies whether there is a next page */
   has_next: boolean;
+}
+
+/** The  Password Strength Options response class */
+export interface PasswordStrengthOptions {
+  /** Specifies the minimum character length of password */
+  required_password_length: number;
+  /** Specifies the whether a non alphanumeric password is required or not */
+  require_non_alphanumeric_password: boolean;
+  /** Specifies the whether a digit password is required or not. */
+  require_digit_password: boolean;
+  /** Specifies the whether a lowercase password is required or not */
+  require_lowercase_password: boolean;
+  /** Specifies the whether a uppercase password is required or not */
+  require_uppercase_password: boolean;
+  /** Specifies the number of unique characters required in a password */
+  required_unique_characters_in_password: number;
 }
 
 /** * **link**
@@ -6376,6 +6392,22 @@ export interface PatchMtlsOptionsRequest {
   allow_certificates_with_ocsp_status_unknown?: boolean;
 }
 
+/** The Patch  Password Strength Options Request class */
+export interface PatchPasswordStrengthOptionsRequest {
+  /** Specifies the minimum character length of password */
+  required_password_length?: number;
+  /** Specifies the whether a non alphanumeric password is required or not */
+  require_non_alphanumeric_password?: boolean;
+  /** Specifies the whether a digit password is required or not. */
+  require_digit_password?: boolean;
+  /** Specifies the whether a lowercase password is required or not */
+  require_lowercase_password?: boolean;
+  /** Specifies the whether a uppercase password is required or not */
+  require_uppercase_password?: boolean;
+  /** Specifies the number of unique characters required in a password */
+  required_unique_characters_in_password?: number;
+}
+
 /** The Patch Apple Provider Options Request class */
 export interface PatchProviderAppleOptionsRequest {
   /** Enables the Social Provider */
@@ -6550,6 +6582,8 @@ export interface PatchProviderUsernamePasswordOptionsRequest {
   enabled?: boolean;
   /** Enable User Registration */
   enable_user_registration?: boolean;
+  /** Password Strength Options */
+  password_strength?: PatchPasswordStrengthOptionsRequest;
 }
 
 /** The Patch Registration Account Merge Options Request class */
@@ -6564,8 +6598,6 @@ export interface PatchRegistrationAccountMergeOptionsRequest {
 export interface PatchRegistrationOptionsRequest {
   /** Registration Account Merge Options */
   account_merging?: PatchRegistrationAccountMergeOptionsRequest;
-  /** Password Strength Options */
-  password_strength?: PatchRegistrationPasswordStrengthOptionsRequest;
   /** Allowed Registration Methods */
   allowed_registration_methods?: AllowedRegistrationMethods[];
   /** Email Requirement */
@@ -6576,24 +6608,6 @@ export interface PatchRegistrationOptionsRequest {
   require_username?: boolean;
   /** Minimum Username Length */
   minimum_username_length?: number;
-  /** Allowed Username Characters */
-  allowed_user_name_characters?: string[];
-}
-
-/** The Patch Registration Password Strength Options Request class */
-export interface PatchRegistrationPasswordStrengthOptionsRequest {
-  /** Specifies the minimum character length of password */
-  required_password_length?: number;
-  /** Specifies the whether a non alphanumeric password is required or not */
-  require_non_alphanumeric_password?: boolean;
-  /** Specifies the whether a digit password is required or not. */
-  require_digit_password?: boolean;
-  /** Specifies the whether a lowercase password is required or not */
-  require_lowercase_password?: boolean;
-  /** Specifies the whether a uppercase password is required or not */
-  require_uppercase_password?: boolean;
-  /** Specifies the number of unique characters required in a password */
-  required_unique_characters_in_password?: number;
 }
 
 /** The Patch SignIn Options Request class */
@@ -6805,6 +6819,8 @@ export interface ProviderUsernamePasswordOptions {
   enabled: boolean;
   /** Enable User Registration */
   enable_user_registration: boolean;
+  /** Password Strength Options */
+  password_strength: PasswordStrengthOptions;
 }
 
 /** * **reuse** - The refresh token handle will stay the same when refreshing tokens
@@ -6829,8 +6845,6 @@ export interface RegistrationAccountMergeOptions {
 export interface RegistrationOptions {
   /** Registration Account Merge Options */
   account_merging: RegistrationAccountMergeOptions;
-  /** Password Strength Options */
-  password_strength: RegistrationPasswordStrengthOptions;
   /** Allowed Registration Methods */
   allowed_registration_methods: AllowedRegistrationMethods[];
   /** Email Requirement */
@@ -6841,22 +6855,6 @@ export interface RegistrationOptions {
   require_username: boolean;
   /** Minimum Username Length */
   minimum_username_length: number;
-}
-
-/** The Registration Password Strength Options response class */
-export interface RegistrationPasswordStrengthOptions {
-  /** Specifies the minimum character length of password */
-  required_password_length: number;
-  /** Specifies the whether a non alphanumeric password is required or not */
-  require_non_alphanumeric_password: boolean;
-  /** Specifies the whether a digit password is required or not. */
-  require_digit_password: boolean;
-  /** Specifies the whether a lowercase password is required or not */
-  require_lowercase_password: boolean;
-  /** Specifies the whether a uppercase password is required or not */
-  require_uppercase_password: boolean;
-  /** Specifies the number of unique characters required in a password */
-  required_unique_characters_in_password: number;
 }
 
 /** * **never**

@@ -5257,7 +5257,6 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
-              "maxLength": 400,
               "type": "string"
             },
             "description": "Specifies allowed URIs to return tokens or authorization codes to",
@@ -5270,7 +5269,6 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
-              "maxLength": 400,
               "type": "string"
             },
             "description": "Specifies allowed URIs to redirect to after logout",
@@ -5320,8 +5318,8 @@
             ]
           },
           "identity_token_lifetime": {
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "maximum": 2592000,
+            "minimum": 1,
             "type": "integer",
             "description": "Lifetime of identity token in seconds",
             "format": "int32",
@@ -5330,9 +5328,7 @@
           },
           "access_token_lifetime": {
             "maximum": 2592000,
-            "exclusiveMaximum": true,
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "minimum": 1,
             "type": "integer",
             "description": "Lifetime of access token in seconds",
             "format": "int32",
@@ -5341,9 +5337,7 @@
           },
           "authorization_code_lifetime": {
             "maximum": 600,
-            "exclusiveMaximum": true,
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "minimum": 1,
             "type": "integer",
             "description": "Lifetime of authorization code in seconds",
             "format": "int32",
@@ -5351,8 +5345,8 @@
             "example": 300
           },
           "consent_lifetime": {
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "maximum": 2592000,
+            "minimum": 1,
             "type": "integer",
             "description": "Lifetime of a user consent in seconds",
             "format": "int32",
@@ -5360,8 +5354,8 @@
             "example": 604800
           },
           "absolute_refresh_token_lifetime": {
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "maximum": 2592000,
+            "minimum": 1,
             "type": "integer",
             "description": "Maximum lifetime of a refresh token in seconds",
             "format": "int32",
@@ -5369,8 +5363,8 @@
             "example": 2592000
           },
           "sliding_refresh_token_lifetime": {
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "maximum": 2592000,
+            "minimum": 1,
             "type": "integer",
             "description": "Sliding lifetime of a refresh token in seconds",
             "format": "int32",
@@ -5461,7 +5455,6 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
-              "maxLength": 150,
               "type": "string"
             },
             "description": "The allowed CORS origins for JavaScript clients.",
@@ -5471,8 +5464,8 @@
             ]
           },
           "user_sso_lifetime": {
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "maximum": 2592000,
+            "minimum": 1,
             "type": "integer",
             "description": "The maximum duration (in seconds) since the last time the user authenticated. You can adjust the lifetime of a session token to control when and how often a user is required to reenter credentials instead of being silently authenticated, when using a web application.",
             "format": "int32",
@@ -5491,9 +5484,7 @@
           },
           "device_code_lifetime": {
             "maximum": 3600,
-            "exclusiveMaximum": true,
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "minimum": 1,
             "type": "integer",
             "description": "Specifies the device code lifetime.",
             "format": "int32",
@@ -5618,9 +5609,7 @@
       },
       "CreateUserRequest": {
         "required": [
-          "custom_data",
-          "password",
-          "user_data"
+          "password"
         ],
         "type": "object",
         "properties": {
@@ -5711,12 +5700,14 @@
           "custom_data": {
             "type": "object",
             "additionalProperties": { },
-            "description": "User's Custom Data"
+            "description": "User's Custom Data",
+            "nullable": true
           },
           "user_data": {
             "type": "object",
             "additionalProperties": { },
-            "description": "User's User Data"
+            "description": "User's User Data",
+            "nullable": true
           }
         },
         "additionalProperties": false,
@@ -6505,6 +6496,53 @@
         "additionalProperties": false,
         "description": "The Pagination Header response class"
       },
+      "PasswordStrengthOptions": {
+        "required": [
+          "require_digit_password",
+          "require_lowercase_password",
+          "require_non_alphanumeric_password",
+          "require_uppercase_password",
+          "required_password_length",
+          "required_unique_characters_in_password"
+        ],
+        "type": "object",
+        "properties": {
+          "required_password_length": {
+            "type": "integer",
+            "description": "Specifies the minimum character length of password",
+            "format": "int32",
+            "example": 16
+          },
+          "require_non_alphanumeric_password": {
+            "type": "boolean",
+            "description": "Specifies the whether a non alphanumeric password is required or not",
+            "example": true
+          },
+          "require_digit_password": {
+            "type": "boolean",
+            "description": "Specifies the whether a digit password is required or not.",
+            "example": true
+          },
+          "require_lowercase_password": {
+            "type": "boolean",
+            "description": "Specifies the whether a lowercase password is required or not",
+            "example": true
+          },
+          "require_uppercase_password": {
+            "type": "boolean",
+            "description": "Specifies the whether a uppercase password is required or not",
+            "example": true
+          },
+          "required_unique_characters_in_password": {
+            "type": "integer",
+            "description": "Specifies the number of unique characters required in a password",
+            "format": "int32",
+            "example": 4
+          }
+        },
+        "additionalProperties": false,
+        "description": "The  Password Strength Options response class"
+      },
       "PasswordlessSendTypes": {
         "enum": [
           "link",
@@ -6537,24 +6575,24 @@
             "example": true
           },
           "max_failed_access_attempts": {
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "maximum": 2147483647,
+            "minimum": 1,
             "type": "integer",
             "description": "Maximum Number of failed attempts a user account can have before the user is locked out. The specified value is inclusive of the count.",
             "format": "int32",
             "example": 5
           },
           "user_lockout_time_span": {
-            "minimum": 2,
-            "exclusiveMinimum": true,
+            "maximum": 2147483647,
+            "minimum": 1,
             "type": "integer",
             "description": "Lockout duration in minutes once a user account has been locked out.",
             "format": "int32",
             "example": 5
           },
           "ip_lockout_time_span": {
-            "minimum": 2,
-            "exclusiveMinimum": true,
+            "maximum": 2147483647,
+            "minimum": 1,
             "type": "integer",
             "description": "Lockout duration in minutes once an Ip address has been locked out.",
             "format": "int32",
@@ -6842,12 +6880,14 @@
         "properties": {
           "background": {
             "minLength": 1,
+            "pattern": "^#[0-9A-Fa-f]{6}$",
             "type": "string",
             "description": "Specifies the background css string to be used for pages",
             "example": "#f2f2f2"
           },
           "error_color": {
             "minLength": 1,
+            "pattern": "^#[0-9A-Fa-f]{6}$",
             "type": "string",
             "description": "Specifies the error colour to be used for pages",
             "example": "#f2f2f2"
@@ -6866,6 +6906,7 @@
           },
           "primary_color": {
             "minLength": 1,
+            "pattern": "^#[0-9A-Fa-f]{6}$",
             "type": "string",
             "description": "Specifies the primary colour to be used for pages",
             "example": "#f2f2f2"
@@ -7048,7 +7089,6 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
-              "maxLength": 400,
               "type": "string"
             },
             "description": "Specifies allowed URIs to return tokens or authorization codes to",
@@ -7061,7 +7101,6 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
-              "maxLength": 400,
               "type": "string"
             },
             "description": "Specifies allowed URIs to redirect to after logout",
@@ -7108,8 +7147,8 @@
             ]
           },
           "identity_token_lifetime": {
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "maximum": 2592000,
+            "minimum": 1,
             "type": "integer",
             "description": "Lifetime of identity token in seconds",
             "format": "int32",
@@ -7117,9 +7156,7 @@
           },
           "access_token_lifetime": {
             "maximum": 2592000,
-            "exclusiveMaximum": true,
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "minimum": 1,
             "type": "integer",
             "description": "Lifetime of access token in seconds",
             "format": "int32",
@@ -7127,17 +7164,15 @@
           },
           "authorization_code_lifetime": {
             "maximum": 600,
-            "exclusiveMaximum": true,
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "minimum": 1,
             "type": "integer",
             "description": "Lifetime of authorization code in seconds",
             "format": "int32",
             "example": 300
           },
           "consent_lifetime": {
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "maximum": 2592000,
+            "minimum": 1,
             "type": "integer",
             "description": "Lifetime of a user consent in seconds",
             "format": "int32",
@@ -7145,16 +7180,16 @@
             "example": 604800
           },
           "absolute_refresh_token_lifetime": {
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "maximum": 2592000,
+            "minimum": 1,
             "type": "integer",
             "description": "Maximum lifetime of a refresh token in seconds",
             "format": "int32",
             "example": 2592000
           },
           "sliding_refresh_token_lifetime": {
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "maximum": 2592000,
+            "minimum": 1,
             "type": "integer",
             "description": "Sliding lifetime of a refresh token in seconds",
             "format": "int32",
@@ -7236,7 +7271,6 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
-              "maxLength": 150,
               "type": "string"
             },
             "description": "The allowed CORS origins for JavaScript clients.",
@@ -7246,8 +7280,8 @@
             ]
           },
           "user_sso_lifetime": {
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "maximum": 2592000,
+            "minimum": 1,
             "type": "integer",
             "description": "The maximum duration (in seconds) since the last time the user authenticated. You can adjust the lifetime of a session token to control when and how often a user is required to reenter credentials instead of being silently authenticated, when using a web application.",
             "format": "int32",
@@ -7265,9 +7299,7 @@
           },
           "device_code_lifetime": {
             "maximum": 3600,
-            "exclusiveMaximum": true,
-            "minimum": 0,
-            "exclusiveMinimum": true,
+            "minimum": 1,
             "type": "integer",
             "description": "Specifies the device code lifetime.",
             "format": "int32",
@@ -7519,6 +7551,7 @@
             "example": true
           },
           "remember_me_duration": {
+            "maximum": 2147483647,
             "minimum": 5,
             "type": "integer",
             "description": "RememberMe Duration in minutes",
@@ -7622,6 +7655,7 @@
             "example": true
           },
           "remember_mfa_duration": {
+            "maximum": 43800,
             "minimum": 5,
             "type": "integer",
             "description": "MFA RememberMe Duration in minutes",
@@ -7681,6 +7715,48 @@
         "additionalProperties": false,
         "description": "The Patch Mtls Options Request class"
       },
+      "PatchPasswordStrengthOptionsRequest": {
+        "type": "object",
+        "properties": {
+          "required_password_length": {
+            "maximum": 128,
+            "minimum": 8,
+            "type": "integer",
+            "description": "Specifies the minimum character length of password",
+            "format": "int32",
+            "example": 16
+          },
+          "require_non_alphanumeric_password": {
+            "type": "boolean",
+            "description": "Specifies the whether a non alphanumeric password is required or not",
+            "example": true
+          },
+          "require_digit_password": {
+            "type": "boolean",
+            "description": "Specifies the whether a digit password is required or not.",
+            "example": true
+          },
+          "require_lowercase_password": {
+            "type": "boolean",
+            "description": "Specifies the whether a lowercase password is required or not",
+            "example": true
+          },
+          "require_uppercase_password": {
+            "type": "boolean",
+            "description": "Specifies the whether a uppercase password is required or not",
+            "example": true
+          },
+          "required_unique_characters_in_password": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "Specifies the number of unique characters required in a password",
+            "format": "int32",
+            "example": 4
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Patch  Password Strength Options Request class"
+      },
       "PatchProviderAppleOptionsRequest": {
         "type": "object",
         "properties": {
@@ -7705,13 +7781,15 @@
             "example": true
           },
           "client_id": {
-            "minLength": 1,
+            "maxLength": 1000,
+            "minLength": 5,
             "type": "string",
             "description": "Client Id issued for the customer by provider",
             "example": "Lkidgf845hKHrfwehf_jgf"
           },
           "client_secret": {
-            "minLength": 1,
+            "maxLength": 1000,
+            "minLength": 5,
             "type": "string",
             "description": "Client Secret issued for the customer by provider",
             "example": "JJfgi4597fs9hkmkdfrk_jfhh4uuNBFl"
@@ -7719,7 +7797,6 @@
           "scopes": {
             "type": "array",
             "items": {
-              "minLength": 1,
               "type": "string"
             },
             "description": "List of provider scopes to be obtained",
@@ -7731,8 +7808,6 @@
             ]
           },
           "team_id": {
-            "maxLength": 100,
-            "minLength": 1,
             "type": "string",
             "description": "Apple generated teamId",
             "example": "kjGD8745hasd"
@@ -7772,13 +7847,15 @@
             "example": true
           },
           "client_id": {
-            "minLength": 1,
+            "maxLength": 1000,
+            "minLength": 5,
             "type": "string",
             "description": "Client Id issued for the customer by provider",
             "example": "Lkidgf845hKHrfwehf_jgf"
           },
           "client_secret": {
-            "minLength": 1,
+            "maxLength": 1000,
+            "minLength": 5,
             "type": "string",
             "description": "Client Secret issued for the customer by provider",
             "example": "JJfgi4597fs9hkmkdfrk_jfhh4uuNBFl"
@@ -7786,7 +7863,6 @@
           "scopes": {
             "type": "array",
             "items": {
-              "minLength": 1,
               "type": "string"
             },
             "description": "List of provider scopes to be obtained",
@@ -7844,6 +7920,7 @@
             "example": "discouraged"
           },
           "timeout": {
+            "maximum": 300000,
             "minimum": 30000,
             "type": "integer",
             "description": "Timeout for the Biometrics capture in milliseconds.",
@@ -7889,6 +7966,7 @@
             "example": "discouraged"
           },
           "timeout": {
+            "maximum": 300000,
             "minimum": 30000,
             "type": "integer",
             "description": "Timeout for the Roaming capture in milliseconds.",
@@ -7923,13 +8001,15 @@
             "example": true
           },
           "client_id": {
-            "minLength": 1,
+            "maxLength": 1000,
+            "minLength": 5,
             "type": "string",
             "description": "Client Id issued for the customer by provider",
             "example": "Lkidgf845hKHrfwehf_jgf"
           },
           "client_secret": {
-            "minLength": 1,
+            "maxLength": 1000,
+            "minLength": 5,
             "type": "string",
             "description": "Client Secret issued for the customer by provider",
             "example": "JJfgi4597fs9hkmkdfrk_jfhh4uuNBFl"
@@ -7937,7 +8017,6 @@
           "scopes": {
             "type": "array",
             "items": {
-              "minLength": 1,
               "type": "string"
             },
             "description": "List of provider scopes to be obtained",
@@ -8061,7 +8140,8 @@
             "example": true
           },
           "skew": {
-            "minimum": 1,
+            "maximum": 900,
+            "minimum": 0,
             "type": "integer",
             "description": "Skew Period of Authenticatior Provider to check for codes.",
             "format": "int32",
@@ -8096,6 +8176,7 @@
             "example": true
           },
           "otp_expiry": {
+            "maximum": 900,
             "minimum": 30,
             "type": "integer",
             "description": "Specifies the expiration time in seconds for the OTP to be generated",
@@ -8103,6 +8184,7 @@
             "example": 30
           },
           "otp_length": {
+            "maximum": 16,
             "minimum": 4,
             "type": "integer",
             "description": "Specifies the OTP character length",
@@ -8142,6 +8224,7 @@
             "example": true
           },
           "otp_expiry": {
+            "maximum": 900,
             "minimum": 30,
             "type": "integer",
             "description": "Specifies the expiration time in seconds for the OTP to be generated",
@@ -8149,6 +8232,7 @@
             "example": 30
           },
           "otp_length": {
+            "maximum": 16,
             "minimum": 4,
             "type": "integer",
             "description": "Specifies the OTP character length",
@@ -8168,7 +8252,7 @@
             "example": true
           },
           "code_length": {
-            "maximum": 20,
+            "maximum": 64,
             "minimum": 8,
             "type": "integer",
             "description": "Recovery code Length",
@@ -8199,6 +8283,14 @@
             "type": "boolean",
             "description": "Enable User Registration",
             "example": true
+          },
+          "password_strength": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchPasswordStrengthOptionsRequest"
+              }
+            ],
+            "description": "Password Strength Options"
           }
         },
         "additionalProperties": false,
@@ -8242,15 +8334,8 @@
             ],
             "description": "Registration Account Merge Options"
           },
-          "password_strength": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PatchRegistrationPasswordStrengthOptionsRequest"
-              }
-            ],
-            "description": "Password Strength Options"
-          },
           "allowed_registration_methods": {
+            "minItems": 1,
             "type": "array",
             "items": {
               "type": "enum",
@@ -8281,70 +8366,16 @@
             "example": true
           },
           "minimum_username_length": {
+            "maximum": 50,
             "minimum": 2,
             "type": "integer",
             "description": "Minimum Username Length",
             "format": "int32",
             "example": 3
-          },
-          "allowed_user_name_characters": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Allowed Username Characters",
-            "example": [
-              "A",
-              "B",
-              "C",
-              "D"
-            ]
           }
         },
         "additionalProperties": false,
         "description": "The Patch Registration Options Request class"
-      },
-      "PatchRegistrationPasswordStrengthOptionsRequest": {
-        "type": "object",
-        "properties": {
-          "required_password_length": {
-            "maximum": 64,
-            "minimum": 8,
-            "type": "integer",
-            "description": "Specifies the minimum character length of password",
-            "format": "int32",
-            "example": 16
-          },
-          "require_non_alphanumeric_password": {
-            "type": "boolean",
-            "description": "Specifies the whether a non alphanumeric password is required or not",
-            "example": true
-          },
-          "require_digit_password": {
-            "type": "boolean",
-            "description": "Specifies the whether a digit password is required or not.",
-            "example": true
-          },
-          "require_lowercase_password": {
-            "type": "boolean",
-            "description": "Specifies the whether a lowercase password is required or not",
-            "example": true
-          },
-          "require_uppercase_password": {
-            "type": "boolean",
-            "description": "Specifies the whether a uppercase password is required or not",
-            "example": true
-          },
-          "required_unique_characters_in_password": {
-            "minimum": 0,
-            "type": "integer",
-            "description": "Specifies the number of unique characters required in a password",
-            "format": "int32",
-            "example": 4
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Patch Registration Password Strength Options Request class"
       },
       "PatchSignInOptionsRequest": {
         "type": "object",
@@ -8964,7 +8995,8 @@
       "ProviderUsernamePasswordOptions": {
         "required": [
           "enable_user_registration",
-          "enabled"
+          "enabled",
+          "password_strength"
         ],
         "type": "object",
         "properties": {
@@ -8977,6 +9009,14 @@
             "type": "boolean",
             "description": "Enable User Registration",
             "example": true
+          },
+          "password_strength": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PasswordStrengthOptions"
+              }
+            ],
+            "description": "Password Strength Options"
           }
         },
         "additionalProperties": false,
@@ -9026,7 +9066,6 @@
           "account_merging",
           "allowed_registration_methods",
           "minimum_username_length",
-          "password_strength",
           "require_email",
           "require_phone",
           "require_username"
@@ -9040,14 +9079,6 @@
               }
             ],
             "description": "Registration Account Merge Options"
-          },
-          "password_strength": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/RegistrationPasswordStrengthOptions"
-              }
-            ],
-            "description": "Password Strength Options"
           },
           "allowed_registration_methods": {
             "type": "array",
@@ -9088,53 +9119,6 @@
         },
         "additionalProperties": false,
         "description": "The Registration Options response class"
-      },
-      "RegistrationPasswordStrengthOptions": {
-        "required": [
-          "require_digit_password",
-          "require_lowercase_password",
-          "require_non_alphanumeric_password",
-          "require_uppercase_password",
-          "required_password_length",
-          "required_unique_characters_in_password"
-        ],
-        "type": "object",
-        "properties": {
-          "required_password_length": {
-            "type": "integer",
-            "description": "Specifies the minimum character length of password",
-            "format": "int32",
-            "example": 16
-          },
-          "require_non_alphanumeric_password": {
-            "type": "boolean",
-            "description": "Specifies the whether a non alphanumeric password is required or not",
-            "example": true
-          },
-          "require_digit_password": {
-            "type": "boolean",
-            "description": "Specifies the whether a digit password is required or not.",
-            "example": true
-          },
-          "require_lowercase_password": {
-            "type": "boolean",
-            "description": "Specifies the whether a lowercase password is required or not",
-            "example": true
-          },
-          "require_uppercase_password": {
-            "type": "boolean",
-            "description": "Specifies the whether a uppercase password is required or not",
-            "example": true
-          },
-          "required_unique_characters_in_password": {
-            "type": "integer",
-            "description": "Specifies the number of unique characters required in a password",
-            "format": "int32",
-            "example": 4
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Registration Password Strength Options response class"
       },
       "RememberConsentTypes": {
         "enum": [
