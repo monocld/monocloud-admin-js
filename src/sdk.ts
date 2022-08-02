@@ -5400,9 +5400,9 @@ export interface CommunicationSmsOptions {
 /** The Communication Sms Twilio Options response class */
 export interface CommunicationSmsTwilioOptions {
   /** Twilio SID */
-  sid?: string | null;
+  sid: string;
   /** Twilio Auth Token */
-  auth_token?: string | null;
+  auth_token: string;
   /** Twilio Messaging SID */
   messaging_sid?: string | null;
   /** Twilio From */
@@ -5660,7 +5660,7 @@ export interface GenericBrandingEmailTemplateOptions {
 /** The Branding Generic Sms Template Options response class */
 export interface GenericBrandingSmsTemplateOptions {
   /** Custom LiquidJS template for the SMS */
-  template?: string | null;
+  template: string;
 }
 
 /** The Identity Resource response class */
@@ -5952,7 +5952,7 @@ export interface ProblemDetails {
 export interface MtlsOptions {
   /** Enable MTLS */
   enabled: boolean;
-  /** Specifie the permitted certicate types. */
+  /** Specifies the permitted certificate types. */
   allowed_certificate_types: CertificateTypes;
   /** If set to true, will validates whether the certificate is intended for authentication */
   validate_certificate_use: boolean;
@@ -5962,7 +5962,7 @@ export interface MtlsOptions {
   revocation_mode: X509RevocationMode;
   /** If set to true, will prevent the automatic download of certificates to the server */
   disable_certificate_downloads: boolean;
-  /** If set to true, will allow certicates even if the OCSP status is unknown. */
+  /** If set to true, will allow certificate even if the OCSP status is unknown. */
   allow_certificates_with_ocsp_status_unknown: boolean;
 }
 
@@ -5982,6 +5982,8 @@ export type MultiFactorRequirements =
 export interface PaginationHeader {
   /** Page Size */
   page_size: number;
+  /** Current Page */
+  current_page: number;
   /** Total Number of Items */
   total_count: number;
   /** Specfies whether there is a previous page */
@@ -6257,7 +6259,7 @@ export interface PatchCommunicationEmailOptionsRequest {
 /** The Patch Communication Email SendGrid Options Request class */
 export interface PatchCommunicationEmailSendGridOptionsRequest {
   /** SendGrid Api Key */
-  api_key?: string | null;
+  api_key?: string;
 }
 
 /** The Patch Communication Options Request class */
@@ -6279,9 +6281,9 @@ export interface PatchCommunicationSmsOptionsRequest {
 /** The Patch Communication Sms Twilio Options Request class */
 export interface PatchCommunicationSmsTwilioOptionsRequest {
   /** Twilio SID */
-  sid?: string | null;
+  sid?: string;
   /** Twilio Auth Token */
-  auth_token?: string | null;
+  auth_token?: string;
   /** Twilio Messaging SID */
   messaging_sid?: string | null;
   /** Twilio From */
@@ -6309,7 +6311,7 @@ export interface PatchGenericBrandingCustomEmailOptionsRequest {
 /** The Patch Generic Branding Custom Sms Options Request class */
 export interface PatchGenericBrandingCustomSmsOptionsRequest {
   /** Custom LiquidJS template for the SMS */
-  template?: string | null;
+  template: string;
 }
 
 /** The Patch Identity Resource class */
@@ -6378,7 +6380,7 @@ export interface PatchMfaOptionsRequest {
 export interface PatchMtlsOptionsRequest {
   /** Enable MTLS */
   enabled?: boolean;
-  /** Specifie the permitted certicate types. */
+  /** Specifies the permitted certificate types. */
   allowed_certificate_types?: CertificateTypes;
   /** If set to true, will validates whether the certificate is intended for authentication */
   validate_certificate_use?: boolean;
@@ -6388,7 +6390,7 @@ export interface PatchMtlsOptionsRequest {
   revocation_mode?: X509RevocationMode;
   /** If set to true, will prevent the automatic download of certificates to the server */
   disable_certificate_downloads?: boolean;
-  /** If set to true, will allow certicates even if the OCSP status is unknown. */
+  /** If set to true, will allow certificate even if the OCSP status is unknown. */
   allow_certificates_with_ocsp_status_unknown?: boolean;
 }
 

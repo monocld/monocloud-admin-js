@@ -4896,18 +4896,20 @@
         "description": "The Communication Sms Options response class"
       },
       "CommunicationSmsTwilioOptions": {
+        "required": [
+          "auth_token",
+          "sid"
+        ],
         "type": "object",
         "properties": {
           "sid": {
             "type": "string",
             "description": "Twilio SID",
-            "nullable": true,
             "example": "lakshGHIur984573"
           },
           "auth_token": {
             "type": "string",
             "description": "Twilio Auth Token",
-            "nullable": true,
             "example": "867dsfujgFTe6724356tgfds"
           },
           "messaging_sid": {
@@ -5587,6 +5589,8 @@
             "example": "d2980ac62d2e58d316728dba55ce"
           },
           "expiration": {
+            "maximum": 9223372036854775807,
+            "minimum": -9223372036854775808,
             "type": "integer",
             "description": "The expiration date of the secret (in Epoch)",
             "format": "int64",
@@ -5777,12 +5781,14 @@
         "description": "The Branding Email Generic Template Options response class"
       },
       "GenericBrandingSmsTemplateOptions": {
+        "required": [
+          "template"
+        ],
         "type": "object",
         "properties": {
           "template": {
             "type": "string",
             "description": "Custom LiquidJS template for the SMS",
-            "nullable": true,
             "example": "Hi {{ name }}"
           }
         },
@@ -6418,7 +6424,7 @@
                 "$ref": "#/components/schemas/CertificateTypes"
               }
             ],
-            "description": "Specifie the permitted certicate types.",
+            "description": "Specifies the permitted certificate types.",
             "example": "all"
           },
           "validate_certificate_use": {
@@ -6446,7 +6452,7 @@
           },
           "allow_certificates_with_ocsp_status_unknown": {
             "type": "boolean",
-            "description": "If set to true, will allow certicates even if the OCSP status is unknown."
+            "description": "If set to true, will allow certificate even if the OCSP status is unknown."
           }
         },
         "additionalProperties": false,
@@ -6463,6 +6469,7 @@
       },
       "PaginationHeader": {
         "required": [
+          "current_page",
           "has_next",
           "has_previous",
           "page_size",
@@ -6475,6 +6482,12 @@
             "description": "Page Size",
             "format": "int32",
             "example": 10
+          },
+          "current_page": {
+            "type": "integer",
+            "description": "Current Page",
+            "format": "int32",
+            "example": 1
           },
           "total_count": {
             "type": "integer",
@@ -6602,6 +6615,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 15,
+              "minLength": 1,
+              "pattern": "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
               "type": "string"
             },
             "description": "Whitelisted IP Addresses where the Account Protection does not trigger.",
@@ -6879,14 +6895,15 @@
         "type": "object",
         "properties": {
           "background": {
-            "minLength": 1,
-            "pattern": "^#[0-9A-Fa-f]{6}$",
+            "maxLength": 350,
+            "minLength": 7,
             "type": "string",
             "description": "Specifies the background css string to be used for pages",
             "example": "#f2f2f2"
           },
           "error_color": {
-            "minLength": 1,
+            "maxLength": 7,
+            "minLength": 7,
             "pattern": "^#[0-9A-Fa-f]{6}$",
             "type": "string",
             "description": "Specifies the error colour to be used for pages",
@@ -6905,7 +6922,8 @@
             "example": "https://example.com/logo"
           },
           "primary_color": {
-            "minLength": 1,
+            "maxLength": 7,
+            "minLength": 7,
             "pattern": "^#[0-9A-Fa-f]{6}$",
             "type": "string",
             "description": "Specifies the primary colour to be used for pages",
@@ -7334,9 +7352,10 @@
         "type": "object",
         "properties": {
           "api_key": {
+            "maxLength": 100,
+            "minLength": 1,
             "type": "string",
             "description": "SendGrid Api Key",
-            "nullable": true,
             "example": "KJFdlswierur458dfhkJHFwkoepOURFuasd"
           }
         },
@@ -7391,24 +7410,30 @@
         "type": "object",
         "properties": {
           "sid": {
+            "maxLength": 100,
+            "minLength": 1,
             "type": "string",
             "description": "Twilio SID",
-            "nullable": true,
             "example": "lakshGHIur984573"
           },
           "auth_token": {
+            "maxLength": 100,
+            "minLength": 1,
             "type": "string",
             "description": "Twilio Auth Token",
-            "nullable": true,
             "example": "867dsfujgFTe6724356tgfds"
           },
           "messaging_sid": {
+            "maxLength": 100,
+            "minLength": 1,
             "type": "string",
             "description": "Twilio Messaging SID",
             "nullable": true,
             "example": "867dsfujgFTe6724356tgfds"
           },
           "from": {
+            "maxLength": 50,
+            "minLength": 1,
             "type": "string",
             "description": "Twilio From",
             "nullable": true,
@@ -7437,24 +7462,32 @@
         "type": "object",
         "properties": {
           "from_email": {
+            "maxLength": 100,
+            "minLength": 1,
             "type": "string",
             "description": "From Email Address",
             "nullable": true,
             "example": "support@acme.com"
           },
           "from_name": {
+            "maxLength": 300,
+            "minLength": 1,
             "type": "string",
             "description": "From Name",
             "nullable": true,
             "example": "Acme Support"
           },
           "subject": {
+            "maxLength": 200,
+            "minLength": 1,
             "type": "string",
             "description": "Specifies the text to be used as the email subject",
             "nullable": true,
             "example": "Welcome to ACME"
           },
           "template_uri": {
+            "maxLength": 500,
+            "minLength": 1,
             "type": "string",
             "description": "Specifies the URI for the custom template to be used",
             "nullable": true,
@@ -7465,12 +7498,16 @@
         "description": "The Patch Generic Branding Custom Email Options Request class"
       },
       "PatchGenericBrandingCustomSmsOptionsRequest": {
+        "required": [
+          "template"
+        ],
         "type": "object",
         "properties": {
           "template": {
+            "maxLength": 300,
+            "minLength": 1,
             "type": "string",
             "description": "Custom LiquidJS template for the SMS",
-            "nullable": true,
             "example": "Hi {{ name }}"
           }
         },
@@ -7681,7 +7718,7 @@
                 "$ref": "#/components/schemas/CertificateTypes"
               }
             ],
-            "description": "Specifie the permitted certicate types.",
+            "description": "Specifies the permitted certificate types.",
             "example": "all"
           },
           "validate_certificate_use": {
@@ -7709,7 +7746,7 @@
           },
           "allow_certificates_with_ocsp_status_unknown": {
             "type": "boolean",
-            "description": "If set to true, will allow certicates even if the OCSP status is unknown."
+            "description": "If set to true, will allow certificate even if the OCSP status is unknown."
           }
         },
         "additionalProperties": false,
@@ -7797,6 +7834,8 @@
           "scopes": {
             "type": "array",
             "items": {
+              "maxLength": 100,
+              "minLength": 1,
               "type": "string"
             },
             "description": "List of provider scopes to be obtained",
@@ -7808,6 +7847,8 @@
             ]
           },
           "team_id": {
+            "maxLength": 100,
+            "minLength": 1,
             "type": "string",
             "description": "Apple generated teamId",
             "example": "kjGD8745hasd"
@@ -7863,6 +7904,8 @@
           "scopes": {
             "type": "array",
             "items": {
+              "maxLength": 1000,
+              "minLength": 1,
               "type": "string"
             },
             "description": "List of provider scopes to be obtained",
@@ -7877,6 +7920,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 1000,
+              "minLength": 1,
               "type": "string"
             },
             "description": "Required claims from facebook",
@@ -7904,6 +7949,8 @@
             "example": true
           },
           "relying_party": {
+            "maxLength": 50,
+            "minLength": 1,
             "type": "string",
             "description": "Relying party domain to be used when registering a new biometrics",
             "nullable": true,
@@ -7950,6 +7997,8 @@
             "example": true
           },
           "relying_party": {
+            "maxLength": 50,
+            "minLength": 1,
             "type": "string",
             "description": "Relying party domain to be used when registering a new Roaming",
             "nullable": true,
@@ -8017,6 +8066,8 @@
           "scopes": {
             "type": "array",
             "items": {
+              "maxLength": 1000,
+              "minLength": 1,
               "type": "string"
             },
             "description": "List of provider scopes to be obtained",
@@ -8148,6 +8199,8 @@
             "example": 30
           },
           "issuer": {
+            "maxLength": 50,
+            "minLength": 1,
             "type": "string",
             "description": "Issuer Display to be used on the User's Otp App",
             "nullable": true,
@@ -8418,6 +8471,8 @@
         "type": "object",
         "properties": {
           "project_name": {
+            "maxLength": 100,
+            "minLength": 1,
             "type": "string",
             "description": "Project Name",
             "example": "My App"
@@ -9544,6 +9599,7 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 5000,
               "minLength": 1,
               "type": "string"
             },
@@ -9567,6 +9623,7 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 5000,
               "minLength": 1,
               "type": "string"
             },
