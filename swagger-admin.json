@@ -4223,22 +4223,58 @@
       "BrandingEmailOptions": {
         "type": "object",
         "properties": {
-          "passwordless_email": {
+          "passwordless_email_link": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/GenericBrandingEmailTemplateOptions"
               }
             ],
-            "description": "Passwordless Email Branding Options",
+            "description": "Passwordless Email - Link Branding Options",
             "nullable": true
           },
-          "welcome_verify": {
+          "passwordless_email_code": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/GenericBrandingEmailTemplateOptions"
               }
             ],
-            "description": "Welcome - Verify Email Branding Options",
+            "description": "Passwordless Email - Code Branding Options",
+            "nullable": true
+          },
+          "welcome": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GenericBrandingEmailTemplateOptions"
+              }
+            ],
+            "description": "Welcome Email Branding Options",
+            "nullable": true
+          },
+          "verify": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GenericBrandingEmailTemplateOptions"
+              }
+            ],
+            "description": "Verify Email Branding Options",
+            "nullable": true
+          },
+          "lockout": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GenericBrandingEmailTemplateOptions"
+              }
+            ],
+            "description": "User Lockout Branding Options",
+            "nullable": true
+          },
+          "password_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GenericBrandingEmailTemplateOptions"
+              }
+            ],
+            "description": "Password Change Branding Options",
             "nullable": true
           }
         },
@@ -4974,6 +5010,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+([a-z0-9-_]+[a-z0-9])?$",
               "type": "string"
             },
             "description": "List of associated user claim types that should be included in the Access token.",
@@ -4992,6 +5031,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 50,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+([a-z0-9-._]+[a-z0-9])?$",
               "type": "string"
             },
             "description": "List of API scope names.",
@@ -5259,6 +5301,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 400,
+              "minLength": 1,
               "type": "string"
             },
             "description": "Specifies allowed URIs to return tokens or authorization codes to",
@@ -5271,6 +5315,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 400,
+              "minLength": 1,
               "type": "string"
             },
             "description": "Specifies allowed URIs to redirect to after logout",
@@ -5310,6 +5356,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 50,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+([a-z0-9-._]+[a-z0-9])?$",
               "type": "string"
             },
             "description": "Specifies the scopes the client is allowed to access (by default a client has no access to any resources)",
@@ -5457,6 +5506,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 200,
+              "minLength": 1,
               "type": "string"
             },
             "description": "The allowed CORS origins for JavaScript clients.",
@@ -6682,6 +6733,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+([a-z0-9-_]+[a-z0-9])?$",
               "type": "string"
             },
             "description": "List of associated user claim types that should be included in the Access token.",
@@ -6693,6 +6747,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 50,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+([a-z0-9-._]+[a-z0-9])?$",
               "type": "string"
             },
             "description": "List of API scope names.",
@@ -6830,22 +6887,58 @@
       "PatchBrandingEmailOptionsRequest": {
         "type": "object",
         "properties": {
-          "passwordless_email": {
+          "passwordless_email_link": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/PatchGenericBrandingCustomEmailOptionsRequest"
               }
             ],
-            "description": "Passwordless Email Branding Options",
+            "description": "Passwordless Email - Link Branding Options",
             "nullable": true
           },
-          "welcome_verify": {
+          "passwordless_email_code": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/PatchGenericBrandingCustomEmailOptionsRequest"
               }
             ],
-            "description": "Welcome - Verify Email Branding Options",
+            "description": "Passwordless Email - Code Branding Options",
+            "nullable": true
+          },
+          "welcome": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchGenericBrandingCustomEmailOptionsRequest"
+              }
+            ],
+            "description": "Welcome Email Branding Options",
+            "nullable": true
+          },
+          "verify": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchGenericBrandingCustomEmailOptionsRequest"
+              }
+            ],
+            "description": "Verify Email Branding Options",
+            "nullable": true
+          },
+          "lockout": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchGenericBrandingCustomEmailOptionsRequest"
+              }
+            ],
+            "description": "User Lockout Branding Options",
+            "nullable": true
+          },
+          "password_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchGenericBrandingCustomEmailOptionsRequest"
+              }
+            ],
+            "description": "Password Change Branding Options",
             "nullable": true
           }
         },
@@ -7107,6 +7200,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 400,
+              "minLength": 1,
               "type": "string"
             },
             "description": "Specifies allowed URIs to return tokens or authorization codes to",
@@ -7119,6 +7214,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 400,
+              "minLength": 1,
               "type": "string"
             },
             "description": "Specifies allowed URIs to redirect to after logout",
@@ -7155,6 +7252,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 50,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+([a-z0-9-._]+[a-z0-9])?$",
               "type": "string"
             },
             "description": "Specifies the scopes the client is allowed to access (by default a client has no access to any resources)",
@@ -7289,6 +7389,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 200,
+              "minLength": 1,
               "type": "string"
             },
             "description": "The allowed CORS origins for JavaScript clients.",

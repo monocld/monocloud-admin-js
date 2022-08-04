@@ -5189,10 +5189,18 @@ export interface AuthenticationOptions {
 
 /** The Branding Email Options response class */
 export interface BrandingEmailOptions {
-  /** Passwordless Email Branding Options */
-  passwordless_email?: GenericBrandingEmailTemplateOptions | null;
-  /** Welcome - Verify Email Branding Options */
-  welcome_verify?: GenericBrandingEmailTemplateOptions | null;
+  /** Passwordless Email - Link Branding Options */
+  passwordless_email_link?: GenericBrandingEmailTemplateOptions | null;
+  /** Passwordless Email - Code Branding Options */
+  passwordless_email_code?: GenericBrandingEmailTemplateOptions | null;
+  /** Welcome Email Branding Options */
+  welcome?: GenericBrandingEmailTemplateOptions | null;
+  /** Verify Email Branding Options */
+  verify?: GenericBrandingEmailTemplateOptions | null;
+  /** User Lockout Branding Options */
+  lockout?: GenericBrandingEmailTemplateOptions | null;
+  /** Password Change Branding Options */
+  password_change?: GenericBrandingEmailTemplateOptions | null;
 }
 
 /** The Branding Options response class */
@@ -6100,10 +6108,18 @@ export interface PatchAuthenticationOptionsRequest {
 
 /** The Patch Branding Email Options Request class */
 export interface PatchBrandingEmailOptionsRequest {
-  /** Passwordless Email Branding Options */
-  passwordless_email?: PatchGenericBrandingCustomEmailOptionsRequest | null;
-  /** Welcome - Verify Email Branding Options */
-  welcome_verify?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+  /** Passwordless Email - Link Branding Options */
+  passwordless_email_link?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+  /** Passwordless Email - Code Branding Options */
+  passwordless_email_code?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+  /** Welcome Email Branding Options */
+  welcome?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+  /** Verify Email Branding Options */
+  verify?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+  /** User Lockout Branding Options */
+  lockout?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+  /** Password Change Branding Options */
+  password_change?: PatchGenericBrandingCustomEmailOptionsRequest | null;
 }
 
 /** The Patch Branding Options Request class */
