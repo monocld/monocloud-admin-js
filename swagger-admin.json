@@ -3895,7 +3895,6 @@
           "ip_lockout_time_span",
           "lockout_type",
           "max_failed_access_attempts",
-          "send_email_to_user",
           "user_lockout_time_span"
         ],
         "type": "object",
@@ -3945,11 +3944,6 @@
             ],
             "description": "Types of Lockouts to enable per User Account",
             "example": "ip"
-          },
-          "send_email_to_user": {
-            "type": "boolean",
-            "description": "Send an E-Mail to the User's E-Mail address once any one of the UserLockoutType has been triggered.",
-            "example": true
           }
         },
         "additionalProperties": false,
@@ -4153,7 +4147,6 @@
           "account_protection",
           "login",
           "logout",
-          "mfa",
           "providers",
           "registration",
           "sign_in"
@@ -4183,14 +4176,6 @@
               }
             ],
             "description": "Logout Options"
-          },
-          "mfa": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MfaOptions"
-              }
-            ],
-            "description": "Multifactor Authentication Options"
           },
           "providers": {
             "allOf": [
@@ -4223,22 +4208,58 @@
       "BrandingEmailOptions": {
         "type": "object",
         "properties": {
-          "passwordless_email": {
+          "passwordless_email_link": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/GenericBrandingEmailTemplateOptions"
               }
             ],
-            "description": "Passwordless Email Branding Options",
+            "description": "Passwordless Email - Link Branding Options",
             "nullable": true
           },
-          "welcome_verify": {
+          "passwordless_email_code": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/GenericBrandingEmailTemplateOptions"
               }
             ],
-            "description": "Welcome - Verify Email Branding Options",
+            "description": "Passwordless Email - Code Branding Options",
+            "nullable": true
+          },
+          "welcome": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GenericBrandingEmailTemplateOptions"
+              }
+            ],
+            "description": "Welcome Email Branding Options",
+            "nullable": true
+          },
+          "verify": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GenericBrandingEmailTemplateOptions"
+              }
+            ],
+            "description": "Verify Email Branding Options",
+            "nullable": true
+          },
+          "lockout": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GenericBrandingEmailTemplateOptions"
+              }
+            ],
+            "description": "User Lockout Branding Options",
+            "nullable": true
+          },
+          "password_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GenericBrandingEmailTemplateOptions"
+              }
+            ],
+            "description": "Password Change Branding Options",
             "nullable": true
           }
         },
@@ -4294,10 +4315,7 @@
         "required": [
           "background",
           "error_color",
-          "language",
-          "primary_color",
-          "show_watermark",
-          "theme"
+          "primary_color"
         ],
         "type": "object",
         "properties": {
@@ -4327,31 +4345,6 @@
             "type": "string",
             "description": "Specifies the primary colour to be used for pages",
             "example": "#f2f2f2"
-          },
-          "show_watermark": {
-            "type": "boolean",
-            "description": "Show watermark on login page",
-            "example": true
-          },
-          "theme": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ThemeNames"
-              }
-            ],
-            "description": "The Theme to be used for pages",
-            "example": "default"
-          },
-          "language": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Languages"
-              }
-            ],
-            "description": "Language for the pages",
-            "example": "english_us"
           }
         },
         "additionalProperties": false,
@@ -4974,6 +4967,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+([a-z0-9-_]+[a-z0-9])?$",
               "type": "string"
             },
             "description": "List of associated user claim types that should be included in the Access token.",
@@ -4992,6 +4988,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 50,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+([a-z0-9-._]+[a-z0-9])?$",
               "type": "string"
             },
             "description": "List of API scope names.",
@@ -5259,6 +5258,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 400,
+              "minLength": 1,
               "type": "string"
             },
             "description": "Specifies allowed URIs to return tokens or authorization codes to",
@@ -5271,6 +5272,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 400,
+              "minLength": 1,
               "type": "string"
             },
             "description": "Specifies allowed URIs to redirect to after logout",
@@ -5310,6 +5313,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 50,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+([a-z0-9-._]+[a-z0-9])?$",
               "type": "string"
             },
             "description": "Specifies the scopes the client is allowed to access (by default a client has no access to any resources)",
@@ -5457,6 +5463,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 200,
+              "minLength": 1,
               "type": "string"
             },
             "description": "The allowed CORS origins for JavaScript clients.",
@@ -5740,15 +5748,6 @@
         "additionalProperties": false,
         "description": "The Device Flow Options response class"
       },
-      "FidoUserVerification": {
-        "enum": [
-          "required",
-          "preferred",
-          "discouraged"
-        ],
-        "type": "string",
-        "description": "* **required**\r\n* **preferred**\r\n* **discouraged**"
-      },
       "GenericBrandingEmailTemplateOptions": {
         "type": "object",
         "properties": {
@@ -6006,13 +6005,6 @@
         "type": "string",
         "description": "Specifies the purpose / use of the key\r\n* **signing** - The key can be used for signing new tokens.\r\n* **validation** - The key can be used for validating the tokens."
       },
-      "Languages": {
-        "enum": [
-          "english_us"
-        ],
-        "type": "string",
-        "description": "* **english_us**"
-      },
       "Log": {
         "required": [
           "category",
@@ -6112,11 +6104,6 @@
         },
         "additionalProperties": false,
         "description": "The Log response class"
-      },
-      "LogContext": {
-        "type": "object",
-        "additionalProperties": false,
-        "description": "The Log Context response class"
       },
       "LogEventCategories": {
         "enum": [
@@ -6301,7 +6288,7 @@
             },
             "description": "Order of the Secondary Login methods buttons",
             "example": [
-              "otp",
+              "passwordless_email",
               "passwordless_sms"
             ]
           },
@@ -6340,39 +6327,6 @@
         "additionalProperties": false,
         "description": "The Logout Options response class"
       },
-      "MfaOptions": {
-        "required": [
-          "remember_mfa",
-          "remember_mfa_duration",
-          "requirement"
-        ],
-        "type": "object",
-        "properties": {
-          "requirement": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MultiFactorRequirements"
-              }
-            ],
-            "description": "MFA Requirement",
-            "example": "optional"
-          },
-          "remember_mfa": {
-            "type": "boolean",
-            "description": "To Remember MFA or not.",
-            "example": true
-          },
-          "remember_mfa_duration": {
-            "type": "integer",
-            "description": "MFA RememberMe Duration in minutes",
-            "format": "int32",
-            "example": 43200
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Mfa Options response class"
-      },
       "Microsoft.AspNetCore.Mvc.ProblemDetails": {
         "type": "object",
         "properties": {
@@ -6402,9 +6356,7 @@
       },
       "MtlsOptions": {
         "required": [
-          "allow_certificates_with_ocsp_status_unknown",
           "allowed_certificate_types",
-          "disable_certificate_downloads",
           "enabled",
           "revocation_mode",
           "validate_certificate_use",
@@ -6445,27 +6397,10 @@
               }
             ],
             "description": "Specifies the type of revocation check."
-          },
-          "disable_certificate_downloads": {
-            "type": "boolean",
-            "description": "If set to true, will prevent the automatic download of certificates to the server"
-          },
-          "allow_certificates_with_ocsp_status_unknown": {
-            "type": "boolean",
-            "description": "If set to true, will allow certificate even if the OCSP status is unknown."
           }
         },
         "additionalProperties": false,
         "description": "The Mtls Options response class"
-      },
-      "MultiFactorRequirements": {
-        "enum": [
-          "none",
-          "optional",
-          "required"
-        ],
-        "type": "string",
-        "description": "* **none**\r\n* **optional**\r\n* **required**"
       },
       "PaginationHeader": {
         "required": [
@@ -6636,11 +6571,6 @@
             ],
             "description": "Types of Lockouts to enable per User Account",
             "example": "ip"
-          },
-          "send_email_to_user": {
-            "type": "boolean",
-            "description": "Send an E-Mail to the User's E-Mail address once any one of the UserLockoutType has been triggered.",
-            "example": true
           }
         },
         "additionalProperties": false,
@@ -6682,6 +6612,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+([a-z0-9-_]+[a-z0-9])?$",
               "type": "string"
             },
             "description": "List of associated user claim types that should be included in the Access token.",
@@ -6693,6 +6626,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 50,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+([a-z0-9-._]+[a-z0-9])?$",
               "type": "string"
             },
             "description": "List of API scope names.",
@@ -6791,14 +6727,6 @@
             ],
             "description": "Logout Options"
           },
-          "mfa": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PatchMfaOptionsRequest"
-              }
-            ],
-            "description": "Multifactor Authentication Options"
-          },
           "providers": {
             "allOf": [
               {
@@ -6830,22 +6758,58 @@
       "PatchBrandingEmailOptionsRequest": {
         "type": "object",
         "properties": {
-          "passwordless_email": {
+          "passwordless_email_link": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/PatchGenericBrandingCustomEmailOptionsRequest"
               }
             ],
-            "description": "Passwordless Email Branding Options",
+            "description": "Passwordless Email - Link Branding Options",
             "nullable": true
           },
-          "welcome_verify": {
+          "passwordless_email_code": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/PatchGenericBrandingCustomEmailOptionsRequest"
               }
             ],
-            "description": "Welcome - Verify Email Branding Options",
+            "description": "Passwordless Email - Code Branding Options",
+            "nullable": true
+          },
+          "welcome": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchGenericBrandingCustomEmailOptionsRequest"
+              }
+            ],
+            "description": "Welcome Email Branding Options",
+            "nullable": true
+          },
+          "verify": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchGenericBrandingCustomEmailOptionsRequest"
+              }
+            ],
+            "description": "Verify Email Branding Options",
+            "nullable": true
+          },
+          "lockout": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchGenericBrandingCustomEmailOptionsRequest"
+              }
+            ],
+            "description": "User Lockout Branding Options",
+            "nullable": true
+          },
+          "password_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchGenericBrandingCustomEmailOptionsRequest"
+              }
+            ],
+            "description": "Password Change Branding Options",
             "nullable": true
           }
         },
@@ -6928,31 +6892,6 @@
             "type": "string",
             "description": "Specifies the primary colour to be used for pages",
             "example": "#f2f2f2"
-          },
-          "show_watermark": {
-            "type": "boolean",
-            "description": "Show watermark on login page",
-            "example": true
-          },
-          "theme": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ThemeNames"
-              }
-            ],
-            "description": "The Theme to be used for pages",
-            "example": "default"
-          },
-          "language": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Languages"
-              }
-            ],
-            "description": "Language for the pages",
-            "example": "english_us"
           }
         },
         "additionalProperties": false,
@@ -7107,6 +7046,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 400,
+              "minLength": 1,
               "type": "string"
             },
             "description": "Specifies allowed URIs to return tokens or authorization codes to",
@@ -7119,6 +7060,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 400,
+              "minLength": 1,
               "type": "string"
             },
             "description": "Specifies allowed URIs to redirect to after logout",
@@ -7155,6 +7098,9 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 50,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+([a-z0-9-._]+[a-z0-9])?$",
               "type": "string"
             },
             "description": "Specifies the scopes the client is allowed to access (by default a client has no access to any resources)",
@@ -7289,6 +7235,8 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+              "maxLength": 200,
+              "minLength": 1,
               "type": "string"
             },
             "description": "The allowed CORS origins for JavaScript clients.",
@@ -7638,7 +7586,7 @@
             },
             "description": "Order of the Secondary Login methods buttons",
             "example": [
-              "otp",
+              "passwordless_email",
               "passwordless_sms"
             ]
           },
@@ -7672,36 +7620,6 @@
         },
         "additionalProperties": false,
         "description": "The Patch Logout Options Request class"
-      },
-      "PatchMfaOptionsRequest": {
-        "type": "object",
-        "properties": {
-          "requirement": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MultiFactorRequirements"
-              }
-            ],
-            "description": "MFA Requirement",
-            "example": "optional"
-          },
-          "remember_mfa": {
-            "type": "boolean",
-            "description": "To Remember MFA or not.",
-            "example": true
-          },
-          "remember_mfa_duration": {
-            "maximum": 43800,
-            "minimum": 5,
-            "type": "integer",
-            "description": "MFA RememberMe Duration in minutes",
-            "format": "int32",
-            "example": 43200
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Patch Mfa Options Request class"
       },
       "PatchMtlsOptionsRequest": {
         "type": "object",
@@ -7739,14 +7657,6 @@
               }
             ],
             "description": "Specifies the type of revocation check."
-          },
-          "disable_certificate_downloads": {
-            "type": "boolean",
-            "description": "If set to true, will prevent the automatic download of certificates to the server"
-          },
-          "allow_certificates_with_ocsp_status_unknown": {
-            "type": "boolean",
-            "description": "If set to true, will allow certificate even if the OCSP status is unknown."
           }
         },
         "additionalProperties": false,
@@ -7935,97 +7845,6 @@
         "additionalProperties": false,
         "description": "The Patch Facebook Provider Options Request class"
       },
-      "PatchProviderFidoBiometricOptionsRequest": {
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "type": "boolean",
-            "description": "Enable Fido Biometric Provider",
-            "example": true
-          },
-          "enabled_mfa": {
-            "type": "boolean",
-            "description": "Enable Mfa for Fido Bimetric",
-            "example": true
-          },
-          "relying_party": {
-            "maxLength": 50,
-            "minLength": 1,
-            "type": "string",
-            "description": "Relying party domain to be used when registering a new biometrics",
-            "nullable": true,
-            "example": "acme.com"
-          },
-          "user_verification": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FidoUserVerification"
-              }
-            ],
-            "description": "Preference on the type of User verification required.",
-            "example": "discouraged"
-          },
-          "timeout": {
-            "maximum": 300000,
-            "minimum": 30000,
-            "type": "integer",
-            "description": "Timeout for the Biometrics capture in milliseconds.",
-            "format": "int32",
-            "example": 60000
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Patch Fido Biometric Provider Options Request class"
-      },
-      "PatchProviderFidoRoamingOptionsRequest": {
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "type": "boolean",
-            "description": "Enable Fido Roaming Provider",
-            "example": true
-          },
-          "enable_user_registration": {
-            "type": "boolean",
-            "description": "Enable User Registration",
-            "example": true
-          },
-          "enabled_mfa": {
-            "type": "boolean",
-            "description": "Enable Mfa for Fido Roaming",
-            "example": true
-          },
-          "relying_party": {
-            "maxLength": 50,
-            "minLength": 1,
-            "type": "string",
-            "description": "Relying party domain to be used when registering a new Roaming",
-            "nullable": true,
-            "example": "acme.com"
-          },
-          "user_verification": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FidoUserVerification"
-              }
-            ],
-            "description": "Preference on the type of User verification required.",
-            "example": "discouraged"
-          },
-          "timeout": {
-            "maximum": 300000,
-            "minimum": 30000,
-            "type": "integer",
-            "description": "Timeout for the Roaming capture in milliseconds.",
-            "format": "int32",
-            "example": 60000
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Patch Fido Roaming Provider Options Request class"
-      },
       "PatchProviderGoogleOptionsRequest": {
         "type": "object",
         "properties": {
@@ -8112,30 +7931,6 @@
             "description": "Facebook's Provider Settings",
             "nullable": true
           },
-          "otp": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PatchProviderOtpOptionsRequest"
-              }
-            ],
-            "description": "Otp (TOTP) Provider Settings"
-          },
-          "fido_biometric": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PatchProviderFidoBiometricOptionsRequest"
-              }
-            ],
-            "description": "FIDO Biometric Provider Settings"
-          },
-          "fido_roaming": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PatchProviderFidoRoamingOptionsRequest"
-              }
-            ],
-            "description": "FIDO Roaming Provider Settings"
-          },
           "passwordless_email": {
             "allOf": [
               {
@@ -8159,56 +7954,10 @@
               }
             ],
             "description": "Username-Password Provider Settings"
-          },
-          "recovery_code": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PatchProviderRecoveryCodeOptionsRequest"
-              }
-            ],
-            "description": "Recovery Code Provider Settings"
           }
         },
         "additionalProperties": false,
         "description": "The Patch Provider Options Request class"
-      },
-      "PatchProviderOtpOptionsRequest": {
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "type": "boolean",
-            "description": "Indicates if the specific scheme is enabled or not",
-            "example": true
-          },
-          "enable_user_registration": {
-            "type": "boolean",
-            "description": "If set to false, users won't be able to signup/register using this scheme",
-            "example": true
-          },
-          "enabled_mfa": {
-            "type": "boolean",
-            "description": "Indicates if the specific Mfa Factor is enabled or not",
-            "example": true
-          },
-          "skew": {
-            "maximum": 900,
-            "minimum": 0,
-            "type": "integer",
-            "description": "Skew Period of Authenticatior Provider to check for codes.",
-            "format": "int32",
-            "example": 30
-          },
-          "issuer": {
-            "maxLength": 50,
-            "minLength": 1,
-            "type": "string",
-            "description": "Issuer Display to be used on the User's Otp App",
-            "nullable": true,
-            "example": "ACME"
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Patch Otp Provider Options Request class"
       },
       "PatchProviderPasswordlessEmailOptionsRequest": {
         "type": "object",
@@ -8295,34 +8044,6 @@
         },
         "additionalProperties": false,
         "description": "The Patch Passwordless Sms Provider Options Request class"
-      },
-      "PatchProviderRecoveryCodeOptionsRequest": {
-        "type": "object",
-        "properties": {
-          "enabled_mfa": {
-            "type": "boolean",
-            "description": "Enabled Mfa For Recovery Code",
-            "example": true
-          },
-          "code_length": {
-            "maximum": 64,
-            "minimum": 8,
-            "type": "integer",
-            "description": "Recovery code Length",
-            "format": "int32",
-            "example": 8
-          },
-          "number_of_codes": {
-            "maximum": 12,
-            "minimum": 1,
-            "type": "integer",
-            "description": "Number of codes to be generated",
-            "format": "int32",
-            "example": 12
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Patch Recovery Code Provider Options Request class"
       },
       "PatchProviderUsernamePasswordOptionsRequest": {
         "type": "object",
@@ -8485,11 +8206,10 @@
         "enum": [
           "local",
           "passwordless_email",
-          "passwordless_sms",
-          "otp"
+          "passwordless_sms"
         ],
         "type": "string",
-        "description": "* **local**\r\n* **passwordless_email**\r\n* **passwordless_sms**\r\n* **otp**"
+        "description": "* **local**\r\n* **passwordless_email**\r\n* **passwordless_sms**"
       },
       "ProviderAppleOptions": {
         "required": [
@@ -8632,102 +8352,6 @@
         "additionalProperties": false,
         "description": "The Facebook Provider Options response class"
       },
-      "ProviderFidoBiometricOptions": {
-        "required": [
-          "enabled",
-          "enabled_mfa",
-          "timeout",
-          "user_verification"
-        ],
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "type": "boolean",
-            "description": "Enable Fido Biometric Provider",
-            "example": true
-          },
-          "enabled_mfa": {
-            "type": "boolean",
-            "description": "Enable Mfa for Fido Bimetric",
-            "example": true
-          },
-          "relying_party": {
-            "type": "string",
-            "description": "Relying party domain to be used when registering a new biometrics",
-            "nullable": true,
-            "example": "acme.com"
-          },
-          "user_verification": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FidoUserVerification"
-              }
-            ],
-            "description": "Preference on the type of User verification required.",
-            "example": "discouraged"
-          },
-          "timeout": {
-            "type": "integer",
-            "description": "Timeout for the Biometrics capture in milliseconds.",
-            "format": "int32",
-            "example": 60000
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Fido Biometric Provider Options response class"
-      },
-      "ProviderFidoRoamingOptions": {
-        "required": [
-          "enable_user_registration",
-          "enabled",
-          "enabled_mfa",
-          "timeout",
-          "user_verification"
-        ],
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "type": "boolean",
-            "description": "Enable Fido Roaming Provider",
-            "example": true
-          },
-          "enable_user_registration": {
-            "type": "boolean",
-            "description": "Enable User Registration",
-            "example": true
-          },
-          "enabled_mfa": {
-            "type": "boolean",
-            "description": "Enable Mfa for Fido Roaming",
-            "example": true
-          },
-          "relying_party": {
-            "type": "string",
-            "description": "Relying party domain to be used when registering a new Roaming",
-            "nullable": true,
-            "example": "acme.com"
-          },
-          "user_verification": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FidoUserVerification"
-              }
-            ],
-            "description": "Preference on the type of User verification required.",
-            "example": "discouraged"
-          },
-          "timeout": {
-            "type": "integer",
-            "description": "Timeout for the Roaming capture in milliseconds.",
-            "format": "int32",
-            "example": 60000
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Fido Roaming Provider Options response class"
-      },
       "ProviderGoogleOptions": {
         "required": [
           "client_id",
@@ -8788,12 +8412,8 @@
       },
       "ProviderOptions": {
         "required": [
-          "fido_biometric",
-          "fido_roaming",
-          "otp",
           "passwordless_email",
           "passwordless_sms",
-          "recovery_code",
           "username_password"
         ],
         "type": "object",
@@ -8825,30 +8445,6 @@
             "description": "Facebook's Provider Settings",
             "nullable": true
           },
-          "otp": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderOtpOptions"
-              }
-            ],
-            "description": "Otp (TOTP) Provider Settings"
-          },
-          "fido_biometric": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderFidoBiometricOptions"
-              }
-            ],
-            "description": "FIDO Biometric Provider Settings"
-          },
-          "fido_roaming": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderFidoRoamingOptions"
-              }
-            ],
-            "description": "FIDO Roaming Provider Settings"
-          },
           "passwordless_email": {
             "allOf": [
               {
@@ -8872,58 +8468,10 @@
               }
             ],
             "description": "Username-Password Provider Settings"
-          },
-          "recovery_code": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderRecoveryCodeOptions"
-              }
-            ],
-            "description": "Recovery Code Provider Settings"
           }
         },
         "additionalProperties": false,
         "description": "The Provider Options response class"
-      },
-      "ProviderOtpOptions": {
-        "required": [
-          "enable_user_registration",
-          "enabled",
-          "enabled_mfa",
-          "skew"
-        ],
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "type": "boolean",
-            "description": "Indicates if the specific scheme is enabled or not",
-            "example": true
-          },
-          "enable_user_registration": {
-            "type": "boolean",
-            "description": "If set to false, users won't be able to signup/register using this scheme",
-            "example": true
-          },
-          "enabled_mfa": {
-            "type": "boolean",
-            "description": "Indicates if the specific Mfa Factor is enabled or not",
-            "example": true
-          },
-          "skew": {
-            "type": "integer",
-            "description": "Skew Period of Authenticatior Provider to check for codes.",
-            "format": "int32",
-            "example": 30
-          },
-          "issuer": {
-            "type": "string",
-            "description": "Issuer Display to be used on the User's Otp App",
-            "nullable": true,
-            "example": "ACME"
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Otp Provider Options response class"
       },
       "ProviderPasswordlessEmailOptions": {
         "required": [
@@ -9017,35 +8565,6 @@
         },
         "additionalProperties": false,
         "description": "The Passwordless Sms Provider Options response class"
-      },
-      "ProviderRecoveryCodeOptions": {
-        "required": [
-          "code_length",
-          "enabled_mfa",
-          "number_of_codes"
-        ],
-        "type": "object",
-        "properties": {
-          "enabled_mfa": {
-            "type": "boolean",
-            "description": "Enabled Mfa For Recovery Code",
-            "example": true
-          },
-          "code_length": {
-            "type": "integer",
-            "description": "Recovery code Length",
-            "format": "int32",
-            "example": 8
-          },
-          "number_of_codes": {
-            "type": "integer",
-            "description": "Number of codes to be generated",
-            "format": "int32",
-            "example": 12
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Recovery Code Provider Options response class"
       },
       "ProviderUsernamePasswordOptions": {
         "required": [
@@ -9189,14 +8708,12 @@
           "local",
           "passwordless_email",
           "passwordless_sms",
-          "otp",
           "google",
-          "git_hub",
           "apple",
           "facebook"
         ],
         "type": "string",
-        "description": "* **local**\r\n* **passwordless_email**\r\n* **passwordless_sms**\r\n* **otp**\r\n* **google**\r\n* **git_hub**\r\n* **apple**\r\n* **facebook**"
+        "description": "* **local**\r\n* **passwordless_email**\r\n* **passwordless_sms**\r\n* **google**\r\n* **apple**\r\n* **facebook**"
       },
       "Secret": {
         "required": [
@@ -9530,13 +9047,6 @@
         "type": "string",
         "description": "* **as**\r\n* **eu**\r\n* **us**"
       },
-      "ThemeNames": {
-        "enum": [
-          "default"
-        ],
-        "type": "string",
-        "description": "* **default**"
-      },
       "TokenExpirationTypes": {
         "enum": [
           "sliding",
@@ -9821,11 +9331,10 @@
       "X509RevocationMode": {
         "enum": [
           "no_check",
-          "online",
           "offline"
         ],
         "type": "string",
-        "description": "* **no_check** - Will not check for revocation.\r\n* **online** - Will check for revocation with root CA and intermediary CAs\r\n* **offline** - Will check for revocation against the customer generated revocation list"
+        "description": "* **no_check** - Will not check for revocation.\r\n* **offline** - Will check for revocation against the customer generated revocation list"
       }
     },
     "securitySchemes": {

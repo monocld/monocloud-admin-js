@@ -5083,8 +5083,6 @@ export interface AccountProtectionUserLockoutOptions {
   allowed_ips?: string[] | null;
   /** Types of Lockouts to enable per User Account */
   lockout_type: UserLockoutTypes;
-  /** Send an E-Mail to the User's E-Mail address once any one of the UserLockoutType has been triggered. */
-  send_email_to_user: boolean;
 }
 
 /** * **implicit**
@@ -5177,8 +5175,6 @@ export interface AuthenticationOptions {
   login: LoginOptions;
   /** Logout Options */
   logout: LogoutOptions;
-  /** Multifactor Authentication Options */
-  mfa: MfaOptions;
   /** Identity Provider Options */
   providers: ProviderOptions;
   /** User Registration Options */
@@ -5189,10 +5185,18 @@ export interface AuthenticationOptions {
 
 /** The Branding Email Options response class */
 export interface BrandingEmailOptions {
-  /** Passwordless Email Branding Options */
-  passwordless_email?: GenericBrandingEmailTemplateOptions | null;
-  /** Welcome - Verify Email Branding Options */
-  welcome_verify?: GenericBrandingEmailTemplateOptions | null;
+  /** Passwordless Email - Link Branding Options */
+  passwordless_email_link?: GenericBrandingEmailTemplateOptions | null;
+  /** Passwordless Email - Code Branding Options */
+  passwordless_email_code?: GenericBrandingEmailTemplateOptions | null;
+  /** Welcome Email Branding Options */
+  welcome?: GenericBrandingEmailTemplateOptions | null;
+  /** Verify Email Branding Options */
+  verify?: GenericBrandingEmailTemplateOptions | null;
+  /** User Lockout Branding Options */
+  lockout?: GenericBrandingEmailTemplateOptions | null;
+  /** Password Change Branding Options */
+  password_change?: GenericBrandingEmailTemplateOptions | null;
 }
 
 /** The Branding Options response class */
@@ -5219,12 +5223,6 @@ export interface BrandingPageOptions {
   logo_uri?: string | null;
   /** Specifies the primary colour to be used for pages */
   primary_color: string;
-  /** Show watermark on login page */
-  show_watermark: boolean;
-  /** The Theme to be used for pages */
-  theme: ThemeNames;
-  /** Language for the pages */
-  language: Languages;
 }
 
 /** The Branding Project Options response class */
@@ -5633,18 +5631,6 @@ export interface DeviceFlowOptions {
   code_length: number;
 }
 
-/** * **required**
- * * **preferred**
- * * **discouraged** */
-export const FidoUserVerification = {
-  Required: 'required',
-  Preferred: 'preferred',
-  Discouraged: 'discouraged',
-} as const;
-
-export type FidoUserVerification =
-  typeof FidoUserVerification[keyof typeof FidoUserVerification];
-
 /** The Branding Email Generic Template Options response class */
 export interface GenericBrandingEmailTemplateOptions {
   /** From Email Address */
@@ -5745,13 +5731,6 @@ export const KeyMaterialUses = {
 export type KeyMaterialUses =
   typeof KeyMaterialUses[keyof typeof KeyMaterialUses];
 
-/** * **english_us** */
-export const Languages = {
-  EnglishUs: 'english_us',
-} as const;
-
-export type Languages = typeof Languages[keyof typeof Languages];
-
 /** The Log response class */
 export interface Log {
   id: string;
@@ -5774,9 +5753,6 @@ export interface Log {
   scheme_user_id?: string | null;
   context: any;
 }
-
-/** The Log Context response class */
-export interface LogContext {}
 
 /** * **authentication**
  * * **token**
@@ -5930,16 +5906,6 @@ export interface LogoutOptions {
   show_logout_prompt: boolean;
 }
 
-/** The Mfa Options response class */
-export interface MfaOptions {
-  /** MFA Requirement */
-  requirement: MultiFactorRequirements;
-  /** To Remember MFA or not. */
-  remember_mfa: boolean;
-  /** MFA RememberMe Duration in minutes */
-  remember_mfa_duration: number;
-}
-
 export interface ProblemDetails {
   type?: string | null;
   title?: string | null;
@@ -5960,23 +5926,7 @@ export interface MtlsOptions {
   validate_validity_period: boolean;
   /** Specifies the type of revocation check. */
   revocation_mode: X509RevocationMode;
-  /** If set to true, will prevent the automatic download of certificates to the server */
-  disable_certificate_downloads: boolean;
-  /** If set to true, will allow certificate even if the OCSP status is unknown. */
-  allow_certificates_with_ocsp_status_unknown: boolean;
 }
-
-/** * **none**
- * * **optional**
- * * **required** */
-export const MultiFactorRequirements = {
-  None: 'none',
-  Optional: 'optional',
-  Required: 'required',
-} as const;
-
-export type MultiFactorRequirements =
-  typeof MultiFactorRequirements[keyof typeof MultiFactorRequirements];
 
 /** The Pagination Header response class */
 export interface PaginationHeader {
@@ -6038,8 +5988,6 @@ export interface PatchAccountProtectionUserLockoutOptionsRequest {
   allowed_ips?: string[] | null;
   /** Types of Lockouts to enable per User Account */
   lockout_type?: UserLockoutTypes;
-  /** Send an E-Mail to the User's E-Mail address once any one of the UserLockoutType has been triggered. */
-  send_email_to_user?: boolean;
 }
 
 /** The Patch Api Resource class */
@@ -6088,8 +6036,6 @@ export interface PatchAuthenticationOptionsRequest {
   login?: PatchLoginOptionsRequest;
   /** Logout Options */
   logout?: PatchLogoutOptionsRequest;
-  /** Multifactor Authentication Options */
-  mfa?: PatchMfaOptionsRequest;
   /** Identity Provider Options */
   providers?: PatchProviderOptionsRequest;
   /** User Registration Options */
@@ -6100,10 +6046,18 @@ export interface PatchAuthenticationOptionsRequest {
 
 /** The Patch Branding Email Options Request class */
 export interface PatchBrandingEmailOptionsRequest {
-  /** Passwordless Email Branding Options */
-  passwordless_email?: PatchGenericBrandingCustomEmailOptionsRequest | null;
-  /** Welcome - Verify Email Branding Options */
-  welcome_verify?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+  /** Passwordless Email - Link Branding Options */
+  passwordless_email_link?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+  /** Passwordless Email - Code Branding Options */
+  passwordless_email_code?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+  /** Welcome Email Branding Options */
+  welcome?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+  /** Verify Email Branding Options */
+  verify?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+  /** User Lockout Branding Options */
+  lockout?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+  /** Password Change Branding Options */
+  password_change?: PatchGenericBrandingCustomEmailOptionsRequest | null;
 }
 
 /** The Patch Branding Options Request class */
@@ -6130,12 +6084,6 @@ export interface PatchBrandingPageOptionsRequest {
   logo_uri?: string | null;
   /** Specifies the primary colour to be used for pages */
   primary_color?: string;
-  /** Show watermark on login page */
-  show_watermark?: boolean;
-  /** The Theme to be used for pages */
-  theme?: ThemeNames;
-  /** Language for the pages */
-  language?: Languages;
 }
 
 /** The Patch Branding Project Options Request class */
@@ -6366,16 +6314,6 @@ export interface PatchLogoutOptionsRequest {
   show_logout_prompt?: boolean;
 }
 
-/** The Patch Mfa Options Request class */
-export interface PatchMfaOptionsRequest {
-  /** MFA Requirement */
-  requirement?: MultiFactorRequirements;
-  /** To Remember MFA or not. */
-  remember_mfa?: boolean;
-  /** MFA RememberMe Duration in minutes */
-  remember_mfa_duration?: number;
-}
-
 /** The Patch Mtls Options Request class */
 export interface PatchMtlsOptionsRequest {
   /** Enable MTLS */
@@ -6388,10 +6326,6 @@ export interface PatchMtlsOptionsRequest {
   validate_validity_period?: boolean;
   /** Specifies the type of revocation check. */
   revocation_mode?: X509RevocationMode;
-  /** If set to true, will prevent the automatic download of certificates to the server */
-  disable_certificate_downloads?: boolean;
-  /** If set to true, will allow certificate even if the OCSP status is unknown. */
-  allow_certificates_with_ocsp_status_unknown?: boolean;
 }
 
 /** The Patch  Password Strength Options Request class */
@@ -6452,36 +6386,6 @@ export interface PatchProviderFacebookOptionsRequest {
   fields?: string[] | null;
 }
 
-/** The Patch Fido Biometric Provider Options Request class */
-export interface PatchProviderFidoBiometricOptionsRequest {
-  /** Enable Fido Biometric Provider */
-  enabled?: boolean;
-  /** Enable Mfa for Fido Bimetric */
-  enabled_mfa?: boolean;
-  /** Relying party domain to be used when registering a new biometrics */
-  relying_party?: string | null;
-  /** Preference on the type of User verification required. */
-  user_verification?: FidoUserVerification;
-  /** Timeout for the Biometrics capture in milliseconds. */
-  timeout?: number;
-}
-
-/** The Patch Fido Roaming Provider Options Request class */
-export interface PatchProviderFidoRoamingOptionsRequest {
-  /** Enable Fido Roaming Provider */
-  enabled?: boolean;
-  /** Enable User Registration */
-  enable_user_registration?: boolean;
-  /** Enable Mfa for Fido Roaming */
-  enabled_mfa?: boolean;
-  /** Relying party domain to be used when registering a new Roaming */
-  relying_party?: string | null;
-  /** Preference on the type of User verification required. */
-  user_verification?: FidoUserVerification;
-  /** Timeout for the Roaming capture in milliseconds. */
-  timeout?: number;
-}
-
 /** The Patch Google Provider Options Request class */
 export interface PatchProviderGoogleOptionsRequest {
   /** Enables the Social Provider */
@@ -6508,34 +6412,12 @@ export interface PatchProviderOptionsRequest {
   apple?: PatchProviderAppleOptionsRequest | null;
   /** Facebook's Provider Settings */
   facebook?: PatchProviderFacebookOptionsRequest | null;
-  /** Otp (TOTP) Provider Settings */
-  otp?: PatchProviderOtpOptionsRequest;
-  /** FIDO Biometric Provider Settings */
-  fido_biometric?: PatchProviderFidoBiometricOptionsRequest;
-  /** FIDO Roaming Provider Settings */
-  fido_roaming?: PatchProviderFidoRoamingOptionsRequest;
   /** Passwordless Email Provider settings */
   passwordless_email?: PatchProviderPasswordlessEmailOptionsRequest;
   /** Paswordless Sms Provider Settings */
   passwordless_sms?: PatchProviderPasswordlessSmsOptionsRequest;
   /** Username-Password Provider Settings */
   username_password?: PatchProviderUsernamePasswordOptionsRequest;
-  /** Recovery Code Provider Settings */
-  recovery_code?: PatchProviderRecoveryCodeOptionsRequest;
-}
-
-/** The Patch Otp Provider Options Request class */
-export interface PatchProviderOtpOptionsRequest {
-  /** Indicates if the specific scheme is enabled or not */
-  enabled?: boolean;
-  /** If set to false, users won't be able to signup/register using this scheme */
-  enable_user_registration?: boolean;
-  /** Indicates if the specific Mfa Factor is enabled or not */
-  enabled_mfa?: boolean;
-  /** Skew Period of Authenticatior Provider to check for codes. */
-  skew?: number;
-  /** Issuer Display to be used on the User's Otp App */
-  issuer?: string | null;
 }
 
 /** The Patch Passwordless Email Provider Options Request class */
@@ -6566,16 +6448,6 @@ export interface PatchProviderPasswordlessSmsOptionsRequest {
   otp_expiry?: number;
   /** Specifies the OTP character length */
   otp_length?: number;
-}
-
-/** The Patch Recovery Code Provider Options Request class */
-export interface PatchProviderRecoveryCodeOptionsRequest {
-  /** Enabled Mfa For Recovery Code */
-  enabled_mfa?: boolean;
-  /** Recovery code Length */
-  code_length?: number;
-  /** Number of codes to be generated */
-  number_of_codes?: number;
 }
 
 /** The Patch Username Password Provider Options Request class */
@@ -6636,13 +6508,11 @@ export interface PatchTenantRequest {
 
 /** * **local**
  * * **passwordless_email**
- * * **passwordless_sms**
- * * **otp** */
+ * * **passwordless_sms** */
 export const PrimarySchemes = {
   Local: 'local',
   PasswordlessEmail: 'passwordless_email',
   PasswordlessSms: 'passwordless_sms',
-  Otp: 'otp',
 } as const;
 
 export type PrimarySchemes = typeof PrimarySchemes[keyof typeof PrimarySchemes];
@@ -6689,36 +6559,6 @@ export interface ProviderFacebookOptions {
   fields?: string[] | null;
 }
 
-/** The Fido Biometric Provider Options response class */
-export interface ProviderFidoBiometricOptions {
-  /** Enable Fido Biometric Provider */
-  enabled: boolean;
-  /** Enable Mfa for Fido Bimetric */
-  enabled_mfa: boolean;
-  /** Relying party domain to be used when registering a new biometrics */
-  relying_party?: string | null;
-  /** Preference on the type of User verification required. */
-  user_verification: FidoUserVerification;
-  /** Timeout for the Biometrics capture in milliseconds. */
-  timeout: number;
-}
-
-/** The Fido Roaming Provider Options response class */
-export interface ProviderFidoRoamingOptions {
-  /** Enable Fido Roaming Provider */
-  enabled: boolean;
-  /** Enable User Registration */
-  enable_user_registration: boolean;
-  /** Enable Mfa for Fido Roaming */
-  enabled_mfa: boolean;
-  /** Relying party domain to be used when registering a new Roaming */
-  relying_party?: string | null;
-  /** Preference on the type of User verification required. */
-  user_verification: FidoUserVerification;
-  /** Timeout for the Roaming capture in milliseconds. */
-  timeout: number;
-}
-
 /** The Google Provider Options response class */
 export interface ProviderGoogleOptions {
   /** Enables the Social Provider */
@@ -6745,34 +6585,12 @@ export interface ProviderOptions {
   apple?: ProviderAppleOptions | null;
   /** Facebook's Provider Settings */
   facebook?: ProviderFacebookOptions | null;
-  /** Otp (TOTP) Provider Settings */
-  otp: ProviderOtpOptions;
-  /** FIDO Biometric Provider Settings */
-  fido_biometric: ProviderFidoBiometricOptions;
-  /** FIDO Roaming Provider Settings */
-  fido_roaming: ProviderFidoRoamingOptions;
   /** Passwordless Email Provider settings */
   passwordless_email: ProviderPasswordlessEmailOptions;
   /** Paswordless Sms Provider Settings */
   passwordless_sms: ProviderPasswordlessSmsOptions;
   /** Username-Password Provider Settings */
   username_password: ProviderUsernamePasswordOptions;
-  /** Recovery Code Provider Settings */
-  recovery_code: ProviderRecoveryCodeOptions;
-}
-
-/** The Otp Provider Options response class */
-export interface ProviderOtpOptions {
-  /** Indicates if the specific scheme is enabled or not */
-  enabled: boolean;
-  /** If set to false, users won't be able to signup/register using this scheme */
-  enable_user_registration: boolean;
-  /** Indicates if the specific Mfa Factor is enabled or not */
-  enabled_mfa: boolean;
-  /** Skew Period of Authenticatior Provider to check for codes. */
-  skew: number;
-  /** Issuer Display to be used on the User's Otp App */
-  issuer?: string | null;
 }
 
 /** The Passwordless Email Provider Options response class */
@@ -6803,16 +6621,6 @@ export interface ProviderPasswordlessSmsOptions {
   otp_expiry: number;
   /** Specifies the OTP character length */
   otp_length: number;
-}
-
-/** The Recovery Code Provider Options response class */
-export interface ProviderRecoveryCodeOptions {
-  /** Enabled Mfa For Recovery Code */
-  enabled_mfa: boolean;
-  /** Recovery code Length */
-  code_length: number;
-  /** Number of codes to be generated */
-  number_of_codes: number;
 }
 
 /** The Username-Password Provider Options response class */
@@ -6874,18 +6682,14 @@ export type RememberConsentTypes =
 /** * **local**
  * * **passwordless_email**
  * * **passwordless_sms**
- * * **otp**
  * * **google**
- * * **git_hub**
  * * **apple**
  * * **facebook** */
 export const SchemeNames = {
   Local: 'local',
   PasswordlessEmail: 'passwordless_email',
   PasswordlessSms: 'passwordless_sms',
-  Otp: 'otp',
   Google: 'google',
-  GitHub: 'git_hub',
   Apple: 'apple',
   Facebook: 'facebook',
 } as const;
@@ -7039,13 +6843,6 @@ export const TenantRegion = {
 
 export type TenantRegion = typeof TenantRegion[keyof typeof TenantRegion];
 
-/** * **default** */
-export const ThemeNames = {
-  Default: 'default',
-} as const;
-
-export type ThemeNames = typeof ThemeNames[keyof typeof ThemeNames];
-
 /** * **sliding** - When refreshing the token, the lifetime of the refresh token will be renewed (by the amount specified in "Sliding Refresh Token Lifetime" parameter). The lifetime will not exceed the time specified in the "Absolute Refresh Token Lifetime" parameter
  * * **absolute** - The refresh token will expire on a fixed point in time (specified by the "Absolute Refresh Token Lifetime" parameter) */
 export const TokenExpirationTypes = {
@@ -7146,11 +6943,9 @@ export interface UserSummary {
 }
 
 /** * **no_check** - Will not check for revocation.
- * * **online** - Will check for revocation with root CA and intermediary CAs
  * * **offline** - Will check for revocation against the customer generated revocation list */
 export const X509RevocationMode = {
   NoCheck: 'no_check',
-  Online: 'online',
   Offline: 'offline',
 } as const;
 
