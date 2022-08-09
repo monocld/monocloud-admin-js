@@ -3949,18 +3949,6 @@
         "additionalProperties": false,
         "description": "The Account Protection UserLockout response class"
       },
-      "AllowedGrantTypes": {
-        "enum": [
-          "implicit",
-          "hybrid",
-          "authorization_code",
-          "client_credentials",
-          "password",
-          "device_code"
-        ],
-        "type": "string",
-        "description": "* **implicit**\r\n* **hybrid**\r\n* **authorization_code**\r\n* **client_credentials**\r\n* **password**\r\n* **device_code**"
-      },
       "AllowedRegistrationMethods": {
         "enum": [
           "email",
@@ -4554,7 +4542,7 @@
               "type": "enum",
               "allOf": [
                 {
-                  "$ref": "#/components/schemas/AllowedGrantTypes"
+                  "$ref": "#/components/schemas/GrantTypes"
                 }
               ]
             },
@@ -4695,7 +4683,7 @@
             "type": "enum",
             "allOf": [
               {
-                "$ref": "#/components/schemas/TokenExpirationTypes"
+                "$ref": "#/components/schemas/RefreshTokenExpirationTypes"
               }
             ],
             "description": "Specifies how the refresh token expires"
@@ -5224,7 +5212,7 @@
               "type": "enum",
               "allOf": [
                 {
-                  "$ref": "#/components/schemas/AllowedGrantTypes"
+                  "$ref": "#/components/schemas/GrantTypes"
                 }
               ]
             },
@@ -5398,7 +5386,7 @@
             "type": "enum",
             "allOf": [
               {
-                "$ref": "#/components/schemas/TokenExpirationTypes"
+                "$ref": "#/components/schemas/RefreshTokenExpirationTypes"
               }
             ],
             "description": "Specifies how the refresh token expires",
@@ -5794,6 +5782,18 @@
         "additionalProperties": false,
         "description": "The Branding Generic Sms Template Options response class"
       },
+      "GrantTypes": {
+        "enum": [
+          "implicit",
+          "hybrid",
+          "authorization_code",
+          "client_credentials",
+          "password",
+          "device_code"
+        ],
+        "type": "string",
+        "description": "* **implicit**\r\n* **hybrid**\r\n* **authorization_code**\r\n* **client_credentials**\r\n* **password**\r\n* **device_code**"
+      },
       "IdentityResource": {
         "required": [
           "creation_time",
@@ -6004,6 +6004,13 @@
         ],
         "type": "string",
         "description": "Specifies the purpose / use of the key\r\n* **signing** - The key can be used for signing new tokens.\r\n* **validation** - The key can be used for validating the tokens."
+      },
+      "Languages": {
+        "enum": [
+          "english_us"
+        ],
+        "type": "string",
+        "description": "* **english_us**"
       },
       "Log": {
         "required": [
@@ -7016,7 +7023,7 @@
               "type": "enum",
               "allOf": [
                 {
-                  "$ref": "#/components/schemas/AllowedGrantTypes"
+                  "$ref": "#/components/schemas/GrantTypes"
                 }
               ]
             },
@@ -7176,7 +7183,7 @@
             "type": "enum",
             "allOf": [
               {
-                "$ref": "#/components/schemas/TokenExpirationTypes"
+                "$ref": "#/components/schemas/RefreshTokenExpirationTypes"
               }
             ],
             "description": "Specifies how the refresh token expires"
@@ -8596,6 +8603,14 @@
         "additionalProperties": false,
         "description": "The Username-Password Provider Options response class"
       },
+      "RefreshTokenExpirationTypes": {
+        "enum": [
+          "sliding",
+          "absolute"
+        ],
+        "type": "string",
+        "description": "* **sliding** - When refreshing the token, the lifetime of the refresh token will be renewed (by the amount specified in \"Sliding Refresh Token Lifetime\" parameter). The lifetime will not exceed the time specified in the \"Absolute Refresh Token Lifetime\" parameter\r\n* **absolute** - The refresh token will expire on a fixed point in time (specified by the \"Absolute Refresh Token Lifetime\" parameter)"
+      },
       "RefreshTokenUsageTypes": {
         "enum": [
           "reuse",
@@ -9047,13 +9062,12 @@
         "type": "string",
         "description": "* **as**\r\n* **eu**\r\n* **us**"
       },
-      "TokenExpirationTypes": {
+      "ThemeNames": {
         "enum": [
-          "sliding",
-          "absolute"
+          "default"
         ],
         "type": "string",
-        "description": "* **sliding** - When refreshing the token, the lifetime of the refresh token will be renewed (by the amount specified in \"Sliding Refresh Token Lifetime\" parameter). The lifetime will not exceed the time specified in the \"Absolute Refresh Token Lifetime\" parameter\r\n* **absolute** - The refresh token will expire on a fixed point in time (specified by the \"Absolute Refresh Token Lifetime\" parameter)"
+        "description": "* **default**"
       },
       "TrustStoreCertificates": {
         "required": [
