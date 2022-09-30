@@ -1606,6 +1606,202 @@ export class OptionsClient extends MonoCloudClientBase {
         }
         return Promise.resolve<MonoCloudResponse<MtlsOptions>>(new MonoCloudResponse(status, _headers, null as any));
     }
+
+    /**
+     * Create Custom Field Options
+     * @param {CreateSignUpCustomFieldOptionsRequest} body Request Body
+     * @return {Promise<MonoCloudResponse<SignUpCustomFieldOptions>>} Success
+     */
+    createSignUpCustomField(body: CreateSignUpCustomFieldOptionsRequest , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<SignUpCustomFieldOptions>> {
+        let url_ = this.baseUrl + "/v1/options/custom_fields";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_: AxiosRequestConfig = {
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processCreateSignUpCustomField(_response);
+        });
+    }
+
+    protected processCreateSignUpCustomField(response: AxiosResponse): Promise<MonoCloudResponse<SignUpCustomFieldOptions>> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = resultData200;
+            return Promise.resolve<MonoCloudResponse<SignUpCustomFieldOptions>>(new MonoCloudResponse<SignUpCustomFieldOptions>(status, _headers, result200));
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = resultData400;
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 422) {
+            const _responseText = response.data;
+            let result422: any = null;
+            let resultData422  = _responseText;
+            result422 = resultData422;
+            return throwException("Client Error", status, _responseText, _headers, result422);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<MonoCloudResponse<SignUpCustomFieldOptions>>(new MonoCloudResponse(status, _headers, null as any));
+    }
+
+    /**
+     * Update Custom Field Options
+     * @param {PatchSignUpCustomFieldOptionsRequest} body Request Body
+     * @return {Promise<MonoCloudResponse<SignUpCustomFieldOptions>>} Success
+     */
+    patchSignUpCustomField(claimName: string, body: PatchSignUpCustomFieldOptionsRequest , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<SignUpCustomFieldOptions>> {
+        let url_ = this.baseUrl + "/v1/options/custom_fields/{claimName}";
+        if (claimName === undefined || claimName === null || claimName.toString().trim() === "")
+            throw new Error("The parameter 'claimName' must be defined.");
+        url_ = url_.replace("{claimName}", encodeURIComponent("" + claimName));
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_: AxiosRequestConfig = {
+            data: content_,
+            method: "PATCH",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processPatchSignUpCustomField(_response);
+        });
+    }
+
+    protected processPatchSignUpCustomField(response: AxiosResponse): Promise<MonoCloudResponse<SignUpCustomFieldOptions>> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = resultData200;
+            return Promise.resolve<MonoCloudResponse<SignUpCustomFieldOptions>>(new MonoCloudResponse<SignUpCustomFieldOptions>(status, _headers, result200));
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = resultData400;
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 422) {
+            const _responseText = response.data;
+            let result422: any = null;
+            let resultData422  = _responseText;
+            result422 = resultData422;
+            return throwException("Client Error", status, _responseText, _headers, result422);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<MonoCloudResponse<SignUpCustomFieldOptions>>(new MonoCloudResponse(status, _headers, null as any));
+    }
+
+    /**
+     * Delete Custom Field Options
+     * @return {Promise<MonoCloudResponse<void>>} No Content
+     */
+    deleteSignUpCustomField(claimName: string , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<void>> {
+        let url_ = this.baseUrl + "/v1/options/custom_fields/{claimName}";
+        if (claimName === undefined || claimName === null || claimName.toString().trim() === "")
+            throw new Error("The parameter 'claimName' must be defined.");
+        url_ = url_.replace("{claimName}", encodeURIComponent("" + claimName));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "DELETE",
+            url: url_,
+            headers: {
+            },
+            cancelToken
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processDeleteSignUpCustomField(_response);
+        });
+    }
+
+    protected processDeleteSignUpCustomField(response: AxiosResponse): Promise<MonoCloudResponse<void>> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 204) {
+    
+            return Promise.resolve<MonoCloudResponse<void>>(new MonoCloudResponse<void>(status, _headers, null as any));
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<MonoCloudResponse<void>>(new MonoCloudResponse(status, _headers, null as any));
+    }
 }
 
 export class ResourcesClient extends MonoCloudClientBase {
@@ -3019,11 +3215,11 @@ export class TrustStoreClient extends MonoCloudClientBase {
     }
 
     /**
-     * Get All Certificates
-     * @return {Promise<MonoCloudResponse<TrustStoreCertificates>>} Success
+     * Get Truststore
+     * @return {Promise<MonoCloudResponse<TrustStore>>} Success
      */
-    getAllCertificates(  cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<TrustStoreCertificates>> {
-        let url_ = this.baseUrl + "/v1/truststore/certificates";
+    getTrustStore(  cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<TrustStore>> {
+        let url_ = this.baseUrl + "/v1/truststore";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: AxiosRequestConfig = {
@@ -3042,11 +3238,11 @@ export class TrustStoreClient extends MonoCloudClientBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.processGetAllCertificates(_response);
+            return this.processGetTrustStore(_response);
         });
     }
 
-    protected processGetAllCertificates(response: AxiosResponse): Promise<MonoCloudResponse<TrustStoreCertificates>> {
+    protected processGetTrustStore(response: AxiosResponse): Promise<MonoCloudResponse<TrustStore>> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -3061,7 +3257,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
             let result200: any = null;
             let resultData200  = _responseText;
             result200 = resultData200;
-            return Promise.resolve<MonoCloudResponse<TrustStoreCertificates>>(new MonoCloudResponse<TrustStoreCertificates>(status, _headers, result200));
+            return Promise.resolve<MonoCloudResponse<TrustStore>>(new MonoCloudResponse<TrustStore>(status, _headers, result200));
 
         } else if (status === 404) {
             const _responseText = response.data;
@@ -3074,15 +3270,15 @@ export class TrustStoreClient extends MonoCloudClientBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<MonoCloudResponse<TrustStoreCertificates>>(new MonoCloudResponse(status, _headers, null as any));
+        return Promise.resolve<MonoCloudResponse<TrustStore>>(new MonoCloudResponse(status, _headers, null as any));
     }
 
     /**
-     * Update Certificates
-     * @param {UpdateTrustStoreCertificatesRequest} body Request Body
-     * @return {Promise<MonoCloudResponse<TrustStoreCertificates>>} Success
+     * Add Certificates to truststore
+     * @param {AddTrustStoreCertificatesRequest} body Request Body
+     * @return {Promise<MonoCloudResponse<TrustStore>>} Success
      */
-    updateCertificates(body: UpdateTrustStoreCertificatesRequest , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<TrustStoreCertificates>> {
+    addCertificates(body: AddTrustStoreCertificatesRequest , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<TrustStore>> {
         let url_ = this.baseUrl + "/v1/truststore/certificates";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -3090,7 +3286,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
 
         let options_: AxiosRequestConfig = {
             data: content_,
-            method: "PUT",
+            method: "POST",
             url: url_,
             headers: {
                 "Content-Type": "application/json",
@@ -3106,11 +3302,11 @@ export class TrustStoreClient extends MonoCloudClientBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.processUpdateCertificates(_response);
+            return this.processAddCertificates(_response);
         });
     }
 
-    protected processUpdateCertificates(response: AxiosResponse): Promise<MonoCloudResponse<TrustStoreCertificates>> {
+    protected processAddCertificates(response: AxiosResponse): Promise<MonoCloudResponse<TrustStore>> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -3125,7 +3321,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
             let result200: any = null;
             let resultData200  = _responseText;
             result200 = resultData200;
-            return Promise.resolve<MonoCloudResponse<TrustStoreCertificates>>(new MonoCloudResponse<TrustStoreCertificates>(status, _headers, result200));
+            return Promise.resolve<MonoCloudResponse<TrustStore>>(new MonoCloudResponse<TrustStore>(status, _headers, result200));
 
         } else if (status === 404) {
             const _responseText = response.data;
@@ -3152,82 +3348,27 @@ export class TrustStoreClient extends MonoCloudClientBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<MonoCloudResponse<TrustStoreCertificates>>(new MonoCloudResponse(status, _headers, null as any));
+        return Promise.resolve<MonoCloudResponse<TrustStore>>(new MonoCloudResponse(status, _headers, null as any));
     }
 
     /**
-     * Get All Revocations
-     * @return {Promise<MonoCloudResponse<TrustStoreRevocations>>} Success
+     * Update a Certificate
+     * @param {string} id Certificate Id
+     * @param {PatchTrustStoreCertificateRequest} body Request Body
+     * @return {Promise<MonoCloudResponse<TrustStoreCertificate>>} Success
      */
-    getAllRevocations(  cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<TrustStoreRevocations>> {
-        let url_ = this.baseUrl + "/v1/truststore/revocations";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: AxiosRequestConfig = {
-            method: "GET",
-            url: url_,
-            headers: {
-                "Accept": "text/plain"
-            },
-            cancelToken
-        };
-
-        return this.instance.request(options_).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetAllRevocations(_response);
-        });
-    }
-
-    protected processGetAllRevocations(response: AxiosResponse): Promise<MonoCloudResponse<TrustStoreRevocations>> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return Promise.resolve<MonoCloudResponse<TrustStoreRevocations>>(new MonoCloudResponse<TrustStoreRevocations>(status, _headers, result200));
-
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = resultData404;
-            return throwException("Not Found", status, _responseText, _headers, result404);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<MonoCloudResponse<TrustStoreRevocations>>(new MonoCloudResponse(status, _headers, null as any));
-    }
-
-    /**
-     * Update Revocations
-     * @param {UpdateTrustStoreRevocationsRequest} body Request Body
-     * @return {Promise<MonoCloudResponse<TrustStoreRevocations>>} Success
-     */
-    updateRevocations(body: UpdateTrustStoreRevocationsRequest , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<TrustStoreRevocations>> {
-        let url_ = this.baseUrl + "/v1/truststore/revocations";
+    patchCertificate(id: string, body: PatchTrustStoreCertificateRequest , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<TrustStoreCertificate>> {
+        let url_ = this.baseUrl + "/v1/truststore/certificates/{id}";
+        if (id === undefined || id === null || id.toString().trim() === "")
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
 
         let options_: AxiosRequestConfig = {
             data: content_,
-            method: "PUT",
+            method: "PATCH",
             url: url_,
             headers: {
                 "Content-Type": "application/json",
@@ -3243,11 +3384,11 @@ export class TrustStoreClient extends MonoCloudClientBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.processUpdateRevocations(_response);
+            return this.processPatchCertificate(_response);
         });
     }
 
-    protected processUpdateRevocations(response: AxiosResponse): Promise<MonoCloudResponse<TrustStoreRevocations>> {
+    protected processPatchCertificate(response: AxiosResponse): Promise<MonoCloudResponse<TrustStoreCertificate>> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -3262,7 +3403,130 @@ export class TrustStoreClient extends MonoCloudClientBase {
             let result200: any = null;
             let resultData200  = _responseText;
             result200 = resultData200;
-            return Promise.resolve<MonoCloudResponse<TrustStoreRevocations>>(new MonoCloudResponse<TrustStoreRevocations>(status, _headers, result200));
+            return Promise.resolve<MonoCloudResponse<TrustStoreCertificate>>(new MonoCloudResponse<TrustStoreCertificate>(status, _headers, result200));
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = resultData400;
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 422) {
+            const _responseText = response.data;
+            let result422: any = null;
+            let resultData422  = _responseText;
+            result422 = resultData422;
+            return throwException("Client Error", status, _responseText, _headers, result422);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<MonoCloudResponse<TrustStoreCertificate>>(new MonoCloudResponse(status, _headers, null as any));
+    }
+
+    /**
+     * Delete a Certificate
+     * @param {string} id Certificate Id
+     * @return {Promise<MonoCloudResponse<void>>} No Content
+     */
+    deleteCertificate(id: string , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<void>> {
+        let url_ = this.baseUrl + "/v1/truststore/certificates/{id}";
+        if (id === undefined || id === null || id.toString().trim() === "")
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "DELETE",
+            url: url_,
+            headers: {
+            },
+            cancelToken
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processDeleteCertificate(_response);
+        });
+    }
+
+    protected processDeleteCertificate(response: AxiosResponse): Promise<MonoCloudResponse<void>> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 204) {
+    
+            return Promise.resolve<MonoCloudResponse<void>>(new MonoCloudResponse<void>(status, _headers, null as any));
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<MonoCloudResponse<void>>(new MonoCloudResponse(status, _headers, null as any));
+    }
+
+    /**
+     * Add Certificate Revocations to truststore
+     * @param {AddTrustStoreRevocationsRequest} body Request Body
+     * @return {Promise<MonoCloudResponse<TrustStore>>} Success
+     */
+    addCertificateRevocations(body: AddTrustStoreRevocationsRequest , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<TrustStore>> {
+        let url_ = this.baseUrl + "/v1/truststore/revocations";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_: AxiosRequestConfig = {
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processAddCertificateRevocations(_response);
+        });
+    }
+
+    protected processAddCertificateRevocations(response: AxiosResponse): Promise<MonoCloudResponse<TrustStore>> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = resultData200;
+            return Promise.resolve<MonoCloudResponse<TrustStore>>(new MonoCloudResponse<TrustStore>(status, _headers, result200));
 
         } else if (status === 404) {
             const _responseText = response.data;
@@ -3289,7 +3553,134 @@ export class TrustStoreClient extends MonoCloudClientBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<MonoCloudResponse<TrustStoreRevocations>>(new MonoCloudResponse(status, _headers, null as any));
+        return Promise.resolve<MonoCloudResponse<TrustStore>>(new MonoCloudResponse(status, _headers, null as any));
+    }
+
+    /**
+     * Update a Certificate Revocation
+     * @param {string} id Certificate Revocation Id
+     * @param {PatchTrustStoreRevocationRequest} body Request Body
+     * @return {Promise<MonoCloudResponse<TrustStoreRevocation>>} Success
+     */
+    patchCertificateRevocations(id: string, body: PatchTrustStoreRevocationRequest , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<TrustStoreRevocation>> {
+        let url_ = this.baseUrl + "/v1/truststore/revocations/{id}";
+        if (id === undefined || id === null || id.toString().trim() === "")
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_: AxiosRequestConfig = {
+            data: content_,
+            method: "PATCH",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processPatchCertificateRevocations(_response);
+        });
+    }
+
+    protected processPatchCertificateRevocations(response: AxiosResponse): Promise<MonoCloudResponse<TrustStoreRevocation>> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = resultData200;
+            return Promise.resolve<MonoCloudResponse<TrustStoreRevocation>>(new MonoCloudResponse<TrustStoreRevocation>(status, _headers, result200));
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = resultData400;
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 422) {
+            const _responseText = response.data;
+            let result422: any = null;
+            let resultData422  = _responseText;
+            result422 = resultData422;
+            return throwException("Client Error", status, _responseText, _headers, result422);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<MonoCloudResponse<TrustStoreRevocation>>(new MonoCloudResponse(status, _headers, null as any));
+    }
+
+    /**
+     * Delete a Certificate Revocation
+     * @param {string} id Certificate Revocation Id
+     * @return {Promise<MonoCloudResponse<void>>} No Content
+     */
+    deleteCertificateRevocation(id: string , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<void>> {
+        let url_ = this.baseUrl + "/v1/truststore/revocations/{id}";
+        if (id === undefined || id === null || id.toString().trim() === "")
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "DELETE",
+            url: url_,
+            headers: {
+            },
+            cancelToken
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processDeleteCertificateRevocation(_response);
+        });
+    }
+
+    protected processDeleteCertificateRevocation(response: AxiosResponse): Promise<MonoCloudResponse<void>> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 204) {
+    
+            return Promise.resolve<MonoCloudResponse<void>>(new MonoCloudResponse<void>(status, _headers, null as any));
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<MonoCloudResponse<void>>(new MonoCloudResponse(status, _headers, null as any));
     }
 }
 
@@ -3328,77 +3719,6 @@ export class UsersClient extends MonoCloudClientBase {
 
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
 
-    }
-
-    /**
-     * Create a User
-     * @param {CreateUserRequest} body Request Body
-     * @return {Promise<MonoCloudResponse<User>>} Created
-     */
-    createUser(body: CreateUserRequest , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<User>> {
-        let url_ = this.baseUrl + "/v1/users";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_: AxiosRequestConfig = {
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "text/plain"
-            },
-            cancelToken
-        };
-
-        return this.instance.request(options_).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processCreateUser(_response);
-        });
-    }
-
-    protected processCreateUser(response: AxiosResponse): Promise<MonoCloudResponse<User>> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 201) {
-            const _responseText = response.data;
-            let result201: any = null;
-            let resultData201  = _responseText;
-            result201 = resultData201;
-            return Promise.resolve<MonoCloudResponse<User>>(new MonoCloudResponse<User>(status, _headers, result201));
-
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = resultData400;
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-
-        } else if (status === 422) {
-            const _responseText = response.data;
-            let result422: any = null;
-            let resultData422  = _responseText;
-            result422 = resultData422;
-            return throwException("Client Error", status, _responseText, _headers, result422);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<MonoCloudResponse<User>>(new MonoCloudResponse(status, _headers, null as any));
     }
 
     /**
@@ -3464,69 +3784,6 @@ export class UsersClient extends MonoCloudClientBase {
     }
 
     /**
-     * Find a User by Id
-     * @param {string} user_id User Id
-     * @return {Promise<MonoCloudResponse<User>>} Success
-     */
-    findUserById(user_id: string , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<User>> {
-        let url_ = this.baseUrl + "/v1/users/{user_id}";
-        if (user_id === undefined || user_id === null || user_id.toString().trim() === "")
-            throw new Error("The parameter 'user_id' must be defined.");
-        url_ = url_.replace("{user_id}", encodeURIComponent("" + user_id));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: AxiosRequestConfig = {
-            method: "GET",
-            url: url_,
-            headers: {
-                "Accept": "text/plain"
-            },
-            cancelToken
-        };
-
-        return this.instance.request(options_).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processFindUserById(_response);
-        });
-    }
-
-    protected processFindUserById(response: AxiosResponse): Promise<MonoCloudResponse<User>> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200;
-            return Promise.resolve<MonoCloudResponse<User>>(new MonoCloudResponse<User>(status, _headers, result200));
-
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = resultData404;
-            return throwException("Not Found", status, _responseText, _headers, result404);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<MonoCloudResponse<User>>(new MonoCloudResponse(status, _headers, null as any));
-    }
-
-    /**
      * Delete a User
      * @param {string} user_id User Id
      * @return {Promise<MonoCloudResponse<void>>} No Content
@@ -3579,13 +3836,13 @@ export class UsersClient extends MonoCloudClientBase {
     }
 
     /**
-     * Update Custom Data.
+     * Update User's Private Data.
      * @param {string} user_id User Id
      * @param {{ [key: string]: any; }} body Request Body
      * @return {Promise<MonoCloudResponse<{ [key: string]: any; }>>} Success
      */
-    patchCustomDataKey(user_id: string, body: { [key: string]: any; } , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<{ [key: string]: any; }>> {
-        let url_ = this.baseUrl + "/v1/users/{user_id}/custom_data";
+    patchPrivateDataKey(user_id: string, body: { [key: string]: any; } , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<{ [key: string]: any; }>> {
+        let url_ = this.baseUrl + "/v1/users/{user_id}/private_data";
         if (user_id === undefined || user_id === null || user_id.toString().trim() === "")
             throw new Error("The parameter 'user_id' must be defined.");
         url_ = url_.replace("{user_id}", encodeURIComponent("" + user_id));
@@ -3611,11 +3868,11 @@ export class UsersClient extends MonoCloudClientBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.processPatchCustomDataKey(_response);
+            return this.processPatchPrivateDataKey(_response);
         });
     }
 
-    protected processPatchCustomDataKey(response: AxiosResponse): Promise<MonoCloudResponse<{ [key: string]: any; }>> {
+    protected processPatchPrivateDataKey(response: AxiosResponse): Promise<MonoCloudResponse<{ [key: string]: any; }>> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -3654,13 +3911,13 @@ export class UsersClient extends MonoCloudClientBase {
     }
 
     /**
-     * Update User Data.
+     * Update User's Public Data.
      * @param {string} user_id User Id
      * @param {{ [key: string]: any; }} body Request Body
      * @return {Promise<MonoCloudResponse<{ [key: string]: any; }>>} Success
      */
-    patchUserDataKey(user_id: string, body: { [key: string]: any; } , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<{ [key: string]: any; }>> {
-        let url_ = this.baseUrl + "/v1/users/{user_id}/user_data";
+    patchPublicDataKey(user_id: string, body: { [key: string]: any; } , cancelToken?: CancelToken | undefined): Promise<MonoCloudResponse<{ [key: string]: any; }>> {
+        let url_ = this.baseUrl + "/v1/users/{user_id}/public_data";
         if (user_id === undefined || user_id === null || user_id.toString().trim() === "")
             throw new Error("The parameter 'user_id' must be defined.");
         url_ = url_.replace("{user_id}", encodeURIComponent("" + user_id));
@@ -3686,11 +3943,11 @@ export class UsersClient extends MonoCloudClientBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.processPatchUserDataKey(_response);
+            return this.processPatchPublicDataKey(_response);
         });
     }
 
-    protected processPatchUserDataKey(response: AxiosResponse): Promise<MonoCloudResponse<{ [key: string]: any; }>> {
+    protected processPatchPublicDataKey(response: AxiosResponse): Promise<MonoCloudResponse<{ [key: string]: any; }>> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -3738,25 +3995,21 @@ export const AccessTokenTypes = {
 
 export type AccessTokenTypes = typeof AccessTokenTypes[keyof typeof AccessTokenTypes];
 
-  /** * **off**
- * * **merge_if_verified**
- * * **always** */
-export const AccountMergeModes = {
-  Off: "off",
-  MergeIfVerified: "merge_if_verified",
-  Always: "always",
-} as const;
-
-export type AccountMergeModes = typeof AccountMergeModes[keyof typeof AccountMergeModes];
-
-  /** * **primary_email**
- * * **all_emails** */
-export const AccountMergeProperty = {
-  PrimaryEmail: "primary_email",
-  AllEmails: "all_emails",
-} as const;
-
-export type AccountMergeProperty = typeof AccountMergeProperty[keyof typeof AccountMergeProperty];
+/** The Account Merging Options response class */
+export interface AccountMergingOptions {
+    /** Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is also verified. */
+    external_verified_existing_verified: MergeModes;
+    /** Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is unverified. */
+    external_verified_existing_unverified: MergeModes;
+    /** Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is verified. */
+    external_unverified_existing_verified: MergeModes;
+    /** Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is also unverified. */
+    external_unverified_existing_unverified: MergeModes;
+    /** Specifies account merge mode when the login is a passwordless one and the existing (external) account's email/phone is the same but unverified. */
+    passwordless_verified_existing_external_unverified: MergeModes;
+    /** Specifies account merge mode when the login is a passwordless one and the existing (local) account's email/phone is the same but unverified. */
+    passwordless_verified_existing_local_unverified: MergeModes;
+}
 
 /** The Account Protection response class */
 export interface AccountProtectionOptions {
@@ -3780,16 +4033,17 @@ export interface AccountProtectionUserLockoutOptions {
     lockout_type: UserLockoutTypes;
 }
 
-  /** * **email**
- * * **username**
- * * **phone** */
-export const AllowedRegistrationMethods = {
-  Email: "email",
-  Username: "username",
-  Phone: "phone",
-} as const;
+/** Add Certificates Request. */
+export interface AddTrustStoreCertificatesRequest {
+    /** List of certificates. */
+    certificates: CreateTrustStoreCertificateRequest[];
+}
 
-export type AllowedRegistrationMethods = typeof AllowedRegistrationMethods[keyof typeof AllowedRegistrationMethods];
+/** Add Revocations Request. */
+export interface AddTrustStoreRevocationsRequest {
+    /** List of certificate revocations. */
+    revocations: CreateTrustStoreRevocationRequest[];
+}
 
 /** The Api Resource response class */
 export interface ApiResource {
@@ -3843,36 +4097,241 @@ export interface ApiScope {
     emphasize: boolean;
 }
 
+/** The Authentication General Email response class */
+export interface AuthenticationGeneralEmailOptions {
+    /** Specifies if the users are allowed to sign-in using an email */
+    enable_sign_in: boolean;
+    /** Specifies if the users are allowed to enter an email at the time of registration. */
+    show_at_sign_up: boolean;
+    /** Specifies if the email is required at the time of registration. */
+    required_at_sign_up: boolean;
+    /** Email verification related to Sign Up */
+    verification: AuthenticationGeneralEmailVerificationOptions;
+}
+
+/** The Authentication General Email Verification Options Response class */
+export interface AuthenticationGeneralEmailVerificationOptions {
+    /** Specifies whether the email should be verified at registration. */
+    verify_at_sign_up?: boolean;
+    /** Mode of Verification Sent to the User. Can be Code or Magic Link */
+    mode?: EmailVerificationMode;
+    /** Email expiration time in seconds. */
+    expiration?: number;
+    /** If Email Code is Selected, Code length is chosen from this option */
+    code_length?: number;
+}
+
+/** The Authentication General Options response class */
+export interface AuthenticationGeneralOptions {
+    /** Specifies whether secure mode is enabled */
+    enable_secure_mode: boolean;
+    /** Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access. */
+    consent_required_for_offline_access: boolean;
+    /** Show RememberMe Checkbox on the SignIn Screen */
+    allow_remember_me: boolean;
+    /** RememberMe Duration in minutes */
+    remember_me_duration: number;
+    /** General Email Requirement Options for Users */
+    email: AuthenticationGeneralEmailOptions;
+    /** General Phone Requirement Options for Users */
+    phone: AuthenticationGeneralPhoneOptions;
+    /** General Username Requirement Options for Users */
+    username: AuthenticationGeneralUsernameOptions;
+}
+
+/** The Authentication General Phone response class */
+export interface AuthenticationGeneralPhoneOptions {
+    /** Specifies if the users are allowed to sign-in using a phone number */
+    enable_sign_in: boolean;
+    /** Specifies if the users are allowed to enter a phone number at the time of registration. */
+    show_at_sign_up: boolean;
+    /** Specifies if the phone number is required at the time of registration. */
+    required_at_sign_up: boolean;
+    /** Sms verification related to Sign Up */
+    verification: AuthenticationGeneralPhoneVerificationOptions;
+}
+
+/** The Authentication General Phone Verification Options Response class */
+export interface AuthenticationGeneralPhoneVerificationOptions {
+    /** Specifies whether the phone should be verified at registration. */
+    verify_at_sign_up?: boolean;
+    /** Sms verification expiration time in seconds. */
+    expiration?: number;
+    /** Sms Code length is chosen from this option */
+    code_length?: number;
+}
+
+/** The Authentication General Username response class */
+export interface AuthenticationGeneralUsernameOptions {
+    /** Specifies if the users are allowed to sign-in using a username */
+    enable_sign_in: boolean;
+    /** Specifies if the users are allowed to enter a username at the time of registration. */
+    show_at_sign_up: boolean;
+    /** Specifies if the username is required at the time of registration. */
+    required_at_sign_up: boolean;
+    /** Specifies the minimum length required for the username. */
+    minimum_length: number;
+}
+
+/** The Authentication Method Email Code response class */
+export interface AuthenticationMethodEmailCodeOptions {
+    /** Enable Email Code Sign-in */
+    enable_sign_in: boolean;
+    /** Enable Email Code Sign-up */
+    enable_sign_up: boolean;
+    /** Specifies the expiration time in seconds for the OTP to be generated */
+    otp_expiry: number;
+    /** Specifies the OTP character length */
+    otp_length: number;
+}
+
+/** The Authentication Method Magic Link response class */
+export interface AuthenticationMethodMagicLinkOptions {
+    /** Enable Magic Link Sign-in */
+    enable_sign_in: boolean;
+    /** Enable Magic Link Sign-up */
+    enable_sign_up: boolean;
+    /** Specifies the expiration time in seconds for the OTP to be generated */
+    link_expiry: number;
+}
+
+/** The Authentication Method response class */
+export interface AuthenticationMethodOptions {
+    /** Password Authentication Method Settings */
+    password: AuthenticationMethodPasswordOptions;
+    /** Sms Code Authentication Method Settings */
+    sms_code: AuthenticationMethodSmsCodeOptions;
+    /** Magic Link Authentication Method Settings */
+    magic_link: AuthenticationMethodMagicLinkOptions;
+    /** Email Code Authentication Method Settings */
+    email_code: AuthenticationMethodEmailCodeOptions;
+}
+
+/** The Authentication Method Password Expiration response class */
+export interface AuthenticationMethodPasswordExpirationOptions {
+    /** Specifies the expiration mode. */
+    enabled: boolean;
+    /** Specifies the password expiration period in minutes. */
+    expiration_period: number;
+}
+
+/** The Authentication Method Password Options response class */
+export interface AuthenticationMethodPasswordOptions {
+    /** Enable Password Sign-in */
+    enable_sign_in: boolean;
+    /** Enable Password Sign-up */
+    enable_sign_up: boolean;
+    /** Password Strength Options */
+    strength: AuthenticationMethodPasswordStrengthOptions;
+    /** Password Re-use Options */
+    reuse: AuthenticationMethodPasswordReuseOptions;
+    /** Password Expiration Options */
+    expiration: AuthenticationMethodPasswordExpirationOptions;
+}
+
+/** The Authentication Method Password Reuse response class */
+export interface AuthenticationMethodPasswordReuseOptions {
+    /** Specifies if there should be any restriction for password reuse. */
+    restriction_mode: PasswordRestrictionModes;
+    /** Specifies the time in minutes in which the password cannot be reused. */
+    restriction_period: number;
+    /** Specifies the number of previous passwords which cannot be reused. */
+    restriction_count: number;
+}
+
+/** The Authentication Method Password Strength response class */
+export interface AuthenticationMethodPasswordStrengthOptions {
+    /** Specifies the minimum character length of password */
+    minimum_length: number;
+    /** Specifies the whether a non alphanumeric character is required in the password. */
+    require_non_alphanumeric_character: boolean;
+    /** Specifies the whether a digit is required in the password. */
+    require_digit: boolean;
+    /** Specifies the whether a lowercase character is required in the password. */
+    require_lowercase_character: boolean;
+    /** Specifies the whether a uppercase character is required in the password. */
+    require_uppercase_character: boolean;
+    /** Specifies the number of unique characters required in the password. */
+    required_unique_characters_count: number;
+}
+
+/** The Authentication Method Sms Code response class */
+export interface AuthenticationMethodSmsCodeOptions {
+    /** Enable Sms Code Sign-in */
+    enable_sign_in: boolean;
+    /** Enable Sms Code Sign-up */
+    enable_sign_up: boolean;
+    /** Specifies the expiration time in seconds for the OTP to be generated */
+    otp_expiry: number;
+    /** Specifies the OTP character length */
+    otp_length: number;
+}
+
+  /** * **password**
+ * * **sms_code**
+ * * **magic_link**
+ * * **email_code** */
+export const AuthenticationMethods = {
+  Password: "password",
+  SmsCode: "sms_code",
+  MagicLink: "magic_link",
+  EmailCode: "email_code",
+} as const;
+
+export type AuthenticationMethods = typeof AuthenticationMethods[keyof typeof AuthenticationMethods];
+
 /** The Authentication Options response class */
 export interface AuthenticationOptions {
     /** Account Protection Options */
     account_protection: AccountProtectionOptions;
-    /** Login Options */
-    login: LoginOptions;
+    /** Authentication Method Options */
+    authentication_methods: AuthenticationMethodOptions;
+    /** External Provider Options */
+    external_providers: ExternalProviderOptions;
+    /** Authentication General Options */
+    general: AuthenticationGeneralOptions;
     /** Logout Options */
     logout: LogoutOptions;
-    /** Identity Provider Options */
-    providers: ProviderOptions;
-    /** User Registration Options */
-    registration: RegistrationOptions;
-    /** Signin Options */
-    sign_in: SignInOptions;
+    /** Sign-up Options */
+    sign_up: SignUpOptions;
 }
 
 /** The Branding Email Options response class */
 export interface BrandingEmailOptions {
-    /** Passwordless Email - Link Branding Options */
-    passwordless_email_link?: GenericBrandingEmailTemplateOptions | null;
-    /** Passwordless Email - Code Branding Options */
-    passwordless_email_code?: GenericBrandingEmailTemplateOptions | null;
+    /** Magic Link SignIn Branding Options */
+    magic_link_sign_in?: BrandingGenericEmailTemplateOptions | null;
+    /** Email Code SignIn Branding Options */
+    email_code_sign_in?: BrandingGenericEmailTemplateOptions | null;
+    /** Magic Link Verification Branding Options */
+    magic_link_verification?: BrandingGenericEmailTemplateOptions | null;
+    /** Email Code Verification Branding Options */
+    email_code_verification?: BrandingGenericEmailTemplateOptions | null;
     /** Welcome Email Branding Options */
-    welcome?: GenericBrandingEmailTemplateOptions | null;
-    /** Verify Email Branding Options */
-    verify?: GenericBrandingEmailTemplateOptions | null;
+    welcome?: BrandingGenericEmailTemplateOptions | null;
     /** User Lockout Branding Options */
-    lockout?: GenericBrandingEmailTemplateOptions | null;
-    /** Password Change Branding Options */
-    password_change?: GenericBrandingEmailTemplateOptions | null;
+    user_lockout?: BrandingGenericEmailTemplateOptions | null;
+    /** Reset Password Branding Options */
+    reset_password?: BrandingGenericEmailTemplateOptions | null;
+    /** Password Updated Branding Options */
+    password_updated?: BrandingGenericEmailTemplateOptions | null;
+}
+
+/** The Branding Email Generic Template Options response class */
+export interface BrandingGenericEmailTemplateOptions {
+    /** From Email Address */
+    from_email?: string | null;
+    /** From Name */
+    from_name?: string | null;
+    /** Specifies the text to be used as the email subject */
+    subject?: string | null;
+    /** Specifies the URI for the custom template to be used */
+    template_uri?: string | null;
+}
+
+/** The Branding Generic Sms Template Options response class */
+export interface BrandingGenericSmsTemplateOptions {
+    /** Custom LiquidJS template for the SMS */
+    template: string;
 }
 
 /** The Branding Options response class */
@@ -3899,6 +4358,8 @@ export interface BrandingPageOptions {
     logo_uri?: string | null;
     /** Specifies the primary colour to be used for pages */
     primary_color: string;
+    /** Sign In Page Branding Options */
+    sign_in: BrandingSignInPageOptions;
 }
 
 /** The Branding Project Options response class */
@@ -3915,10 +4376,22 @@ export interface BrandingProjectOptions {
     terms_url?: string | null;
 }
 
+/** The Branding SignIn Page Options response class */
+export interface BrandingSignInPageOptions {
+    /** If enabled password will be prompted on the same screen as the username. */
+    prompt_password_on_initial_screen: boolean;
+    /** If enabled, External SigIn Methods are shown on top and the Primary SigIn method is shown on bottom. */
+    external_sign_in_methods_first: boolean;
+    /** Order of the External SigIn methods buttons */
+    external_sign_in_methods_order: ExternalIDPs[];
+}
+
 /** The Branding Sms Options response class */
 export interface BrandingSmsOptions {
-    /** Passwordless Code Branding Options */
-    passwordless_code?: GenericBrandingSmsTemplateOptions | null;
+    /** Sms Code SignIn Branding Options */
+    sms_code_sign_in?: BrandingGenericSmsTemplateOptions | null;
+    /** Sms Code Verification Branding Options */
+    sms_code_verification?: BrandingGenericSmsTemplateOptions | null;
 }
 
   /** * **chained** - Verifies the certificate with root CA and intermediary CAs
@@ -4017,7 +4490,9 @@ export interface Client {
     /** Specifies whether the local login (Username / Password) is allowed for this client. */
     enable_local_login: boolean;
     /** Specifies which authentication providers can be used with this client (if list is empty all providers are allowed) */
-    identity_provider_restrictions: SchemeNames[];
+    identity_provider_restrictions: IDPs[];
+    /** Specifies which authentication methods can be used with this client (if list is empty all methods are allowed) */
+    authentication_method_restrictions: IDPs[];
     /** Specifies whether JWT access tokens should include an identifier */
     include_jwt_id: boolean;
     /** Allows settings claims for the client (will be included in the access token). */
@@ -4051,7 +4526,7 @@ export interface CommunicationEmailOptions {
 /** The Communicaiton Email SendGrid Options response class */
 export interface CommunicationEmailSendGridOptions {
     /** SendGrid Api Key */
-    api_key?: string | null;
+    api_key: string;
 }
 
 /** The Communication Options response class */
@@ -4205,7 +4680,9 @@ export interface CreateClientRequest {
     /** Specifies whether the local login (Username / Password) is allowed for this client. */
     enable_local_login: boolean;
     /** Specifies which authentication providers can be used with this client (if list is empty all providers are allowed) */
-    identity_provider_restrictions: SchemeNames[];
+    identity_provider_restrictions: IDPs[];
+    /** Specifies which authentication methods can be used with this client (if list is empty all methods are allowed) */
+    authentication_method_restrictions: IDPs[];
     /** Specifies whether JWT access tokens should include an identifier */
     include_jwt_id: boolean;
     /** Allows settings claims for the client (will be included in the access token). */
@@ -4256,40 +4733,34 @@ export interface CreateSecretRequest {
     type: SecretTypes;
 }
 
-/** The Create User class model. */
-export interface CreateUserRequest {
-    /** End-User's preferred e-mail address. Its value MUST conform to the RFC 5322 [RFC5322] addr-spec syntax. */
-    email?: string | null;
-    /** "true" if the End-User's e-mail address has been verified; otherwise "false". */
-    email_verified?: boolean | null;
-    /** End-User's preferred telephone number. E.164 (https://www.itu.int/rec/T-REC-E.164/e) is RECOMMENDED as the format of this Claim, for example, +1 (425) 555-1212 or +56 (2) 687 2400. If the phone number contains an extension, it is RECOMMENDED that the extension be represented using the RFC 3966 [RFC3966] extension syntax, for example, +1 (604) 555-1234;ext=5678. */
-    phone_number?: string | null;
-    /** True if the End-User's phone number has been verified; otherwise false. When this Claim Value is true, this means that the OP took affirmative steps to ensure that this phone number was controlled by the End-User at the time the verification was performed. */
-    phone_number_verified?: boolean | null;
-    /** End-User's username. */
-    username?: string | null;
-    /** End-User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences. */
-    name?: string | null;
-    /** Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters. */
-    given_name?: string | null;
-    /** Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters. */
-    family_name?: string | null;
-    /** Middle name(s) of the End-User. Note that in some cultures, people can have multiple middle names; all can be present, with the names being separated by space characters. Also note that in some cultures, middle names are not used. */
-    middle_name?: string | null;
-    /** Casual name of the End-User that may or may not be the same as the given_name. For instance, a nickname value of Mike might be returned alongside a given_name value of Michael. */
-    nick_name?: string | null;
-    /** URL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image. */
-    picture?: string | null;
-    /** End-User's gender */
-    gender?: string | null;
-    /** Specifies whether the account has been confirmed. */
-    account_confirmed?: boolean | null;
-    /** User account password. */
-    password: string;
-    /** User's Custom Data */
-    custom_data?: { [key: string]: any; } | null;
-    /** User's User Data */
-    user_data?: { [key: string]: any; } | null;
+/** The Create SignUp Custom Field Options Request */
+export interface CreateSignUpCustomFieldOptionsRequest {
+    /** Specifies if the users are allowed to enter the claim at the time of signup. */
+    enabled: boolean;
+    /** Specifies if the claim is required at the time of signup. */
+    required: boolean;
+    /** Specifies the name for the claim. */
+    claim_name: string;
+    /** Specifies the claim value type. */
+    value_type: ValueTypes;
+    /** Specifies the label to be used for the claim at the time of signup. */
+    label: string;
+}
+
+/** Create Certificate Request. */
+export interface CreateTrustStoreCertificateRequest {
+    /** Specifies if the certificate is enabled. */
+    enabled: boolean;
+    /** Certificate Value. */
+    value: string;
+}
+
+/** Create Revocation Request. */
+export interface CreateTrustStoreRevocationRequest {
+    /** Specifies if the certificate is enabled. */
+    enabled: boolean;
+    /** Certificate Crl Value. */
+    value: string;
 }
 
   /** * **numeric** */
@@ -4305,22 +4776,100 @@ export interface DeviceFlowOptions {
     code_length: number;
 }
 
-/** The Branding Email Generic Template Options response class */
-export interface GenericBrandingEmailTemplateOptions {
-    /** From Email Address */
-    from_email?: string | null;
-    /** From Name */
-    from_name?: string | null;
-    /** Specifies the text to be used as the email subject */
-    subject?: string | null;
-    /** Specifies the URI for the custom template to be used */
-    template_uri?: string | null;
+  /** * **link** - Verifies the email with a magic link
+ * * **code** - Verifies the email with a code */
+export const EmailVerificationMode = {
+  Link: "link",
+  Code: "code",
+} as const;
+
+export type EmailVerificationMode = typeof EmailVerificationMode[keyof typeof EmailVerificationMode];
+
+  /** * **google**
+ * * **apple**
+ * * **facebook** */
+export const ExternalIDPs = {
+  Google: "google",
+  Apple: "apple",
+  Facebook: "facebook",
+} as const;
+
+export type ExternalIDPs = typeof ExternalIDPs[keyof typeof ExternalIDPs];
+
+/** The Apple Provider Options response class */
+export interface ExternalProviderAppleOptions {
+    /** Enable External Provider Sign-in */
+    enable_sign_in: boolean;
+    /** Enable External Provider Sign-up */
+    enable_sign_up: boolean;
+    /** If set to true, will sync the profile with each login */
+    sync_user_profile_always: boolean;
+    /** Specifies whether the tokens issued by the the provider be saved */
+    save_tokens: boolean;
+    /** Client Id issued for the customer by provider */
+    client_id: string;
+    /** Client Secret issued for the customer by provider */
+    client_secret: string;
+    /** List of provider scopes to be obtained */
+    scopes?: string[] | null;
+    /** Specifies if we should trust the email verified scope received from the external provider. */
+    trust_email_verified_scope: boolean;
+    /** Apple generated teamId */
+    team_id: string;
+    /** Apple generated keyId */
+    key_id: string;
 }
 
-/** The Branding Generic Sms Template Options response class */
-export interface GenericBrandingSmsTemplateOptions {
-    /** Custom LiquidJS template for the SMS */
-    template: string;
+/** The Facebook Provider Options response class */
+export interface ExternalProviderFacebookOptions {
+    /** Enable External Provider Sign-in */
+    enable_sign_in: boolean;
+    /** Enable External Provider Sign-up */
+    enable_sign_up: boolean;
+    /** If set to true, will sync the profile with each login */
+    sync_user_profile_always: boolean;
+    /** Specifies whether the tokens issued by the the provider be saved */
+    save_tokens: boolean;
+    /** Client Id issued for the customer by provider */
+    client_id: string;
+    /** Client Secret issued for the customer by provider */
+    client_secret: string;
+    /** List of provider scopes to be obtained */
+    scopes?: string[] | null;
+    /** Specifies if we should trust the email verified scope received from the external provider. */
+    trust_email_verified_scope: boolean;
+    /** Required claims from facebook */
+    fields?: string[] | null;
+}
+
+/** The Google Provider Options response class */
+export interface ExternalProviderGoogleOptions {
+    /** Enable External Provider Sign-in */
+    enable_sign_in: boolean;
+    /** Enable External Provider Sign-up */
+    enable_sign_up: boolean;
+    /** If set to true, will sync the profile with each login */
+    sync_user_profile_always: boolean;
+    /** Specifies whether the tokens issued by the the provider be saved */
+    save_tokens: boolean;
+    /** Client Id issued for the customer by provider */
+    client_id: string;
+    /** Client Secret issued for the customer by provider */
+    client_secret: string;
+    /** List of provider scopes to be obtained */
+    scopes?: string[] | null;
+    /** Specifies if we should trust the email verified scope received from the external provider. */
+    trust_email_verified_scope: boolean;
+}
+
+/** The External Provider Options response class */
+export interface ExternalProviderOptions {
+    /** Google's ID Provider settings */
+    google?: ExternalProviderGoogleOptions | null;
+    /** Apple's ID Provider Settings */
+    apple?: ExternalProviderAppleOptions | null;
+    /** Facebook's Provider Settings */
+    facebook?: ExternalProviderFacebookOptions | null;
 }
 
   /** * **implicit**
@@ -4339,6 +4888,19 @@ export const GrantTypes = {
 } as const;
 
 export type GrantTypes = typeof GrantTypes[keyof typeof GrantTypes];
+
+  /** * **mono_cloud**
+ * * **google**
+ * * **apple**
+ * * **facebook** */
+export const IDPs = {
+  MonoCloud: "mono_cloud",
+  Google: "google",
+  Apple: "apple",
+  Facebook: "facebook",
+} as const;
+
+export type IDPs = typeof IDPs[keyof typeof IDPs];
 
 /** The Identity Resource response class */
 export interface IdentityResource {
@@ -4560,46 +5122,26 @@ export interface LogSummary {
     time_stamp?: number | null;
 }
 
-  /** * **username_password** - Both Username and Password (or password equvivalent) will be captured on the same screen if the Scheme supports it
- * * **username_first** - Username will be captured on the first screen and the Password (or equvivalent) will be captured on a different screen */
-export const LoginFlows = {
-  UsernamePassword: "username_password",
-  UsernameFirst: "username_first",
-} as const;
-
-export type LoginFlows = typeof LoginFlows[keyof typeof LoginFlows];
-
-/** The Login Options response class */
-export interface LoginOptions {
-    /** Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access. */
-    consent_required_for_offline_access: boolean;
-    /** Show RememberMe Checkbox on the Login Screen */
-    allow_remember_me: boolean;
-    /** RememberMe Duration in minutes */
-    remember_me_duration: number;
-    /** Login Page Options */
-    login_page: LoginPageOptions;
-}
-
-/** The Login Page Options response class */
-export interface LoginPageOptions {
-    /** Primary Login Method to be shown on the Login screen. The value can be any one of the enabled Primary Login Method */
-    primary_login_method: PrimarySchemes;
-    /** If enabled, Secondary Login Methods are shown on top and the Primary Login method is shown on bottom. */
-    secondary_login_methods_first: boolean;
-    /** Order of the Secondary Login methods buttons */
-    secondary_login_methods_order: SchemeNames[];
-    /** Specifies the Login Flow of the Primary Login method. */
-    login_flow: LoginFlows;
-}
-
 /** The Logout Options response class */
 export interface LogoutOptions {
     /** Specifies whether the user should be automatically redirected to the client specified URL after sign out. */
-    automatic_redirect_after_sign_out: boolean;
+    automatic_redirect_after_logout: boolean;
     /** Specifies whether there should be a prompt before log out. */
     show_logout_prompt: boolean;
 }
+
+  /** * **not_allowed**
+ * * **create_new_account**
+ * * **merge_accounts**
+ * * **login_prompt** */
+export const MergeModes = {
+  NotAllowed: "not_allowed",
+  CreateNewAccount: "create_new_account",
+  MergeAccounts: "merge_accounts",
+  LoginPrompt: "login_prompt",
+} as const;
+
+export type MergeModes = typeof MergeModes[keyof typeof MergeModes];
 
 export interface ProblemDetails {
     type?: string | null;
@@ -4607,6 +5149,8 @@ export interface ProblemDetails {
     status?: number | null;
     detail?: string | null;
     instance?: string | null;
+
+    [key: string]: any;
 }
 
 /** The Mtls Options response class */
@@ -4637,30 +5181,34 @@ export interface PaginationHeader {
     has_next: boolean;
 }
 
-/** The  Password Strength Options response class */
-export interface PasswordStrengthOptions {
-    /** Specifies the minimum character length of password */
-    required_password_length: number;
-    /** Specifies the whether a non alphanumeric password is required or not */
-    require_non_alphanumeric_password: boolean;
-    /** Specifies the whether a digit password is required or not. */
-    require_digit_password: boolean;
-    /** Specifies the whether a lowercase password is required or not */
-    require_lowercase_password: boolean;
-    /** Specifies the whether a uppercase password is required or not */
-    require_uppercase_password: boolean;
-    /** Specifies the number of unique characters required in a password */
-    required_unique_characters_in_password: number;
-}
-
-  /** * **link**
- * * **code** */
-export const PasswordlessSendTypes = {
-  Link: "link",
-  Code: "code",
+  /** * **off**
+ * * **date**
+ * * **count**
+ * * **date_and_count** */
+export const PasswordRestrictionModes = {
+  Off: "off",
+  Date: "date",
+  Count: "count",
+  DateAndCount: "date_and_count",
 } as const;
 
-export type PasswordlessSendTypes = typeof PasswordlessSendTypes[keyof typeof PasswordlessSendTypes];
+export type PasswordRestrictionModes = typeof PasswordRestrictionModes[keyof typeof PasswordRestrictionModes];
+
+/** The Patch Account Merging Options Request class */
+export interface PatchAccountMergingOptionsRequest {
+    /** Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is also verified. */
+    external_verified_existing_verified?: MergeModes;
+    /** Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is unverified. */
+    external_verified_existing_unverified?: MergeModes;
+    /** Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is verified. */
+    external_unverified_existing_verified?: MergeModes;
+    /** Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is also unverified. */
+    external_unverified_existing_unverified?: MergeModes;
+    /** Specifies account merge mode when the login is a passwordless one and the existing (external) account's email/phone is the same but unverified. */
+    passwordless_verified_existing_external_unverified?: MergeModes;
+    /** Specifies account merge mode when the login is a passwordless one and the existing (local) account's email/phone is the same but unverified. */
+    passwordless_verified_existing_local_unverified?: MergeModes;
+}
 
 /** The Patch Account Protection Options Request class */
 export interface PatchAccountProtectionOptionsRequest {
@@ -4722,36 +5270,228 @@ export interface PatchApiScopeRequest {
     emphasize?: boolean;
 }
 
+/** The Patch General Email Authentication Options Request class */
+export interface PatchAuthenticationGeneralEmailOptionsRequest {
+    /** Specifies if the users are allowed to sign-in using an email */
+    enable_sign_in?: boolean;
+    /** Specifies if the users are allowed to enter an email at the time of registration. */
+    show_at_sign_up?: boolean;
+    /** Specifies if the email is required at the time of registration. */
+    required_at_sign_up?: boolean;
+    /** Email verification related to Sign Up */
+    verification?: PatchAuthenticationGeneralEmailVerificationOptionsRequest;
+}
+
+/** The Patch General Email Verification Options Request class */
+export interface PatchAuthenticationGeneralEmailVerificationOptionsRequest {
+    /** Specifies whether the email should be verified at registration. */
+    verify_at_sign_up?: boolean;
+    /** Mode of Verification Sent to the User. Can be Code or Magic Link */
+    mode?: EmailVerificationMode;
+    /** Email expiration time in seconds. */
+    expiration?: number;
+    /** If Email Code is Selected, Code length is chosen from this option */
+    code_length?: number;
+}
+
+/** The Patch General Authentication Options Request class */
+export interface PatchAuthenticationGeneralOptionsOptionsRequest {
+    /** Specifies whether secure mode is enabled */
+    enable_secure_mode?: boolean;
+    /** Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access. */
+    consent_required_for_offline_access?: boolean;
+    /** Show RememberMe Checkbox on the SignIn Screen */
+    allow_remember_me?: boolean;
+    /** RememberMe Duration in minutes */
+    remember_me_duration?: number;
+    /** General Email Requirement Options for Users */
+    email?: PatchAuthenticationGeneralEmailOptionsRequest;
+    /** General Phone Requirement Options for Users */
+    phone?: PatchAuthenticationGeneralPhoneOptionsRequest;
+    /** General Username Requirement Options for Users */
+    username?: PatchAuthenticationGeneralUsernameOptionsRequest;
+}
+
+/** The Patch General Phone Authentication Options Request class */
+export interface PatchAuthenticationGeneralPhoneOptionsRequest {
+    /** Specifies if the users are allowed to sign-in using a phone number */
+    enable_sign_in?: boolean;
+    /** Specifies if the users are allowed to enter a phone number at the time of registration. */
+    show_at_sign_up?: boolean;
+    /** Specifies if the phone number is required at the time of registration. */
+    required_at_sign_up?: boolean;
+    /** Sms verification related to Sign Up */
+    verification?: PatchAuthenticationGeneralPhoneVerificationOptionsRequest;
+}
+
+/** The Patch General Phone Verification Options Request class */
+export interface PatchAuthenticationGeneralPhoneVerificationOptionsRequest {
+    /** Specifies whether the phone should be verified at registration. */
+    verify_at_sign_up?: boolean;
+    /** Sms verification expiration time in seconds. */
+    expiration?: number;
+    /** Sms Code length is chosen from this option */
+    code_length?: number;
+}
+
+/** The Patch General Username Authentication Options Request class */
+export interface PatchAuthenticationGeneralUsernameOptionsRequest {
+    /** Specifies if the users are allowed to sign-in using a username */
+    enable_sign_in?: boolean;
+    /** Specifies if the users are allowed to enter a username at the time of registration. */
+    show_at_sign_up?: boolean;
+    /** Specifies if the username is required at the time of registration. */
+    required_at_sign_up?: boolean;
+    /** Specifies the minimum length required for the username. */
+    minimum_length?: number;
+}
+
+/** The Patch Authentication Method Email Code Options Request class */
+export interface PatchAuthenticationMethodEmailCodeOptionsRequest {
+    /** Enable Email Code Sign-in */
+    enable_sign_in?: boolean;
+    /** Enable Email Code Sign-up */
+    enable_sign_up?: boolean;
+    /** Specifies the expiration time in seconds for the OTP to be generated */
+    otp_expiry?: number;
+    /** Specifies the OTP character length */
+    otp_length?: number;
+}
+
+/** The Patch Authentication Method Magic Link Options Request class */
+export interface PatchAuthenticationMethodMagicLinkOptionsRequest {
+    /** Enable Magic Link Sign-in */
+    enable_sign_in?: boolean;
+    /** Enable Magic Link Sign-up */
+    enable_sign_up?: boolean;
+    /** Specifies the expiration time in seconds for the OTP to be generated */
+    link_expiry?: number;
+}
+
+/** The Patch Authentication Method Options Request class */
+export interface PatchAuthenticationMethodOptionsRequest {
+    /** Password Authentication Method Settings */
+    password?: PatchAuthenticationMethodPasswordOptionsRequest;
+    /** Sms Code Authentication Method Settings */
+    sms_code?: PatchAuthenticationMethodSmsCodeOptionsRequest;
+    /** Magic Link Authentication Method Settings */
+    magic_link?: PatchAuthenticationMethodMagicLinkOptionsRequest;
+    /** Email Code Authentication Method Settings */
+    email_code?: PatchAuthenticationMethodEmailCodeOptionsRequest;
+}
+
+/** The Patch Authentication Method Password Expiration Options Request class */
+export interface PatchAuthenticationMethodPasswordExpirationOptionsRequest {
+    /** Specifies the expiration mode. */
+    enabled?: boolean;
+    /** Specifies the password expiration period in minutes. */
+    expiration_period?: number;
+}
+
+/** The Patch Authentication Method Password Options Request class */
+export interface PatchAuthenticationMethodPasswordOptionsRequest {
+    /** Enable Password Sign-in */
+    enable_sign_in?: boolean;
+    /** Enable Password Sign-up */
+    enable_sign_up?: boolean;
+    /** Password Strength Options */
+    strength?: PatchAuthenticationMethodPasswordStrengthOptionsRequest;
+    /** Password Re-use Options */
+    reuse?: PatchAuthenticationMethodPasswordReuseOptionsRequest;
+    /** Password Expiration Options */
+    expiration?: PatchAuthenticationMethodPasswordExpirationOptionsRequest;
+}
+
+/** The Patch Authentication Method Password Reuse Options Request class */
+export interface PatchAuthenticationMethodPasswordReuseOptionsRequest {
+    /** Specifies if there should be any restriction for password reuse. */
+    restriction_mode?: PasswordRestrictionModes;
+    /** Specifies the time in minutes in which the password cannot be reused. */
+    restriction_period?: number;
+    /** Specifies the number of previous passwords which cannot be reused. */
+    restriction_count?: number;
+}
+
+/** The Patch Authentication Method Password Strength Options Request class */
+export interface PatchAuthenticationMethodPasswordStrengthOptionsRequest {
+    /** Specifies the minimum character length of password */
+    minimum_length?: number;
+    /** Specifies the whether a non alphanumeric character is required in the password. */
+    require_non_alphanumeric_character?: boolean;
+    /** Specifies the whether a digit is required in the password. */
+    require_digit?: boolean;
+    /** Specifies the whether a lowercase character is required in the password. */
+    require_lowercase_character?: boolean;
+    /** Specifies the whether a uppercase character is required in the password. */
+    require_uppercase_character?: boolean;
+    /** Specifies the number of unique characters required in the password. */
+    required_unique_characters_count?: number;
+}
+
+/** The Patch Authentication Method Sms Code Options Request class */
+export interface PatchAuthenticationMethodSmsCodeOptionsRequest {
+    /** Enable Sms Code Sign-in */
+    enable_sign_in?: boolean;
+    /** Enable Sms Code Sign-up */
+    enable_sign_up?: boolean;
+    /** Specifies the expiration time in seconds for the OTP to be generated */
+    otp_expiry?: number;
+    /** Specifies the OTP character length */
+    otp_length?: number;
+}
+
 /** The Patch Authentication Options Request class */
 export interface PatchAuthenticationOptionsRequest {
     /** Account Protection Options */
     account_protection?: PatchAccountProtectionOptionsRequest;
-    /** Login Options */
-    login?: PatchLoginOptionsRequest;
+    /** Authentication Method Options */
+    authentication_methods?: PatchAuthenticationMethodOptionsRequest;
+    /** External Provider Options */
+    external_providers?: PatchExternalProviderOptionsRequest;
+    /** Authentication General Options */
+    general?: PatchAuthenticationGeneralOptionsOptionsRequest;
     /** Logout Options */
     logout?: PatchLogoutOptionsRequest;
-    /** Identity Provider Options */
-    providers?: PatchProviderOptionsRequest;
-    /** User Registration Options */
-    registration?: PatchRegistrationOptionsRequest;
-    /** Signin Options */
-    sign_in?: PatchSignInOptionsRequest;
+    /** Sign-up Options */
+    sign_up?: PatchSignUpOptionsRequest;
 }
 
 /** The Patch Branding Email Options Request class */
 export interface PatchBrandingEmailOptionsRequest {
-    /** Passwordless Email - Link Branding Options */
-    passwordless_email_link?: PatchGenericBrandingCustomEmailOptionsRequest | null;
-    /** Passwordless Email - Code Branding Options */
-    passwordless_email_code?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+    /** Magic Link SignIn Branding Options */
+    magic_link_sign_in?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+    /** Email Code SignIn Branding Options */
+    email_code_sign_in?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+    /** Magic Link Verification Branding Options */
+    magic_link_verification?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+    /** Email Code Verification Branding Options */
+    email_code_verification?: PatchBrandingGenericCustomEmailOptionsRequest | null;
     /** Welcome Email Branding Options */
-    welcome?: PatchGenericBrandingCustomEmailOptionsRequest | null;
-    /** Verify Email Branding Options */
-    verify?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+    welcome?: PatchBrandingGenericCustomEmailOptionsRequest | null;
     /** User Lockout Branding Options */
-    lockout?: PatchGenericBrandingCustomEmailOptionsRequest | null;
-    /** Password Change Branding Options */
-    password_change?: PatchGenericBrandingCustomEmailOptionsRequest | null;
+    user_lockout?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+    /** Reset Password Branding Options */
+    reset_password?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+    /** Password Updated Branding Options */
+    password_updated?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+}
+
+/** The Patch Generic Branding Custom Email Options Request class */
+export interface PatchBrandingGenericCustomEmailOptionsRequest {
+    /** From Email Address */
+    from_email?: string | null;
+    /** From Name */
+    from_name?: string | null;
+    /** Specifies the text to be used as the email subject */
+    subject?: string | null;
+    /** Specifies the URI for the custom template to be used */
+    template_uri?: string | null;
+}
+
+/** The Patch Generic Branding Custom Sms Options Request class */
+export interface PatchBrandingGenericCustomSmsOptionsRequest {
+    /** Custom LiquidJS template for the SMS */
+    template: string;
 }
 
 /** The Patch Branding Options Request class */
@@ -4778,6 +5518,8 @@ export interface PatchBrandingPageOptionsRequest {
     logo_uri?: string | null;
     /** Specifies the primary colour to be used for pages */
     primary_color?: string;
+    /** Sign In Page Branding Options */
+    sign_in?: PatchBrandingSignInPageOptionsRequest;
 }
 
 /** The Patch Branding Project Options Request class */
@@ -4794,10 +5536,22 @@ export interface PatchBrandingProjectOptionsRequest {
     terms_url?: string | null;
 }
 
+/** The Patch SignIn Page Options Request class */
+export interface PatchBrandingSignInPageOptionsRequest {
+    /** If enabled password will be prompted on the same screen as the username. */
+    prompt_password_on_initial_screen?: boolean;
+    /** If enabled, External SigIn Methods are shown on top and the Primary SigIn method is shown on bottom. */
+    external_sign_in_methods_first?: boolean;
+    /** Order of the External SigIn methods buttons */
+    external_sign_in_methods_order?: ExternalIDPs[];
+}
+
 /** The Patch Branding Sms Options Request class */
 export interface PatchBrandingSmsOptionsRequest {
-    /** Passwordless Code Branding Options */
-    passwordless_code?: PatchGenericBrandingCustomSmsOptionsRequest | null;
+    /** Sms Code SignIn Branding Options */
+    sms_code_sign_in?: PatchBrandingGenericCustomSmsOptionsRequest | null;
+    /** Sms Code Verification Branding Options */
+    sms_code_verification?: PatchBrandingGenericCustomSmsOptionsRequest | null;
 }
 
 /** The Patch Client class */
@@ -4871,7 +5625,9 @@ export interface PatchClientRequest {
     /** Specifies whether the local login (Username / Password) is allowed for this client. */
     enable_local_login?: boolean;
     /** Specifies which authentication providers can be used with this client (if list is empty all providers are allowed) */
-    identity_provider_restrictions?: SchemeNames[];
+    identity_provider_restrictions?: IDPs[];
+    /** Specifies which authentication methods can be used with this client (if list is empty all methods are allowed) */
+    authentication_method_restrictions?: IDPs[];
     /** Specifies whether JWT access tokens should include an identifier */
     include_jwt_id?: boolean;
     /** Allows settings claims for the client (will be included in the access token). */
@@ -4938,22 +5694,80 @@ export interface PatchDeviceFlowOptionsRequest {
     code_length?: number;
 }
 
-/** The Patch Generic Branding Custom Email Options Request class */
-export interface PatchGenericBrandingCustomEmailOptionsRequest {
-    /** From Email Address */
-    from_email?: string | null;
-    /** From Name */
-    from_name?: string | null;
-    /** Specifies the text to be used as the email subject */
-    subject?: string | null;
-    /** Specifies the URI for the custom template to be used */
-    template_uri?: string | null;
+/** The Patch Apple Provider Options Request class */
+export interface PatchExternalProviderAppleOptionsRequest {
+    /** Enable External Provider Sign-in */
+    enable_sign_in?: boolean;
+    /** Enable External Provider Sign-up */
+    enable_sign_up?: boolean;
+    /** If set to true, will sync the profile with each login */
+    sync_user_profile_always?: boolean;
+    /** Specifies whether the tokens issued by the the provider be saved */
+    save_tokens?: boolean;
+    /** Client Id issued for the customer by provider */
+    client_id?: string;
+    /** Client Secret issued for the customer by provider */
+    client_secret?: string;
+    /** List of provider scopes to be obtained */
+    scopes?: string[] | null;
+    /** Specifies if we should trust the email verified scope received from the external provider. */
+    trust_email_verified_scope?: boolean;
+    /** Apple generated teamId */
+    team_id?: string;
+    /** Apple generated keyId */
+    key_id?: string;
 }
 
-/** The Patch Generic Branding Custom Sms Options Request class */
-export interface PatchGenericBrandingCustomSmsOptionsRequest {
-    /** Custom LiquidJS template for the SMS */
-    template: string;
+/** The Patch Facebook Provider Options Request class */
+export interface PatchExternalProviderFacebookOptionsRequest {
+    /** Enable External Provider Sign-in */
+    enable_sign_in?: boolean;
+    /** Enable External Provider Sign-up */
+    enable_sign_up?: boolean;
+    /** If set to true, will sync the profile with each login */
+    sync_user_profile_always?: boolean;
+    /** Specifies whether the tokens issued by the the provider be saved */
+    save_tokens?: boolean;
+    /** Client Id issued for the customer by provider */
+    client_id?: string;
+    /** Client Secret issued for the customer by provider */
+    client_secret?: string;
+    /** List of provider scopes to be obtained */
+    scopes?: string[] | null;
+    /** Specifies if we should trust the email verified scope received from the external provider. */
+    trust_email_verified_scope?: boolean;
+    /** Required claims from facebook */
+    fields?: string[] | null;
+}
+
+/** The Patch Google Provider Options Request class */
+export interface PatchExternalProviderGoogleOptionsRequest {
+    /** Enable External Provider Sign-in */
+    enable_sign_in?: boolean;
+    /** Enable External Provider Sign-up */
+    enable_sign_up?: boolean;
+    /** If set to true, will sync the profile with each login */
+    sync_user_profile_always?: boolean;
+    /** Specifies whether the tokens issued by the the provider be saved */
+    save_tokens?: boolean;
+    /** Client Id issued for the customer by provider */
+    client_id?: string;
+    /** Client Secret issued for the customer by provider */
+    client_secret?: string;
+    /** List of provider scopes to be obtained */
+    scopes?: string[] | null;
+    /** Specifies if we should trust the email verified scope received from the external provider. */
+    trust_email_verified_scope?: boolean;
+}
+
+/** The Patch Provider Options Request class */
+export interface PatchExternalProviderOptionsRequest {
+    /** Google's ID Provider settings */
+    google?: PatchExternalProviderGoogleOptionsRequest | null;
+    /** Apple's ID Provider Settings */
+    apple?: PatchExternalProviderAppleOptionsRequest | null;
+    /** Facebook's Provider Settings */
+    facebook?: PatchExternalProviderFacebookOptionsRequest | null;
 }
 
 /** The Patch Identity Resource class */
@@ -4976,34 +5790,10 @@ export interface PatchIdentityResourceRequest {
     emphasize?: boolean;
 }
 
-/** The Patch Login Options Request class */
-export interface PatchLoginOptionsRequest {
-    /** Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access. */
-    consent_required_for_offline_access?: boolean;
-    /** Show RememberMe Checkbox on the Login Screen */
-    allow_remember_me?: boolean;
-    /** RememberMe Duration in minutes */
-    remember_me_duration?: number;
-    /** Login Page Options */
-    login_page?: PatchLoginPageOptionsRequest;
-}
-
-/** The Patch Login Page Options Request class */
-export interface PatchLoginPageOptionsRequest {
-    /** Primary Login Method to be shown on the Login screen. The value can be any one of the enabled Primary Login Method */
-    primary_login_method?: PrimarySchemes;
-    /** If enabled, Secondary Login Methods are shown on top and the Primary Login method is shown on bottom. */
-    secondary_login_methods_first?: boolean;
-    /** Order of the Secondary Login methods buttons */
-    secondary_login_methods_order?: SchemeNames[];
-    /** Specifies the Login Flow of the Primary Login method. */
-    login_flow?: LoginFlows;
-}
-
 /** The Patch Logout Options Request class */
 export interface PatchLogoutOptionsRequest {
     /** Specifies whether the user should be automatically redirected to the client specified URL after sign out. */
-    automatic_redirect_after_sign_out?: boolean;
+    automatic_redirect_after_logout?: boolean;
     /** Specifies whether there should be a prompt before log out. */
     show_logout_prompt?: boolean;
 }
@@ -5022,176 +5812,24 @@ export interface PatchMtlsOptionsRequest {
     revocation_mode?: X509RevocationMode;
 }
 
-/** The Patch  Password Strength Options Request class */
-export interface PatchPasswordStrengthOptionsRequest {
-    /** Specifies the minimum character length of password */
-    required_password_length?: number;
-    /** Specifies the whether a non alphanumeric password is required or not */
-    require_non_alphanumeric_password?: boolean;
-    /** Specifies the whether a digit password is required or not. */
-    require_digit_password?: boolean;
-    /** Specifies the whether a lowercase password is required or not */
-    require_lowercase_password?: boolean;
-    /** Specifies the whether a uppercase password is required or not */
-    require_uppercase_password?: boolean;
-    /** Specifies the number of unique characters required in a password */
-    required_unique_characters_in_password?: number;
-}
-
-/** The Patch Apple Provider Options Request class */
-export interface PatchProviderAppleOptionsRequest {
-    /** Enables the Social Provider */
+/** The Patch SignUp Custom Field Options Request class */
+export interface PatchSignUpCustomFieldOptionsRequest {
+    /** Specifies if the users are allowed to enter the claim at the time of signup. */
     enabled?: boolean;
-    /** If set to false, users won't be able to signup/register. */
-    enable_user_registration?: boolean;
-    /** If set to true, will sync the profile with each login */
-    sync_user_profile_always?: boolean;
-    /** Specifies whether the tokens issued by the the provider be saved */
-    save_tokens?: boolean;
-    /** Client Id issued for the customer by provider */
-    client_id?: string;
-    /** Client Secret issued for the customer by provider */
-    client_secret?: string;
-    /** List of provider scopes to be obtained */
-    scopes?: string[] | null;
-    /** Apple generated teamId */
-    team_id?: string;
-    /** Apple generated keyId */
-    key_id?: string;
+    /** Specifies if the claim is required at the time of signup. */
+    required?: boolean;
+    /** Specifies the name for the claim. */
+    claim_name?: string;
+    /** Specifies the claim value type. */
+    value_type?: ValueTypes;
+    /** Specifies the label to be used for the claim at the time of signup. */
+    label?: string;
 }
 
-/** The Patch Facebook Provider Options Request class */
-export interface PatchProviderFacebookOptionsRequest {
-    /** Enables the Social Provider */
-    enabled?: boolean;
-    /** If set to false, users won't be able to signup/register. */
-    enable_user_registration?: boolean;
-    /** If set to true, will sync the profile with each login */
-    sync_user_profile_always?: boolean;
-    /** Specifies whether the tokens issued by the the provider be saved */
-    save_tokens?: boolean;
-    /** Client Id issued for the customer by provider */
-    client_id?: string;
-    /** Client Secret issued for the customer by provider */
-    client_secret?: string;
-    /** List of provider scopes to be obtained */
-    scopes?: string[] | null;
-    /** Required claims from facebook */
-    fields?: string[] | null;
-}
-
-/** The Patch Google Provider Options Request class */
-export interface PatchProviderGoogleOptionsRequest {
-    /** Enables the Social Provider */
-    enabled?: boolean;
-    /** If set to false, users won't be able to signup/register. */
-    enable_user_registration?: boolean;
-    /** If set to true, will sync the profile with each login */
-    sync_user_profile_always?: boolean;
-    /** Specifies whether the tokens issued by the the provider be saved */
-    save_tokens?: boolean;
-    /** Client Id issued for the customer by provider */
-    client_id?: string;
-    /** Client Secret issued for the customer by provider */
-    client_secret?: string;
-    /** List of provider scopes to be obtained */
-    scopes?: string[] | null;
-}
-
-/** The Patch Provider Options Request class */
-export interface PatchProviderOptionsRequest {
-    /** Google's ID Provider settings */
-    google?: PatchProviderGoogleOptionsRequest | null;
-    /** Apple's ID Provider Settings */
-    apple?: PatchProviderAppleOptionsRequest | null;
-    /** Facebook's Provider Settings */
-    facebook?: PatchProviderFacebookOptionsRequest | null;
-    /** Passwordless Email Provider settings */
-    passwordless_email?: PatchProviderPasswordlessEmailOptionsRequest;
-    /** Paswordless Sms Provider Settings */
-    passwordless_sms?: PatchProviderPasswordlessSmsOptionsRequest;
-    /** Username-Password Provider Settings */
-    username_password?: PatchProviderUsernamePasswordOptionsRequest;
-}
-
-/** The Patch Passwordless Email Provider Options Request class */
-export interface PatchProviderPasswordlessEmailOptionsRequest {
-    /** Enable Passwordless Email Provider */
-    enabled?: boolean;
-    /** Enable User registration for Passwordless Email Provider */
-    enable_user_registration?: boolean;
-    /** Enable Passwordless Email MFA */
-    enabled_mfa?: boolean;
-    /** Specifies the expiration time in seconds for the OTP to be generated */
-    otp_expiry?: number;
-    /** Specifies the OTP character length */
-    otp_length?: number;
-    /** Specifies the type of email to send */
-    passwordless_send_types?: PasswordlessSendTypes;
-}
-
-/** The Patch Passwordless Sms Provider Options Request class */
-export interface PatchProviderPasswordlessSmsOptionsRequest {
-    /** Enable Passwordless Sms Provider */
-    enabled?: boolean;
-    /** Enable User registration for Passwordless Sms Provider */
-    enable_user_registration?: boolean;
-    /** Enable Passwordless Sms MFA */
-    enabled_mfa?: boolean;
-    /** Specifies the expiration time in seconds for the OTP to be generated */
-    otp_expiry?: number;
-    /** Specifies the OTP character length */
-    otp_length?: number;
-}
-
-/** The Patch Username Password Provider Options Request class */
-export interface PatchProviderUsernamePasswordOptionsRequest {
-    /** Enable Username and Password Provider */
-    enabled?: boolean;
-    /** Enable User Registration */
-    enable_user_registration?: boolean;
-    /** Password Strength Options */
-    password_strength?: PatchPasswordStrengthOptionsRequest;
-}
-
-/** The Patch Registration Account Merge Options Request class */
-export interface PatchRegistrationAccountMergeOptionsRequest {
-    /** Account Merge Modes */
-    merge_mode?: AccountMergeModes;
-    /** Which property to merge on */
-    merge_property?: AccountMergeProperty;
-}
-
-/** The Patch Registration Options Request class */
-export interface PatchRegistrationOptionsRequest {
+/** The Patch SignUp Options Request class */
+export interface PatchSignUpOptionsRequest {
     /** Registration Account Merge Options */
-    account_merging?: PatchRegistrationAccountMergeOptionsRequest;
-    /** Allowed Registration Methods */
-    allowed_registration_methods?: AllowedRegistrationMethods[];
-    /** Email Requirement */
-    require_email?: boolean;
-    /** Phone Requirement */
-    require_phone?: boolean;
-    /** Username Requirement */
-    require_username?: boolean;
-    /** Minimum Username Length */
-    minimum_username_length?: number;
-}
-
-/** The Patch SignIn Options Request class */
-export interface PatchSignInOptionsRequest {
-    /** Signin Rules */
-    rules?: PatchSignInRulesOptionsRequest;
-}
-
-/** The Patch SignIn Rules Options Request class */
-export interface PatchSignInRulesOptionsRequest {
-    /** Require a confirmed Email to SignIn */
-    require_confirmed_email?: boolean;
-    /** Require a confirmed Phone Number to SignIn */
-    require_confirmed_phone_number?: boolean;
-    /** Require a confirmed Account to SignIn */
-    require_confirmed_account?: boolean;
+    account_merging?: PatchAccountMergingOptionsRequest;
 }
 
 /** The Patch Tenant class */
@@ -5200,131 +5838,16 @@ export interface PatchTenantRequest {
     project_name?: string;
 }
 
-  /** * **local**
- * * **passwordless_email**
- * * **passwordless_sms** */
-export const PrimarySchemes = {
-  Local: "local",
-  PasswordlessEmail: "passwordless_email",
-  PasswordlessSms: "passwordless_sms",
-} as const;
-
-export type PrimarySchemes = typeof PrimarySchemes[keyof typeof PrimarySchemes];
-
-/** The Apple Provider Options response class */
-export interface ProviderAppleOptions {
-    /** Enables the Social Provider */
-    enabled: boolean;
-    /** If set to false, users won't be able to signup/register. */
-    enable_user_registration: boolean;
-    /** If set to true, will sync the profile with each login */
-    sync_user_profile_always: boolean;
-    /** Specifies whether the tokens issued by the the provider be saved */
-    save_tokens: boolean;
-    /** Client Id issued for the customer by provider */
-    client_id: string;
-    /** Client Secret issued for the customer by provider */
-    client_secret: string;
-    /** List of provider scopes to be obtained */
-    scopes?: string[] | null;
-    /** Apple generated teamId */
-    team_id: string;
-    /** Apple generated keyId */
-    key_id: string;
+/** The Patch Certificate class */
+export interface PatchTrustStoreCertificateRequest {
+    /** Specifies if the certificate is enabled. */
+    enabled?: boolean;
 }
 
-/** The Facebook Provider Options response class */
-export interface ProviderFacebookOptions {
-    /** Enables the Social Provider */
-    enabled: boolean;
-    /** If set to false, users won't be able to signup/register. */
-    enable_user_registration: boolean;
-    /** If set to true, will sync the profile with each login */
-    sync_user_profile_always: boolean;
-    /** Specifies whether the tokens issued by the the provider be saved */
-    save_tokens: boolean;
-    /** Client Id issued for the customer by provider */
-    client_id: string;
-    /** Client Secret issued for the customer by provider */
-    client_secret: string;
-    /** List of provider scopes to be obtained */
-    scopes?: string[] | null;
-    /** Required claims from facebook */
-    fields?: string[] | null;
-}
-
-/** The Google Provider Options response class */
-export interface ProviderGoogleOptions {
-    /** Enables the Social Provider */
-    enabled: boolean;
-    /** If set to false, users won't be able to signup/register. */
-    enable_user_registration: boolean;
-    /** If set to true, will sync the profile with each login */
-    sync_user_profile_always: boolean;
-    /** Specifies whether the tokens issued by the the provider be saved */
-    save_tokens: boolean;
-    /** Client Id issued for the customer by provider */
-    client_id: string;
-    /** Client Secret issued for the customer by provider */
-    client_secret: string;
-    /** List of provider scopes to be obtained */
-    scopes?: string[] | null;
-}
-
-/** The Provider Options response class */
-export interface ProviderOptions {
-    /** Google's ID Provider settings */
-    google?: ProviderGoogleOptions | null;
-    /** Apple's ID Provider Settings */
-    apple?: ProviderAppleOptions | null;
-    /** Facebook's Provider Settings */
-    facebook?: ProviderFacebookOptions | null;
-    /** Passwordless Email Provider settings */
-    passwordless_email: ProviderPasswordlessEmailOptions;
-    /** Paswordless Sms Provider Settings */
-    passwordless_sms: ProviderPasswordlessSmsOptions;
-    /** Username-Password Provider Settings */
-    username_password: ProviderUsernamePasswordOptions;
-}
-
-/** The Passwordless Email Provider Options response class */
-export interface ProviderPasswordlessEmailOptions {
-    /** Enable Passwordless Email Provider */
-    enabled: boolean;
-    /** Enable User registration for Passwordless Email Provider */
-    enable_user_registration: boolean;
-    /** Enable Passwordless Email MFA */
-    enabled_mfa: boolean;
-    /** Specifies the expiration time in seconds for the OTP to be generated */
-    otp_expiry: number;
-    /** Specifies the OTP character length */
-    otp_length: number;
-    /** Specifies the type of email to send */
-    passwordless_send_types: PasswordlessSendTypes;
-}
-
-/** The Passwordless Sms Provider Options response class */
-export interface ProviderPasswordlessSmsOptions {
-    /** Enable Passwordless Sms Provider */
-    enabled: boolean;
-    /** Enable User registration for Passwordless Sms Provider */
-    enable_user_registration: boolean;
-    /** Enable Passwordless Sms MFA */
-    enabled_mfa: boolean;
-    /** Specifies the expiration time in seconds for the OTP to be generated */
-    otp_expiry: number;
-    /** Specifies the OTP character length */
-    otp_length: number;
-}
-
-/** The Username-Password Provider Options response class */
-export interface ProviderUsernamePasswordOptions {
-    /** Enable Username and Password Provider */
-    enabled: boolean;
-    /** Enable User Registration */
-    enable_user_registration: boolean;
-    /** Password Strength Options */
-    password_strength: PasswordStrengthOptions;
+/** The Patch Certificate Revocation class */
+export interface PatchTrustStoreRevocationRequest {
+    /** Specifies if the certificate is enabled. */
+    enabled?: boolean;
 }
 
   /** * **sliding** - When refreshing the token, the lifetime of the refresh token will be renewed (by the amount specified in "Sliding Refresh Token Lifetime" parameter). The lifetime will not exceed the time specified in the "Absolute Refresh Token Lifetime" parameter
@@ -5345,30 +5868,6 @@ export const RefreshTokenUsageTypes = {
 
 export type RefreshTokenUsageTypes = typeof RefreshTokenUsageTypes[keyof typeof RefreshTokenUsageTypes];
 
-/** The Registration Account Merge Options response class */
-export interface RegistrationAccountMergeOptions {
-    /** Account Merge Modes */
-    merge_mode: AccountMergeModes;
-    /** Which property to merge on */
-    merge_property: AccountMergeProperty;
-}
-
-/** The Registration Options response class */
-export interface RegistrationOptions {
-    /** Registration Account Merge Options */
-    account_merging: RegistrationAccountMergeOptions;
-    /** Allowed Registration Methods */
-    allowed_registration_methods: AllowedRegistrationMethods[];
-    /** Email Requirement */
-    require_email: boolean;
-    /** Phone Requirement */
-    require_phone: boolean;
-    /** Username Requirement */
-    require_username: boolean;
-    /** Minimum Username Length */
-    minimum_username_length: number;
-}
-
   /** * **never**
  * * **always**
  * * **user_selected** */
@@ -5379,23 +5878,6 @@ export const RememberConsentTypes = {
 } as const;
 
 export type RememberConsentTypes = typeof RememberConsentTypes[keyof typeof RememberConsentTypes];
-
-  /** * **local**
- * * **passwordless_email**
- * * **passwordless_sms**
- * * **google**
- * * **apple**
- * * **facebook** */
-export const SchemeNames = {
-  Local: "local",
-  PasswordlessEmail: "passwordless_email",
-  PasswordlessSms: "passwordless_sms",
-  Google: "google",
-  Apple: "apple",
-  Facebook: "facebook",
-} as const;
-
-export type SchemeNames = typeof SchemeNames[keyof typeof SchemeNames];
 
 /** The Client Secret response class */
 export interface Secret {
@@ -5448,20 +5930,26 @@ export interface SecretValue {
     last_updated: number;
 }
 
-/** The SignIn Options response class */
-export interface SignInOptions {
-    /** Signin Rules */
-    rules: SignInRulesOptions;
+/** The SignUp Custom Field Options response class */
+export interface SignUpCustomFieldOptions {
+    /** Specifies if the users are allowed to enter the claim at the time of signup. */
+    enabled: boolean;
+    /** Specifies if the claim is required at the time of signup. */
+    required: boolean;
+    /** Specifies the name for the claim. */
+    claim_name: string;
+    /** Specifies the claim value type. */
+    value_type: ValueTypes;
+    /** Specifies the label to be used for the claim at the time of signup. */
+    label: string;
 }
 
-/** The SignIn Rules Options response class */
-export interface SignInRulesOptions {
-    /** Require a confirmed Email to SignIn */
-    require_confirmed_email: boolean;
-    /** Require a confirmed Phone Number to SignIn */
-    require_confirmed_phone_number: boolean;
-    /** Require a confirmed Account to SignIn */
-    require_confirmed_account: boolean;
+/** The SignUp Options response class */
+export interface SignUpOptions {
+    /** Registration Account Merge Options */
+    account_merging: AccountMergingOptions;
+    /** Registration Custom Fields Options */
+    custom_fields: SignUpCustomFieldOptions[];
 }
 
   /** * **rs_256**
@@ -5550,47 +6038,52 @@ export const ThemeNames = {
 
 export type ThemeNames = typeof ThemeNames[keyof typeof ThemeNames];
 
-/** Trust Store Certificates Response */
-export interface TrustStoreCertificates {
+/** Trust Store Response */
+export interface TrustStore {
     /** List of certificates. */
-    certificates: string[];
+    certificates: TrustStoreCertificate[];
+    /** List of certificate revocations. */
+    revocations: TrustStoreRevocation[];
 }
 
-/** Trust Store Certificate Revocations Response */
-export interface TrustStoreRevocations {
-    /** List of Certificate Revocations. */
-    revocations: string[];
+/** Trust Store Certificate Response */
+export interface TrustStoreCertificate {
+    /** Certificate Id. */
+    id: string;
+    /** Specifies if the certificate is enabled. */
+    enabled: boolean;
+    /** Certificate Value. */
+    value: string;
 }
 
-/** Request to Update Certificates in the Trust Store. */
-export interface UpdateTrustStoreCertificatesRequest {
-    /** List of certificates. */
-    certificates: string[];
+/** Trust Store Certificate Revocation Response */
+export interface TrustStoreRevocation {
+    /** Certificate Id. */
+    id: string;
+    /** Specifies if the certificate is enabled. */
+    enabled: boolean;
+    /** Certificate Crl Value. */
+    value: string;
 }
 
-/** Request to Update Certificate Revocations in the Trust Store. */
-export interface UpdateTrustStoreRevocationsRequest {
-    /** List of Certificate Revocations. */
-    revocations: string[];
+/** The User Email response class */
+export interface UserEmail {
+    id: string;
+    primary: boolean;
+    id_ps: IDPs[];
+    authentication_methods: AuthenticationMethods[];
+    verified: boolean;
+    email: string;
 }
 
-/** The User response class */
-export interface User {
-    /** Unique identifier of the user. */
-    user_id: string;
-    /** Specifies whether the account has been confirmed. */
-    account_confirmed: boolean;
-    /** Specifies whether the account has been disabled. */
-    disabled: boolean;
-    /** User Data. */
-    user_data: { [key: string]: any; };
-    /** Custom Data. */
-    custom_data: { [key: string]: any; };
-    /** List of registered schemes of user. */
-    schemes: UserScheme[];
-    /** Specifies the creation time of the user (in Epoch). */
+export interface UserIDPSummary {
+    /** Specifies the IDP name. */
+    idp: ExternalIDPs;
+    /** Specifies the idp user Id. */
+    provider_user_id: string;
+    /** Specifies the creation time of the scheme (in Epoch). */
     creation_time: number;
-    /** Specifies the last update time of the user (in Epoch). */
+    /** Specifies the last update time of the scheme (in Epoch). */
     last_updated: number;
 }
 
@@ -5603,40 +6096,55 @@ export const UserLockoutTypes = {
 
 export type UserLockoutTypes = typeof UserLockoutTypes[keyof typeof UserLockoutTypes];
 
-export interface UserScheme {
-    /** Specifies whether the scheme is primary. */
-    is_primary: boolean;
-    /** Specifies the scheme name. */
-    scheme: SchemeNames;
-    /** Specifies the scheme user Id. */
-    scheme_user_id: string;
-    /** Claims related to the scheme. */
-    claims: { [key: string]: any; };
-    /** Specifies the creation time of the scheme (in Epoch). */
-    creation_time: number;
-    /** Specifies the last update time of the scheme (in Epoch). */
-    last_updated: number;
+/** The User Phone response class */
+export interface UserPhone {
+    id: string;
+    primary: boolean;
+    id_ps: IDPs[];
+    authentication_methods: AuthenticationMethods[];
+    verified: boolean;
+    phone: string;
 }
 
-/** The User response class */
+/** The User Summary response class */
 export interface UserSummary {
     /** Unique identifier of the user. */
     user_id: string;
-    /** Specifies whether the account has been confirmed. */
-    account_confirmed: boolean;
     /** Specifies whether the account has been disabled. */
     disabled: boolean;
-    /** User Data. */
-    user_data: { [key: string]: any; };
-    /** Custom Data. */
-    custom_data: { [key: string]: any; };
     /** List of registered schemes of user. */
-    schemes: UserScheme[];
+    emails: UserEmail[];
+    /** List of registered schemes of user. */
+    phone_numbers: UserPhone[];
+    /** List of registered schemes of user. */
+    usernames: UserUsername[];
+    /** List of registered idps of user. */
+    id_ps: UserIDPSummary[];
     /** Specifies the creation time of the user (in Epoch). */
     creation_time: number;
     /** Specifies the last update time of the user (in Epoch). */
     last_updated: number;
 }
+
+/** The User Username response class */
+export interface UserUsername {
+    id: string;
+    primary: boolean;
+    id_ps: IDPs[];
+    authentication_methods: AuthenticationMethods[];
+    username: string;
+}
+
+  /** * **string**
+ * * **email**
+ * * **phone** */
+export const ValueTypes = {
+  String: "string",
+  Email: "email",
+  Phone: "phone",
+} as const;
+
+export type ValueTypes = typeof ValueTypes[keyof typeof ValueTypes];
 
   /** * **no_check** - Will not check for revocation.
  * * **offline** - Will check for revocation against the customer generated revocation list */
