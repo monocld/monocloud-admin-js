@@ -1563,7 +1563,7 @@
                     "$ref": "#/components/schemas/CreateSignUpCustomFieldOptionsRequest"
                   }
                 ],
-                "description": "The Create SignUp Custom Field Options Request"
+                "description": "The Create Sign Up Custom Field Options Request class"
               }
             },
             "text/json": {
@@ -1573,7 +1573,7 @@
                     "$ref": "#/components/schemas/CreateSignUpCustomFieldOptionsRequest"
                   }
                 ],
-                "description": "The Create SignUp Custom Field Options Request"
+                "description": "The Create Sign Up Custom Field Options Request class"
               }
             },
             "application/*+json": {
@@ -1583,7 +1583,7 @@
                     "$ref": "#/components/schemas/CreateSignUpCustomFieldOptionsRequest"
                   }
                 ],
-                "description": "The Create SignUp Custom Field Options Request"
+                "description": "The Create Sign Up Custom Field Options Request class"
               }
             }
           },
@@ -4559,22 +4559,17 @@
         "description": "The Authentication General Email response class"
       },
       "AuthenticationGeneralEmailVerificationOptions": {
+        "required": [
+          "code_length",
+          "expiration",
+          "verify_at_sign_up"
+        ],
         "type": "object",
         "properties": {
           "verify_at_sign_up": {
             "type": "boolean",
             "description": "Specifies whether the email should be verified at registration.",
             "example": true
-          },
-          "mode": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmailVerificationMode"
-              }
-            ],
-            "description": "Mode of Verification Sent to the User. Can be Code or Magic Link",
-            "example": "link"
           },
           "expiration": {
             "type": "integer",
@@ -4688,6 +4683,11 @@
         "description": "The Authentication General Phone response class"
       },
       "AuthenticationGeneralPhoneVerificationOptions": {
+        "required": [
+          "code_length",
+          "expiration",
+          "verify_at_sign_up"
+        ],
         "type": "object",
         "properties": {
           "verify_at_sign_up": {
@@ -5764,7 +5764,7 @@
               "type": "enum",
               "allOf": [
                 {
-                  "$ref": "#/components/schemas/IDPs"
+                  "$ref": "#/components/schemas/AuthenticationMethods"
                 }
               ]
             },
@@ -5869,14 +5869,12 @@
         "description": "The Communication Email Options response class"
       },
       "CommunicationEmailSendGridOptions": {
-        "required": [
-          "api_key"
-        ],
         "type": "object",
         "properties": {
           "api_key": {
             "type": "string",
             "description": "SendGrid Api Key",
+            "nullable": true,
             "example": "KJFdlswierur458dfhkJHFwkoepOURFuasd"
           }
         },
@@ -6490,7 +6488,7 @@
               "type": "enum",
               "allOf": [
                 {
-                  "$ref": "#/components/schemas/IDPs"
+                  "$ref": "#/components/schemas/AuthenticationMethods"
                 }
               ]
             },
@@ -6729,7 +6727,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "The Create SignUp Custom Field Options Request"
+        "description": "The Create Sign Up Custom Field Options Request class"
       },
       "CreateTrustStoreCertificateRequest": {
         "required": [
@@ -6799,14 +6797,6 @@
         },
         "additionalProperties": false,
         "description": "The Device Flow Options response class"
-      },
-      "EmailVerificationMode": {
-        "enum": [
-          "link",
-          "code"
-        ],
-        "type": "string",
-        "description": "* **link** - Verifies the email with a magic link\r\n* **code** - Verifies the email with a code"
       },
       "ExternalIDPs": {
         "enum": [
@@ -7973,16 +7963,6 @@
             "description": "Specifies whether the email should be verified at registration.",
             "example": true
           },
-          "mode": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmailVerificationMode"
-              }
-            ],
-            "description": "Mode of Verification Sent to the User. Can be Code or Magic Link",
-            "example": "link"
-          },
           "expiration": {
             "maximum": 600,
             "minimum": 300,
@@ -9048,7 +9028,7 @@
               "type": "enum",
               "allOf": [
                 {
-                  "$ref": "#/components/schemas/IDPs"
+                  "$ref": "#/components/schemas/AuthenticationMethods"
                 }
               ]
             },

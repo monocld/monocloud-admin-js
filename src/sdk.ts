@@ -4112,13 +4112,11 @@ export interface AuthenticationGeneralEmailOptions {
 /** The Authentication General Email Verification Options Response class */
 export interface AuthenticationGeneralEmailVerificationOptions {
     /** Specifies whether the email should be verified at registration. */
-    verify_at_sign_up?: boolean;
-    /** Mode of Verification Sent to the User. Can be Code or Magic Link */
-    mode?: EmailVerificationMode;
+    verify_at_sign_up: boolean;
     /** Email expiration time in seconds. */
-    expiration?: number;
+    expiration: number;
     /** If Email Code is Selected, Code length is chosen from this option */
-    code_length?: number;
+    code_length: number;
 }
 
 /** The Authentication General Options response class */
@@ -4154,11 +4152,11 @@ export interface AuthenticationGeneralPhoneOptions {
 /** The Authentication General Phone Verification Options Response class */
 export interface AuthenticationGeneralPhoneVerificationOptions {
     /** Specifies whether the phone should be verified at registration. */
-    verify_at_sign_up?: boolean;
+    verify_at_sign_up: boolean;
     /** Sms verification expiration time in seconds. */
-    expiration?: number;
+    expiration: number;
     /** Sms Code length is chosen from this option */
-    code_length?: number;
+    code_length: number;
 }
 
 /** The Authentication General Username response class */
@@ -4492,7 +4490,7 @@ export interface Client {
     /** Specifies which authentication providers can be used with this client (if list is empty all providers are allowed) */
     identity_provider_restrictions: IDPs[];
     /** Specifies which authentication methods can be used with this client (if list is empty all methods are allowed) */
-    authentication_method_restrictions: IDPs[];
+    authentication_method_restrictions: AuthenticationMethods[];
     /** Specifies whether JWT access tokens should include an identifier */
     include_jwt_id: boolean;
     /** Allows settings claims for the client (will be included in the access token). */
@@ -4526,7 +4524,7 @@ export interface CommunicationEmailOptions {
 /** The Communicaiton Email SendGrid Options response class */
 export interface CommunicationEmailSendGridOptions {
     /** SendGrid Api Key */
-    api_key: string;
+    api_key?: string | null;
 }
 
 /** The Communication Options response class */
@@ -4682,7 +4680,7 @@ export interface CreateClientRequest {
     /** Specifies which authentication providers can be used with this client (if list is empty all providers are allowed) */
     identity_provider_restrictions: IDPs[];
     /** Specifies which authentication methods can be used with this client (if list is empty all methods are allowed) */
-    authentication_method_restrictions: IDPs[];
+    authentication_method_restrictions: AuthenticationMethods[];
     /** Specifies whether JWT access tokens should include an identifier */
     include_jwt_id: boolean;
     /** Allows settings claims for the client (will be included in the access token). */
@@ -4733,7 +4731,7 @@ export interface CreateSecretRequest {
     type: SecretTypes;
 }
 
-/** The Create SignUp Custom Field Options Request */
+/** The Create Sign Up Custom Field Options Request class */
 export interface CreateSignUpCustomFieldOptionsRequest {
     /** Specifies if the users are allowed to enter the claim at the time of signup. */
     enabled: boolean;
@@ -4775,15 +4773,6 @@ export interface DeviceFlowOptions {
     /** Device Flow Code Length */
     code_length: number;
 }
-
-  /** * **link** - Verifies the email with a magic link
- * * **code** - Verifies the email with a code */
-export const EmailVerificationMode = {
-  Link: "link",
-  Code: "code",
-} as const;
-
-export type EmailVerificationMode = typeof EmailVerificationMode[keyof typeof EmailVerificationMode];
 
   /** * **google**
  * * **apple**
@@ -5286,8 +5275,6 @@ export interface PatchAuthenticationGeneralEmailOptionsRequest {
 export interface PatchAuthenticationGeneralEmailVerificationOptionsRequest {
     /** Specifies whether the email should be verified at registration. */
     verify_at_sign_up?: boolean;
-    /** Mode of Verification Sent to the User. Can be Code or Magic Link */
-    mode?: EmailVerificationMode;
     /** Email expiration time in seconds. */
     expiration?: number;
     /** If Email Code is Selected, Code length is chosen from this option */
@@ -5627,7 +5614,7 @@ export interface PatchClientRequest {
     /** Specifies which authentication providers can be used with this client (if list is empty all providers are allowed) */
     identity_provider_restrictions?: IDPs[];
     /** Specifies which authentication methods can be used with this client (if list is empty all methods are allowed) */
-    authentication_method_restrictions?: IDPs[];
+    authentication_method_restrictions?: AuthenticationMethods[];
     /** Specifies whether JWT access tokens should include an identifier */
     include_jwt_id?: boolean;
     /** Allows settings claims for the client (will be included in the access token). */
