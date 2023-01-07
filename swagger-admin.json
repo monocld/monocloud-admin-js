@@ -3940,7 +3940,7 @@
           "Users"
         ],
         "summary": "Update User's Private Data.",
-        "operationId": "PatchPrivateDataKey",
+        "operationId": "PatchPrivateData",
         "parameters": [
           {
             "name": "user_id",
@@ -4049,7 +4049,7 @@
           "Users"
         ],
         "summary": "Update User's Public Data.",
-        "operationId": "PatchPublicDataKey",
+        "operationId": "PatchPublicData",
         "parameters": [
           {
             "name": "user_id",
@@ -4162,81 +4162,6 @@
         ],
         "type": "string",
         "description": "* **jwt** - Jwt token\r\n* **reference** - Reference token"
-      },
-      "AccountMergingOptions": {
-        "required": [
-          "external_unverified_existing_unverified",
-          "external_unverified_existing_verified",
-          "external_verified_existing_unverified",
-          "external_verified_existing_verified",
-          "passwordless_verified_existing_external_unverified",
-          "passwordless_verified_existing_local_unverified"
-        ],
-        "type": "object",
-        "properties": {
-          "external_verified_existing_verified": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MergeModes"
-              }
-            ],
-            "description": "Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is also verified.",
-            "example": "merge_accounts"
-          },
-          "external_verified_existing_unverified": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MergeModes"
-              }
-            ],
-            "description": "Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is unverified.",
-            "example": "not_allowed"
-          },
-          "external_unverified_existing_verified": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MergeModes"
-              }
-            ],
-            "description": "Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is verified.",
-            "example": "not_allowed"
-          },
-          "external_unverified_existing_unverified": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MergeModes"
-              }
-            ],
-            "description": "Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is also unverified.",
-            "example": "not_allowed"
-          },
-          "passwordless_verified_existing_external_unverified": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MergeModes"
-              }
-            ],
-            "description": "Specifies account merge mode when the login is a passwordless one and the existing (external) account's email/phone is the same but unverified.",
-            "example": "not_allowed"
-          },
-          "passwordless_verified_existing_local_unverified": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MergeModes"
-              }
-            ],
-            "description": "Specifies account merge mode when the login is a passwordless one and the existing (local) account's email/phone is the same but unverified.",
-            "example": "not_allowed"
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Account Merging Options response class"
       },
       "AccountProtectionOptions": {
         "required": [
@@ -4590,18 +4515,12 @@
           "allow_remember_me",
           "consent_required_for_offline_access",
           "email",
-          "enable_secure_mode",
           "phone",
           "remember_me_duration",
           "username"
         ],
         "type": "object",
         "properties": {
-          "enable_secure_mode": {
-            "type": "boolean",
-            "description": "Specifies whether secure mode is enabled",
-            "example": true
-          },
           "consent_required_for_offline_access": {
             "type": "boolean",
             "description": "Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access.",
@@ -4745,6 +4664,7 @@
       },
       "AuthenticationMethodEmailCodeOptions": {
         "required": [
+          "enable_jit_provisioning",
           "enable_sign_in",
           "enable_sign_up",
           "otp_expiry",
@@ -4760,6 +4680,11 @@
           "enable_sign_up": {
             "type": "boolean",
             "description": "Enable Email Code Sign-up",
+            "example": true
+          },
+          "enable_jit_provisioning": {
+            "type": "boolean",
+            "description": "Enable Email Code Enable Jit Provisioning",
             "example": true
           },
           "otp_expiry": {
@@ -4780,6 +4705,7 @@
       },
       "AuthenticationMethodMagicLinkOptions": {
         "required": [
+          "enable_jit_provisioning",
           "enable_sign_in",
           "enable_sign_up",
           "link_expiry"
@@ -4794,6 +4720,11 @@
           "enable_sign_up": {
             "type": "boolean",
             "description": "Enable Magic Link Sign-up",
+            "example": true
+          },
+          "enable_jit_provisioning": {
+            "type": "boolean",
+            "description": "Enable Magic Link Enable Jit Provisioning",
             "example": true
           },
           "link_expiry": {
@@ -4878,6 +4809,7 @@
           "enable_sign_in",
           "enable_sign_up",
           "expiration",
+          "recovery",
           "reuse",
           "strength"
         ],
@@ -4916,10 +4848,112 @@
               }
             ],
             "description": "Password Expiration Options"
+          },
+          "recovery": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AuthenticationMethodPasswordRecoveryOptions"
+              }
+            ],
+            "description": "Password Recovery Options"
           }
         },
         "additionalProperties": false,
         "description": "The Authentication Method Password Options response class"
+      },
+      "AuthenticationMethodPasswordRecoveryEmailOptions": {
+        "required": [
+          "enabled",
+          "mode",
+          "otp_expiry",
+          "otp_length"
+        ],
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Enable Password recovery through Email."
+          },
+          "mode": {
+            "type": "enum",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TokenSendTypes"
+              }
+            ],
+            "description": "Specifies the recovery mode.",
+            "example": "code"
+          },
+          "otp_expiry": {
+            "type": "integer",
+            "description": "Email expiration time in seconds.",
+            "format": "int32",
+            "example": 300
+          },
+          "otp_length": {
+            "type": "integer",
+            "description": "If Email Code is Selected, Code length is chosen from this option",
+            "format": "int32",
+            "example": 6
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Authentication Method Password Recovery Email response class"
+      },
+      "AuthenticationMethodPasswordRecoveryOptions": {
+        "required": [
+          "email",
+          "phone"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AuthenticationMethodPasswordRecoveryEmailOptions"
+              }
+            ],
+            "description": "Password Recovery Email Options"
+          },
+          "phone": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AuthenticationMethodPasswordRecoveryPhoneOptions"
+              }
+            ],
+            "description": "Password Recovery Phone Options"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Authentication Method Password Recovery response class"
+      },
+      "AuthenticationMethodPasswordRecoveryPhoneOptions": {
+        "required": [
+          "enabled",
+          "otp_expiry",
+          "otp_length"
+        ],
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Enable Password recovery through Phone."
+          },
+          "otp_expiry": {
+            "type": "integer",
+            "description": "Code expiration time in seconds.",
+            "format": "int32",
+            "example": 300
+          },
+          "otp_length": {
+            "type": "integer",
+            "description": "Code length is chosen from this option",
+            "format": "int32",
+            "example": 6
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Authentication Method Password Recovery Phone response class"
       },
       "AuthenticationMethodPasswordReuseOptions": {
         "required": [
@@ -5004,6 +5038,7 @@
       },
       "AuthenticationMethodSmsCodeOptions": {
         "required": [
+          "enable_jit_provisioning",
           "enable_sign_in",
           "enable_sign_up",
           "otp_expiry",
@@ -5019,6 +5054,11 @@
           "enable_sign_up": {
             "type": "boolean",
             "description": "Enable Sms Code Sign-up",
+            "example": true
+          },
+          "enable_jit_provisioning": {
+            "type": "boolean",
+            "description": "Enable Sms Code Enable Jit Provisioning",
             "example": true
           },
           "otp_expiry": {
@@ -5131,15 +5171,6 @@
             "description": "Email Code SignIn Branding Options",
             "nullable": true
           },
-          "magic_link_verification": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/BrandingGenericEmailTemplateOptions"
-              }
-            ],
-            "description": "Magic Link Verification Branding Options",
-            "nullable": true
-          },
           "email_code_verification": {
             "allOf": [
               {
@@ -5167,13 +5198,22 @@
             "description": "User Lockout Branding Options",
             "nullable": true
           },
-          "reset_password": {
+          "magic_link_password_reset": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/BrandingGenericEmailTemplateOptions"
               }
             ],
-            "description": "Reset Password Branding Options",
+            "description": "Magic Link Password Reset Branding Options",
+            "nullable": true
+          },
+          "email_code_password_reset": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BrandingGenericEmailTemplateOptions"
+              }
+            ],
+            "description": "Email Code Password Reset Branding Options",
             "nullable": true
           },
           "password_updated": {
@@ -5423,6 +5463,15 @@
               }
             ],
             "description": "Sms Code Verification Branding Options",
+            "nullable": true
+          },
+          "sms_code_password_reset": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BrandingGenericSmsTemplateOptions"
+              }
+            ],
+            "description": "Sms Code Password Reset Branding Options",
             "nullable": true
           }
         },
@@ -5869,12 +5918,14 @@
         "description": "The Communication Email Options response class"
       },
       "CommunicationEmailSendGridOptions": {
+        "required": [
+          "api_key"
+        ],
         "type": "object",
         "properties": {
           "api_key": {
             "type": "string",
             "description": "SendGrid Api Key",
-            "nullable": true,
             "example": "KJFdlswierur458dfhkJHFwkoepOURFuasd"
           }
         },
@@ -6135,7 +6186,7 @@
             "example": "customer_id"
           },
           "value": {
-            "maxLength": 250,
+            "maxLength": 1000,
             "minLength": 1,
             "type": "string",
             "description": "Specifies the value of the claim",
@@ -7301,16 +7352,21 @@
       "Log": {
         "required": [
           "category",
-          "context",
           "event_id",
           "event_type",
           "id",
-          "name"
+          "interactive",
+          "name",
+          "region",
+          "tenant_id",
+          "time_stamp"
         ],
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "description": "Unique identifier of the log",
+            "example": "83658f0a-e366-41d1-8228-b0874dd36d0c"
           },
           "category": {
             "type": "enum",
@@ -7318,15 +7374,14 @@
               {
                 "$ref": "#/components/schemas/LogEventCategories"
               }
-            ]
+            ],
+            "description": "Log Category",
+            "example": "token"
           },
-          "event_id": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LogEventIds"
-              }
-            ]
+          "name": {
+            "type": "string",
+            "description": "Log Name.",
+            "example": "Authorization Success"
           },
           "event_type": {
             "type": "enum",
@@ -7334,69 +7389,95 @@
               {
                 "$ref": "#/components/schemas/LogEventTypes"
               }
-            ]
+            ],
+            "description": "Log Type.",
+            "example": "success"
           },
-          "local_ip_address": {
-            "type": "string",
-            "nullable": true
+          "event_id": {
+            "type": "enum",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LogEventIds"
+              }
+            ],
+            "description": "Log event Id.",
+            "example": "authorization_success"
           },
           "message": {
             "type": "string",
-            "nullable": true
+            "description": "Message",
+            "nullable": true,
+            "example": "Authorization Success"
           },
-          "name": {
-            "type": "string"
-          },
-          "process_id": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "remote_ip_address": {
+          "activity_id": {
             "type": "string",
-            "nullable": true
+            "description": "The Activity Id.",
+            "nullable": true,
+            "example": "0HMNB2DAIS5OI:00000002"
           },
           "time_stamp": {
             "type": "integer",
+            "description": "Specifies the event time (in Epoch).",
             "format": "int64",
-            "nullable": true
+            "example": 1672479766
           },
-          "trace_id": {
+          "process_id": {
+            "type": "integer",
+            "description": "The Process Id.",
+            "format": "int32",
+            "nullable": true,
+            "example": 13052
+          },
+          "local_ip_address": {
             "type": "string",
-            "nullable": true
+            "description": "The Local Ip Address.",
+            "nullable": true,
+            "example": "127.0.0.1"
+          },
+          "remote_ip_address": {
+            "type": "string",
+            "description": "The Remote Ip Address.",
+            "nullable": true,
+            "example": "172.18.0.1"
           },
           "user_agent": {
             "type": "string",
-            "nullable": true
+            "description": "The User Agent.",
+            "nullable": true,
+            "example": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+          },
+          "tenant_id": {
+            "type": "string",
+            "description": "The tenant Id.",
+            "format": "uuid",
+            "example": "dfa6f854-4ee3-4585-bdd0-650d4efb80ab"
+          },
+          "region": {
+            "type": "integer",
+            "description": "The region.",
+            "format": "int32",
+            "example": 0
+          },
+          "interactive": {
+            "type": "boolean",
+            "description": "Specifies if the log was triggered by a user interactive process.",
+            "example": true
           },
           "client_id": {
             "type": "string",
-            "nullable": true
+            "description": "The client Id.",
+            "nullable": true,
+            "example": "client_id"
           },
           "client_name": {
             "type": "string",
-            "nullable": true
-          },
-          "user_id": {
-            "type": "string",
-            "nullable": true
-          },
-          "username": {
-            "type": "string",
-            "nullable": true
-          },
-          "scheme": {
-            "type": "string",
-            "nullable": true
-          },
-          "scheme_user_id": {
-            "type": "string",
-            "nullable": true
-          },
-          "context": { }
+            "description": "The Client Name.",
+            "nullable": true,
+            "example": "client_name"
+          }
         },
         "additionalProperties": false,
-        "description": "The Log response class"
+        "description": "The Log Summary response class."
       },
       "LogEventCategories": {
         "enum": [
@@ -7421,17 +7502,19 @@
           "api_authentication_success",
           "api_authentication_failure",
           "user_logout_success",
-          "user_login_success",
-          "user_login_failure",
+          "user_sign_in_failure",
+          "user_sign_in_success",
           "user_account_blocked",
           "user_account_ip_blocked",
           "user_account_unblocked",
           "user_account_ip_unblocked",
           "user_account_ip_unblocked_all",
-          "user_password_reset",
+          "user_password_reset_success",
           "user_session_created",
           "user_session_renewed",
           "user_session_removed",
+          "user_sign_up_success",
+          "user_new_authentication_method_added",
           "token_issued_success",
           "token_issued_failure",
           "token_revoked_success",
@@ -7444,10 +7527,12 @@
           "grants_revoked",
           "device_authorization_success",
           "device_authorization_failure",
-          "passwordless_login_sent_event"
+          "passwordless_sign_in_notification_sent_event",
+          "sign_up_verification_notification_sent_event",
+          "user_password_reset_notification_sent"
         ],
         "type": "string",
-        "description": "* **authorization_success**\r\n* **authorization_failure**\r\n* **resource_owner_authentication_success**\r\n* **resource_owner_authentication_failure**\r\n* **client_authentication_success**\r\n* **client_authentication_failure**\r\n* **api_authentication_success**\r\n* **api_authentication_failure**\r\n* **user_logout_success**\r\n* **user_login_success**\r\n* **user_login_failure**\r\n* **user_account_blocked**\r\n* **user_account_ip_blocked**\r\n* **user_account_unblocked**\r\n* **user_account_ip_unblocked**\r\n* **user_account_ip_unblocked_all**\r\n* **user_password_reset**\r\n* **user_session_created**\r\n* **user_session_renewed**\r\n* **user_session_removed**\r\n* **token_issued_success**\r\n* **token_issued_failure**\r\n* **token_revoked_success**\r\n* **token_introspection_success**\r\n* **token_introspection_failure**\r\n* **unhandled_exception**\r\n* **invalid_client_configuration**\r\n* **consent_granted**\r\n* **consent_denied**\r\n* **grants_revoked**\r\n* **device_authorization_success**\r\n* **device_authorization_failure**\r\n* **passwordless_login_sent_event**"
+        "description": "* **authorization_success**\r\n* **authorization_failure**\r\n* **resource_owner_authentication_success**\r\n* **resource_owner_authentication_failure**\r\n* **client_authentication_success**\r\n* **client_authentication_failure**\r\n* **api_authentication_success**\r\n* **api_authentication_failure**\r\n* **user_logout_success**\r\n* **user_sign_in_failure**\r\n* **user_sign_in_success**\r\n* **user_account_blocked**\r\n* **user_account_ip_blocked**\r\n* **user_account_unblocked**\r\n* **user_account_ip_unblocked**\r\n* **user_account_ip_unblocked_all**\r\n* **user_password_reset_success**\r\n* **user_session_created**\r\n* **user_session_renewed**\r\n* **user_session_removed**\r\n* **user_sign_up_success**\r\n* **user_new_authentication_method_added**\r\n* **token_issued_success**\r\n* **token_issued_failure**\r\n* **token_revoked_success**\r\n* **token_introspection_success**\r\n* **token_introspection_failure**\r\n* **unhandled_exception**\r\n* **invalid_client_configuration**\r\n* **consent_granted**\r\n* **consent_denied**\r\n* **grants_revoked**\r\n* **device_authorization_success**\r\n* **device_authorization_failure**\r\n* **passwordless_sign_in_notification_sent_event**\r\n* **sign_up_verification_notification_sent_event**\r\n* **user_password_reset_notification_sent**"
       },
       "LogEventTypes": {
         "enum": [
@@ -7462,14 +7547,21 @@
       "LogSummary": {
         "required": [
           "category",
+          "event_id",
           "event_type",
           "id",
-          "name"
+          "interactive",
+          "name",
+          "region",
+          "tenant_id",
+          "time_stamp"
         ],
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "description": "Unique identifier of the log",
+            "example": "83658f0a-e366-41d1-8228-b0874dd36d0c"
           },
           "category": {
             "type": "enum",
@@ -7477,7 +7569,14 @@
               {
                 "$ref": "#/components/schemas/LogEventCategories"
               }
-            ]
+            ],
+            "description": "Log Category",
+            "example": "token"
+          },
+          "name": {
+            "type": "string",
+            "description": "Log Name.",
+            "example": "Authorization Success"
           },
           "event_type": {
             "type": "enum",
@@ -7485,15 +7584,42 @@
               {
                 "$ref": "#/components/schemas/LogEventTypes"
               }
-            ]
+            ],
+            "description": "Log Type.",
+            "example": "success"
           },
-          "name": {
-            "type": "string"
+          "event_id": {
+            "type": "enum",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LogEventIds"
+              }
+            ],
+            "description": "Log event Id.",
+            "example": "authorization_success"
           },
           "time_stamp": {
             "type": "integer",
+            "description": "Specifies the event time (in Epoch).",
             "format": "int64",
-            "nullable": true
+            "example": 1672479766
+          },
+          "tenant_id": {
+            "type": "string",
+            "description": "The tenant Id.",
+            "format": "uuid",
+            "example": "dfa6f854-4ee3-4585-bdd0-650d4efb80ab"
+          },
+          "region": {
+            "type": "integer",
+            "description": "The region.",
+            "format": "int32",
+            "example": 0
+          },
+          "interactive": {
+            "type": "boolean",
+            "description": "Specifies if the log was triggered by a user interactive process.",
+            "example": true
           }
         },
         "additionalProperties": false,
@@ -7519,16 +7645,6 @@
         },
         "additionalProperties": false,
         "description": "The Logout Options response class"
-      },
-      "MergeModes": {
-        "enum": [
-          "not_allowed",
-          "create_new_account",
-          "merge_accounts",
-          "login_prompt"
-        ],
-        "type": "string",
-        "description": "* **not_allowed**\r\n* **create_new_account**\r\n* **merge_accounts**\r\n* **login_prompt**"
       },
       "Microsoft.AspNetCore.Mvc.ProblemDetails": {
         "type": "object",
@@ -7656,73 +7772,6 @@
         ],
         "type": "string",
         "description": "* **off**\r\n* **date**\r\n* **count**\r\n* **date_and_count**"
-      },
-      "PatchAccountMergingOptionsRequest": {
-        "type": "object",
-        "properties": {
-          "external_verified_existing_verified": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MergeModes"
-              }
-            ],
-            "description": "Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is also verified.",
-            "example": "merge_accounts"
-          },
-          "external_verified_existing_unverified": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MergeModes"
-              }
-            ],
-            "description": "Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is unverified.",
-            "example": "not_allowed"
-          },
-          "external_unverified_existing_verified": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MergeModes"
-              }
-            ],
-            "description": "Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is verified.",
-            "example": "not_allowed"
-          },
-          "external_unverified_existing_unverified": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MergeModes"
-              }
-            ],
-            "description": "Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is also unverified.",
-            "example": "not_allowed"
-          },
-          "passwordless_verified_existing_external_unverified": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MergeModes"
-              }
-            ],
-            "description": "Specifies account merge mode when the login is a passwordless one and the existing (external) account's email/phone is the same but unverified.",
-            "example": "not_allowed"
-          },
-          "passwordless_verified_existing_local_unverified": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MergeModes"
-              }
-            ],
-            "description": "Specifies account merge mode when the login is a passwordless one and the existing (local) account's email/phone is the same but unverified.",
-            "example": "not_allowed"
-          }
-        },
-        "additionalProperties": false,
-        "description": "The Patch Account Merging Options Request class"
       },
       "PatchAccountProtectionOptionsRequest": {
         "type": "object",
@@ -7984,11 +8033,6 @@
       "PatchAuthenticationGeneralOptionsOptionsRequest": {
         "type": "object",
         "properties": {
-          "enable_secure_mode": {
-            "type": "boolean",
-            "description": "Specifies whether secure mode is enabled",
-            "example": true
-          },
           "consent_required_for_offline_access": {
             "type": "boolean",
             "description": "Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access.",
@@ -8075,7 +8119,7 @@
           },
           "expiration": {
             "maximum": 600,
-            "minimum": 300,
+            "minimum": 60,
             "type": "integer",
             "description": "Sms verification expiration time in seconds.",
             "format": "int32"
@@ -8132,6 +8176,11 @@
             "description": "Enable Email Code Sign-up",
             "example": true
           },
+          "enable_jit_provisioning": {
+            "type": "boolean",
+            "description": "Enable Email Code Enable Jit Provisioning",
+            "example": true
+          },
           "otp_expiry": {
             "maximum": 900,
             "minimum": 30,
@@ -8163,6 +8212,11 @@
           "enable_sign_up": {
             "type": "boolean",
             "description": "Enable Magic Link Sign-up",
+            "example": true
+          },
+          "enable_jit_provisioning": {
+            "type": "boolean",
+            "description": "Enable Magic Link Enable Jit Provisioning",
             "example": true
           },
           "link_expiry": {
@@ -8272,10 +8326,105 @@
               }
             ],
             "description": "Password Expiration Options"
+          },
+          "recovery": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchAuthenticationMethodPasswordRecoveryOptionsRequest"
+              }
+            ],
+            "description": "Password Recovery Options"
           }
         },
         "additionalProperties": false,
         "description": "The Patch Authentication Method Password Options Request class"
+      },
+      "PatchAuthenticationMethodPasswordRecoveryEmailOptionsRequest": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Enable Password recovery through Email."
+          },
+          "mode": {
+            "type": "enum",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TokenSendTypes"
+              }
+            ],
+            "description": "Specifies the recovery mode.",
+            "example": "code"
+          },
+          "otp_expiry": {
+            "maximum": 600,
+            "minimum": 300,
+            "type": "integer",
+            "description": "Email expiration time in seconds.",
+            "format": "int32",
+            "example": 300
+          },
+          "otp_length": {
+            "maximum": 10,
+            "minimum": 4,
+            "type": "integer",
+            "description": "If Email Code is Selected, Code length is chosen from this option",
+            "format": "int32",
+            "example": 6
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Patch authentication method password recovery email options request class"
+      },
+      "PatchAuthenticationMethodPasswordRecoveryOptionsRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchAuthenticationMethodPasswordRecoveryEmailOptionsRequest"
+              }
+            ],
+            "description": "Password Recovery Email Options"
+          },
+          "phone": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchAuthenticationMethodPasswordRecoveryPhoneOptionsRequest"
+              }
+            ],
+            "description": "Password Recovery Phone Options"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Patch authentication method password recovery options request class"
+      },
+      "PatchAuthenticationMethodPasswordRecoveryPhoneOptionsRequest": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Enable Password recovery through Phone."
+          },
+          "otp_expiry": {
+            "maximum": 600,
+            "minimum": 300,
+            "type": "integer",
+            "description": "Code expiration time in seconds.",
+            "format": "int32",
+            "example": 300
+          },
+          "otp_length": {
+            "maximum": 10,
+            "minimum": 4,
+            "type": "integer",
+            "description": "Code length is chosen from this option",
+            "format": "int32",
+            "example": 6
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Patch authentication method password recovery phone options request class"
       },
       "PatchAuthenticationMethodPasswordReuseOptionsRequest": {
         "type": "object",
@@ -8363,6 +8512,11 @@
           "enable_sign_up": {
             "type": "boolean",
             "description": "Enable Sms Code Sign-up",
+            "example": true
+          },
+          "enable_jit_provisioning": {
+            "type": "boolean",
+            "description": "Enable Sms Code Enable Jit Provisioning",
             "example": true
           },
           "otp_expiry": {
@@ -8461,15 +8615,6 @@
             "description": "Email Code SignIn Branding Options",
             "nullable": true
           },
-          "magic_link_verification": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PatchBrandingGenericCustomEmailOptionsRequest"
-              }
-            ],
-            "description": "Magic Link Verification Branding Options",
-            "nullable": true
-          },
           "email_code_verification": {
             "allOf": [
               {
@@ -8497,13 +8642,22 @@
             "description": "User Lockout Branding Options",
             "nullable": true
           },
-          "reset_password": {
+          "magic_link_password_reset": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/PatchBrandingGenericCustomEmailOptionsRequest"
               }
             ],
-            "description": "Reset Password Branding Options",
+            "description": "Magic Link Password Reset Branding Options",
+            "nullable": true
+          },
+          "email_code_password_reset": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchBrandingGenericCustomEmailOptionsRequest"
+              }
+            ],
+            "description": "Email Code Password Reset Branding Options",
             "nullable": true
           },
           "password_updated": {
@@ -8559,9 +8713,6 @@
         "description": "The Patch Generic Branding Custom Email Options Request class"
       },
       "PatchBrandingGenericCustomSmsOptionsRequest": {
-        "required": [
-          "template"
-        ],
         "type": "object",
         "properties": {
           "template": {
@@ -8625,8 +8776,7 @@
             "example": "#f2f2f2"
           },
           "error_color": {
-            "maxLength": 7,
-            "minLength": 7,
+            "minLength": 1,
             "pattern": "^#[0-9A-Fa-f]{6}$",
             "type": "string",
             "description": "Specifies the error colour to be used for pages",
@@ -8645,8 +8795,7 @@
             "example": "https://example.com/logo"
           },
           "primary_color": {
-            "maxLength": 7,
-            "minLength": 7,
+            "minLength": 1,
             "pattern": "^#[0-9A-Fa-f]{6}$",
             "type": "string",
             "description": "Specifies the primary colour to be used for pages",
@@ -8754,6 +8903,15 @@
               }
             ],
             "description": "Sms Code Verification Branding Options",
+            "nullable": true
+          },
+          "sms_code_password_reset": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchBrandingGenericCustomSmsOptionsRequest"
+              }
+            ],
+            "description": "Sms Code Password Reset Branding Options",
             "nullable": true
           }
         },
@@ -9640,16 +9798,6 @@
       },
       "PatchSignUpOptionsRequest": {
         "type": "object",
-        "properties": {
-          "account_merging": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PatchAccountMergingOptionsRequest"
-              }
-            ],
-            "description": "Registration Account Merge Options"
-          }
-        },
         "additionalProperties": false,
         "description": "The Patch SignUp Options Request class"
       },
@@ -9882,19 +10030,10 @@
       },
       "SignUpOptions": {
         "required": [
-          "account_merging",
           "custom_fields"
         ],
         "type": "object",
         "properties": {
-          "account_merging": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/AccountMergingOptions"
-              }
-            ],
-            "description": "Registration Account Merge Options"
-          },
           "custom_fields": {
             "type": "array",
             "items": {
@@ -10079,6 +10218,14 @@
         ],
         "type": "string",
         "description": "* **default**"
+      },
+      "TokenSendTypes": {
+        "enum": [
+          "link",
+          "code"
+        ],
+        "type": "string",
+        "description": "* **link**\r\n* **code**"
       },
       "TrustStore": {
         "required": [
