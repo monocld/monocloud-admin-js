@@ -5155,7 +5155,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @param {{ [key: string]: any; }} body Request Body
    * @return {Promise<MonoCloudResponse<{ [key: string]: any; }>>} Success
    */
-  patchPrivateData(
+  patchPrivateDataKey(
     user_id: string,
     body: { [key: string]: any },
     cancelToken?: CancelToken | undefined
@@ -5192,11 +5192,11 @@ export class UsersClient extends MonoCloudClientBase {
         throw _error;
       })
       .then((_response: AxiosResponse) => {
-        return this.processPatchPrivateData(_response);
+        return this.processPatchPrivateDataKey(_response);
       });
   }
 
-  protected processPatchPrivateData(
+  protected processPatchPrivateDataKey(
     response: AxiosResponse
   ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
     const { status } = response;
@@ -5267,7 +5267,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @param {{ [key: string]: any; }} body Request Body
    * @return {Promise<MonoCloudResponse<{ [key: string]: any; }>>} Success
    */
-  patchPublicData(
+  patchPublicDataKey(
     user_id: string,
     body: { [key: string]: any },
     cancelToken?: CancelToken | undefined
@@ -5304,11 +5304,11 @@ export class UsersClient extends MonoCloudClientBase {
         throw _error;
       })
       .then((_response: AxiosResponse) => {
-        return this.processPatchPublicData(_response);
+        return this.processPatchPublicDataKey(_response);
       });
   }
 
-  protected processPatchPublicData(
+  protected processPatchPublicDataKey(
     response: AxiosResponse
   ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
     const { status } = response;
@@ -5383,6 +5383,22 @@ export const AccessTokenTypes = {
 
 export type AccessTokenTypes =
   typeof AccessTokenTypes[keyof typeof AccessTokenTypes];
+
+/** The Account Merging Options response class */
+export interface AccountMergingOptions {
+  /** Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is also verified. */
+  external_verified_existing_verified: MergeModes;
+  /** Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is unverified. */
+  external_verified_existing_unverified: MergeModes;
+  /** Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is verified. */
+  external_unverified_existing_verified: MergeModes;
+  /** Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is also unverified. */
+  external_unverified_existing_unverified: MergeModes;
+  /** Specifies account merge mode when the login is a passwordless one and the existing (external) account's email/phone is the same but unverified. */
+  passwordless_verified_existing_external_unverified: MergeModes;
+  /** Specifies account merge mode when the login is a passwordless one and the existing (local) account's email/phone is the same but unverified. */
+  passwordless_verified_existing_local_unverified: MergeModes;
+}
 
 /** The Account Protection response class */
 export interface AccountProtectionOptions {
@@ -5494,6 +5510,8 @@ export interface AuthenticationGeneralEmailVerificationOptions {
 
 /** The Authentication General Options response class */
 export interface AuthenticationGeneralOptions {
+  /** Specifies whether secure mode is enabled */
+  enable_secure_mode: boolean;
   /** Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access. */
   consent_required_for_offline_access: boolean;
   /** Show RememberMe Checkbox on the SignIn Screen */
@@ -5548,8 +5566,6 @@ export interface AuthenticationMethodEmailCodeOptions {
   enable_sign_in: boolean;
   /** Enable Email Code Sign-up */
   enable_sign_up: boolean;
-  /** Enable Email Code Enable Jit Provisioning */
-  enable_jit_provisioning: boolean;
   /** Specifies the expiration time in seconds for the OTP to be generated */
   otp_expiry: number;
   /** Specifies the OTP character length */
@@ -5562,8 +5578,6 @@ export interface AuthenticationMethodMagicLinkOptions {
   enable_sign_in: boolean;
   /** Enable Magic Link Sign-up */
   enable_sign_up: boolean;
-  /** Enable Magic Link Enable Jit Provisioning */
-  enable_jit_provisioning: boolean;
   /** Specifies the expiration time in seconds for the OTP to be generated */
   link_expiry: number;
 }
@@ -5600,38 +5614,6 @@ export interface AuthenticationMethodPasswordOptions {
   reuse: AuthenticationMethodPasswordReuseOptions;
   /** Password Expiration Options */
   expiration: AuthenticationMethodPasswordExpirationOptions;
-  /** Password Recovery Options */
-  recovery: AuthenticationMethodPasswordRecoveryOptions;
-}
-
-/** The Authentication Method Password Recovery Email response class */
-export interface AuthenticationMethodPasswordRecoveryEmailOptions {
-  /** Enable Password recovery through Email. */
-  enabled: boolean;
-  /** Specifies the recovery mode. */
-  mode: TokenSendTypes;
-  /** Email expiration time in seconds. */
-  otp_expiry: number;
-  /** If Email Code is Selected, Code length is chosen from this option */
-  otp_length: number;
-}
-
-/** The Authentication Method Password Recovery response class */
-export interface AuthenticationMethodPasswordRecoveryOptions {
-  /** Password Recovery Email Options */
-  email: AuthenticationMethodPasswordRecoveryEmailOptions;
-  /** Password Recovery Phone Options */
-  phone: AuthenticationMethodPasswordRecoveryPhoneOptions;
-}
-
-/** The Authentication Method Password Recovery Phone response class */
-export interface AuthenticationMethodPasswordRecoveryPhoneOptions {
-  /** Enable Password recovery through Phone. */
-  enabled: boolean;
-  /** Code expiration time in seconds. */
-  otp_expiry: number;
-  /** Code length is chosen from this option */
-  otp_length: number;
 }
 
 /** The Authentication Method Password Reuse response class */
@@ -5666,8 +5648,6 @@ export interface AuthenticationMethodSmsCodeOptions {
   enable_sign_in: boolean;
   /** Enable Sms Code Sign-up */
   enable_sign_up: boolean;
-  /** Enable Sms Code Enable Jit Provisioning */
-  enable_jit_provisioning: boolean;
   /** Specifies the expiration time in seconds for the OTP to be generated */
   otp_expiry: number;
   /** Specifies the OTP character length */
@@ -5675,14 +5655,14 @@ export interface AuthenticationMethodSmsCodeOptions {
 }
 
 /** * **password**
- * * **email_code**
+ * * **sms_code**
  * * **magic_link**
  * * **sms_code** */
 export const AuthenticationMethods = {
   Password: 'password',
-  EmailCode: 'email_code',
-  MagicLink: 'magic_link',
   SmsCode: 'sms_code',
+  MagicLink: 'magic_link',
+  EmailCode: 'email_code',
 } as const;
 
 export type AuthenticationMethods =
@@ -5710,16 +5690,16 @@ export interface BrandingEmailOptions {
   magic_link_sign_in?: BrandingGenericEmailTemplateOptions | null;
   /** Email Code SignIn Branding Options */
   email_code_sign_in?: BrandingGenericEmailTemplateOptions | null;
+  /** Magic Link Verification Branding Options */
+  magic_link_verification?: BrandingGenericEmailTemplateOptions | null;
   /** Email Code Verification Branding Options */
   email_code_verification?: BrandingGenericEmailTemplateOptions | null;
   /** Welcome Email Branding Options */
   welcome?: BrandingGenericEmailTemplateOptions | null;
   /** User Lockout Branding Options */
   user_lockout?: BrandingGenericEmailTemplateOptions | null;
-  /** Magic Link Password Reset Branding Options */
-  magic_link_password_reset?: BrandingGenericEmailTemplateOptions | null;
-  /** Email Code Password Reset Branding Options */
-  email_code_password_reset?: BrandingGenericEmailTemplateOptions | null;
+  /** Reset Password Branding Options */
+  reset_password?: BrandingGenericEmailTemplateOptions | null;
   /** Password Updated Branding Options */
   password_updated?: BrandingGenericEmailTemplateOptions | null;
 }
@@ -5800,8 +5780,6 @@ export interface BrandingSmsOptions {
   sms_code_sign_in?: BrandingGenericSmsTemplateOptions | null;
   /** Sms Code Verification Branding Options */
   sms_code_verification?: BrandingGenericSmsTemplateOptions | null;
-  /** Sms Code Password Reset Branding Options */
-  sms_code_password_reset?: BrandingGenericSmsTemplateOptions | null;
 }
 
 /** * **chained** - Verifies the certificate with root CA and intermediary CAs
@@ -5937,7 +5915,7 @@ export interface CommunicationEmailOptions {
 /** The Communicaiton Email SendGrid Options response class */
 export interface CommunicationEmailSendGridOptions {
   /** SendGrid Api Key */
-  api_key: string;
+  api_key?: string | null;
 }
 
 /** The Communication Options response class */
@@ -6396,40 +6374,25 @@ export type Languages = typeof Languages[keyof typeof Languages];
 
 /** The Log Summary response class. */
 export interface Log {
-  /** Unique identifier of the log */
   id: string;
-  /** Log Category */
   category: LogEventCategories;
-  /** Log Name. */
-  name: string;
-  /** Log Type. */
-  event_type: LogEventTypes;
-  /** Log event Id. */
   event_id: LogEventIds;
-  /** Message */
-  message?: string | null;
-  /** The Activity Id. */
-  activity_id?: string | null;
-  /** Specifies the event time (in Epoch). */
-  time_stamp: number;
-  /** The Process Id. */
-  process_id?: number | null;
-  /** The Local Ip Address. */
+  event_type: LogEventTypes;
   local_ip_address?: string | null;
-  /** The Remote Ip Address. */
+  message?: string | null;
+  name: string;
+  process_id?: number | null;
   remote_ip_address?: string | null;
-  /** The User Agent. */
+  time_stamp?: number | null;
+  trace_id?: string | null;
   user_agent?: string | null;
-  /** The tenant Id. */
-  tenant_id: string;
-  /** The region. */
-  region: number;
-  /** Specifies if the log was triggered by a user interactive process. */
-  interactive: boolean;
-  /** The client Id. */
   client_id?: string | null;
-  /** The Client Name. */
   client_name?: string | null;
+  user_id?: string | null;
+  username?: string | null;
+  scheme?: string | null;
+  scheme_user_id?: string | null;
+  context: any;
 }
 
 /** * **authentication**
@@ -6497,19 +6460,17 @@ export const LogEventIds = {
   ApiAuthenticationSuccess: 'api_authentication_success',
   ApiAuthenticationFailure: 'api_authentication_failure',
   UserLogoutSuccess: 'user_logout_success',
-  UserSignInFailure: 'user_sign_in_failure',
-  UserSignInSuccess: 'user_sign_in_success',
+  UserLoginSuccess: 'user_login_success',
+  UserLoginFailure: 'user_login_failure',
   UserAccountBlocked: 'user_account_blocked',
   UserAccountIpBlocked: 'user_account_ip_blocked',
   UserAccountUnblocked: 'user_account_unblocked',
   UserAccountIpUnblocked: 'user_account_ip_unblocked',
   UserAccountIpUnblockedAll: 'user_account_ip_unblocked_all',
-  UserPasswordResetSuccess: 'user_password_reset_success',
+  UserPasswordReset: 'user_password_reset',
   UserSessionCreated: 'user_session_created',
   UserSessionRenewed: 'user_session_renewed',
   UserSessionRemoved: 'user_session_removed',
-  UserSignUpSuccess: 'user_sign_up_success',
-  UserNewAuthenticationMethodAdded: 'user_new_authentication_method_added',
   TokenIssuedSuccess: 'token_issued_success',
   TokenIssuedFailure: 'token_issued_failure',
   TokenRevokedSuccess: 'token_revoked_success',
@@ -6522,11 +6483,7 @@ export const LogEventIds = {
   GrantsRevoked: 'grants_revoked',
   DeviceAuthorizationSuccess: 'device_authorization_success',
   DeviceAuthorizationFailure: 'device_authorization_failure',
-  PasswordlessSignInNotificationSentEvent:
-    'passwordless_sign_in_notification_sent_event',
-  SignUpVerificationNotificationSentEvent:
-    'sign_up_verification_notification_sent_event',
-  UserPasswordResetNotificationSent: 'user_password_reset_notification_sent',
+  PasswordlessLoginSentEvent: 'passwordless_login_sent_event',
 } as const;
 
 export type LogEventIds = typeof LogEventIds[keyof typeof LogEventIds];
@@ -6546,24 +6503,11 @@ export type LogEventTypes = typeof LogEventTypes[keyof typeof LogEventTypes];
 
 /** The Log Summary response class */
 export interface LogSummary {
-  /** Unique identifier of the log */
   id: string;
-  /** Log Category */
   category: LogEventCategories;
-  /** Log Name. */
-  name: string;
-  /** Log Type. */
   event_type: LogEventTypes;
-  /** Log event Id. */
-  event_id: LogEventIds;
-  /** Specifies the event time (in Epoch). */
-  time_stamp: number;
-  /** The tenant Id. */
-  tenant_id: string;
-  /** The region. */
-  region: number;
-  /** Specifies if the log was triggered by a user interactive process. */
-  interactive: boolean;
+  name: string;
+  time_stamp?: number | null;
 }
 
 /** The Logout Options response class */
@@ -6573,6 +6517,19 @@ export interface LogoutOptions {
   /** Specifies whether there should be a prompt before log out. */
   show_logout_prompt: boolean;
 }
+
+/** * **not_allowed**
+ * * **create_new_account**
+ * * **merge_accounts**
+ * * **login_prompt** */
+export const MergeModes = {
+  NotAllowed: 'not_allowed',
+  CreateNewAccount: 'create_new_account',
+  MergeAccounts: 'merge_accounts',
+  LoginPrompt: 'login_prompt',
+} as const;
+
+export type MergeModes = typeof MergeModes[keyof typeof MergeModes];
 
 export interface ProblemDetails {
   type?: string | null;
@@ -6625,6 +6582,22 @@ export const PasswordRestrictionModes = {
 
 export type PasswordRestrictionModes =
   typeof PasswordRestrictionModes[keyof typeof PasswordRestrictionModes];
+
+/** The Patch Account Merging Options Request class */
+export interface PatchAccountMergingOptionsRequest {
+  /** Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is also verified. */
+  external_verified_existing_verified?: MergeModes;
+  /** Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is unverified. */
+  external_verified_existing_unverified?: MergeModes;
+  /** Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is verified. */
+  external_unverified_existing_verified?: MergeModes;
+  /** Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is also unverified. */
+  external_unverified_existing_unverified?: MergeModes;
+  /** Specifies account merge mode when the login is a passwordless one and the existing (external) account's email/phone is the same but unverified. */
+  passwordless_verified_existing_external_unverified?: MergeModes;
+  /** Specifies account merge mode when the login is a passwordless one and the existing (local) account's email/phone is the same but unverified. */
+  passwordless_verified_existing_local_unverified?: MergeModes;
+}
 
 /** The Patch Account Protection Options Request class */
 export interface PatchAccountProtectionOptionsRequest {
@@ -6710,6 +6683,8 @@ export interface PatchAuthenticationGeneralEmailVerificationOptionsRequest {
 
 /** The Patch General Authentication Options Request class */
 export interface PatchAuthenticationGeneralOptionsOptionsRequest {
+  /** Specifies whether secure mode is enabled */
+  enable_secure_mode?: boolean;
   /** Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access. */
   consent_required_for_offline_access?: boolean;
   /** Show RememberMe Checkbox on the SignIn Screen */
@@ -6764,8 +6739,6 @@ export interface PatchAuthenticationMethodEmailCodeOptionsRequest {
   enable_sign_in?: boolean;
   /** Enable Email Code Sign-up */
   enable_sign_up?: boolean;
-  /** Enable Email Code Enable Jit Provisioning */
-  enable_jit_provisioning?: boolean;
   /** Specifies the expiration time in seconds for the OTP to be generated */
   otp_expiry?: number;
   /** Specifies the OTP character length */
@@ -6778,8 +6751,6 @@ export interface PatchAuthenticationMethodMagicLinkOptionsRequest {
   enable_sign_in?: boolean;
   /** Enable Magic Link Sign-up */
   enable_sign_up?: boolean;
-  /** Enable Magic Link Enable Jit Provisioning */
-  enable_jit_provisioning?: boolean;
   /** Specifies the expiration time in seconds for the OTP to be generated */
   link_expiry?: number;
 }
@@ -6816,38 +6787,6 @@ export interface PatchAuthenticationMethodPasswordOptionsRequest {
   reuse?: PatchAuthenticationMethodPasswordReuseOptionsRequest;
   /** Password Expiration Options */
   expiration?: PatchAuthenticationMethodPasswordExpirationOptionsRequest;
-  /** Password Recovery Options */
-  recovery?: PatchAuthenticationMethodPasswordRecoveryOptionsRequest;
-}
-
-/** The Patch authentication method password recovery email options request class */
-export interface PatchAuthenticationMethodPasswordRecoveryEmailOptionsRequest {
-  /** Enable Password recovery through Email. */
-  enabled?: boolean;
-  /** Specifies the recovery mode. */
-  mode?: TokenSendTypes;
-  /** Email expiration time in seconds. */
-  otp_expiry?: number;
-  /** If Email Code is Selected, Code length is chosen from this option */
-  otp_length?: number;
-}
-
-/** The Patch authentication method password recovery options request class */
-export interface PatchAuthenticationMethodPasswordRecoveryOptionsRequest {
-  /** Password Recovery Email Options */
-  email?: PatchAuthenticationMethodPasswordRecoveryEmailOptionsRequest;
-  /** Password Recovery Phone Options */
-  phone?: PatchAuthenticationMethodPasswordRecoveryPhoneOptionsRequest;
-}
-
-/** The Patch authentication method password recovery phone options request class */
-export interface PatchAuthenticationMethodPasswordRecoveryPhoneOptionsRequest {
-  /** Enable Password recovery through Phone. */
-  enabled?: boolean;
-  /** Code expiration time in seconds. */
-  otp_expiry?: number;
-  /** Code length is chosen from this option */
-  otp_length?: number;
 }
 
 /** The Patch Authentication Method Password Reuse Options Request class */
@@ -6882,8 +6821,6 @@ export interface PatchAuthenticationMethodSmsCodeOptionsRequest {
   enable_sign_in?: boolean;
   /** Enable Sms Code Sign-up */
   enable_sign_up?: boolean;
-  /** Enable Sms Code Enable Jit Provisioning */
-  enable_jit_provisioning?: boolean;
   /** Specifies the expiration time in seconds for the OTP to be generated */
   otp_expiry?: number;
   /** Specifies the OTP character length */
@@ -6912,16 +6849,16 @@ export interface PatchBrandingEmailOptionsRequest {
   magic_link_sign_in?: PatchBrandingGenericCustomEmailOptionsRequest | null;
   /** Email Code SignIn Branding Options */
   email_code_sign_in?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+  /** Magic Link Verification Branding Options */
+  magic_link_verification?: PatchBrandingGenericCustomEmailOptionsRequest | null;
   /** Email Code Verification Branding Options */
   email_code_verification?: PatchBrandingGenericCustomEmailOptionsRequest | null;
   /** Welcome Email Branding Options */
   welcome?: PatchBrandingGenericCustomEmailOptionsRequest | null;
   /** User Lockout Branding Options */
   user_lockout?: PatchBrandingGenericCustomEmailOptionsRequest | null;
-  /** Magic Link Password Reset Branding Options */
-  magic_link_password_reset?: PatchBrandingGenericCustomEmailOptionsRequest | null;
-  /** Email Code Password Reset Branding Options */
-  email_code_password_reset?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+  /** Reset Password Branding Options */
+  reset_password?: PatchBrandingGenericCustomEmailOptionsRequest | null;
   /** Password Updated Branding Options */
   password_updated?: PatchBrandingGenericCustomEmailOptionsRequest | null;
 }
@@ -6941,7 +6878,7 @@ export interface PatchBrandingGenericCustomEmailOptionsRequest {
 /** The Patch Generic Branding Custom Sms Options Request class */
 export interface PatchBrandingGenericCustomSmsOptionsRequest {
   /** Custom LiquidJS template for the SMS */
-  template?: string;
+  template: string;
 }
 
 /** The Patch Branding Options Request class */
@@ -7002,8 +6939,6 @@ export interface PatchBrandingSmsOptionsRequest {
   sms_code_sign_in?: PatchBrandingGenericCustomSmsOptionsRequest | null;
   /** Sms Code Verification Branding Options */
   sms_code_verification?: PatchBrandingGenericCustomSmsOptionsRequest | null;
-  /** Sms Code Password Reset Branding Options */
-  sms_code_password_reset?: PatchBrandingGenericCustomSmsOptionsRequest | null;
 }
 
 /** The Patch Client class */
@@ -7279,7 +7214,10 @@ export interface PatchSignUpCustomFieldOptionsRequest {
 }
 
 /** The Patch SignUp Options Request class */
-export interface PatchSignUpOptionsRequest {}
+export interface PatchSignUpOptionsRequest {
+  /** Registration Account Merge Options */
+  account_merging?: PatchAccountMergingOptionsRequest;
+}
 
 /** The Patch Tenant class */
 export interface PatchTenantRequest {
@@ -7398,6 +7336,8 @@ export interface SignUpCustomFieldOptions {
 
 /** The SignUp Options response class */
 export interface SignUpOptions {
+  /** Registration Account Merge Options */
+  account_merging: AccountMergingOptions;
   /** Registration Custom Fields Options */
   custom_fields: SignUpCustomFieldOptions[];
 }
