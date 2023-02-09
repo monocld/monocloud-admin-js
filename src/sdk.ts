@@ -4392,6 +4392,86 @@ export class TrustStoreClient extends MonoCloudClientBase {
   }
 
   /**
+   * Get Truststore Chains
+   * @return {Promise<MonoCloudResponse<TrustStoreParsed>>} Success
+   */
+  getTrustStoreChains(
+    cancelToken?: CancelToken | undefined
+  ): Promise<MonoCloudResponse<TrustStoreParsed>> {
+    let url_ = `${this.baseUrl}/v1/truststore/chains`;
+    url_ = url_.replace(/[?&]$/, '');
+
+    const options_: AxiosRequestConfig = {
+      method: 'GET',
+      url: url_,
+      headers: {
+        Accept: 'text/plain',
+      },
+      cancelToken,
+    };
+
+    return this.instance
+      .request(options_)
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
+        }
+        throw _error;
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processGetTrustStoreChains(_response);
+      });
+  }
+
+  protected processGetTrustStoreChains(
+    response: AxiosResponse
+  ): Promise<MonoCloudResponse<TrustStoreParsed>> {
+    const { status } = response;
+    const _headers: any = {};
+    if (response.headers && typeof response.headers === 'object') {
+      for (const k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
+        }
+      }
+    }
+    if (status === 200) {
+      const _responseText = response.data;
+      let result200: any = null;
+      const resultData200 = _responseText;
+      result200 = resultData200;
+      return Promise.resolve<MonoCloudResponse<TrustStoreParsed>>(
+        new MonoCloudResponse<TrustStoreParsed>(status, _headers, result200)
+      );
+    }
+    if (status === 404) {
+      const _responseText = response.data;
+      let result404: any = null;
+      const resultData404 = _responseText;
+      result404 = resultData404;
+      return throwException(
+        'Not Found',
+        status,
+        _responseText,
+        _headers,
+        result404
+      );
+    }
+    if (status !== 200 && status !== 204) {
+      const _responseText = response.data;
+      return throwException(
+        'An unexpected server error occurred.',
+        status,
+        _responseText,
+        _headers
+      );
+    }
+    return Promise.resolve<MonoCloudResponse<TrustStoreParsed>>(
+      new MonoCloudResponse(status, _headers, null as any)
+    );
+  }
+
+  /**
    * Add Certificates to truststore
    * @param {AddTrustStoreCertificatesRequest} body Request Body
    * @return {Promise<MonoCloudResponse<TrustStore>>} Success
@@ -4960,420 +5040,6 @@ export class TrustStoreClient extends MonoCloudClientBase {
   }
 }
 
-export class UsersClient extends MonoCloudClientBase {
-  private instance: AxiosInstance;
-
-  private baseUrl: string;
-
-  protected jsonParseReviver: ((key: string, value: any) => any) | undefined =
-    undefined;
-
-  constructor(
-    configuration: MonoCloudConfig,
-    baseUrl?: string,
-    instance?: AxiosInstance
-  ) {
-    super(configuration);
-
-    const headers: Record<string, string> = {
-      'X-TENANT-ID': configuration.tenantId,
-      'Content-Type': 'application/json',
-    };
-
-    if (configuration.apiKey) {
-      headers['X-API-KEY'] = configuration.apiKey;
-    }
-
-    if (configuration.token) {
-      headers.Authorization = `Bearer ${configuration.token}`;
-    }
-
-    const config: AxiosRequestConfig = {
-      headers,
-      timeout: configuration.config?.timeout ?? 10000,
-    };
-
-    this.instance = instance || axios.create(config);
-
-    if (configuration.config?.retry === true) {
-      axiosRetry(this.instance, { retries: 3 });
-    }
-
-    this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : '';
-  }
-
-  /**
-   * Get all the Users
-   * @param {number} page (optional)
-   * @param {number} size (optional)
-   * @return {Promise<MonoCloudResponse<UserSummary[]>>} Success
-   */
-  getAllUsers(
-    page?: number | undefined,
-    size?: number | undefined,
-    cancelToken?: CancelToken | undefined
-  ): Promise<MonoCloudResponse<UserSummary[]>> {
-    let url_ = `${this.baseUrl}/v1/users?`;
-    if (page === null) throw new Error("The parameter 'page' cannot be null.");
-    else if (page !== undefined)
-      url_ += `page=${encodeURIComponent(`${page}`)}&`;
-    if (size === null) throw new Error("The parameter 'size' cannot be null.");
-    else if (size !== undefined)
-      url_ += `size=${encodeURIComponent(`${size}`)}&`;
-    url_ = url_.replace(/[?&]$/, '');
-
-    const options_: AxiosRequestConfig = {
-      method: 'GET',
-      url: url_,
-      headers: {
-        Accept: 'text/plain',
-      },
-      cancelToken,
-    };
-
-    return this.instance
-      .request(options_)
-      .catch((_error: any) => {
-        if (isAxiosError(_error) && _error.response) {
-          return _error.response;
-        }
-        throw _error;
-      })
-      .then((_response: AxiosResponse) => {
-        return this.processGetAllUsers(_response);
-      });
-  }
-
-  protected processGetAllUsers(
-    response: AxiosResponse
-  ): Promise<MonoCloudResponse<UserSummary[]>> {
-    const { status } = response;
-    const _headers: any = {};
-    if (response.headers && typeof response.headers === 'object') {
-      for (const k in response.headers) {
-        if (response.headers.hasOwnProperty(k)) {
-          _headers[k] = response.headers[k];
-        }
-      }
-    }
-    if (status === 200) {
-      const _responseText = response.data;
-      let result200: any = null;
-      const resultData200 = _responseText;
-      result200 = resultData200;
-      return Promise.resolve<MonoCloudResponse<UserSummary[]>>(
-        new MonoCloudResponse<UserSummary[]>(status, _headers, result200)
-      );
-    }
-    if (status !== 200 && status !== 204) {
-      const _responseText = response.data;
-      return throwException(
-        'An unexpected server error occurred.',
-        status,
-        _responseText,
-        _headers
-      );
-    }
-    return Promise.resolve<MonoCloudResponse<UserSummary[]>>(
-      new MonoCloudResponse(status, _headers, null as any)
-    );
-  }
-
-  /**
-   * Delete a User
-   * @param {string} user_id User Id
-   * @return {Promise<MonoCloudResponse<void>>} No Content
-   */
-  deleteUser(
-    user_id: string,
-    cancelToken?: CancelToken | undefined
-  ): Promise<MonoCloudResponse<void>> {
-    let url_ = `${this.baseUrl}/v1/users/{user_id}`;
-    if (
-      user_id === undefined ||
-      user_id === null ||
-      user_id.toString().trim() === ''
-    )
-      throw new Error("The parameter 'user_id' must be defined.");
-    url_ = url_.replace('{user_id}', encodeURIComponent(`${user_id}`));
-    url_ = url_.replace(/[?&]$/, '');
-
-    const options_: AxiosRequestConfig = {
-      method: 'DELETE',
-      url: url_,
-      headers: {},
-      cancelToken,
-    };
-
-    return this.instance
-      .request(options_)
-      .catch((_error: any) => {
-        if (isAxiosError(_error) && _error.response) {
-          return _error.response;
-        }
-        throw _error;
-      })
-      .then((_response: AxiosResponse) => {
-        return this.processDeleteUser(_response);
-      });
-  }
-
-  protected processDeleteUser(
-    response: AxiosResponse
-  ): Promise<MonoCloudResponse<void>> {
-    const { status } = response;
-    const _headers: any = {};
-    if (response.headers && typeof response.headers === 'object') {
-      for (const k in response.headers) {
-        if (response.headers.hasOwnProperty(k)) {
-          _headers[k] = response.headers[k];
-        }
-      }
-    }
-    if (status === 204) {
-      return Promise.resolve<MonoCloudResponse<void>>(
-        new MonoCloudResponse<void>(status, _headers, null as any)
-      );
-    }
-    if (status !== 200 && status !== 204) {
-      const _responseText = response.data;
-      return throwException(
-        'An unexpected server error occurred.',
-        status,
-        _responseText,
-        _headers
-      );
-    }
-    return Promise.resolve<MonoCloudResponse<void>>(
-      new MonoCloudResponse(status, _headers, null as any)
-    );
-  }
-
-  /**
-   * Update User's Private Data.
-   * @param {string} user_id User Id
-   * @param {{ [key: string]: any; }} body Request Body
-   * @return {Promise<MonoCloudResponse<{ [key: string]: any; }>>} Success
-   */
-  patchPrivateDataKey(
-    user_id: string,
-    body: { [key: string]: any },
-    cancelToken?: CancelToken | undefined
-  ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
-    let url_ = `${this.baseUrl}/v1/users/{user_id}/private_data`;
-    if (
-      user_id === undefined ||
-      user_id === null ||
-      user_id.toString().trim() === ''
-    )
-      throw new Error("The parameter 'user_id' must be defined.");
-    url_ = url_.replace('{user_id}', encodeURIComponent(`${user_id}`));
-    url_ = url_.replace(/[?&]$/, '');
-
-    const content_ = JSON.stringify(body);
-
-    const options_: AxiosRequestConfig = {
-      data: content_,
-      method: 'PATCH',
-      url: url_,
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'text/plain',
-      },
-      cancelToken,
-    };
-
-    return this.instance
-      .request(options_)
-      .catch((_error: any) => {
-        if (isAxiosError(_error) && _error.response) {
-          return _error.response;
-        }
-        throw _error;
-      })
-      .then((_response: AxiosResponse) => {
-        return this.processPatchPrivateDataKey(_response);
-      });
-  }
-
-  protected processPatchPrivateDataKey(
-    response: AxiosResponse
-  ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
-    const { status } = response;
-    const _headers: any = {};
-    if (response.headers && typeof response.headers === 'object') {
-      for (const k in response.headers) {
-        if (response.headers.hasOwnProperty(k)) {
-          _headers[k] = response.headers[k];
-        }
-      }
-    }
-    if (status === 200) {
-      const _responseText = response.data;
-      let result200: any = null;
-      const resultData200 = _responseText;
-      result200 = resultData200;
-      return Promise.resolve<MonoCloudResponse<{ [key: string]: any }>>(
-        new MonoCloudResponse<{ [key: string]: any }>(
-          status,
-          _headers,
-          result200
-        )
-      );
-    }
-    if (status === 404) {
-      const _responseText = response.data;
-      let result404: any = null;
-      const resultData404 = _responseText;
-      result404 = resultData404;
-      return throwException(
-        'Not Found',
-        status,
-        _responseText,
-        _headers,
-        result404
-      );
-    }
-    if (status === 422) {
-      const _responseText = response.data;
-      let result422: any = null;
-      const resultData422 = _responseText;
-      result422 = resultData422;
-      return throwException(
-        'Client Error',
-        status,
-        _responseText,
-        _headers,
-        result422
-      );
-    }
-    if (status !== 200 && status !== 204) {
-      const _responseText = response.data;
-      return throwException(
-        'An unexpected server error occurred.',
-        status,
-        _responseText,
-        _headers
-      );
-    }
-    return Promise.resolve<MonoCloudResponse<{ [key: string]: any }>>(
-      new MonoCloudResponse(status, _headers, null as any)
-    );
-  }
-
-  /**
-   * Update User's Public Data.
-   * @param {string} user_id User Id
-   * @param {{ [key: string]: any; }} body Request Body
-   * @return {Promise<MonoCloudResponse<{ [key: string]: any; }>>} Success
-   */
-  patchPublicDataKey(
-    user_id: string,
-    body: { [key: string]: any },
-    cancelToken?: CancelToken | undefined
-  ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
-    let url_ = `${this.baseUrl}/v1/users/{user_id}/public_data`;
-    if (
-      user_id === undefined ||
-      user_id === null ||
-      user_id.toString().trim() === ''
-    )
-      throw new Error("The parameter 'user_id' must be defined.");
-    url_ = url_.replace('{user_id}', encodeURIComponent(`${user_id}`));
-    url_ = url_.replace(/[?&]$/, '');
-
-    const content_ = JSON.stringify(body);
-
-    const options_: AxiosRequestConfig = {
-      data: content_,
-      method: 'PATCH',
-      url: url_,
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'text/plain',
-      },
-      cancelToken,
-    };
-
-    return this.instance
-      .request(options_)
-      .catch((_error: any) => {
-        if (isAxiosError(_error) && _error.response) {
-          return _error.response;
-        }
-        throw _error;
-      })
-      .then((_response: AxiosResponse) => {
-        return this.processPatchPublicDataKey(_response);
-      });
-  }
-
-  protected processPatchPublicDataKey(
-    response: AxiosResponse
-  ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
-    const { status } = response;
-    const _headers: any = {};
-    if (response.headers && typeof response.headers === 'object') {
-      for (const k in response.headers) {
-        if (response.headers.hasOwnProperty(k)) {
-          _headers[k] = response.headers[k];
-        }
-      }
-    }
-    if (status === 200) {
-      const _responseText = response.data;
-      let result200: any = null;
-      const resultData200 = _responseText;
-      result200 = resultData200;
-      return Promise.resolve<MonoCloudResponse<{ [key: string]: any }>>(
-        new MonoCloudResponse<{ [key: string]: any }>(
-          status,
-          _headers,
-          result200
-        )
-      );
-    }
-    if (status === 404) {
-      const _responseText = response.data;
-      let result404: any = null;
-      const resultData404 = _responseText;
-      result404 = resultData404;
-      return throwException(
-        'Not Found',
-        status,
-        _responseText,
-        _headers,
-        result404
-      );
-    }
-    if (status === 422) {
-      const _responseText = response.data;
-      let result422: any = null;
-      const resultData422 = _responseText;
-      result422 = resultData422;
-      return throwException(
-        'Client Error',
-        status,
-        _responseText,
-        _headers,
-        result422
-      );
-    }
-    if (status !== 200 && status !== 204) {
-      const _responseText = response.data;
-      return throwException(
-        'An unexpected server error occurred.',
-        status,
-        _responseText,
-        _headers
-      );
-    }
-    return Promise.resolve<MonoCloudResponse<{ [key: string]: any }>>(
-      new MonoCloudResponse(status, _headers, null as any)
-    );
-  }
-}
-
 /** * **jwt** - Jwt token
  * * **reference** - Reference token */
 export const AccessTokenTypes = {
@@ -5383,22 +5049,6 @@ export const AccessTokenTypes = {
 
 export type AccessTokenTypes =
   typeof AccessTokenTypes[keyof typeof AccessTokenTypes];
-
-/** The Account Merging Options response class */
-export interface AccountMergingOptions {
-  /** Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is also verified. */
-  external_verified_existing_verified: MergeModes;
-  /** Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is unverified. */
-  external_verified_existing_unverified: MergeModes;
-  /** Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is verified. */
-  external_unverified_existing_verified: MergeModes;
-  /** Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is also unverified. */
-  external_unverified_existing_unverified: MergeModes;
-  /** Specifies account merge mode when the login is a passwordless one and the existing (external) account's email/phone is the same but unverified. */
-  passwordless_verified_existing_external_unverified: MergeModes;
-  /** Specifies account merge mode when the login is a passwordless one and the existing (local) account's email/phone is the same but unverified. */
-  passwordless_verified_existing_local_unverified: MergeModes;
-}
 
 /** The Account Protection response class */
 export interface AccountProtectionOptions {
@@ -5420,6 +5070,22 @@ export interface AccountProtectionUserLockoutOptions {
   allowed_ips?: string[] | null;
   /** Types of Lockouts to enable per User Account */
   lockout_type: UserLockoutTypes;
+  /** Account Protection User Unblock Options */
+  user_unblock: AccountProtectionUserUnblockOptions;
+}
+
+/** The Account Protection User Unblock Email response class */
+export interface AccountProtectionUserUnblockEmailOptions {
+  /** Enable User Unblock through Email. */
+  enabled: boolean;
+  /** Email expiration time in seconds. */
+  link_expiry: number;
+}
+
+/** The Account Protection User Unblock response class */
+export interface AccountProtectionUserUnblockOptions {
+  /** User Unblock Email Options */
+  email: AccountProtectionUserUnblockEmailOptions;
 }
 
 /** Add Certificates Request. */
@@ -5510,14 +5176,10 @@ export interface AuthenticationGeneralEmailVerificationOptions {
 
 /** The Authentication General Options response class */
 export interface AuthenticationGeneralOptions {
-  /** Specifies whether secure mode is enabled */
-  enable_secure_mode: boolean;
   /** Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access. */
   consent_required_for_offline_access: boolean;
-  /** Show RememberMe Checkbox on the SignIn Screen */
-  allow_remember_me: boolean;
-  /** RememberMe Duration in minutes */
-  remember_me_duration: number;
+  /** General User Session Options. */
+  session: AuthenticationGeneralSessionOptions;
   /** General Email Requirement Options for Users */
   email: AuthenticationGeneralEmailOptions;
   /** General Phone Requirement Options for Users */
@@ -5548,6 +5210,16 @@ export interface AuthenticationGeneralPhoneVerificationOptions {
   code_length: number;
 }
 
+/** The Authentication General Session response class */
+export interface AuthenticationGeneralSessionOptions {
+  /** RememberMe Mode */
+  remember_me_mode: RememberMeModes;
+  /** Specifies the duration in minutes after which the user session will expire in accordance with the remember me mode. */
+  remember_me_duration: number;
+  /** Specifies the duration in minutes after which the user session will expire regardless of the remember me mode. */
+  logout_after: number;
+}
+
 /** The Authentication General Username response class */
 export interface AuthenticationGeneralUsernameOptions {
   /** Specifies if the users are allowed to sign-in using a username */
@@ -5566,6 +5238,8 @@ export interface AuthenticationMethodEmailCodeOptions {
   enable_sign_in: boolean;
   /** Enable Email Code Sign-up */
   enable_sign_up: boolean;
+  /** Enable Email Code Enable Jit Provisioning */
+  enable_jit_provisioning: boolean;
   /** Specifies the expiration time in seconds for the OTP to be generated */
   otp_expiry: number;
   /** Specifies the OTP character length */
@@ -5578,6 +5252,8 @@ export interface AuthenticationMethodMagicLinkOptions {
   enable_sign_in: boolean;
   /** Enable Magic Link Sign-up */
   enable_sign_up: boolean;
+  /** Enable Magic Link Enable Jit Provisioning */
+  enable_jit_provisioning: boolean;
   /** Specifies the expiration time in seconds for the OTP to be generated */
   link_expiry: number;
 }
@@ -5608,12 +5284,46 @@ export interface AuthenticationMethodPasswordOptions {
   enable_sign_in: boolean;
   /** Enable Password Sign-up */
   enable_sign_up: boolean;
+  /** Specifies whether to notify the user on successful password update through email. */
+  enable_password_updated_email: boolean;
   /** Password Strength Options */
   strength: AuthenticationMethodPasswordStrengthOptions;
   /** Password Re-use Options */
   reuse: AuthenticationMethodPasswordReuseOptions;
   /** Password Expiration Options */
   expiration: AuthenticationMethodPasswordExpirationOptions;
+  /** Password Recovery Options */
+  recovery: AuthenticationMethodPasswordRecoveryOptions;
+}
+
+/** The Authentication Method Password Recovery Email response class */
+export interface AuthenticationMethodPasswordRecoveryEmailOptions {
+  /** Enable Password recovery through Email. */
+  enabled: boolean;
+  /** Specifies the recovery mode. */
+  mode: TokenSendTypes;
+  /** Email expiration time in seconds. */
+  otp_expiry: number;
+  /** If Email Code is Selected, Code length is chosen from this option */
+  otp_length: number;
+}
+
+/** The Authentication Method Password Recovery response class */
+export interface AuthenticationMethodPasswordRecoveryOptions {
+  /** Password Recovery Email Options */
+  email: AuthenticationMethodPasswordRecoveryEmailOptions;
+  /** Password Recovery Phone Options */
+  phone: AuthenticationMethodPasswordRecoveryPhoneOptions;
+}
+
+/** The Authentication Method Password Recovery Phone response class */
+export interface AuthenticationMethodPasswordRecoveryPhoneOptions {
+  /** Enable Password recovery through Phone. */
+  enabled: boolean;
+  /** Code expiration time in seconds. */
+  otp_expiry: number;
+  /** Code length is chosen from this option */
+  otp_length: number;
 }
 
 /** The Authentication Method Password Reuse response class */
@@ -5648,6 +5358,8 @@ export interface AuthenticationMethodSmsCodeOptions {
   enable_sign_in: boolean;
   /** Enable Sms Code Sign-up */
   enable_sign_up: boolean;
+  /** Enable Sms Code Enable Jit Provisioning */
+  enable_jit_provisioning: boolean;
   /** Specifies the expiration time in seconds for the OTP to be generated */
   otp_expiry: number;
   /** Specifies the OTP character length */
@@ -5655,14 +5367,14 @@ export interface AuthenticationMethodSmsCodeOptions {
 }
 
 /** * **password**
- * * **sms_code**
+ * * **email_code**
  * * **magic_link**
  * * **sms_code** */
 export const AuthenticationMethods = {
   Password: 'password',
-  SmsCode: 'sms_code',
-  MagicLink: 'magic_link',
   EmailCode: 'email_code',
+  MagicLink: 'magic_link',
+  SmsCode: 'sms_code',
 } as const;
 
 export type AuthenticationMethods =
@@ -5687,25 +5399,29 @@ export interface AuthenticationOptions {
 /** The Branding Email Options response class */
 export interface BrandingEmailOptions {
   /** Magic Link SignIn Branding Options */
-  magic_link_sign_in?: BrandingGenericEmailTemplateOptions | null;
+  magic_link_sign_in: BrandingGenericEmailTemplateOptions;
   /** Email Code SignIn Branding Options */
-  email_code_sign_in?: BrandingGenericEmailTemplateOptions | null;
+  email_code_sign_in: BrandingGenericEmailTemplateOptions;
   /** Magic Link Verification Branding Options */
-  magic_link_verification?: BrandingGenericEmailTemplateOptions | null;
+  magic_link_verification: BrandingGenericEmailTemplateOptions;
   /** Email Code Verification Branding Options */
-  email_code_verification?: BrandingGenericEmailTemplateOptions | null;
+  email_code_verification: BrandingGenericEmailTemplateOptions;
   /** Welcome Email Branding Options */
-  welcome?: BrandingGenericEmailTemplateOptions | null;
+  welcome: BrandingGenericEmailTemplateOptions;
   /** User Lockout Branding Options */
-  user_lockout?: BrandingGenericEmailTemplateOptions | null;
-  /** Reset Password Branding Options */
-  reset_password?: BrandingGenericEmailTemplateOptions | null;
+  magic_link_user_unblock: BrandingGenericEmailTemplateOptions;
+  /** Magic Link Password Reset Branding Options */
+  magic_link_password_reset: BrandingGenericEmailTemplateOptions;
+  /** Email Code Password Reset Branding Options */
+  email_code_password_reset: BrandingGenericEmailTemplateOptions;
   /** Password Updated Branding Options */
-  password_updated?: BrandingGenericEmailTemplateOptions | null;
+  password_updated: BrandingGenericEmailTemplateOptions;
 }
 
 /** The Branding Email Generic Template Options response class */
 export interface BrandingGenericEmailTemplateOptions {
+  /** Specifies whether to use the custom template. */
+  use_custom_template: boolean;
   /** From Email Address */
   from_email?: string | null;
   /** From Name */
@@ -5718,8 +5434,10 @@ export interface BrandingGenericEmailTemplateOptions {
 
 /** The Branding Generic Sms Template Options response class */
 export interface BrandingGenericSmsTemplateOptions {
+  /** Specifies whether to use the custom template. */
+  use_custom_template: boolean;
   /** Custom LiquidJS template for the SMS */
-  template: string;
+  template?: string | null;
 }
 
 /** The Branding Options response class */
@@ -5777,9 +5495,11 @@ export interface BrandingSignInPageOptions {
 /** The Branding Sms Options response class */
 export interface BrandingSmsOptions {
   /** Sms Code SignIn Branding Options */
-  sms_code_sign_in?: BrandingGenericSmsTemplateOptions | null;
+  sms_code_sign_in: BrandingGenericSmsTemplateOptions;
   /** Sms Code Verification Branding Options */
-  sms_code_verification?: BrandingGenericSmsTemplateOptions | null;
+  sms_code_verification: BrandingGenericSmsTemplateOptions;
+  /** Sms Code Password Reset Branding Options */
+  sms_code_password_reset: BrandingGenericSmsTemplateOptions;
 }
 
 /** * **chained** - Verifies the certificate with root CA and intermediary CAs
@@ -5915,7 +5635,7 @@ export interface CommunicationEmailOptions {
 /** The Communicaiton Email SendGrid Options response class */
 export interface CommunicationEmailSendGridOptions {
   /** SendGrid Api Key */
-  api_key?: string | null;
+  api_key: string;
 }
 
 /** The Communication Options response class */
@@ -6372,27 +6092,44 @@ export const Languages = {
 
 export type Languages = typeof Languages[keyof typeof Languages];
 
-/** The Log Summary response class. */
+/** The Log response class. */
 export interface Log {
+  /** Unique identifier of the log */
   id: string;
+  /** Log Category */
   category: LogEventCategories;
-  event_id: LogEventIds;
-  event_type: LogEventTypes;
-  local_ip_address?: string | null;
-  message?: string | null;
+  /** Log Name. */
   name: string;
+  /** Log Type. */
+  event_type: LogEventTypes;
+  /** Log event Id. */
+  event_id: LogEventIds;
+  /** Message */
+  message?: string | null;
+  /** The Activity Id. */
+  activity_id?: string | null;
+  /** Specifies the event time (in Epoch). */
+  time_stamp: number;
+  /** The Process Id. */
   process_id?: number | null;
+  /** The Local Ip Address. */
+  local_ip_address?: string | null;
+  /** The Remote Ip Address. */
   remote_ip_address?: string | null;
-  time_stamp?: number | null;
-  trace_id?: string | null;
+  /** The User Agent. */
   user_agent?: string | null;
+  /** The tenant Id. */
+  tenant_id: string;
+  /** The region. */
+  region: number;
+  /** Specifies if the log was triggered by a user interactive process. */
+  interactive: boolean;
+  /** The client Id. */
   client_id?: string | null;
+  /** The Client Name. */
   client_name?: string | null;
-  user_id?: string | null;
-  username?: string | null;
-  scheme?: string | null;
-  scheme_user_id?: string | null;
-  context: any;
+
+  [key: string]: any;
 }
 
 /** * **authentication**
@@ -6428,7 +6165,8 @@ export type LogEventCategories =
  * * **user_account_ip_blocked**
  * * **user_account_unblocked**
  * * **user_account_ip_unblocked**
- * * **user_account_ip_unblocked_all**
+ * * **user_account_all_ips_unblocked**
+ * * **user_account_all_unblocked**
  * * **user_password_reset_success**
  * * **user_session_created**
  * * **user_session_renewed**
@@ -6460,17 +6198,20 @@ export const LogEventIds = {
   ApiAuthenticationSuccess: 'api_authentication_success',
   ApiAuthenticationFailure: 'api_authentication_failure',
   UserLogoutSuccess: 'user_logout_success',
-  UserLoginSuccess: 'user_login_success',
-  UserLoginFailure: 'user_login_failure',
+  UserSignInFailure: 'user_sign_in_failure',
+  UserSignInSuccess: 'user_sign_in_success',
   UserAccountBlocked: 'user_account_blocked',
   UserAccountIpBlocked: 'user_account_ip_blocked',
   UserAccountUnblocked: 'user_account_unblocked',
   UserAccountIpUnblocked: 'user_account_ip_unblocked',
-  UserAccountIpUnblockedAll: 'user_account_ip_unblocked_all',
-  UserPasswordReset: 'user_password_reset',
+  UserAccountAllIpsUnblocked: 'user_account_all_ips_unblocked',
+  UserAccountAllUnblocked: 'user_account_all_unblocked',
+  UserPasswordResetSuccess: 'user_password_reset_success',
   UserSessionCreated: 'user_session_created',
   UserSessionRenewed: 'user_session_renewed',
   UserSessionRemoved: 'user_session_removed',
+  UserSignUpSuccess: 'user_sign_up_success',
+  UserNewAuthenticationMethodAdded: 'user_new_authentication_method_added',
   TokenIssuedSuccess: 'token_issued_success',
   TokenIssuedFailure: 'token_issued_failure',
   TokenRevokedSuccess: 'token_revoked_success',
@@ -6483,7 +6224,11 @@ export const LogEventIds = {
   GrantsRevoked: 'grants_revoked',
   DeviceAuthorizationSuccess: 'device_authorization_success',
   DeviceAuthorizationFailure: 'device_authorization_failure',
-  PasswordlessLoginSentEvent: 'passwordless_login_sent_event',
+  PasswordlessSignInNotificationSentEvent:
+    'passwordless_sign_in_notification_sent_event',
+  SignUpVerificationNotificationSentEvent:
+    'sign_up_verification_notification_sent_event',
+  UserPasswordResetNotificationSent: 'user_password_reset_notification_sent',
 } as const;
 
 export type LogEventIds = typeof LogEventIds[keyof typeof LogEventIds];
@@ -6503,11 +6248,24 @@ export type LogEventTypes = typeof LogEventTypes[keyof typeof LogEventTypes];
 
 /** The Log Summary response class */
 export interface LogSummary {
+  /** Unique identifier of the log */
   id: string;
+  /** Log Category */
   category: LogEventCategories;
-  event_type: LogEventTypes;
+  /** Log Name. */
   name: string;
-  time_stamp?: number | null;
+  /** Log Type. */
+  event_type: LogEventTypes;
+  /** Log event Id. */
+  event_id: LogEventIds;
+  /** Specifies the event time (in Epoch). */
+  time_stamp: number;
+  /** The tenant Id. */
+  tenant_id: string;
+  /** The region. */
+  region: number;
+  /** Specifies if the log was triggered by a user interactive process. */
+  interactive: boolean;
 }
 
 /** The Logout Options response class */
@@ -6517,19 +6275,6 @@ export interface LogoutOptions {
   /** Specifies whether there should be a prompt before log out. */
   show_logout_prompt: boolean;
 }
-
-/** * **not_allowed**
- * * **create_new_account**
- * * **merge_accounts**
- * * **login_prompt** */
-export const MergeModes = {
-  NotAllowed: 'not_allowed',
-  CreateNewAccount: 'create_new_account',
-  MergeAccounts: 'merge_accounts',
-  LoginPrompt: 'login_prompt',
-} as const;
-
-export type MergeModes = typeof MergeModes[keyof typeof MergeModes];
 
 export interface ProblemDetails {
   type?: string | null;
@@ -6583,22 +6328,6 @@ export const PasswordRestrictionModes = {
 export type PasswordRestrictionModes =
   typeof PasswordRestrictionModes[keyof typeof PasswordRestrictionModes];
 
-/** The Patch Account Merging Options Request class */
-export interface PatchAccountMergingOptionsRequest {
-  /** Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is also verified. */
-  external_verified_existing_verified?: MergeModes;
-  /** Specifies account merge mode when the incoming email from an external provider is verified and the existing account's email is unverified. */
-  external_verified_existing_unverified?: MergeModes;
-  /** Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is verified. */
-  external_unverified_existing_verified?: MergeModes;
-  /** Specifies account merge mode when the incoming email from an external provider is unverified and the existing account's email is also unverified. */
-  external_unverified_existing_unverified?: MergeModes;
-  /** Specifies account merge mode when the login is a passwordless one and the existing (external) account's email/phone is the same but unverified. */
-  passwordless_verified_existing_external_unverified?: MergeModes;
-  /** Specifies account merge mode when the login is a passwordless one and the existing (local) account's email/phone is the same but unverified. */
-  passwordless_verified_existing_local_unverified?: MergeModes;
-}
-
 /** The Patch Account Protection Options Request class */
 export interface PatchAccountProtectionOptionsRequest {
   /** Account Protection's User Lockout Options */
@@ -6619,6 +6348,22 @@ export interface PatchAccountProtectionUserLockoutOptionsRequest {
   allowed_ips?: string[] | null;
   /** Types of Lockouts to enable per User Account */
   lockout_type?: UserLockoutTypes;
+  /** Account Protection User Unblock Options */
+  user_unblock?: PatchAccountProtectionUserUnblockOptionsRequest;
+}
+
+/** The Patch account protection user unblock email options request class */
+export interface PatchAccountProtectionUserUnblockEmailOptionsRequest {
+  /** Enable User Unblock through Email. */
+  enabled?: boolean;
+  /** Email expiration time in seconds. */
+  link_expiry?: number;
+}
+
+/** The Patch account protection user unblock options request class */
+export interface PatchAccountProtectionUserUnblockOptionsRequest {
+  /** User Unblock Email Options */
+  email?: PatchAccountProtectionUserUnblockEmailOptionsRequest;
 }
 
 /** The Patch Api Resource class */
@@ -6683,14 +6428,10 @@ export interface PatchAuthenticationGeneralEmailVerificationOptionsRequest {
 
 /** The Patch General Authentication Options Request class */
 export interface PatchAuthenticationGeneralOptionsOptionsRequest {
-  /** Specifies whether secure mode is enabled */
-  enable_secure_mode?: boolean;
   /** Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access. */
   consent_required_for_offline_access?: boolean;
-  /** Show RememberMe Checkbox on the SignIn Screen */
-  allow_remember_me?: boolean;
-  /** RememberMe Duration in minutes */
-  remember_me_duration?: number;
+  /** General User Session Options. */
+  session?: PatchAuthenticationGeneralSessionOptionsRequest;
   /** General Email Requirement Options for Users */
   email?: PatchAuthenticationGeneralEmailOptionsRequest;
   /** General Phone Requirement Options for Users */
@@ -6721,6 +6462,16 @@ export interface PatchAuthenticationGeneralPhoneVerificationOptionsRequest {
   code_length?: number;
 }
 
+/** The Patch General Session Authentication Options Request class */
+export interface PatchAuthenticationGeneralSessionOptionsRequest {
+  /** RememberMe Mode */
+  remember_me_mode?: RememberMeModes;
+  /** Specifies the duration in minutes after which the user session will expire in accordance with the remember me mode. */
+  remember_me_duration?: number;
+  /** Specifies the duration in minutes after which the user session will expire regardless of the remember me mode. */
+  logout_after?: number;
+}
+
 /** The Patch General Username Authentication Options Request class */
 export interface PatchAuthenticationGeneralUsernameOptionsRequest {
   /** Specifies if the users are allowed to sign-in using a username */
@@ -6739,6 +6490,8 @@ export interface PatchAuthenticationMethodEmailCodeOptionsRequest {
   enable_sign_in?: boolean;
   /** Enable Email Code Sign-up */
   enable_sign_up?: boolean;
+  /** Enable Email Code Enable Jit Provisioning */
+  enable_jit_provisioning?: boolean;
   /** Specifies the expiration time in seconds for the OTP to be generated */
   otp_expiry?: number;
   /** Specifies the OTP character length */
@@ -6751,6 +6504,8 @@ export interface PatchAuthenticationMethodMagicLinkOptionsRequest {
   enable_sign_in?: boolean;
   /** Enable Magic Link Sign-up */
   enable_sign_up?: boolean;
+  /** Enable Magic Link Enable Jit Provisioning */
+  enable_jit_provisioning?: boolean;
   /** Specifies the expiration time in seconds for the OTP to be generated */
   link_expiry?: number;
 }
@@ -6781,12 +6536,46 @@ export interface PatchAuthenticationMethodPasswordOptionsRequest {
   enable_sign_in?: boolean;
   /** Enable Password Sign-up */
   enable_sign_up?: boolean;
+  /** Specifies whether to notify the user on successful password update through email. */
+  enable_password_updated_email?: boolean;
   /** Password Strength Options */
   strength?: PatchAuthenticationMethodPasswordStrengthOptionsRequest;
   /** Password Re-use Options */
   reuse?: PatchAuthenticationMethodPasswordReuseOptionsRequest;
   /** Password Expiration Options */
   expiration?: PatchAuthenticationMethodPasswordExpirationOptionsRequest;
+  /** Password Recovery Options */
+  recovery?: PatchAuthenticationMethodPasswordRecoveryOptionsRequest;
+}
+
+/** The Patch authentication method password recovery email options request class */
+export interface PatchAuthenticationMethodPasswordRecoveryEmailOptionsRequest {
+  /** Enable Password recovery through Email. */
+  enabled?: boolean;
+  /** Specifies the recovery mode. */
+  mode?: TokenSendTypes;
+  /** Email expiration time in seconds. */
+  otp_expiry?: number;
+  /** If Email Code is Selected, Code length is chosen from this option */
+  otp_length?: number;
+}
+
+/** The Patch authentication method password recovery options request class */
+export interface PatchAuthenticationMethodPasswordRecoveryOptionsRequest {
+  /** Password Recovery Email Options */
+  email?: PatchAuthenticationMethodPasswordRecoveryEmailOptionsRequest;
+  /** Password Recovery Phone Options */
+  phone?: PatchAuthenticationMethodPasswordRecoveryPhoneOptionsRequest;
+}
+
+/** The Patch authentication method password recovery phone options request class */
+export interface PatchAuthenticationMethodPasswordRecoveryPhoneOptionsRequest {
+  /** Enable Password recovery through Phone. */
+  enabled?: boolean;
+  /** Code expiration time in seconds. */
+  otp_expiry?: number;
+  /** Code length is chosen from this option */
+  otp_length?: number;
 }
 
 /** The Patch Authentication Method Password Reuse Options Request class */
@@ -6821,6 +6610,8 @@ export interface PatchAuthenticationMethodSmsCodeOptionsRequest {
   enable_sign_in?: boolean;
   /** Enable Sms Code Sign-up */
   enable_sign_up?: boolean;
+  /** Enable Sms Code Enable Jit Provisioning */
+  enable_jit_provisioning?: boolean;
   /** Specifies the expiration time in seconds for the OTP to be generated */
   otp_expiry?: number;
   /** Specifies the OTP character length */
@@ -6846,25 +6637,29 @@ export interface PatchAuthenticationOptionsRequest {
 /** The Patch Branding Email Options Request class */
 export interface PatchBrandingEmailOptionsRequest {
   /** Magic Link SignIn Branding Options */
-  magic_link_sign_in?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+  magic_link_sign_in?: PatchBrandingGenericCustomEmailOptionsRequest;
   /** Email Code SignIn Branding Options */
-  email_code_sign_in?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+  email_code_sign_in?: PatchBrandingGenericCustomEmailOptionsRequest;
   /** Magic Link Verification Branding Options */
-  magic_link_verification?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+  magic_link_verification?: PatchBrandingGenericCustomEmailOptionsRequest;
   /** Email Code Verification Branding Options */
-  email_code_verification?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+  email_code_verification?: PatchBrandingGenericCustomEmailOptionsRequest;
   /** Welcome Email Branding Options */
-  welcome?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+  welcome?: PatchBrandingGenericCustomEmailOptionsRequest;
   /** User Lockout Branding Options */
-  user_lockout?: PatchBrandingGenericCustomEmailOptionsRequest | null;
-  /** Reset Password Branding Options */
-  reset_password?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+  magic_link_user_unblock?: PatchBrandingGenericCustomEmailOptionsRequest;
+  /** Magic Link Password Reset Branding Options */
+  magic_link_password_reset?: PatchBrandingGenericCustomEmailOptionsRequest;
+  /** Email Code Password Reset Branding Options */
+  email_code_password_reset?: PatchBrandingGenericCustomEmailOptionsRequest;
   /** Password Updated Branding Options */
-  password_updated?: PatchBrandingGenericCustomEmailOptionsRequest | null;
+  password_updated?: PatchBrandingGenericCustomEmailOptionsRequest;
 }
 
 /** The Patch Generic Branding Custom Email Options Request class */
 export interface PatchBrandingGenericCustomEmailOptionsRequest {
+  /** Specifies whether to use the custom template. */
+  use_custom_template?: boolean;
   /** From Email Address */
   from_email?: string | null;
   /** From Name */
@@ -6877,8 +6672,10 @@ export interface PatchBrandingGenericCustomEmailOptionsRequest {
 
 /** The Patch Generic Branding Custom Sms Options Request class */
 export interface PatchBrandingGenericCustomSmsOptionsRequest {
+  /** Specifies whether to use the custom template. */
+  use_custom_template?: boolean;
   /** Custom LiquidJS template for the SMS */
-  template: string;
+  template?: string | null;
 }
 
 /** The Patch Branding Options Request class */
@@ -6936,9 +6733,11 @@ export interface PatchBrandingSignInPageOptionsRequest {
 /** The Patch Branding Sms Options Request class */
 export interface PatchBrandingSmsOptionsRequest {
   /** Sms Code SignIn Branding Options */
-  sms_code_sign_in?: PatchBrandingGenericCustomSmsOptionsRequest | null;
+  sms_code_sign_in?: PatchBrandingGenericCustomSmsOptionsRequest;
   /** Sms Code Verification Branding Options */
-  sms_code_verification?: PatchBrandingGenericCustomSmsOptionsRequest | null;
+  sms_code_verification?: PatchBrandingGenericCustomSmsOptionsRequest;
+  /** Sms Code Password Reset Branding Options */
+  sms_code_password_reset?: PatchBrandingGenericCustomSmsOptionsRequest;
 }
 
 /** The Patch Client class */
@@ -7215,8 +7014,14 @@ export interface PatchSignUpCustomFieldOptionsRequest {
 
 /** The Patch SignUp Options Request class */
 export interface PatchSignUpOptionsRequest {
-  /** Registration Account Merge Options */
-  account_merging?: PatchAccountMergingOptionsRequest;
+  /** Shows T&C and/or Privacy Policy Agreement on the Sign Up screen.
+   * Make sure to add T&C and/or Privacy Policy links in the Project Settings.
+   * T&C and/or Privacy Policy Agreement is not shown when user is created through External Identity Providers */
+  show_terms_and_privacy_policy?: boolean;
+  /** Requires user interaction to agree with T&C and/or Privacy Policy */
+  require_explicit_user_agreement?: boolean;
+  /** Send an email to user at the time of signup. */
+  enable_welcome_email?: boolean;
 }
 
 /** The Patch Tenant class */
@@ -7269,6 +7074,18 @@ export const RememberConsentTypes = {
 export type RememberConsentTypes =
   typeof RememberConsentTypes[keyof typeof RememberConsentTypes];
 
+/** * **off** - The session will expire when the browser is closed.
+ * * **sliding** - On each interaction of the user with the authorization server, the lifetime of the session will be renewed (by the amount specified in "Remember Me Duration" parameter). The lifetime will not exceed the time specified in the "Logout After" parameter
+ * * **absolute** - The session will expire on a fixed point in time (specified by the "Remember Me Duration" parameter) */
+export const RememberMeModes = {
+  Off: 'off',
+  Sliding: 'sliding',
+  Absolute: 'absolute',
+} as const;
+
+export type RememberMeModes =
+  typeof RememberMeModes[keyof typeof RememberMeModes];
+
 /** The Client Secret response class */
 export interface Secret {
   /** Unique ID of the client secret */
@@ -7289,15 +7106,13 @@ export interface Secret {
  * * **x509_thumbprint**
  * * **x509_name**
  * * **x509_certificate_base64**
- * * **jwk**
- * * **plain_text** */
+ * * **jwk** */
 export const SecretTypes = {
   SharedSecret: 'shared_secret',
   X509Thumbprint: 'x509_thumbprint',
   X509Name: 'x509_name',
   X509CertificateBase64: 'x509_certificate_base64',
   Jwk: 'jwk',
-  PlainText: 'plain_text',
 } as const;
 
 export type SecretTypes = typeof SecretTypes[keyof typeof SecretTypes];
@@ -7336,10 +7151,16 @@ export interface SignUpCustomFieldOptions {
 
 /** The SignUp Options response class */
 export interface SignUpOptions {
-  /** Registration Account Merge Options */
-  account_merging: AccountMergingOptions;
   /** Registration Custom Fields Options */
   custom_fields: SignUpCustomFieldOptions[];
+  /** Shows T&C and/or Privacy Policy Agreement on the Sign Up screen.
+   * Make sure to add T&C and/or Privacy Policy links in the Project Settings.
+   * T&C and/or Privacy Policy Agreement is not shown when user is created through External Identity Providers */
+  show_terms_and_privacy_policy: boolean;
+  /** Requires user interaction to agree with T&C and/or Privacy Policy */
+  require_explicit_user_agreement: boolean;
+  /** Send an email to user at the time of signup. */
+  enable_welcome_email: boolean;
 }
 
 /** * **rs_256**
@@ -7456,6 +7277,52 @@ export interface TrustStoreCertificate {
   value: string;
 }
 
+/** Trust Store Certificate Chained Response */
+export interface TrustStoreCertificateParsed {
+  /** Certificate Id. */
+  id: string;
+  /** Specifies if the certificate is enabled. */
+  enabled: boolean;
+  /** Certificate Value. */
+  value: string;
+  /** The associated name/alias for the certificate. */
+  name: string;
+  /** The algorithm used to create the signature of the certificate. */
+  algorithm: string;
+  /** The X.509 format version of the certificate. */
+  version: number;
+  /** The subject distinguished names from the certificate. */
+  subject: { [key: string]: string };
+  /** The subject distinguished names from the certificate authority that issued the X.509 certificate. */
+  issuer: { [key: string]: string };
+  /** The serial number of the certificate as a hexadecimal string. */
+  serial_number: string;
+  /** Specifies the time (in Epoch) on which a certificate becomes valid. */
+  valid_from: number;
+  /** Specifies the time (in Epoch) after which a certificate is no longer valid. */
+  valid_to: number;
+  /** Specifies whether the certificate contains a private key. */
+  has_private_key: boolean;
+  /** Specifies whether the certificate belongs to a certificate authority. If true the certificate can be used to issue other certificates. */
+  is_ca: boolean;
+  /** Specifies whether the certificate has expired. */
+  is_expired: boolean;
+  /** Specifies whether the certificate is self signed. */
+  is_self_signed: boolean;
+  /** Specifies whether the certificate is issued by a certificate in the store. */
+  is_child: boolean;
+  /** List of certificates that are issued by the current certificate. */
+  children: TrustStoreCertificateParsed[];
+}
+
+/** Trust Store Parsed Response */
+export interface TrustStoreParsed {
+  /** List of certificates. */
+  certificates: TrustStoreCertificateParsed[];
+  /** List of certificate revocations. */
+  revocations: TrustStoreRevocationParsed[];
+}
+
 /** Trust Store Certificate Revocation Response */
 export interface TrustStoreRevocation {
   /** Certificate Id. */
@@ -7466,25 +7333,26 @@ export interface TrustStoreRevocation {
   value: string;
 }
 
-/** The User Email response class */
-export interface UserEmail {
+/** Trust Store Certificate Revocation Parsed Response */
+export interface TrustStoreRevocationParsed {
+  /** Certificate Id. */
   id: string;
-  primary: boolean;
-  id_ps: IDPs[];
-  authentication_methods: AuthenticationMethods[];
-  verified: boolean;
-  email: string;
-}
-
-export interface UserIDPSummary {
-  /** Specifies the IDP name. */
-  idp: ExternalIDPs;
-  /** Specifies the idp user Id. */
-  provider_user_id: string;
-  /** Specifies the creation time of the scheme (in Epoch). */
-  creation_time: number;
-  /** Specifies the last update time of the scheme (in Epoch). */
-  last_updated: number;
+  /** Specifies if the certificate is enabled. */
+  enabled: boolean;
+  /** Certificate Crl Value. */
+  value: string;
+  /** The associated name/alias for the crl. */
+  name: string;
+  /** The algorithm used to create the crl. */
+  algorithm: string;
+  /** The format version of the crl. */
+  version: number;
+  /** The certificate authority that issued the crl. */
+  issuer: { [key: string]: string };
+  /** Specifies the last update time (in Epoch) of the crl. */
+  last_update: number;
+  /** Specifies the time (in Epoch) at which the next update is supposed to happen. */
+  next_update: number;
 }
 
 /** * **ip**
@@ -7496,45 +7364,6 @@ export const UserLockoutTypes = {
 
 export type UserLockoutTypes =
   typeof UserLockoutTypes[keyof typeof UserLockoutTypes];
-
-/** The User Phone response class */
-export interface UserPhone {
-  id: string;
-  primary: boolean;
-  id_ps: IDPs[];
-  authentication_methods: AuthenticationMethods[];
-  verified: boolean;
-  phone: string;
-}
-
-/** The User Summary response class */
-export interface UserSummary {
-  /** Unique identifier of the user. */
-  user_id: string;
-  /** Specifies whether the account has been disabled. */
-  disabled: boolean;
-  /** List of registered schemes of user. */
-  emails: UserEmail[];
-  /** List of registered schemes of user. */
-  phone_numbers: UserPhone[];
-  /** List of registered schemes of user. */
-  usernames: UserUsername[];
-  /** List of registered idps of user. */
-  id_ps: UserIDPSummary[];
-  /** Specifies the creation time of the user (in Epoch). */
-  creation_time: number;
-  /** Specifies the last update time of the user (in Epoch). */
-  last_updated: number;
-}
-
-/** The User Username response class */
-export interface UserUsername {
-  id: string;
-  primary: boolean;
-  id_ps: IDPs[];
-  authentication_methods: AuthenticationMethods[];
-  username: string;
-}
 
 /** * **string**
  * * **email**

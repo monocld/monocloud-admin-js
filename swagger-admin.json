@@ -3316,6 +3316,57 @@
         }
       }
     },
+    "/v1/truststore/chains": {
+      "get": {
+        "tags": [
+          "TrustStore"
+        ],
+        "summary": "Get Truststore Chains",
+        "operationId": "GetTrustStoreChains",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrustStoreParsed"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrustStoreParsed"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrustStoreParsed"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/truststore/certificates": {
       "post": {
         "tags": [
@@ -3845,312 +3896,6 @@
           }
         }
       }
-    },
-    "/v1/users": {
-      "get": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Get all the Users",
-        "operationId": "GetAllUsersAsync",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "size",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "headers": {
-              "x-Pagination": {
-                "$ref": "#/components/schemas/PaginationHeader"
-              }
-            },
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserSummary"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserSummary"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserSummary"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/users/{user_id}": {
-      "delete": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Delete a User",
-        "operationId": "DeleteUser",
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "path",
-            "description": "User Id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          }
-        }
-      }
-    },
-    "/v1/users/{user_id}/private_data": {
-      "patch": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Update User's Private Data.",
-        "operationId": "PatchPrivateData",
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "path",
-            "description": "User Id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Request Body",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": { }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": { }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": { }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": { }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": { }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": { }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Client Error",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/users/{user_id}/public_data": {
-      "patch": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Update User's Public Data.",
-        "operationId": "PatchPublicData",
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "path",
-            "description": "User Id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Request Body",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": { }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": { }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": { }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": { }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": { }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": { }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Client Error",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
@@ -4187,7 +3932,8 @@
           "ip_lockout_time_span",
           "lockout_type",
           "max_failed_access_attempts",
-          "user_lockout_time_span"
+          "user_lockout_time_span",
+          "user_unblock"
         ],
         "type": "object",
         "properties": {
@@ -4236,10 +3982,57 @@
             ],
             "description": "Types of Lockouts to enable per User Account",
             "example": "ip"
+          },
+          "user_unblock": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountProtectionUserUnblockOptions"
+              }
+            ],
+            "description": "Account Protection User Unblock Options"
           }
         },
         "additionalProperties": false,
         "description": "The Account Protection UserLockout response class"
+      },
+      "AccountProtectionUserUnblockEmailOptions": {
+        "required": [
+          "enabled",
+          "link_expiry"
+        ],
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Enable User Unblock through Email."
+          },
+          "link_expiry": {
+            "type": "integer",
+            "description": "Email expiration time in seconds.",
+            "format": "int32",
+            "example": 300
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Account Protection User Unblock Email response class"
+      },
+      "AccountProtectionUserUnblockOptions": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountProtectionUserUnblockEmailOptions"
+              }
+            ],
+            "description": "User Unblock Email Options"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Account Protection User Unblock response class"
       },
       "AddTrustStoreCertificatesRequest": {
         "required": [
@@ -4512,11 +4305,10 @@
       },
       "AuthenticationGeneralOptions": {
         "required": [
-          "allow_remember_me",
           "consent_required_for_offline_access",
           "email",
           "phone",
-          "remember_me_duration",
+          "session",
           "username"
         ],
         "type": "object",
@@ -4526,16 +4318,13 @@
             "description": "Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access.",
             "example": true
           },
-          "allow_remember_me": {
-            "type": "boolean",
-            "description": "Show RememberMe Checkbox on the SignIn Screen",
-            "example": true
-          },
-          "remember_me_duration": {
-            "type": "integer",
-            "description": "RememberMe Duration in minutes",
-            "format": "int32",
-            "example": 60
+          "session": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AuthenticationGeneralSessionOptions"
+              }
+            ],
+            "description": "General User Session Options."
           },
           "email": {
             "allOf": [
@@ -4627,6 +4416,40 @@
         },
         "additionalProperties": false,
         "description": "The Authentication General Phone Verification Options Response class"
+      },
+      "AuthenticationGeneralSessionOptions": {
+        "required": [
+          "logout_after",
+          "remember_me_duration",
+          "remember_me_mode"
+        ],
+        "type": "object",
+        "properties": {
+          "remember_me_mode": {
+            "type": "enum",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RememberMeModes"
+              }
+            ],
+            "description": "RememberMe Mode",
+            "example": "sliding"
+          },
+          "remember_me_duration": {
+            "type": "integer",
+            "description": "Specifies the duration in minutes after which the user session will expire in accordance with the remember me mode.",
+            "format": "int32",
+            "example": 1440
+          },
+          "logout_after": {
+            "type": "integer",
+            "description": "Specifies the duration in minutes after which the user session will expire regardless of the remember me mode.",
+            "format": "int32",
+            "example": 14400
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Authentication General Session response class"
       },
       "AuthenticationGeneralUsernameOptions": {
         "required": [
@@ -4806,6 +4629,7 @@
       },
       "AuthenticationMethodPasswordOptions": {
         "required": [
+          "enable_password_updated_email",
           "enable_sign_in",
           "enable_sign_up",
           "expiration",
@@ -4823,6 +4647,11 @@
           "enable_sign_up": {
             "type": "boolean",
             "description": "Enable Password Sign-up",
+            "example": true
+          },
+          "enable_password_updated_email": {
+            "type": "boolean",
+            "description": "Specifies whether to notify the user on successful password update through email.",
             "example": true
           },
           "strength": {
@@ -5080,12 +4909,12 @@
       "AuthenticationMethods": {
         "enum": [
           "password",
-          "sms_code",
+          "email_code",
           "magic_link",
-          "email_code"
+          "sms_code"
         ],
         "type": "string",
-        "description": "* **password**\r\n* **sms_code**\r\n* **magic_link**\r\n* **email_code**"
+        "description": "* **password**\r\n* **email_code**\r\n* **magic_link**\r\n* **sms_code**"
       },
       "AuthenticationOptions": {
         "required": [
@@ -5151,6 +4980,17 @@
         "description": "The Authentication Options response class"
       },
       "BrandingEmailOptions": {
+        "required": [
+          "email_code_password_reset",
+          "email_code_sign_in",
+          "email_code_verification",
+          "magic_link_password_reset",
+          "magic_link_sign_in",
+          "magic_link_user_unblock",
+          "magic_link_verification",
+          "password_updated",
+          "welcome"
+        ],
         "type": "object",
         "properties": {
           "magic_link_sign_in": {
@@ -5159,8 +4999,7 @@
                 "$ref": "#/components/schemas/BrandingGenericEmailTemplateOptions"
               }
             ],
-            "description": "Magic Link SignIn Branding Options",
-            "nullable": true
+            "description": "Magic Link SignIn Branding Options"
           },
           "email_code_sign_in": {
             "allOf": [
@@ -5168,8 +5007,15 @@
                 "$ref": "#/components/schemas/BrandingGenericEmailTemplateOptions"
               }
             ],
-            "description": "Email Code SignIn Branding Options",
-            "nullable": true
+            "description": "Email Code SignIn Branding Options"
+          },
+          "magic_link_verification": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BrandingGenericEmailTemplateOptions"
+              }
+            ],
+            "description": "Magic Link Verification Branding Options"
           },
           "email_code_verification": {
             "allOf": [
@@ -5177,8 +5023,7 @@
                 "$ref": "#/components/schemas/BrandingGenericEmailTemplateOptions"
               }
             ],
-            "description": "Email Code Verification Branding Options",
-            "nullable": true
+            "description": "Email Code Verification Branding Options"
           },
           "welcome": {
             "allOf": [
@@ -5186,17 +5031,15 @@
                 "$ref": "#/components/schemas/BrandingGenericEmailTemplateOptions"
               }
             ],
-            "description": "Welcome Email Branding Options",
-            "nullable": true
+            "description": "Welcome Email Branding Options"
           },
-          "user_lockout": {
+          "magic_link_user_unblock": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/BrandingGenericEmailTemplateOptions"
               }
             ],
-            "description": "User Lockout Branding Options",
-            "nullable": true
+            "description": "User Lockout Branding Options"
           },
           "magic_link_password_reset": {
             "allOf": [
@@ -5204,8 +5047,7 @@
                 "$ref": "#/components/schemas/BrandingGenericEmailTemplateOptions"
               }
             ],
-            "description": "Magic Link Password Reset Branding Options",
-            "nullable": true
+            "description": "Magic Link Password Reset Branding Options"
           },
           "email_code_password_reset": {
             "allOf": [
@@ -5213,8 +5055,7 @@
                 "$ref": "#/components/schemas/BrandingGenericEmailTemplateOptions"
               }
             ],
-            "description": "Email Code Password Reset Branding Options",
-            "nullable": true
+            "description": "Email Code Password Reset Branding Options"
           },
           "password_updated": {
             "allOf": [
@@ -5222,16 +5063,22 @@
                 "$ref": "#/components/schemas/BrandingGenericEmailTemplateOptions"
               }
             ],
-            "description": "Password Updated Branding Options",
-            "nullable": true
+            "description": "Password Updated Branding Options"
           }
         },
         "additionalProperties": false,
         "description": "The Branding Email Options response class"
       },
       "BrandingGenericEmailTemplateOptions": {
+        "required": [
+          "use_custom_template"
+        ],
         "type": "object",
         "properties": {
+          "use_custom_template": {
+            "type": "boolean",
+            "description": "Specifies whether to use the custom template."
+          },
           "from_email": {
             "type": "string",
             "description": "From Email Address",
@@ -5262,13 +5109,18 @@
       },
       "BrandingGenericSmsTemplateOptions": {
         "required": [
-          "template"
+          "use_custom_template"
         ],
         "type": "object",
         "properties": {
+          "use_custom_template": {
+            "type": "boolean",
+            "description": "Specifies whether to use the custom template."
+          },
           "template": {
             "type": "string",
             "description": "Custom LiquidJS template for the SMS",
+            "nullable": true,
             "example": "Hi {{ name }}"
           }
         },
@@ -5445,6 +5297,11 @@
         "description": "The Branding SignIn Page Options response class"
       },
       "BrandingSmsOptions": {
+        "required": [
+          "sms_code_password_reset",
+          "sms_code_sign_in",
+          "sms_code_verification"
+        ],
         "type": "object",
         "properties": {
           "sms_code_sign_in": {
@@ -5453,8 +5310,7 @@
                 "$ref": "#/components/schemas/BrandingGenericSmsTemplateOptions"
               }
             ],
-            "description": "Sms Code SignIn Branding Options",
-            "nullable": true
+            "description": "Sms Code SignIn Branding Options"
           },
           "sms_code_verification": {
             "allOf": [
@@ -5462,8 +5318,7 @@
                 "$ref": "#/components/schemas/BrandingGenericSmsTemplateOptions"
               }
             ],
-            "description": "Sms Code Verification Branding Options",
-            "nullable": true
+            "description": "Sms Code Verification Branding Options"
           },
           "sms_code_password_reset": {
             "allOf": [
@@ -5471,8 +5326,7 @@
                 "$ref": "#/components/schemas/BrandingGenericSmsTemplateOptions"
               }
             ],
-            "description": "Sms Code Password Reset Branding Options",
-            "nullable": true
+            "description": "Sms Code Password Reset Branding Options"
           }
         },
         "additionalProperties": false,
@@ -6064,7 +5918,7 @@
             "items": {
               "maxLength": 100,
               "minLength": 1,
-              "pattern": "^[a-z0-9]+([a-z0-9-_.]+[a-z0-9])?$",
+              "pattern": "^[a-zA-Z0-9]+([a-zA-Z0-9_.]+[a-zA-Z0-9])?$",
               "type": "string"
             },
             "description": "List of associated user claim types that should be included in the Access token.",
@@ -6145,7 +5999,7 @@
             "items": {
               "maxLength": 100,
               "minLength": 1,
-              "pattern": "^[a-z0-9]+([a-z0-9-_.]+[a-z0-9])?$",
+              "pattern": "^[a-zA-Z0-9]+([a-zA-Z0-9_.]+[a-zA-Z0-9])?$",
               "type": "string"
             },
             "description": "List of associated user claim types that should be included in the Access token.",
@@ -6180,7 +6034,7 @@
           "type": {
             "maxLength": 100,
             "minLength": 1,
-            "pattern": "^[a-z0-9]+([a-z0-9-_.]+[a-z0-9])?$",
+            "pattern": "^[a-zA-Z0-9]+([a-zA-Z0-9_.]+[a-zA-Z0-9])?$",
             "type": "string",
             "description": "Specifies the type of the claim",
             "example": "customer_id"
@@ -6666,7 +6520,7 @@
             "items": {
               "maxLength": 100,
               "minLength": 1,
-              "pattern": "^[a-z0-9]+([a-z0-9-_.]+[a-z0-9])?$",
+              "pattern": "^[a-zA-Z0-9]+([a-zA-Z0-9_.]+[a-zA-Z0-9])?$",
               "type": "string"
             },
             "description": "List of associated user claim types that should be included in the Access token.",
@@ -7476,8 +7330,8 @@
             "example": "client_name"
           }
         },
-        "additionalProperties": false,
-        "description": "The Log Summary response class."
+        "additionalProperties": { },
+        "description": "The Log response class."
       },
       "LogEventCategories": {
         "enum": [
@@ -7508,7 +7362,8 @@
           "user_account_ip_blocked",
           "user_account_unblocked",
           "user_account_ip_unblocked",
-          "user_account_ip_unblocked_all",
+          "user_account_all_ips_unblocked",
+          "user_account_all_unblocked",
           "user_password_reset_success",
           "user_session_created",
           "user_session_renewed",
@@ -7532,7 +7387,7 @@
           "user_password_reset_notification_sent"
         ],
         "type": "string",
-        "description": "* **authorization_success**\r\n* **authorization_failure**\r\n* **resource_owner_authentication_success**\r\n* **resource_owner_authentication_failure**\r\n* **client_authentication_success**\r\n* **client_authentication_failure**\r\n* **api_authentication_success**\r\n* **api_authentication_failure**\r\n* **user_logout_success**\r\n* **user_sign_in_failure**\r\n* **user_sign_in_success**\r\n* **user_account_blocked**\r\n* **user_account_ip_blocked**\r\n* **user_account_unblocked**\r\n* **user_account_ip_unblocked**\r\n* **user_account_ip_unblocked_all**\r\n* **user_password_reset_success**\r\n* **user_session_created**\r\n* **user_session_renewed**\r\n* **user_session_removed**\r\n* **user_sign_up_success**\r\n* **user_new_authentication_method_added**\r\n* **token_issued_success**\r\n* **token_issued_failure**\r\n* **token_revoked_success**\r\n* **token_introspection_success**\r\n* **token_introspection_failure**\r\n* **unhandled_exception**\r\n* **invalid_client_configuration**\r\n* **consent_granted**\r\n* **consent_denied**\r\n* **grants_revoked**\r\n* **device_authorization_success**\r\n* **device_authorization_failure**\r\n* **passwordless_sign_in_notification_sent_event**\r\n* **sign_up_verification_notification_sent_event**\r\n* **user_password_reset_notification_sent**"
+        "description": "* **authorization_success**\r\n* **authorization_failure**\r\n* **resource_owner_authentication_success**\r\n* **resource_owner_authentication_failure**\r\n* **client_authentication_success**\r\n* **client_authentication_failure**\r\n* **api_authentication_success**\r\n* **api_authentication_failure**\r\n* **user_logout_success**\r\n* **user_sign_in_failure**\r\n* **user_sign_in_success**\r\n* **user_account_blocked**\r\n* **user_account_ip_blocked**\r\n* **user_account_unblocked**\r\n* **user_account_ip_unblocked**\r\n* **user_account_all_ips_unblocked**\r\n* **user_account_all_unblocked**\r\n* **user_password_reset_success**\r\n* **user_session_created**\r\n* **user_session_renewed**\r\n* **user_session_removed**\r\n* **user_sign_up_success**\r\n* **user_new_authentication_method_added**\r\n* **token_issued_success**\r\n* **token_issued_failure**\r\n* **token_revoked_success**\r\n* **token_introspection_success**\r\n* **token_introspection_failure**\r\n* **unhandled_exception**\r\n* **invalid_client_configuration**\r\n* **consent_granted**\r\n* **consent_denied**\r\n* **grants_revoked**\r\n* **device_authorization_success**\r\n* **device_authorization_failure**\r\n* **passwordless_sign_in_notification_sent_event**\r\n* **sign_up_verification_notification_sent_event**\r\n* **user_password_reset_notification_sent**"
       },
       "LogEventTypes": {
         "enum": [
@@ -7845,10 +7700,52 @@
             ],
             "description": "Types of Lockouts to enable per User Account",
             "example": "ip"
+          },
+          "user_unblock": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchAccountProtectionUserUnblockOptionsRequest"
+              }
+            ],
+            "description": "Account Protection User Unblock Options"
           }
         },
         "additionalProperties": false,
         "description": "The Patch Account Protection User Lockout Options Request class"
+      },
+      "PatchAccountProtectionUserUnblockEmailOptionsRequest": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Enable User Unblock through Email."
+          },
+          "link_expiry": {
+            "maximum": 600,
+            "minimum": 300,
+            "type": "integer",
+            "description": "Email expiration time in seconds.",
+            "format": "int32",
+            "example": 300
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Patch account protection user unblock email options request class"
+      },
+      "PatchAccountProtectionUserUnblockOptionsRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchAccountProtectionUserUnblockEmailOptionsRequest"
+              }
+            ],
+            "description": "User Unblock Email Options"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Patch account protection user unblock options request class"
       },
       "PatchApiResourceRequest": {
         "type": "object",
@@ -7888,7 +7785,7 @@
             "items": {
               "maxLength": 100,
               "minLength": 1,
-              "pattern": "^[a-z0-9]+([a-z0-9-_.]+[a-z0-9])?$",
+              "pattern": "^[a-zA-Z0-9]+([a-zA-Z0-9_.]+[a-zA-Z0-9])?$",
               "type": "string"
             },
             "description": "List of associated user claim types that should be included in the Access token.",
@@ -7952,7 +7849,7 @@
             "items": {
               "maxLength": 100,
               "minLength": 1,
-              "pattern": "^[a-z0-9]+([a-z0-9-_.]+[a-z0-9])?$",
+              "pattern": "^[a-zA-Z0-9]+([a-zA-Z0-9_.]+[a-zA-Z0-9])?$",
               "type": "string"
             },
             "description": "List of associated user claim types that should be included in the Access token.",
@@ -8038,18 +7935,13 @@
             "description": "Since access tokens have finite lifetimes, refresh tokens allow requesting new access tokens without user interaction. The clients need to be explicitly authorized by the User to request for refresh tokens. This option specifies if all the clients need Consent from the User for Offline Access.",
             "example": true
           },
-          "allow_remember_me": {
-            "type": "boolean",
-            "description": "Show RememberMe Checkbox on the SignIn Screen",
-            "example": true
-          },
-          "remember_me_duration": {
-            "maximum": 2147483647,
-            "minimum": 5,
-            "type": "integer",
-            "description": "RememberMe Duration in minutes",
-            "format": "int32",
-            "example": 60
+          "session": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchAuthenticationGeneralSessionOptionsRequest"
+              }
+            ],
+            "description": "General User Session Options."
           },
           "email": {
             "allOf": [
@@ -8134,6 +8026,39 @@
         },
         "additionalProperties": false,
         "description": "The Patch General Phone Verification Options Request class"
+      },
+      "PatchAuthenticationGeneralSessionOptionsRequest": {
+        "type": "object",
+        "properties": {
+          "remember_me_mode": {
+            "type": "enum",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RememberMeModes"
+              }
+            ],
+            "description": "RememberMe Mode",
+            "example": "sliding"
+          },
+          "remember_me_duration": {
+            "maximum": 4320,
+            "minimum": 5,
+            "type": "integer",
+            "description": "Specifies the duration in minutes after which the user session will expire in accordance with the remember me mode.",
+            "format": "int32",
+            "example": 1440
+          },
+          "logout_after": {
+            "maximum": 43200,
+            "minimum": 60,
+            "type": "integer",
+            "description": "Specifies the duration in minutes after which the user session will expire regardless of the remember me mode.",
+            "format": "int32",
+            "example": 14400
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Patch General Session Authentication Options Request class"
       },
       "PatchAuthenticationGeneralUsernameOptionsRequest": {
         "type": "object",
@@ -8301,6 +8226,11 @@
           "enable_sign_up": {
             "type": "boolean",
             "description": "Enable Password Sign-up",
+            "example": true
+          },
+          "enable_password_updated_email": {
+            "type": "boolean",
+            "description": "Specifies whether to notify the user on successful password update through email.",
             "example": true
           },
           "strength": {
@@ -8603,8 +8533,7 @@
                 "$ref": "#/components/schemas/PatchBrandingGenericCustomEmailOptionsRequest"
               }
             ],
-            "description": "Magic Link SignIn Branding Options",
-            "nullable": true
+            "description": "Magic Link SignIn Branding Options"
           },
           "email_code_sign_in": {
             "allOf": [
@@ -8612,8 +8541,15 @@
                 "$ref": "#/components/schemas/PatchBrandingGenericCustomEmailOptionsRequest"
               }
             ],
-            "description": "Email Code SignIn Branding Options",
-            "nullable": true
+            "description": "Email Code SignIn Branding Options"
+          },
+          "magic_link_verification": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PatchBrandingGenericCustomEmailOptionsRequest"
+              }
+            ],
+            "description": "Magic Link Verification Branding Options"
           },
           "email_code_verification": {
             "allOf": [
@@ -8621,8 +8557,7 @@
                 "$ref": "#/components/schemas/PatchBrandingGenericCustomEmailOptionsRequest"
               }
             ],
-            "description": "Email Code Verification Branding Options",
-            "nullable": true
+            "description": "Email Code Verification Branding Options"
           },
           "welcome": {
             "allOf": [
@@ -8630,17 +8565,15 @@
                 "$ref": "#/components/schemas/PatchBrandingGenericCustomEmailOptionsRequest"
               }
             ],
-            "description": "Welcome Email Branding Options",
-            "nullable": true
+            "description": "Welcome Email Branding Options"
           },
-          "user_lockout": {
+          "magic_link_user_unblock": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/PatchBrandingGenericCustomEmailOptionsRequest"
               }
             ],
-            "description": "User Lockout Branding Options",
-            "nullable": true
+            "description": "User Lockout Branding Options"
           },
           "magic_link_password_reset": {
             "allOf": [
@@ -8648,8 +8581,7 @@
                 "$ref": "#/components/schemas/PatchBrandingGenericCustomEmailOptionsRequest"
               }
             ],
-            "description": "Magic Link Password Reset Branding Options",
-            "nullable": true
+            "description": "Magic Link Password Reset Branding Options"
           },
           "email_code_password_reset": {
             "allOf": [
@@ -8657,8 +8589,7 @@
                 "$ref": "#/components/schemas/PatchBrandingGenericCustomEmailOptionsRequest"
               }
             ],
-            "description": "Email Code Password Reset Branding Options",
-            "nullable": true
+            "description": "Email Code Password Reset Branding Options"
           },
           "password_updated": {
             "allOf": [
@@ -8666,8 +8597,7 @@
                 "$ref": "#/components/schemas/PatchBrandingGenericCustomEmailOptionsRequest"
               }
             ],
-            "description": "Password Updated Branding Options",
-            "nullable": true
+            "description": "Password Updated Branding Options"
           }
         },
         "additionalProperties": false,
@@ -8676,6 +8606,10 @@
       "PatchBrandingGenericCustomEmailOptionsRequest": {
         "type": "object",
         "properties": {
+          "use_custom_template": {
+            "type": "boolean",
+            "description": "Specifies whether to use the custom template."
+          },
           "from_email": {
             "maxLength": 100,
             "minLength": 1,
@@ -8715,11 +8649,16 @@
       "PatchBrandingGenericCustomSmsOptionsRequest": {
         "type": "object",
         "properties": {
+          "use_custom_template": {
+            "type": "boolean",
+            "description": "Specifies whether to use the custom template."
+          },
           "template": {
             "maxLength": 300,
             "minLength": 1,
             "type": "string",
             "description": "Custom LiquidJS template for the SMS",
+            "nullable": true,
             "example": "Hi {{ name }}"
           }
         },
@@ -8893,8 +8832,7 @@
                 "$ref": "#/components/schemas/PatchBrandingGenericCustomSmsOptionsRequest"
               }
             ],
-            "description": "Sms Code SignIn Branding Options",
-            "nullable": true
+            "description": "Sms Code SignIn Branding Options"
           },
           "sms_code_verification": {
             "allOf": [
@@ -8902,8 +8840,7 @@
                 "$ref": "#/components/schemas/PatchBrandingGenericCustomSmsOptionsRequest"
               }
             ],
-            "description": "Sms Code Verification Branding Options",
-            "nullable": true
+            "description": "Sms Code Verification Branding Options"
           },
           "sms_code_password_reset": {
             "allOf": [
@@ -8911,8 +8848,7 @@
                 "$ref": "#/components/schemas/PatchBrandingGenericCustomSmsOptionsRequest"
               }
             ],
-            "description": "Sms Code Password Reset Branding Options",
-            "nullable": true
+            "description": "Sms Code Password Reset Branding Options"
           }
         },
         "additionalProperties": false,
@@ -9675,7 +9611,7 @@
             "items": {
               "maxLength": 100,
               "minLength": 1,
-              "pattern": "^[a-z0-9]+([a-z0-9-_.]+[a-z0-9])?$",
+              "pattern": "^[a-zA-Z0-9]+([a-zA-Z0-9_.]+[a-zA-Z0-9])?$",
               "type": "string"
             },
             "description": "List of associated user claim types that should be included in the Access token.",
@@ -9798,6 +9734,20 @@
       },
       "PatchSignUpOptionsRequest": {
         "type": "object",
+        "properties": {
+          "show_terms_and_privacy_policy": {
+            "type": "boolean",
+            "description": "Shows T&C and/or Privacy Policy Agreement on the Sign Up screen.\r\nMake sure to add T&C and/or Privacy Policy links in the Project Settings.\r\nT&C and/or Privacy Policy Agreement is not shown when user is created through External Identity Providers"
+          },
+          "require_explicit_user_agreement": {
+            "type": "boolean",
+            "description": "Requires user interaction to agree with T&C and/or Privacy Policy"
+          },
+          "enable_welcome_email": {
+            "type": "boolean",
+            "description": "Send an email to user at the time of signup."
+          }
+        },
         "additionalProperties": false,
         "description": "The Patch SignUp Options Request class"
       },
@@ -9864,6 +9814,15 @@
         "type": "string",
         "description": "* **never**\r\n* **always**\r\n* **user_selected**"
       },
+      "RememberMeModes": {
+        "enum": [
+          "off",
+          "sliding",
+          "absolute"
+        ],
+        "type": "string",
+        "description": "* **off** - The session will expire when the browser is closed.\r\n* **sliding** - On each interaction of the user with the authorization server, the lifetime of the session will be renewed (by the amount specified in \"Remember Me Duration\" parameter). The lifetime will not exceed the time specified in the \"Logout After\" parameter\r\n* **absolute** - The session will expire on a fixed point in time (specified by the \"Remember Me Duration\" parameter)"
+      },
       "Secret": {
         "required": [
           "creation_time",
@@ -9921,11 +9880,10 @@
           "x509_thumbprint",
           "x509_name",
           "x509_certificate_base64",
-          "jwk",
-          "plain_text"
+          "jwk"
         ],
         "type": "string",
-        "description": "* **shared_secret**\r\n* **x509_thumbprint**\r\n* **x509_name**\r\n* **x509_certificate_base64**\r\n* **jwk**\r\n* **plain_text**"
+        "description": "* **shared_secret**\r\n* **x509_thumbprint**\r\n* **x509_name**\r\n* **x509_certificate_base64**\r\n* **jwk**"
       },
       "SecretValue": {
         "required": [
@@ -10030,7 +9988,10 @@
       },
       "SignUpOptions": {
         "required": [
-          "custom_fields"
+          "custom_fields",
+          "enable_welcome_email",
+          "require_explicit_user_agreement",
+          "show_terms_and_privacy_policy"
         ],
         "type": "object",
         "properties": {
@@ -10040,6 +10001,18 @@
               "$ref": "#/components/schemas/SignUpCustomFieldOptions"
             },
             "description": "Registration Custom Fields Options"
+          },
+          "show_terms_and_privacy_policy": {
+            "type": "boolean",
+            "description": "Shows T&C and/or Privacy Policy Agreement on the Sign Up screen.\r\nMake sure to add T&C and/or Privacy Policy links in the Project Settings.\r\nT&C and/or Privacy Policy Agreement is not shown when user is created through External Identity Providers"
+          },
+          "require_explicit_user_agreement": {
+            "type": "boolean",
+            "description": "Requires user interaction to agree with T&C and/or Privacy Policy"
+          },
+          "enable_welcome_email": {
+            "type": "boolean",
+            "description": "Send an email to user at the time of signup."
           }
         },
         "additionalProperties": false,
@@ -10279,6 +10252,151 @@
         "additionalProperties": false,
         "description": "Trust Store Certificate Response"
       },
+      "TrustStoreCertificateParsed": {
+        "required": [
+          "algorithm",
+          "children",
+          "enabled",
+          "has_private_key",
+          "id",
+          "is_ca",
+          "is_child",
+          "is_expired",
+          "is_self_signed",
+          "issuer",
+          "name",
+          "serial_number",
+          "subject",
+          "valid_from",
+          "valid_to",
+          "value",
+          "version"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Certificate Id.",
+            "example": "af2cc4b4-5558-41b1-89d1-6e7c69ab92bb"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Specifies if the certificate is enabled.",
+            "example": true
+          },
+          "value": {
+            "type": "string",
+            "description": "Certificate Value.",
+            "example": "certificate_value"
+          },
+          "name": {
+            "type": "string",
+            "description": "The associated name/alias for the certificate.",
+            "example": "DST Root CA"
+          },
+          "algorithm": {
+            "type": "string",
+            "description": "The algorithm used to create the signature of the certificate.",
+            "example": "SHA1RSA"
+          },
+          "version": {
+            "type": "integer",
+            "description": "The X.509 format version of the certificate.",
+            "format": "int32",
+            "example": 3
+          },
+          "subject": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "The subject distinguished names from the certificate."
+          },
+          "issuer": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "The subject distinguished names from the certificate authority that issued the X.509 certificate."
+          },
+          "serial_number": {
+            "type": "string",
+            "description": "The serial number of the certificate as a hexadecimal string.",
+            "example": "07f74c29d93870e69ede128e71bdbad7"
+          },
+          "valid_from": {
+            "type": "integer",
+            "description": "Specifies the time (in Epoch) on which a certificate becomes valid.",
+            "format": "int64",
+            "example": 1640975400
+          },
+          "valid_to": {
+            "type": "integer",
+            "description": "Specifies the time (in Epoch) after which a certificate is no longer valid.",
+            "format": "int64",
+            "example": 1938071581
+          },
+          "has_private_key": {
+            "type": "boolean",
+            "description": "Specifies whether the certificate contains a private key.",
+            "example": true
+          },
+          "is_ca": {
+            "type": "boolean",
+            "description": "Specifies whether the certificate belongs to a certificate authority. If true the certificate can be used to issue other certificates.",
+            "example": true
+          },
+          "is_expired": {
+            "type": "boolean",
+            "description": "Specifies whether the certificate has expired.",
+            "example": false
+          },
+          "is_self_signed": {
+            "type": "boolean",
+            "description": "Specifies whether the certificate is self signed.",
+            "example": false
+          },
+          "is_child": {
+            "type": "boolean",
+            "description": "Specifies whether the certificate is issued by a certificate in the store.",
+            "example": false
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrustStoreCertificateParsed"
+            },
+            "description": "List of certificates that are issued by the current certificate."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Trust Store Certificate Chained Response"
+      },
+      "TrustStoreParsed": {
+        "required": [
+          "certificates",
+          "revocations"
+        ],
+        "type": "object",
+        "properties": {
+          "certificates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrustStoreCertificateParsed"
+            },
+            "description": "List of certificates."
+          },
+          "revocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrustStoreRevocationParsed"
+            },
+            "description": "List of certificate revocations."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Trust Store Parsed Response"
+      },
       "TrustStoreRevocation": {
         "required": [
           "enabled",
@@ -10306,96 +10424,73 @@
         "additionalProperties": false,
         "description": "Trust Store Certificate Revocation Response"
       },
-      "UserEmail": {
+      "TrustStoreRevocationParsed": {
         "required": [
-          "authentication_methods",
-          "email",
+          "algorithm",
+          "enabled",
           "id",
-          "id_ps",
-          "primary",
-          "verified"
+          "issuer",
+          "last_update",
+          "name",
+          "next_update",
+          "value",
+          "version"
         ],
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "description": "Certificate Id.",
+            "example": "cbf7566e-03ec-4ded-93d2-b059ded6b62e"
           },
-          "primary": {
-            "type": "boolean"
+          "enabled": {
+            "type": "boolean",
+            "description": "Specifies if the certificate is enabled.",
+            "example": true
           },
-          "id_ps": {
-            "uniqueItems": true,
-            "type": "array",
-            "items": {
-              "type": "enum",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/IDPs"
-                }
-              ]
-            }
+          "value": {
+            "type": "string",
+            "description": "Certificate Crl Value.",
+            "example": "certificate_revocation_value"
           },
-          "authentication_methods": {
-            "uniqueItems": true,
-            "type": "array",
-            "items": {
-              "type": "enum",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/AuthenticationMethods"
-                }
-              ]
-            }
+          "name": {
+            "type": "string",
+            "description": "The associated name/alias for the crl.",
+            "example": "Crl Name"
           },
-          "verified": {
-            "type": "boolean"
+          "algorithm": {
+            "type": "string",
+            "description": "The algorithm used to create the crl.",
+            "example": "SHA-256WITHRSA"
           },
-          "email": {
-            "type": "string"
+          "version": {
+            "type": "integer",
+            "description": "The format version of the crl.",
+            "format": "int32",
+            "example": 2
+          },
+          "issuer": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "The certificate authority that issued the crl."
+          },
+          "last_update": {
+            "type": "integer",
+            "description": "Specifies the last update time (in Epoch) of the crl.",
+            "format": "int64",
+            "example": 1640971400
+          },
+          "next_update": {
+            "type": "integer",
+            "description": "Specifies the time (in Epoch) at which the next update is supposed to happen.",
+            "format": "int64",
+            "example": 1751093210
           }
         },
         "additionalProperties": false,
-        "description": "The User Email response class"
-      },
-      "UserIDPSummary": {
-        "required": [
-          "creation_time",
-          "idp",
-          "last_updated",
-          "provider_user_id"
-        ],
-        "type": "object",
-        "properties": {
-          "idp": {
-            "type": "enum",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ExternalIDPs"
-              }
-            ],
-            "description": "Specifies the IDP name.",
-            "example": "local"
-          },
-          "provider_user_id": {
-            "type": "string",
-            "description": "Specifies the idp user Id.",
-            "example": "79a500f9-aba6-4f03-baec-c18f4b7136ad"
-          },
-          "creation_time": {
-            "type": "integer",
-            "description": "Specifies the creation time of the scheme (in Epoch).",
-            "format": "int64",
-            "example": 1640975400
-          },
-          "last_updated": {
-            "type": "integer",
-            "description": "Specifies the last update time of the scheme (in Epoch).",
-            "format": "int64",
-            "example": 1640975400
-          }
-        },
-        "additionalProperties": false
+        "description": "Trust Store Certificate Revocation Parsed Response"
       },
       "UserLockoutTypes": {
         "enum": [
@@ -10404,173 +10499,6 @@
         ],
         "type": "string",
         "description": "* **ip**\r\n* **user_account**"
-      },
-      "UserPhone": {
-        "required": [
-          "authentication_methods",
-          "id",
-          "id_ps",
-          "phone",
-          "primary",
-          "verified"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "primary": {
-            "type": "boolean"
-          },
-          "id_ps": {
-            "uniqueItems": true,
-            "type": "array",
-            "items": {
-              "type": "enum",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/IDPs"
-                }
-              ]
-            }
-          },
-          "authentication_methods": {
-            "uniqueItems": true,
-            "type": "array",
-            "items": {
-              "type": "enum",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/AuthenticationMethods"
-                }
-              ]
-            }
-          },
-          "verified": {
-            "type": "boolean"
-          },
-          "phone": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false,
-        "description": "The User Phone response class"
-      },
-      "UserSummary": {
-        "required": [
-          "creation_time",
-          "disabled",
-          "emails",
-          "id_ps",
-          "last_updated",
-          "phone_numbers",
-          "user_id",
-          "usernames"
-        ],
-        "type": "object",
-        "properties": {
-          "user_id": {
-            "type": "string",
-            "description": "Unique identifier of the user.",
-            "example": "UOtBaOybB6dTpIJNrnkRw"
-          },
-          "disabled": {
-            "type": "boolean",
-            "description": "Specifies whether the account has been disabled.",
-            "example": true
-          },
-          "emails": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserEmail"
-            },
-            "description": "List of registered schemes of user."
-          },
-          "phone_numbers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserPhone"
-            },
-            "description": "List of registered schemes of user."
-          },
-          "usernames": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserUsername"
-            },
-            "description": "List of registered schemes of user."
-          },
-          "id_ps": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserIDPSummary"
-            },
-            "description": "List of registered idps of user."
-          },
-          "creation_time": {
-            "type": "integer",
-            "description": "Specifies the creation time of the user (in Epoch).",
-            "format": "int64",
-            "example": 1640975400
-          },
-          "last_updated": {
-            "type": "integer",
-            "description": "Specifies the last update time of the user (in Epoch).",
-            "format": "int64",
-            "example": 1640975400
-          }
-        },
-        "additionalProperties": false,
-        "description": "The User Summary response class"
-      },
-      "UserUsername": {
-        "required": [
-          "authentication_methods",
-          "id",
-          "id_ps",
-          "primary",
-          "username"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "primary": {
-            "type": "boolean"
-          },
-          "id_ps": {
-            "uniqueItems": true,
-            "type": "array",
-            "items": {
-              "type": "enum",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/IDPs"
-                }
-              ]
-            }
-          },
-          "authentication_methods": {
-            "uniqueItems": true,
-            "type": "array",
-            "items": {
-              "type": "enum",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/AuthenticationMethods"
-                }
-              ]
-            }
-          },
-          "username": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false,
-        "description": "The User Username response class"
       },
       "ValueTypes": {
         "enum": [
