@@ -1,0 +1,36 @@
+import { BrandingEmailOptions } from './branding-email-options';
+import { BrandingPageOptions } from './branding-page-options';
+import { BrandingProjectOptions } from './branding-project-options';
+import { BrandingSmsOptions } from './branding-sms-options';
+
+/**
+ * The Branding Options response class
+ * @export
+ * @interface BrandingOptions
+ */
+export interface BrandingOptions {
+  /**
+   * Email Branding Options
+   * @type {BrandingEmailOptions}
+   * @memberof BrandingOptions
+   */
+  email: BrandingEmailOptions;
+  /**
+   * Sms Branding Options
+   * @type {BrandingSmsOptions}
+   * @memberof BrandingOptions
+   */
+  sms: BrandingSmsOptions;
+  /**
+   * Page Branding Options
+   * @type {BrandingPageOptions}
+   * @memberof BrandingOptions
+   */
+  page: BrandingPageOptions;
+  /**
+   * Project Branding Options
+   * @type {BrandingProjectOptions}
+   * @memberof BrandingOptions
+   */
+  project: BrandingProjectOptions;
+}
