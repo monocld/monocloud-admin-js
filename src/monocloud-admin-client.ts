@@ -78,12 +78,14 @@ export class MonoCloudAdminClient {
       },
     };
 
-    if (!opt.tenantId?.trim()) {
-      throw new MonoCloudException('Tenant ID is required');
-    }
+    if (!instance) {
+      if (!opt.tenantId?.trim()) {
+        throw new MonoCloudException('Tenant ID is required');
+      }
 
-    if (!opt.apiKey?.trim()) {
-      throw new MonoCloudException('API Key is required');
+      if (!opt.apiKey?.trim()) {
+        throw new MonoCloudException('API Key is required');
+      }
     }
 
     return new MonoCloudAdminClient(
