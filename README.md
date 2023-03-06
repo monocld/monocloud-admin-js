@@ -1,1 +1,1 @@
-# MonoCloud Admin Client
+# MonoCloud Admin JavaScript SDK
