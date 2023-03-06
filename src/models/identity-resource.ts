@@ -42,10 +42,10 @@ export interface IdentityResource {
   show_in_discovery_document: boolean;
   /**
    * List of associated user claim types that should be included in the Access token.
-   * @type {Set<string>}
+   * @type {Array<string>}
    * @memberof IdentityResource
    */
-  user_claims: Set<string>;
+  user_claims: Array<string>;
   /**
    * Specifies the creation time of the resource (in Epoch).
    * @type {number}

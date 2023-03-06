@@ -20,8 +20,8 @@ export interface BrandingSignInPageOptions {
   external_sign_in_methods_first: boolean;
   /**
    * Order of the External SigIn methods buttons
-   * @type {Set<ExternalIDPs>}
+   * @type {Array<ExternalIDPs>}
    * @memberof BrandingSignInPageOptions
    */
-  external_sign_in_methods_order: Set<ExternalIDPs>;
+  external_sign_in_methods_order: Array<ExternalIDPs>;
 }

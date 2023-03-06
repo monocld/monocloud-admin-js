@@ -8,13 +8,15 @@
     "plugin:prettier/recommended"
   ],
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "unused-imports"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "rules": {
+    "unused-imports/no-unused-imports": "error",
     "no-promise-executor-return": [
       "off"
     ],

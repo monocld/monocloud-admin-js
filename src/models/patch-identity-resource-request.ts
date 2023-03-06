@@ -36,10 +36,10 @@ export interface PatchIdentityResourceRequest {
   show_in_discovery_document?: boolean;
   /**
    * List of associated user claim types that should be included in the Access token.
-   * @type {Set<string>}
+   * @type {Array<string>}
    * @memberof PatchIdentityResourceRequest
    */
-  user_claims?: Set<string>;
+  user_claims?: Array<string>;
   /**
    * Specifies whether the user can de-select the scope on the consent screen (if such a feature is implemented in the consent screen).
    * @type {boolean}

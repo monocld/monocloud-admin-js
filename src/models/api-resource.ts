@@ -44,10 +44,10 @@ export interface ApiResource {
   show_in_discovery_document: boolean;
   /**
    * List of associated user claim types that should be included in the Access token.
-   * @type {Set<string>}
+   * @type {Array<string>}
    * @memberof ApiResource
    */
-  user_claims: Set<string>;
+  user_claims: Array<string>;
   /**
    * Specifies the creation time of the resource (in Epoch).
    * @type {number}
@@ -68,8 +68,8 @@ export interface ApiResource {
   api_secrets: Array<Secret>;
   /**
    * List of API scope names.
-   * @type {Set<string>}
+   * @type {Array<string>}
    * @memberof ApiResource
    */
-  scopes: Set<string>;
+  scopes: Array<string>;
 }

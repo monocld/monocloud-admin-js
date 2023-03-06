@@ -76,10 +76,10 @@ export interface PatchClientRequest {
   always_include_user_claims_in_id_token?: boolean;
   /**
    * Specifies the allowed grant types (legal combinations is required).
-   * @type {Set<GrantTypes>}
+   * @type {Array<GrantTypes>}
    * @memberof PatchClientRequest
    */
-  allowed_grant_types?: Set<GrantTypes>;
+  allowed_grant_types?: Array<GrantTypes>;
   /**
    * Specifies whether a proof key is required for authorization code based token requests
    * @type {boolean}
@@ -106,16 +106,16 @@ export interface PatchClientRequest {
   allow_access_tokens_via_browser?: boolean;
   /**
    * Specifies allowed URIs to return tokens or authorization codes to
-   * @type {Set<string>}
+   * @type {Array<string>}
    * @memberof PatchClientRequest
    */
-  redirect_uris?: Set<string>;
+  redirect_uris?: Array<string>;
   /**
    * Specifies allowed URIs to redirect to after logout
-   * @type {Set<string>}
+   * @type {Array<string>}
    * @memberof PatchClientRequest
    */
-  post_logout_redirect_uris?: Set<string>;
+  post_logout_redirect_uris?: Array<string>;
   /**
    * Specifies logout URI at client for HTTP front-channel based logout.
    * @type {string}
@@ -148,10 +148,10 @@ export interface PatchClientRequest {
   allow_offline_access?: boolean;
   /**
    * Specifies the scopes the client is allowed to access (by default a client has no access to any resources)
-   * @type {Set<string>}
+   * @type {Array<string>}
    * @memberof PatchClientRequest
    */
-  allowed_scopes?: Set<string>;
+  allowed_scopes?: Array<string>;
   /**
    * Lifetime of identity token in seconds
    * @type {number}
@@ -220,16 +220,16 @@ export interface PatchClientRequest {
   enable_local_login?: boolean;
   /**
    * Specifies which authentication providers can be used with this client (if list is empty all providers are allowed)
-   * @type {Set<IDPs>}
+   * @type {Array<IDPs>}
    * @memberof PatchClientRequest
    */
-  identity_provider_restrictions?: Set<IDPs>;
+  identity_provider_restrictions?: Array<IDPs>;
   /**
    * Specifies which authentication methods can be used with this client (if list is empty all methods are allowed)
-   * @type {Set<AuthenticationMethods>}
+   * @type {Array<AuthenticationMethods>}
    * @memberof PatchClientRequest
    */
-  authentication_method_restrictions?: Set<AuthenticationMethods>;
+  authentication_method_restrictions?: Array<AuthenticationMethods>;
   /**
    * Specifies whether JWT access tokens should include an identifier
    * @type {boolean}
@@ -256,10 +256,10 @@ export interface PatchClientRequest {
   client_claims_prefix?: string | null;
   /**
    * The allowed CORS origins for JavaScript clients.
-   * @type {Set<string>}
+   * @type {Array<string>}
    * @memberof PatchClientRequest
    */
-  allowed_cors_origins?: Set<string>;
+  allowed_cors_origins?: Array<string>;
   /**
    * The maximum duration (in seconds) since the last time the user authenticated. You can adjust the lifetime of a session token to control when and how often a user is required to reenter credentials instead of being silently authenticated, when using a web application.
    * @type {number}

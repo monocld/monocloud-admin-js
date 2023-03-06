@@ -7,6 +7,7 @@ export class TenantsClient extends MonoCloudClientBase {
    *
    * @summary Patch a Tenant
    * @param {PatchTenantRequest} patchTenantRequest Request Body
+   * @returns Tenant - Success
    * @throws {MonoCloudException}
    * @memberof TenantsClient
    *

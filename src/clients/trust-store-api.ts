@@ -16,6 +16,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
    *
    * @summary Add Certificate Revocations to truststore
    * @param {AddTrustStoreRevocationsRequest} addTrustStoreRevocationsRequest Request Body
+   * @returns TrustStore - Success
    * @throws {MonoCloudException}
    * @memberof TrustStoreClient
    *
@@ -38,6 +39,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
    *
    * @summary Add Certificates to truststore
    * @param {AddTrustStoreCertificatesRequest} addTrustStoreCertificatesRequest Request Body
+   * @returns TrustStore - Success
    * @throws {MonoCloudException}
    * @memberof TrustStoreClient
    *
@@ -60,6 +62,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
    *
    * @summary Delete a Certificate
    * @param {string} id Certificate Id
+   * @returns No Content
    * @throws {MonoCloudException}
    * @memberof TrustStoreClient
    *
@@ -81,6 +84,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
    *
    * @summary Delete a Certificate Revocation
    * @param {string} id Certificate Revocation Id
+   * @returns No Content
    * @throws {MonoCloudException}
    * @memberof TrustStoreClient
    *
@@ -103,6 +107,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get Truststore
+   * @returns TrustStore - Success
    * @throws {MonoCloudException}
    * @memberof TrustStoreClient
    *
@@ -120,6 +125,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get Truststore Chains
+   * @returns TrustStoreParsed - Success
    * @throws {MonoCloudException}
    * @memberof TrustStoreClient
    *
@@ -139,6 +145,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
    * @summary Update a Certificate
    * @param {string} id Certificate Id
    * @param {PatchTrustStoreCertificateRequest} patchTrustStoreCertificateRequest Request Body
+   * @returns TrustStoreCertificate - Success
    * @throws {MonoCloudException}
    * @memberof TrustStoreClient
    *
@@ -166,6 +173,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
    * @summary Update a Certificate Revocation
    * @param {string} id Certificate Revocation Id
    * @param {PatchTrustStoreRevocationRequest} patchTrustStoreRevocationRequest Request Body
+   * @returns TrustStoreRevocation - Success
    * @throws {MonoCloudException}
    * @memberof TrustStoreClient
    *

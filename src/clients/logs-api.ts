@@ -7,6 +7,7 @@ export class LogsClient extends MonoCloudClientBase {
    *
    * @summary Find a Log by Id
    * @param {string} id Log Id
+   * @returns Log - Success
    * @throws {MonoCloudException}
    * @memberof LogsClient
    *
@@ -29,6 +30,7 @@ export class LogsClient extends MonoCloudClientBase {
    * @summary Get all Log Summary
    * @param {number} [page]
    * @param {number} [size]
+   * @returns Array&lt;LogSummary&gt; - Success
    * @throws {MonoCloudException}
    * @memberof LogsClient
    *

@@ -17,6 +17,7 @@ export class OptionsClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get Authentication Options
+   * @returns AuthenticationOptions - Success
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    *
@@ -36,6 +37,7 @@ export class OptionsClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get Branding Options
+   * @returns BrandingOptions - Success
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    *
@@ -53,6 +55,7 @@ export class OptionsClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get Communication Options
+   * @returns CommunicationOptions - Success
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    *
@@ -72,6 +75,7 @@ export class OptionsClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get DeviceFlow Options
+   * @returns DeviceFlowOptions - Success
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    *
@@ -91,6 +95,7 @@ export class OptionsClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get Mtls Options
+   * @returns MtlsOptions - Success
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    *
@@ -109,6 +114,7 @@ export class OptionsClient extends MonoCloudClientBase {
    *
    * @summary Update Authentication Options
    * @param {PatchAuthenticationOptionsRequest} patchAuthenticationOptionsRequest Request Body
+   * @returns AuthenticationOptions - Success
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    *
@@ -131,6 +137,7 @@ export class OptionsClient extends MonoCloudClientBase {
    *
    * @summary Update Branding Options
    * @param {PatchBrandingOptionsRequest} patchBrandingOptionsRequest Request Body
+   * @returns BrandingOptions - Success
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    *
@@ -153,6 +160,7 @@ export class OptionsClient extends MonoCloudClientBase {
    *
    * @summary Update Communication Options
    * @param {PatchCommunicationOptionsRequest} patchCommunicationOptionsRequest Request Body
+   * @returns CommunicationOptions - Success
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    *
@@ -175,6 +183,7 @@ export class OptionsClient extends MonoCloudClientBase {
    *
    * @summary Update DeviceFlow Options
    * @param {PatchDeviceFlowOptionsRequest} patchDeviceFlowOptionsRequest Request Body
+   * @returns DeviceFlowOptions - Success
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    *
@@ -197,6 +206,7 @@ export class OptionsClient extends MonoCloudClientBase {
    *
    * @summary Update Mtls Options
    * @param {PatchMtlsOptionsRequest} patchMtlsOptionsRequest Request Body
+   * @returns MtlsOptions - Success
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    *

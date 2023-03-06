@@ -8,6 +8,7 @@ export class KeysClient extends MonoCloudClientBase {
    * @summary Get All Valid Keys
    * @param {number} [page]
    * @param {number} [size]
+   * @returns Array&lt;KeyMaterial&gt; - Success
    * @throws {MonoCloudException}
    * @memberof KeysClient
    *
@@ -39,6 +40,7 @@ export class KeysClient extends MonoCloudClientBase {
    *
    * @summary Revoke Current Key
    * @param {string} keyId Key Id
+   * @returns No Content
    * @throws {MonoCloudException}
    * @memberof KeysClient
    *
@@ -60,6 +62,7 @@ export class KeysClient extends MonoCloudClientBase {
    *
    * @summary Rotate Current Key
    * @param {string} keyId Key Id
+   * @returns No Content
    * @throws {MonoCloudException}
    * @memberof KeysClient
    *

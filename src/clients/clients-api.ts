@@ -14,6 +14,7 @@ export class ClientsClient extends MonoCloudClientBase {
    *
    * @summary Create a Client
    * @param {CreateClientRequest} createClientRequest Request Body
+   * @returns Client - Created
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
@@ -37,6 +38,7 @@ export class ClientsClient extends MonoCloudClientBase {
    * @summary Create a Client Secret
    * @param {string} clientId Client Id
    * @param {CreateSecretRequest} createSecretRequest Request Body
+   * @returns Secret - Created
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
@@ -63,6 +65,7 @@ export class ClientsClient extends MonoCloudClientBase {
    *
    * @summary Delete a Client
    * @param {string} id Client Id
+   * @returns No Content
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
@@ -85,6 +88,7 @@ export class ClientsClient extends MonoCloudClientBase {
    * @summary Delete a Client Secret
    * @param {string} clientId Client Id
    * @param {string} secretId Secret Id
+   * @returns No Content
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
@@ -108,6 +112,7 @@ export class ClientsClient extends MonoCloudClientBase {
    *
    * @summary Find a Client by Id
    * @param {string} id Client Id
+   * @returns Client - Success
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
@@ -130,6 +135,7 @@ export class ClientsClient extends MonoCloudClientBase {
    * @summary Find a Client Secret by Id
    * @param {string} clientId Client Id
    * @param {string} secretId Secret Id
+   * @returns SecretValue - Success
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
@@ -154,6 +160,7 @@ export class ClientsClient extends MonoCloudClientBase {
    * @summary Get all the Clients
    * @param {number} [page]
    * @param {number} [size]
+   * @returns Array&lt;Client&gt; - Success
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
@@ -186,6 +193,7 @@ export class ClientsClient extends MonoCloudClientBase {
    * @summary Update a Client
    * @param {string} id Client Id
    * @param {PatchClientRequest} patchClientRequest Request Body
+   * @returns Client - Success
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *

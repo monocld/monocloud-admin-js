@@ -20,6 +20,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    * @summary Create an Api Resource
    * @param {CreateApiResourceRequest} createApiResourceRequest Request Body
+   * @returns ApiResource - Created
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -43,6 +44,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Create an Api Resource Secret
    * @param {string} resourceId Resource Id
    * @param {CreateSecretRequest} createSecretRequest Request Body
+   * @returns Secret - Created
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -69,6 +71,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    * @summary Create an Api Scope
    * @param {CreateApiScopeRequest} createApiScopeRequest Request Body
+   * @returns ApiScope - Created
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -91,6 +94,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    * @summary Create an Identity Resource
    * @param {CreateIdentityResourceRequest} createIdentityResourceRequest Request Body
+   * @returns IdentityResource - Created
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -113,6 +117,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    * @summary Delete an Api Resource
    * @param {string} id Api Resource Id
+   * @returns No Content
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -135,6 +140,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Delete an Api Resource Secret
    * @param {string} resourceId ResourceId Id
    * @param {string} secretId Secret Id
+   * @returns No Content
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -158,6 +164,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    * @summary Delete an Api Scope
    * @param {string} id Api Scope Id
+   * @returns No Content
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -179,6 +186,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    * @summary Delete an Identity Resource
    * @param {string} id Identity Resource Id
+   * @returns No Content
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -200,6 +208,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    * @summary Find an Api Resource by Id
    * @param {string} id Api Resource Id
+   * @returns ApiResource - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -224,6 +233,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Find an Api Resource Secret by Id
    * @param {string} resourceId Resource Id
    * @param {string} secretId Secret Id
+   * @returns SecretValue - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -247,6 +257,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    * @summary Find an Api Scope by Id
    * @param {string} id Api Scope Id
+   * @returns ApiScope - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -268,6 +279,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    * @summary Find an Identity Resource by Id
    * @param {string} id Identity Resource Id
+   * @returns IdentityResource - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -292,6 +304,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Get all the Api Resources
    * @param {number} [page]
    * @param {number} [size]
+   * @returns Array&lt;ApiResource&gt; - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -324,6 +337,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Get all the Api Scopes
    * @param {number} [page]
    * @param {number} [size]
+   * @returns Array&lt;ApiScope&gt; - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -356,6 +370,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Get all the Identity Resources
    * @param {number} [page]
    * @param {number} [size]
+   * @returns Array&lt;IdentityResource&gt; - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -388,6 +403,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Update an Api Resource
    * @param {string} id Api Resource Id
    * @param {PatchApiResourceRequest} patchApiResourceRequest Request Body
+   * @returns ApiResource - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -415,6 +431,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Update an Api Scope
    * @param {string} id Api Scope Id
    * @param {PatchApiScopeRequest} patchApiScopeRequest Request Body
+   * @returns ApiScope - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -442,6 +459,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Update an Identity Resource
    * @param {string} id Identity Resource Id
    * @param {PatchIdentityResourceRequest} patchIdentityResourceRequest Request Body
+   * @returns IdentityResource - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *

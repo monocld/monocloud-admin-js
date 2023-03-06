@@ -36,14 +36,14 @@ export interface PatchApiResourceRequest {
   show_in_discovery_document?: boolean;
   /**
    * List of associated user claim types that should be included in the Access token.
-   * @type {Set<string>}
+   * @type {Array<string>}
    * @memberof PatchApiResourceRequest
    */
-  user_claims?: Set<string>;
+  user_claims?: Array<string>;
   /**
    * List of API scope names.
-   * @type {Set<string>}
+   * @type {Array<string>}
    * @memberof PatchApiResourceRequest
    */
-  scopes?: Set<string>;
+  scopes?: Array<string>;
 }
