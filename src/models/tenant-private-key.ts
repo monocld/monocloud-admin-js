@@ -18,10 +18,10 @@ export interface TenantPrivateKey {
   name?: string | null;
   /**
    * List of scopes of the key to modify the tenant
-   * @type {Array<string>}
+   * @type {string[]}
    * @memberof TenantPrivateKey
    */
-  scopes: Array<string>;
+  scopes: string[];
   /**
    * Specifies expiration of the key in Epoch
    * @type {number}

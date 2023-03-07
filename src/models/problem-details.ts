@@ -38,8 +38,8 @@ export interface ProblemDetails {
   instance?: string | null;
   /**
    * Specifies the errors corresponding to the model properties, if any.
-   * @type {{ [key: string]: Array<string>; }}
+   * @type {{ [key: string]: string[]; }}
    * @memberof ProblemDetails
    */
-  errors?: { [key: string]: Array<string> } | null;
+  errors?: { [key: string]: string[] } | null;
 }

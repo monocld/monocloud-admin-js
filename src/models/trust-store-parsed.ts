@@ -9,14 +9,14 @@ import { TrustStoreRevocationParsed } from './trust-store-revocation-parsed';
 export interface TrustStoreParsed {
   /**
    * List of certificates.
-   * @type {Array<TrustStoreCertificateParsed>}
+   * @type {TrustStoreCertificateParsed[]}
    * @memberof TrustStoreParsed
    */
-  certificates: Array<TrustStoreCertificateParsed>;
+  certificates: TrustStoreCertificateParsed[];
   /**
    * List of certificate revocations.
-   * @type {Array<TrustStoreRevocationParsed>}
+   * @type {TrustStoreRevocationParsed[]}
    * @memberof TrustStoreParsed
    */
-  revocations: Array<TrustStoreRevocationParsed>;
+  revocations: TrustStoreRevocationParsed[];
 }

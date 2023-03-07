@@ -15,8 +15,8 @@ export interface TenantManagementKeys {
   public_key: TenantPublicKey;
   /**
    * List of Tenant\'s Private Keys
-   * @type {Array<TenantPrivateKey>}
+   * @type {TenantPrivateKey[]}
    * @memberof TenantManagementKeys
    */
-  private_keys: Array<TenantPrivateKey>;
+  private_keys: TenantPrivateKey[];
 }

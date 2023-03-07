@@ -304,7 +304,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Get all the Api Resources
    * @param {number} [page]
    * @param {number} [size]
-   * @returns Array&lt;ApiResource&gt; - Success
+   * @returns ApiResource[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -312,7 +312,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   public getAllApiResources(
     page?: number,
     size?: number
-  ): Promise<MonoCloudResponse<Array<ApiResource>>> {
+  ): Promise<MonoCloudResponse<ApiResource[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/v1/resources/apiresources`;
@@ -329,7 +329,7 @@ export class ResourcesClient extends MonoCloudClientBase {
       request.params.size = String(size);
     }
 
-    return this.processRequest<Array<ApiResource>>(request);
+    return this.processRequest<ApiResource[]>(request);
   }
 
   /**
@@ -337,7 +337,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Get all the Api Scopes
    * @param {number} [page]
    * @param {number} [size]
-   * @returns Array&lt;ApiScope&gt; - Success
+   * @returns ApiScope[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -345,7 +345,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   public getAllApiScopes(
     page?: number,
     size?: number
-  ): Promise<MonoCloudResponse<Array<ApiScope>>> {
+  ): Promise<MonoCloudResponse<ApiScope[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/v1/resources/apiscopes`;
@@ -362,7 +362,7 @@ export class ResourcesClient extends MonoCloudClientBase {
       request.params.size = String(size);
     }
 
-    return this.processRequest<Array<ApiScope>>(request);
+    return this.processRequest<ApiScope[]>(request);
   }
 
   /**
@@ -370,7 +370,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Get all the Identity Resources
    * @param {number} [page]
    * @param {number} [size]
-   * @returns Array&lt;IdentityResource&gt; - Success
+   * @returns IdentityResource[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -378,7 +378,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   public getAllIdentityResources(
     page?: number,
     size?: number
-  ): Promise<MonoCloudResponse<Array<IdentityResource>>> {
+  ): Promise<MonoCloudResponse<IdentityResource[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/v1/resources/identityresources`;
@@ -395,7 +395,7 @@ export class ResourcesClient extends MonoCloudClientBase {
       request.params.size = String(size);
     }
 
-    return this.processRequest<Array<IdentityResource>>(request);
+    return this.processRequest<IdentityResource[]>(request);
   }
 
   /**

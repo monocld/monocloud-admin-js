@@ -8,10 +8,10 @@ import { SignUpCustomFieldOptions } from './sign-up-custom-field-options';
 export interface SignUpOptions {
   /**
    * Registration Custom Fields Options
-   * @type {Array<SignUpCustomFieldOptions>}
+   * @type {SignUpCustomFieldOptions[]}
    * @memberof SignUpOptions
    */
-  custom_fields: Array<SignUpCustomFieldOptions>;
+  custom_fields: SignUpCustomFieldOptions[];
   /**
    * Shows T&C and/or Privacy Policy Agreement on the Sign Up screen.  Make sure to add T&C and/or Privacy Policy links in the Project Settings.  T&C and/or Privacy Policy Agreement is not shown when user is created through External Identity Providers
    * @type {boolean}

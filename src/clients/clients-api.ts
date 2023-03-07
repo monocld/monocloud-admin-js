@@ -160,7 +160,7 @@ export class ClientsClient extends MonoCloudClientBase {
    * @summary Get all the Clients
    * @param {number} [page]
    * @param {number} [size]
-   * @returns Array&lt;Client&gt; - Success
+   * @returns Client[] - Success
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
@@ -168,7 +168,7 @@ export class ClientsClient extends MonoCloudClientBase {
   public getAllClients(
     page?: number,
     size?: number
-  ): Promise<MonoCloudResponse<Array<Client>>> {
+  ): Promise<MonoCloudResponse<Client[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/v1/clients`;
@@ -185,7 +185,7 @@ export class ClientsClient extends MonoCloudClientBase {
       request.params.size = String(size);
     }
 
-    return this.processRequest<Array<Client>>(request);
+    return this.processRequest<Client[]>(request);
   }
 
   /**

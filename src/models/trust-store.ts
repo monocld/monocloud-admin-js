@@ -9,14 +9,14 @@ import { TrustStoreRevocation } from './trust-store-revocation';
 export interface TrustStore {
   /**
    * List of certificates.
-   * @type {Array<TrustStoreCertificate>}
+   * @type {TrustStoreCertificate[]}
    * @memberof TrustStore
    */
-  certificates: Array<TrustStoreCertificate>;
+  certificates: TrustStoreCertificate[];
   /**
    * List of certificate revocations.
-   * @type {Array<TrustStoreRevocation>}
+   * @type {TrustStoreRevocation[]}
    * @memberof TrustStore
    */
-  revocations: Array<TrustStoreRevocation>;
+  revocations: TrustStoreRevocation[];
 }

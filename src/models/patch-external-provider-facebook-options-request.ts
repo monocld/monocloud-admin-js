@@ -42,10 +42,10 @@ export interface PatchExternalProviderFacebookOptionsRequest {
   client_secret?: string;
   /**
    * List of provider scopes to be obtained
-   * @type {Array<string>}
+   * @type {string[]}
    * @memberof PatchExternalProviderFacebookOptionsRequest
    */
-  scopes?: Array<string> | null;
+  scopes?: string[] | null;
   /**
    * Specifies if we should trust the email verified scope received from the external provider.
    * @type {boolean}
@@ -54,8 +54,8 @@ export interface PatchExternalProviderFacebookOptionsRequest {
   trust_email_verified_scope?: boolean;
   /**
    * Required claims from facebook
-   * @type {Array<string>}
+   * @type {string[]}
    * @memberof PatchExternalProviderFacebookOptionsRequest
    */
-  fields?: Array<string> | null;
+  fields?: string[] | null;
 }

@@ -33,10 +33,10 @@ export interface PatchAccountProtectionUserLockoutOptionsRequest {
   ip_lockout_time_span?: number;
   /**
    * Whitelisted IP Addresses where the Account Protection does not trigger.
-   * @type {Array<string>}
+   * @type {string[]}
    * @memberof PatchAccountProtectionUserLockoutOptionsRequest
    */
-  allowed_ips?: Array<string> | null;
+  allowed_ips?: string[] | null;
   /**
    * Types of Lockouts to enable per User Account
    * @type {UserLockoutTypes}

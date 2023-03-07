@@ -30,7 +30,7 @@ export class LogsClient extends MonoCloudClientBase {
    * @summary Get all Log Summary
    * @param {number} [page]
    * @param {number} [size]
-   * @returns Array&lt;LogSummary&gt; - Success
+   * @returns LogSummary[] - Success
    * @throws {MonoCloudException}
    * @memberof LogsClient
    *
@@ -38,7 +38,7 @@ export class LogsClient extends MonoCloudClientBase {
   public getAllLogs(
     page?: number,
     size?: number
-  ): Promise<MonoCloudResponse<Array<LogSummary>>> {
+  ): Promise<MonoCloudResponse<LogSummary[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/v1/logs`;
@@ -55,6 +55,6 @@ export class LogsClient extends MonoCloudClientBase {
       request.params.size = String(size);
     }
 
-    return this.processRequest<Array<LogSummary>>(request);
+    return this.processRequest<LogSummary[]>(request);
   }
 }

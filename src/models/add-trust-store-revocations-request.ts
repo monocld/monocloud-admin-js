@@ -8,8 +8,8 @@ import { CreateTrustStoreRevocationRequest } from './create-trust-store-revocati
 export interface AddTrustStoreRevocationsRequest {
   /**
    * List of certificate revocations.
-   * @type {Array<CreateTrustStoreRevocationRequest>}
+   * @type {CreateTrustStoreRevocationRequest[]}
    * @memberof AddTrustStoreRevocationsRequest
    */
-  revocations: Array<CreateTrustStoreRevocationRequest>;
+  revocations: CreateTrustStoreRevocationRequest[];
 }

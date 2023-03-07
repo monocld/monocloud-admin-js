@@ -44,10 +44,10 @@ export interface ApiResource {
   show_in_discovery_document: boolean;
   /**
    * List of associated user claim types that should be included in the Access token.
-   * @type {Array<string>}
+   * @type {string[]}
    * @memberof ApiResource
    */
-  user_claims: Array<string>;
+  user_claims: string[];
   /**
    * Specifies the creation time of the resource (in Epoch).
    * @type {number}
@@ -62,14 +62,14 @@ export interface ApiResource {
   last_updated: number;
   /**
    * The Api secret is used for the introspection endpoint. The API can authenticate with introspection using the API name and secret.
-   * @type {Array<Secret>}
+   * @type {Secret[]}
    * @memberof ApiResource
    */
-  api_secrets: Array<Secret>;
+  api_secrets: Secret[];
   /**
    * List of API scope names.
-   * @type {Array<string>}
+   * @type {string[]}
    * @memberof ApiResource
    */
-  scopes: Array<string>;
+  scopes: string[];
 }

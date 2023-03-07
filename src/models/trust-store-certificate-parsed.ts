@@ -102,8 +102,8 @@ export interface TrustStoreCertificateParsed {
   is_child: boolean;
   /**
    * List of certificates that are issued by the current certificate.
-   * @type {Array<TrustStoreCertificateParsed>}
+   * @type {TrustStoreCertificateParsed[]}
    * @memberof TrustStoreCertificateParsed
    */
-  children: Array<TrustStoreCertificateParsed>;
+  children: TrustStoreCertificateParsed[];
 }

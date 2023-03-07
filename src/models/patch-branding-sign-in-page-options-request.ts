@@ -20,8 +20,8 @@ export interface PatchBrandingSignInPageOptionsRequest {
   external_sign_in_methods_first?: boolean;
   /**
    * Order of the External SigIn methods buttons
-   * @type {Array<ExternalIDPs>}
+   * @type {ExternalIDPs[]}
    * @memberof PatchBrandingSignInPageOptionsRequest
    */
-  external_sign_in_methods_order?: Array<ExternalIDPs>;
+  external_sign_in_methods_order?: ExternalIDPs[];
 }

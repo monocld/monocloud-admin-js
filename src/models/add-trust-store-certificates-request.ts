@@ -8,8 +8,8 @@ import { CreateTrustStoreCertificateRequest } from './create-trust-store-certifi
 export interface AddTrustStoreCertificatesRequest {
   /**
    * List of certificates.
-   * @type {Array<CreateTrustStoreCertificateRequest>}
+   * @type {CreateTrustStoreCertificateRequest[]}
    * @memberof AddTrustStoreCertificatesRequest
    */
-  certificates: Array<CreateTrustStoreCertificateRequest>;
+  certificates: CreateTrustStoreCertificateRequest[];
 }

@@ -8,7 +8,7 @@ export class KeysClient extends MonoCloudClientBase {
    * @summary Get All Valid Keys
    * @param {number} [page]
    * @param {number} [size]
-   * @returns Array&lt;KeyMaterial&gt; - Success
+   * @returns KeyMaterial[] - Success
    * @throws {MonoCloudException}
    * @memberof KeysClient
    *
@@ -16,7 +16,7 @@ export class KeysClient extends MonoCloudClientBase {
   public getAllKeyMaterials(
     page?: number,
     size?: number
-  ): Promise<MonoCloudResponse<Array<KeyMaterial>>> {
+  ): Promise<MonoCloudResponse<KeyMaterial[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/v1/keys`;
@@ -33,7 +33,7 @@ export class KeysClient extends MonoCloudClientBase {
       request.params.size = String(size);
     }
 
-    return this.processRequest<Array<KeyMaterial>>(request);
+    return this.processRequest<KeyMaterial[]>(request);
   }
 
   /**
