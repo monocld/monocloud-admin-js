@@ -26,7 +26,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<TrustStore>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/truststore/revocations`;
+    const url = `/truststore/revocations`;
 
     request.url = url;
 
@@ -49,7 +49,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<TrustStore>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/truststore/certificates`;
+    const url = `/truststore/certificates`;
 
     request.url = url;
 
@@ -70,7 +70,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
   public deleteCertificate(id: string): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'DELETE' };
 
-    const url = `/v1/truststore/certificates/{id}`.replace(
+    const url = `/truststore/certificates/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -94,7 +94,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'DELETE' };
 
-    const url = `/v1/truststore/revocations/{id}`.replace(
+    const url = `/truststore/revocations/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -115,7 +115,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
   public getTrustStore(): Promise<MonoCloudResponse<TrustStore>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/truststore`;
+    const url = `/truststore`;
 
     request.url = url;
 
@@ -133,7 +133,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
   public getTrustStoreChains(): Promise<MonoCloudResponse<TrustStoreParsed>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/truststore/chains`;
+    const url = `/truststore/chains`;
 
     request.url = url;
 
@@ -156,7 +156,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<TrustStoreCertificate>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/v1/truststore/certificates/{id}`.replace(
+    const url = `/truststore/certificates/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -184,7 +184,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<TrustStoreRevocation>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/v1/truststore/revocations/{id}`.replace(
+    const url = `/truststore/revocations/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );

@@ -27,7 +27,7 @@ export class OptionsClient extends MonoCloudClientBase {
   > {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/options/authentication`;
+    const url = `/options/authentication`;
 
     request.url = url;
 
@@ -45,7 +45,7 @@ export class OptionsClient extends MonoCloudClientBase {
   public findBrandingOptions(): Promise<MonoCloudResponse<BrandingOptions>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/options/branding`;
+    const url = `/options/branding`;
 
     request.url = url;
 
@@ -65,7 +65,7 @@ export class OptionsClient extends MonoCloudClientBase {
   > {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/options/communication`;
+    const url = `/options/communication`;
 
     request.url = url;
 
@@ -85,7 +85,7 @@ export class OptionsClient extends MonoCloudClientBase {
   > {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/options/device_flow`;
+    const url = `/options/device_flow`;
 
     request.url = url;
 
@@ -103,7 +103,7 @@ export class OptionsClient extends MonoCloudClientBase {
   public findMtlsOptions(): Promise<MonoCloudResponse<MtlsOptions>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/options/mtls`;
+    const url = `/options/mtls`;
 
     request.url = url;
 
@@ -124,7 +124,7 @@ export class OptionsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<AuthenticationOptions>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/v1/options/authentication`;
+    const url = `/options/authentication`;
 
     request.url = url;
 
@@ -147,7 +147,7 @@ export class OptionsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<BrandingOptions>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/v1/options/branding`;
+    const url = `/options/branding`;
 
     request.url = url;
 
@@ -170,7 +170,7 @@ export class OptionsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<CommunicationOptions>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/v1/options/communication`;
+    const url = `/options/communication`;
 
     request.url = url;
 
@@ -193,7 +193,7 @@ export class OptionsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<DeviceFlowOptions>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/v1/options/device_flow`;
+    const url = `/options/device_flow`;
 
     request.url = url;
 
@@ -216,7 +216,7 @@ export class OptionsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<MtlsOptions>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/v1/options/mtls`;
+    const url = `/options/mtls`;
 
     request.url = url;
 

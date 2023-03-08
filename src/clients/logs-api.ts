@@ -15,7 +15,7 @@ export class LogsClient extends MonoCloudClientBase {
   public findLogById(id: string): Promise<MonoCloudResponse<Log>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/logs/{id}`.replace(
+    const url = `/logs/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -41,7 +41,7 @@ export class LogsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<LogSummary[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/logs`;
+    const url = `/logs`;
 
     request.url = url;
 

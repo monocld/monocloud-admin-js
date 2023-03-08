@@ -19,7 +19,7 @@ export class KeysClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<KeyMaterial[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/keys`;
+    const url = `/keys`;
 
     request.url = url;
 
@@ -48,7 +48,7 @@ export class KeysClient extends MonoCloudClientBase {
   public revokeKey(keyId: string): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'PUT' };
 
-    const url = `/v1/keys/{keyId}/revoke`.replace(
+    const url = `/keys/{keyId}/revoke`.replace(
       `{${'keyId'}}`,
       encodeURIComponent(String(keyId))
     );
@@ -70,7 +70,7 @@ export class KeysClient extends MonoCloudClientBase {
   public rotateKey(keyId: string): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'PUT' };
 
-    const url = `/v1/keys/{keyId}/rotate`.replace(
+    const url = `/keys/{keyId}/rotate`.replace(
       `{${'keyId'}}`,
       encodeURIComponent(String(keyId))
     );

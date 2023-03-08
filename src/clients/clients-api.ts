@@ -24,7 +24,7 @@ export class ClientsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<Client>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/clients`;
+    const url = `/clients`;
 
     request.url = url;
 
@@ -49,7 +49,7 @@ export class ClientsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<Secret>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/clients/{clientId}/secrets`.replace(
+    const url = `/clients/{clientId}/secrets`.replace(
       `{${'clientId'}}`,
       encodeURIComponent(String(clientId))
     );
@@ -73,7 +73,7 @@ export class ClientsClient extends MonoCloudClientBase {
   public deleteClient(id: string): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'DELETE' };
 
-    const url = `/v1/clients/{id}`.replace(
+    const url = `/clients/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -99,7 +99,7 @@ export class ClientsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'DELETE' };
 
-    const url = `/v1/clients/{clientId}/secrets/{secretId}`
+    const url = `/clients/{clientId}/secrets/{secretId}`
       .replace(`{${'clientId'}}`, encodeURIComponent(String(clientId)))
       .replace(`{${'secretId'}}`, encodeURIComponent(String(secretId)));
 
@@ -120,7 +120,7 @@ export class ClientsClient extends MonoCloudClientBase {
   public findClientById(id: string): Promise<MonoCloudResponse<Client>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/clients/{id}`.replace(
+    const url = `/clients/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -146,7 +146,7 @@ export class ClientsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<SecretValue>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/clients/{clientId}/secrets/{secretId}`
+    const url = `/clients/{clientId}/secrets/{secretId}`
       .replace(`{${'clientId'}}`, encodeURIComponent(String(clientId)))
       .replace(`{${'secretId'}}`, encodeURIComponent(String(secretId)));
 
@@ -171,7 +171,7 @@ export class ClientsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<Client[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/clients`;
+    const url = `/clients`;
 
     request.url = url;
 
@@ -204,7 +204,7 @@ export class ClientsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<Client>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/v1/clients/{id}`.replace(
+    const url = `/clients/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );

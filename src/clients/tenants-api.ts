@@ -17,7 +17,7 @@ export class TenantsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<Tenant>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/v1/tenants`;
+    const url = `/tenants`;
 
     request.url = url;
 

@@ -30,7 +30,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<ApiResource>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/resources/apiresources`;
+    const url = `/resources/apiresources`;
 
     request.url = url;
 
@@ -55,7 +55,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<Secret>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/resources/apiresources/{resourceId}/secrets`.replace(
+    const url = `/resources/apiresources/{resourceId}/secrets`.replace(
       `{${'resourceId'}}`,
       encodeURIComponent(String(resourceId))
     );
@@ -81,7 +81,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<ApiScope>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/resources/apiscopes`;
+    const url = `/resources/apiscopes`;
 
     request.url = url;
 
@@ -104,7 +104,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<IdentityResource>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/resources/identityresources`;
+    const url = `/resources/identityresources`;
 
     request.url = url;
 
@@ -125,7 +125,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   public deleteApiResource(id: string): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'DELETE' };
 
-    const url = `/v1/resources/apiresources/{id}`.replace(
+    const url = `/resources/apiresources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -151,7 +151,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'DELETE' };
 
-    const url = `/v1/resources/apiresources/{resourceId}/secrets/{secretId}`
+    const url = `/resources/apiresources/{resourceId}/secrets/{secretId}`
       .replace(`{${'resourceId'}}`, encodeURIComponent(String(resourceId)))
       .replace(`{${'secretId'}}`, encodeURIComponent(String(secretId)));
 
@@ -172,7 +172,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   public deleteApiScope(id: string): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'DELETE' };
 
-    const url = `/v1/resources/apiscopes/{id}`.replace(
+    const url = `/resources/apiscopes/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -194,7 +194,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   public deleteIdentityResource(id: string): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'DELETE' };
 
-    const url = `/v1/resources/identityresources/{id}`.replace(
+    const url = `/resources/identityresources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -218,7 +218,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<ApiResource>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/resources/apiresources/{id}`.replace(
+    const url = `/resources/apiresources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -244,7 +244,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<SecretValue>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/resources/apiresources/{resourceId}/secrets/{secretId}`
+    const url = `/resources/apiresources/{resourceId}/secrets/{secretId}`
       .replace(`{${'resourceId'}}`, encodeURIComponent(String(resourceId)))
       .replace(`{${'secretId'}}`, encodeURIComponent(String(secretId)));
 
@@ -265,7 +265,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   public findApiScopeById(id: string): Promise<MonoCloudResponse<ApiScope>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/resources/apiscopes/{id}`.replace(
+    const url = `/resources/apiscopes/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -289,7 +289,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<IdentityResource>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/resources/identityresources/{id}`.replace(
+    const url = `/resources/identityresources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -315,7 +315,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<ApiResource[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/resources/apiresources`;
+    const url = `/resources/apiresources`;
 
     request.url = url;
 
@@ -348,7 +348,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<ApiScope[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/resources/apiscopes`;
+    const url = `/resources/apiscopes`;
 
     request.url = url;
 
@@ -381,7 +381,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<IdentityResource[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/resources/identityresources`;
+    const url = `/resources/identityresources`;
 
     request.url = url;
 
@@ -414,7 +414,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<ApiResource>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/v1/resources/apiresources/{id}`.replace(
+    const url = `/resources/apiresources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -442,7 +442,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<ApiScope>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/v1/resources/apiscopes/{id}`.replace(
+    const url = `/resources/apiscopes/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -470,7 +470,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<IdentityResource>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/v1/resources/identityresources/{id}`.replace(
+    const url = `/resources/identityresources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
