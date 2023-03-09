@@ -20,6 +20,10 @@ export const SecretTypes = {
   /**
    *
    */
+  X509IssuerName: 'x509_issuer_name',
+  /**
+   *
+   */
   X509CertificateBase64: 'x509_certificate_base64',
   /**
    *
