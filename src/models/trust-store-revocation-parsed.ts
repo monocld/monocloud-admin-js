@@ -57,5 +57,5 @@ export interface TrustStoreRevocationParsed {
    * @type {number}
    * @memberof TrustStoreRevocationParsed
    */
-  next_update: number;
+  next_update?: number | null;
 }

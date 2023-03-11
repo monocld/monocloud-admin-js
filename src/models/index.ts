@@ -3,6 +3,7 @@ export * from './account-protection-options';
 export * from './account-protection-user-lockout-options';
 export * from './account-protection-user-unblock-email-options';
 export * from './account-protection-user-unblock-options';
+export * from './add-banned-thumbprints-request';
 export * from './add-trust-store-certificates-request';
 export * from './add-trust-store-revocations-request';
 export * from './api-resource';

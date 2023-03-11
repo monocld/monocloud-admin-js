@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
 import {
+  AddBannedThumbprintsRequest,
   AddTrustStoreCertificatesRequest,
   AddTrustStoreRevocationsRequest,
   PatchTrustStoreCertificateRequest,
@@ -12,6 +13,29 @@ import {
 } from '../models';
 
 export class TrustStoreClient extends MonoCloudClientBase {
+  /**
+   *
+   * @summary Adds a list of banned certificate thumbprints
+   * @param {AddBannedThumbprintsRequest} addBannedThumbprintsRequest Request Body
+   * @returns TrustStore - Success
+   * @throws {MonoCloudException}
+   * @memberof TrustStoreClient
+   *
+   */
+  public addBannedThumbprints(
+    addBannedThumbprintsRequest: AddBannedThumbprintsRequest
+  ): Promise<MonoCloudResponse<TrustStore>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/truststore/thumbprints`;
+
+    request.url = url;
+
+    request.data = JSON.stringify(addBannedThumbprintsRequest);
+
+    return this.processRequest<TrustStore>(request);
+  }
+
   /**
    *
    * @summary Add Certificate Revocations to truststore
@@ -56,6 +80,30 @@ export class TrustStoreClient extends MonoCloudClientBase {
     request.data = JSON.stringify(addTrustStoreCertificatesRequest);
 
     return this.processRequest<TrustStore>(request);
+  }
+
+  /**
+   *
+   * @summary Delete a Banned Thumbprint
+   * @param {string} thumbprint Thumbprint
+   * @returns No Content
+   * @throws {MonoCloudException}
+   * @memberof TrustStoreClient
+   *
+   */
+  public deleteBannedThumbprint(
+    thumbprint: string
+  ): Promise<MonoCloudResponse<null>> {
+    const request: AxiosRequestConfig = { method: 'DELETE' };
+
+    const url = `/truststore/thumbprints/{thumbprint}`.replace(
+      `{${'thumbprint'}}`,
+      encodeURIComponent(String(thumbprint))
+    );
+
+    request.url = url;
+
+    return this.processRequest<null>(request);
   }
 
   /**

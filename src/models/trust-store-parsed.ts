@@ -19,4 +19,10 @@ export interface TrustStoreParsed {
    * @memberof TrustStoreParsed
    */
   revocations: TrustStoreRevocationParsed[];
+  /**
+   * List of banned certificate thumbprints.
+   * @type {string[]}
+   * @memberof TrustStoreParsed
+   */
+  banned_thumbprints: string[];
 }
