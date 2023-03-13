@@ -124,8 +124,6 @@ export * from './patch-logout-options-request';
 export * from './patch-mtls-options-request';
 export * from './patch-sign-up-options-request';
 export * from './patch-tenant-request';
-export * from './patch-trust-store-certificate-request';
-export * from './patch-trust-store-revocation-request';
 export * from './problem-details';
 export * from './refresh-token-expiration-types';
 export * from './refresh-token-usage-types';

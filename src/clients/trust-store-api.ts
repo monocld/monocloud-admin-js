@@ -4,8 +4,6 @@ import {
   AddBannedThumbprintsRequest,
   AddTrustStoreCertificatesRequest,
   AddTrustStoreRevocationsRequest,
-  PatchTrustStoreCertificateRequest,
-  PatchTrustStoreRevocationRequest,
   TrustStore,
   TrustStoreCertificate,
   TrustStoreParsed,
@@ -154,6 +152,102 @@ export class TrustStoreClient extends MonoCloudClientBase {
 
   /**
    *
+   * @summary Disable a Certificate
+   * @param {string} id Certificate Id
+   * @returns TrustStoreCertificate - Success
+   * @throws {MonoCloudException}
+   * @memberof TrustStoreClient
+   *
+   */
+  public disableCertificate(
+    id: string
+  ): Promise<MonoCloudResponse<TrustStoreCertificate>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/truststore/certificates/{id}/disable`.replace(
+      `{${'id'}}`,
+      encodeURIComponent(String(id))
+    );
+
+    request.url = url;
+
+    return this.processRequest<TrustStoreCertificate>(request);
+  }
+
+  /**
+   *
+   * @summary Disable a Certificate Revocation
+   * @param {string} id Certificate Revocation Id
+   * @returns TrustStoreRevocation - Success
+   * @throws {MonoCloudException}
+   * @memberof TrustStoreClient
+   *
+   */
+  public disableCertificateRevocation(
+    id: string
+  ): Promise<MonoCloudResponse<TrustStoreRevocation>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/truststore/revocations/{id}/disable`.replace(
+      `{${'id'}}`,
+      encodeURIComponent(String(id))
+    );
+
+    request.url = url;
+
+    return this.processRequest<TrustStoreRevocation>(request);
+  }
+
+  /**
+   *
+   * @summary Enable a Certificate
+   * @param {string} id Certificate Id
+   * @returns TrustStoreCertificate - Success
+   * @throws {MonoCloudException}
+   * @memberof TrustStoreClient
+   *
+   */
+  public enableCertificate(
+    id: string
+  ): Promise<MonoCloudResponse<TrustStoreCertificate>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/truststore/certificates/{id}/enable`.replace(
+      `{${'id'}}`,
+      encodeURIComponent(String(id))
+    );
+
+    request.url = url;
+
+    return this.processRequest<TrustStoreCertificate>(request);
+  }
+
+  /**
+   *
+   * @summary Enable a Certificate Revocation
+   * @param {string} id Certificate Revocation Id
+   * @returns TrustStoreRevocation - Success
+   * @throws {MonoCloudException}
+   * @memberof TrustStoreClient
+   *
+   */
+  public enableCertificateRevocation(
+    id: string
+  ): Promise<MonoCloudResponse<TrustStoreRevocation>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/truststore/revocations/{id}/enable`.replace(
+      `{${'id'}}`,
+      encodeURIComponent(String(id))
+    );
+
+    request.url = url;
+
+    return this.processRequest<TrustStoreRevocation>(request);
+  }
+
+  /**
+   *
    * @summary Get Truststore
    * @returns TrustStore - Success
    * @throws {MonoCloudException}
@@ -186,61 +280,5 @@ export class TrustStoreClient extends MonoCloudClientBase {
     request.url = url;
 
     return this.processRequest<TrustStoreParsed>(request);
-  }
-
-  /**
-   *
-   * @summary Update a Certificate
-   * @param {string} id Certificate Id
-   * @param {PatchTrustStoreCertificateRequest} patchTrustStoreCertificateRequest Request Body
-   * @returns TrustStoreCertificate - Success
-   * @throws {MonoCloudException}
-   * @memberof TrustStoreClient
-   *
-   */
-  public patchCertificate(
-    id: string,
-    patchTrustStoreCertificateRequest: PatchTrustStoreCertificateRequest
-  ): Promise<MonoCloudResponse<TrustStoreCertificate>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
-    const url = `/truststore/certificates/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
-    );
-
-    request.url = url;
-
-    request.data = JSON.stringify(patchTrustStoreCertificateRequest);
-
-    return this.processRequest<TrustStoreCertificate>(request);
-  }
-
-  /**
-   *
-   * @summary Update a Certificate Revocation
-   * @param {string} id Certificate Revocation Id
-   * @param {PatchTrustStoreRevocationRequest} patchTrustStoreRevocationRequest Request Body
-   * @returns TrustStoreRevocation - Success
-   * @throws {MonoCloudException}
-   * @memberof TrustStoreClient
-   *
-   */
-  public patchCertificateRevocations(
-    id: string,
-    patchTrustStoreRevocationRequest: PatchTrustStoreRevocationRequest
-  ): Promise<MonoCloudResponse<TrustStoreRevocation>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
-    const url = `/truststore/revocations/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
-    );
-
-    request.url = url;
-
-    request.data = JSON.stringify(patchTrustStoreRevocationRequest);
-
-    return this.processRequest<TrustStoreRevocation>(request);
   }
 }
