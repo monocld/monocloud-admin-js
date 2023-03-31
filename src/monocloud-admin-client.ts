@@ -35,23 +35,29 @@ export class MonoCloudAdminClient {
       `https://${baseDomain}`,
       instance
     );
+
     this.keys = new KeysClient(options, `https://${baseDomain}`, instance);
+
     this.logs = new LogsClient(options, `https://${baseDomain}`, instance);
+
     this.options = new OptionsClient(
       options,
       `https://${baseDomain}`,
       instance
     );
+
     this.resources = new ResourcesClient(
       options,
       `https://${baseDomain}`,
       instance
     );
+
     this.tenants = new TenantsClient(
       options,
       `https://${baseDomain}`,
       instance
     );
+
     this.trustStore = new TrustStoreClient(
       options,
       `https://${baseDomain}`,

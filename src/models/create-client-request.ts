@@ -1,6 +1,5 @@
 import { AccessTokenTypes } from './access-token-types';
 import { AuthenticationMethods } from './authentication-methods';
-import { CreateClaimRequest } from './create-claim-request';
 import { CreateSecretRequest } from './create-secret-request';
 import { DeviceFlowCodeTypes } from './device-flow-code-types';
 import { GrantTypes } from './grant-types';
@@ -245,10 +244,10 @@ export interface CreateClientRequest {
   include_jwt_id: boolean;
   /**
    * Allows settings claims for the client (will be included in the access token).
-   * @type {CreateClaimRequest[]}
+   * @type {{ [key: string]: any; }}
    * @memberof CreateClientRequest
    */
-  claims: CreateClaimRequest[];
+  claims: { [key: string]: any };
   /**
    * Specifies whether client claims should be always included in the access tokens - or only for client credentials flow.
    * @type {boolean}
