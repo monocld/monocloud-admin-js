@@ -2,8 +2,8 @@ import { AccessTokenTypes } from './access-token-types';
 import { AuthenticationMethods } from './authentication-methods';
 import { CreateSecretRequest } from './create-secret-request';
 import { DeviceFlowCodeTypes } from './device-flow-code-types';
+import { ExternalIDPs } from './external-idps';
 import { GrantTypes } from './grant-types';
-import { IDPs } from './idps';
 import { RefreshTokenExpirationTypes } from './refresh-token-expiration-types';
 import { RefreshTokenUsageTypes } from './refresh-token-usage-types';
 import { RememberConsentTypes } from './remember-consent-types';
@@ -226,10 +226,10 @@ export interface CreateClientRequest {
   enable_local_login: boolean;
   /**
    * Specifies which authentication providers can be used with this client (if list is empty all providers are allowed)
-   * @type {IDPs[]}
+   * @type {ExternalIDPs[]}
    * @memberof CreateClientRequest
    */
-  identity_provider_restrictions: IDPs[];
+  identity_provider_restrictions: ExternalIDPs[];
   /**
    * Specifies which authentication methods can be used with this client (if list is empty all methods are allowed)
    * @type {AuthenticationMethods[]}

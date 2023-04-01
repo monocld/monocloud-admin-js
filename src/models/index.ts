@@ -58,7 +58,6 @@ export * from './external-provider-facebook-options';
 export * from './external-provider-google-options';
 export * from './external-provider-options';
 export * from './grant-types';
-export * from './idps';
 export * from './identity-resource';
 export * from './key-material';
 export * from './key-material-types';
