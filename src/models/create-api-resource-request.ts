@@ -37,12 +37,6 @@ export interface CreateApiResourceRequest {
    */
   show_in_discovery_document: boolean;
   /**
-   * List of associated user claim types that should be included in the Access token.
-   * @type {string[]}
-   * @memberof CreateApiResourceRequest
-   */
-  user_claims: string[];
-  /**
    * The Api secret is used for the introspection endpoint. The API can authenticate with introspection using the API name and secret.
    * @type {CreateSecretRequest[]}
    * @memberof CreateApiResourceRequest
@@ -54,4 +48,10 @@ export interface CreateApiResourceRequest {
    * @memberof CreateApiResourceRequest
    */
   scopes: string[];
+  /**
+   * List of associated user claim types that should be included in the Access token.
+   * @type {string[]}
+   * @memberof CreateApiResourceRequest
+   */
+  user_claims: string[];
 }

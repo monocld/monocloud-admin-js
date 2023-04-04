@@ -43,12 +43,6 @@ export interface ApiResource {
    */
   show_in_discovery_document: boolean;
   /**
-   * List of associated user claim types that should be included in the Access token.
-   * @type {string[]}
-   * @memberof ApiResource
-   */
-  user_claims: string[];
-  /**
    * Specifies the creation time of the resource (in Epoch).
    * @type {number}
    * @memberof ApiResource
@@ -72,4 +66,10 @@ export interface ApiResource {
    * @memberof ApiResource
    */
   scopes: string[];
+  /**
+   * List of associated user claim types that should be included in the Access token.
+   * @type {string[]}
+   * @memberof ApiResource
+   */
+  user_claims: string[];
 }

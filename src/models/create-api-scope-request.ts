@@ -35,12 +35,6 @@ export interface CreateApiScopeRequest {
    */
   show_in_discovery_document: boolean;
   /**
-   * List of associated user claim types that should be included in the Access token.
-   * @type {string[]}
-   * @memberof CreateApiScopeRequest
-   */
-  user_claims: string[];
-  /**
    * Specifies whether the user can de-select the scope on the consent screen (if such a feature is implemented in the consent screen).
    * @type {boolean}
    * @memberof CreateApiScopeRequest
@@ -52,4 +46,10 @@ export interface CreateApiScopeRequest {
    * @memberof CreateApiScopeRequest
    */
   emphasize: boolean;
+  /**
+   * List of associated user claim types that should be included in the Access token.
+   * @type {string[]}
+   * @memberof CreateApiScopeRequest
+   */
+  user_claims: string[];
 }

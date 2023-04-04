@@ -1,3 +1,5 @@
+import { CreateIdentityClaimRequest } from './create-identity-claim-request';
+
 /**
  * The Create Identity Resource class models an OpenID Connect or OAuth 2.0 identity resource
  * @export
@@ -35,12 +37,6 @@ export interface CreateIdentityResourceRequest {
    */
   show_in_discovery_document: boolean;
   /**
-   * List of associated user claim types that should be included in the Access token.
-   * @type {string[]}
-   * @memberof CreateIdentityResourceRequest
-   */
-  user_claims: string[];
-  /**
    * Specifies whether the user can de-select the scope on the consent screen (if such a feature is implemented in the consent screen).
    * @type {boolean}
    * @memberof CreateIdentityResourceRequest
@@ -52,4 +48,10 @@ export interface CreateIdentityResourceRequest {
    * @memberof CreateIdentityResourceRequest
    */
   emphasize: boolean;
+  /**
+   * List of associated user claim types that should be included in the Identity token or as returned from the User Info Endpoint.
+   * @type {CreateIdentityClaimRequest[]}
+   * @memberof CreateIdentityResourceRequest
+   */
+  user_claims: CreateIdentityClaimRequest[];
 }

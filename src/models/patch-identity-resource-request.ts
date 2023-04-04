@@ -1,3 +1,5 @@
+import { CreateIdentityClaimRequest } from './create-identity-claim-request';
+
 /**
  * The Patch Identity Resource class
  * @export
@@ -35,12 +37,6 @@ export interface PatchIdentityResourceRequest {
    */
   show_in_discovery_document?: boolean;
   /**
-   * List of associated user claim types that should be included in the Access token.
-   * @type {string[]}
-   * @memberof PatchIdentityResourceRequest
-   */
-  user_claims?: string[];
-  /**
    * Specifies whether the user can de-select the scope on the consent screen (if such a feature is implemented in the consent screen).
    * @type {boolean}
    * @memberof PatchIdentityResourceRequest
@@ -52,4 +48,10 @@ export interface PatchIdentityResourceRequest {
    * @memberof PatchIdentityResourceRequest
    */
   emphasize?: boolean;
+  /**
+   * List of associated user claim types that should be included in the Identity token or as returned from the User Info Endpoint.
+   * @type {CreateIdentityClaimRequest[]}
+   * @memberof PatchIdentityResourceRequest
+   */
+  user_claims?: CreateIdentityClaimRequest[];
 }
