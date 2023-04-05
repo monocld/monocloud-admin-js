@@ -3,13 +3,16 @@ import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
 import {
   ApiResource,
   ApiScope,
+  ClaimResource,
   CreateApiResourceRequest,
   CreateApiScopeRequest,
+  CreateClaimResourceRequest,
   CreateIdentityResourceRequest,
   CreateSecretRequest,
   IdentityResource,
   PatchApiResourceRequest,
   PatchApiScopeRequest,
+  PatchClaimResourceRequest,
   PatchIdentityResourceRequest,
   Secret,
   SecretValue,
@@ -88,6 +91,29 @@ export class ResourcesClient extends MonoCloudClientBase {
     request.data = JSON.stringify(createApiScopeRequest);
 
     return this.processRequest<ApiScope>(request);
+  }
+
+  /**
+   *
+   * @summary Create an Claim Resource
+   * @param {CreateClaimResourceRequest} createClaimResourceRequest Request Body
+   * @returns ClaimResource - Created
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public createClaimResource(
+    createClaimResourceRequest: CreateClaimResourceRequest
+  ): Promise<MonoCloudResponse<ClaimResource>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/resources/claimresources`;
+
+    request.url = url;
+
+    request.data = JSON.stringify(createClaimResourceRequest);
+
+    return this.processRequest<ClaimResource>(request);
   }
 
   /**
@@ -173,6 +199,28 @@ export class ResourcesClient extends MonoCloudClientBase {
     const request: AxiosRequestConfig = { method: 'DELETE' };
 
     const url = `/resources/apiscopes/{id}`.replace(
+      `{${'id'}}`,
+      encodeURIComponent(String(id))
+    );
+
+    request.url = url;
+
+    return this.processRequest<null>(request);
+  }
+
+  /**
+   *
+   * @summary Delete an Claim Resource
+   * @param {string} id Claim Resource Id
+   * @returns No Content
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public deleteClaimResource(id: string): Promise<MonoCloudResponse<null>> {
+    const request: AxiosRequestConfig = { method: 'DELETE' };
+
+    const url = `/resources/claimresources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -277,6 +325,30 @@ export class ResourcesClient extends MonoCloudClientBase {
 
   /**
    *
+   * @summary Find an Claim Resource by Id
+   * @param {string} id Claim Resource Id
+   * @returns ClaimResource - Success
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public findClaimResourceById(
+    id: string
+  ): Promise<MonoCloudResponse<ClaimResource>> {
+    const request: AxiosRequestConfig = { method: 'GET' };
+
+    const url = `/resources/claimresources/{id}`.replace(
+      `{${'id'}}`,
+      encodeURIComponent(String(id))
+    );
+
+    request.url = url;
+
+    return this.processRequest<ClaimResource>(request);
+  }
+
+  /**
+   *
    * @summary Find an Identity Resource by Id
    * @param {string} id Identity Resource Id
    * @returns IdentityResource - Success
@@ -367,6 +439,39 @@ export class ResourcesClient extends MonoCloudClientBase {
 
   /**
    *
+   * @summary Get all the Claim Resources
+   * @param {number} [page]
+   * @param {number} [size]
+   * @returns ClaimResource[] - Success
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public getAllClaimResources(
+    page?: number,
+    size?: number
+  ): Promise<MonoCloudResponse<ClaimResource[]>> {
+    const request: AxiosRequestConfig = { method: 'GET' };
+
+    const url = `/resources/claimresources`;
+
+    request.url = url;
+
+    request.params = {};
+
+    if (page !== undefined && page !== null) {
+      request.params.page = String(page);
+    }
+
+    if (size !== undefined && size !== null) {
+      request.params.size = String(size);
+    }
+
+    return this.processRequest<ClaimResource[]>(request);
+  }
+
+  /**
+   *
    * @summary Get all the Identity Resources
    * @param {number} [page]
    * @param {number} [size]
@@ -452,6 +557,34 @@ export class ResourcesClient extends MonoCloudClientBase {
     request.data = JSON.stringify(patchApiScopeRequest);
 
     return this.processRequest<ApiScope>(request);
+  }
+
+  /**
+   *
+   * @summary Update an Claim Resource
+   * @param {string} id Claim Resource Id
+   * @param {PatchClaimResourceRequest} patchClaimResourceRequest Request Body
+   * @returns ClaimResource - Success
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public patchClaimResource(
+    id: string,
+    patchClaimResourceRequest: PatchClaimResourceRequest
+  ): Promise<MonoCloudResponse<ClaimResource>> {
+    const request: AxiosRequestConfig = { method: 'PATCH' };
+
+    const url = `/resources/claimresources/{id}`.replace(
+      `{${'id'}}`,
+      encodeURIComponent(String(id))
+    );
+
+    request.url = url;
+
+    request.data = JSON.stringify(patchClaimResourceRequest);
+
+    return this.processRequest<ClaimResource>(request);
   }
 
   /**
