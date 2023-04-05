@@ -35,6 +35,12 @@ export interface CreateClaimResourceRequest {
    */
   show_in_discovery_document: boolean;
   /**
+   * Specifies the source of the claim.
+   * @type {string}
+   * @memberof CreateClaimResourceRequest
+   */
+  source: string;
+  /**
    * Specifies whether the user can de-select the claim on the consent screen (if such a feature is implemented in the consent screen).
    * @type {boolean}
    * @memberof CreateClaimResourceRequest

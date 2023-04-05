@@ -53,6 +53,12 @@ export interface ClaimResource {
    */
   last_updated: number;
   /**
+   * Specifies the source of the claim.
+   * @type {string}
+   * @memberof ClaimResource
+   */
+  source: string;
+  /**
    * Specifies whether the user can de-select the claim on the consent screen (if such a feature is implemented in the consent screen).
    * @type {boolean}
    * @memberof ClaimResource
