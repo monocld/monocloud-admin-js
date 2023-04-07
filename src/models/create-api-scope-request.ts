@@ -46,10 +46,4 @@ export interface CreateApiScopeRequest {
    * @memberof CreateApiScopeRequest
    */
   emphasize: boolean;
-  /**
-   * List of associated user claim types that should be included in the Access token.
-   * @type {string[]}
-   * @memberof CreateApiScopeRequest
-   */
-  user_claims: string[];
 }

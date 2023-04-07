@@ -1,5 +1,5 @@
 /**
- * The Create Claim Resource class models an OpenID Connect or OAuth 2.0 identity resource
+ * The Create Claim Resource class
  * @export
  * @interface CreateClaimResourceRequest
  */

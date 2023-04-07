@@ -46,10 +46,4 @@ export interface PatchApiScopeRequest {
    * @memberof PatchApiScopeRequest
    */
   emphasize?: boolean;
-  /**
-   * List of associated user claim types that should be included in the Access token.
-   * @type {string[]}
-   * @memberof PatchApiScopeRequest
-   */
-  user_claims?: string[];
 }
