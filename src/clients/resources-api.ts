@@ -7,13 +7,13 @@ import {
   CreateApiResourceRequest,
   CreateApiScopeRequest,
   CreateClaimResourceRequest,
-  CreateScopeRequest,
+  CreateIdentityResourceRequest,
   CreateSecretRequest,
+  IdentityResource,
   PatchApiResourceRequest,
   PatchApiScopeRequest,
   PatchClaimResourceRequest,
-  PatchScopeRequest,
-  Scope,
+  PatchIdentityResourceRequest,
   Secret,
   SecretValue,
 } from '../models';
@@ -118,25 +118,25 @@ export class ResourcesClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Create a Scope
-   * @param {CreateScopeRequest} createScopeRequest Request Body
-   * @returns Scope - Created
+   * @summary Create an Identity Resource
+   * @param {CreateIdentityResourceRequest} createIdentityResourceRequest Request Body
+   * @returns IdentityResource - Created
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
-  public createScope(
-    createScopeRequest: CreateScopeRequest
-  ): Promise<MonoCloudResponse<Scope>> {
+  public createIdentityResource(
+    createIdentityResourceRequest: CreateIdentityResourceRequest
+  ): Promise<MonoCloudResponse<IdentityResource>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/resources/scopes`;
+    const url = `/resources/identityresources`;
 
     request.url = url;
 
-    request.data = JSON.stringify(createScopeRequest);
+    request.data = JSON.stringify(createIdentityResourceRequest);
 
-    return this.processRequest<Scope>(request);
+    return this.processRequest<IdentityResource>(request);
   }
 
   /**
@@ -232,17 +232,17 @@ export class ResourcesClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Delete a Scope
-   * @param {string} id Scope Id
+   * @summary Delete an Identity Resource
+   * @param {string} id Identity Resource Id
    * @returns No Content
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
-  public deleteScope(id: string): Promise<MonoCloudResponse<null>> {
+  public deleteIdentityResource(id: string): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'DELETE' };
 
-    const url = `/resources/scopes/{id}`.replace(
+    const url = `/resources/identityresources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
@@ -349,24 +349,26 @@ export class ResourcesClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Find a Scope by Id
-   * @param {string} id Scope Id
-   * @returns Scope - Success
+   * @summary Find an Identity Resource by Id
+   * @param {string} id Identity Resource Id
+   * @returns IdentityResource - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
-  public findScopeById(id: string): Promise<MonoCloudResponse<Scope>> {
+  public findIdentityResourceById(
+    id: string
+  ): Promise<MonoCloudResponse<IdentityResource>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/resources/scopes/{id}`.replace(
+    const url = `/resources/identityresources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
     request.url = url;
 
-    return this.processRequest<Scope>(request);
+    return this.processRequest<IdentityResource>(request);
   }
 
   /**
@@ -470,21 +472,21 @@ export class ResourcesClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Get all the Scopes
+   * @summary Get all the Identity Resources
    * @param {number} [page]
    * @param {number} [size]
-   * @returns Scope[] - Success
+   * @returns IdentityResource[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
-  public getAllScopes(
+  public getAllIdentityResources(
     page?: number,
     size?: number
-  ): Promise<MonoCloudResponse<Scope[]>> {
+  ): Promise<MonoCloudResponse<IdentityResource[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/resources/scopes`;
+    const url = `/resources/identityresources`;
 
     request.url = url;
 
@@ -498,7 +500,7 @@ export class ResourcesClient extends MonoCloudClientBase {
       request.params.size = String(size);
     }
 
-    return this.processRequest<Scope[]>(request);
+    return this.processRequest<IdentityResource[]>(request);
   }
 
   /**
@@ -587,29 +589,29 @@ export class ResourcesClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Update a Scope
-   * @param {string} id Scope Id
-   * @param {PatchScopeRequest} patchScopeRequest Request Body
-   * @returns Scope - Success
+   * @summary Update an Identity Resource
+   * @param {string} id Identity Resource Id
+   * @param {PatchIdentityResourceRequest} patchIdentityResourceRequest Request Body
+   * @returns IdentityResource - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
-  public patchScope(
+  public patchIdentityResource(
     id: string,
-    patchScopeRequest: PatchScopeRequest
-  ): Promise<MonoCloudResponse<Scope>> {
+    patchIdentityResourceRequest: PatchIdentityResourceRequest
+  ): Promise<MonoCloudResponse<IdentityResource>> {
     const request: AxiosRequestConfig = { method: 'PATCH' };
 
-    const url = `/resources/scopes/{id}`.replace(
+    const url = `/resources/identityresources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
     request.url = url;
 
-    request.data = JSON.stringify(patchScopeRequest);
+    request.data = JSON.stringify(patchIdentityResourceRequest);
 
-    return this.processRequest<Scope>(request);
+    return this.processRequest<IdentityResource>(request);
   }
 }

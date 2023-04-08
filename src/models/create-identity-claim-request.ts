@@ -22,10 +22,4 @@ export interface CreateIdentityClaimRequest {
    * @memberof CreateIdentityClaimRequest
    */
   include_in_user_info: boolean;
-  /**
-   * Specifies whether the claim will be included in the Access Token.
-   * @type {boolean}
-   * @memberof CreateIdentityClaimRequest
-   */
-  include_in_access_token: boolean;
 }
