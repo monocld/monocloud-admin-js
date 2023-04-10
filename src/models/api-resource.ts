@@ -55,6 +55,12 @@ export interface ApiResource {
    */
   last_updated: number;
   /**
+   * The audience that will be added to the outgoing access token.
+   * @type {string}
+   * @memberof ApiResource
+   */
+  audience: string;
+  /**
    * The Api secret is used for the introspection endpoint. The API can authenticate with introspection using the API name and secret.
    * @type {Secret[]}
    * @memberof ApiResource

@@ -35,6 +35,12 @@ export interface PatchApiResourceRequest {
    */
   show_in_discovery_document?: boolean;
   /**
+   * The audience that will be added to the outgoing access token.
+   * @type {string}
+   * @memberof PatchApiResourceRequest
+   */
+  audience?: string;
+  /**
    * List of API scope names.
    * @type {string[]}
    * @memberof PatchApiResourceRequest

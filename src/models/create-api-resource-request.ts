@@ -37,6 +37,12 @@ export interface CreateApiResourceRequest {
    */
   show_in_discovery_document: boolean;
   /**
+   * The audience that will be added to the outgoing access token.
+   * @type {string}
+   * @memberof CreateApiResourceRequest
+   */
+  audience: string;
+  /**
    * The Api secret is used for the introspection endpoint. The API can authenticate with introspection using the API name and secret.
    * @type {CreateSecretRequest[]}
    * @memberof CreateApiResourceRequest
