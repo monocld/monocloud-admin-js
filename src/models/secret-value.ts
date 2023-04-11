@@ -19,11 +19,11 @@ export interface SecretValue {
    */
   description?: string | null;
   /**
-   * The secret
+   * The raw secret
    * @type {string}
    * @memberof SecretValue
    */
-  value: string;
+  raw_value: string;
   /**
    * The expiration date of the secret (in Epoch)
    * @type {number}
