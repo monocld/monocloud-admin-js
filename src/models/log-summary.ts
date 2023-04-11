@@ -38,9 +38,9 @@ export interface LogSummary {
    */
   time_stamp: number;
   /**
-   * The Client Name.
+   * The client Id.
    * @type {string}
    * @memberof LogSummary
    */
-  client_name?: string | null;
+  client_id?: string | null;
 }
