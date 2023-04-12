@@ -59,12 +59,6 @@ export interface Log {
    */
   time_stamp: number;
   /**
-   * The Process Id.
-   * @type {number}
-   * @memberof Log
-   */
-  process_id?: number | null;
-  /**
    * The Remote Ip Address.
    * @type {string}
    * @memberof Log
@@ -76,18 +70,6 @@ export interface Log {
    * @memberof Log
    */
   user_agent?: string | null;
-  /**
-   * The tenant Id.
-   * @type {string}
-   * @memberof Log
-   */
-  tenant_id: string;
-  /**
-   * The region.
-   * @type {number}
-   * @memberof Log
-   */
-  region: number;
   /**
    * Specifies if the log was triggered by a user interactive process.
    * @type {boolean}

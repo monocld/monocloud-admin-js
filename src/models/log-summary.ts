@@ -32,6 +32,12 @@ export interface LogSummary {
    */
   event_type: LogEventTypes;
   /**
+   * The Activity Id.
+   * @type {string}
+   * @memberof LogSummary
+   */
+  activity_id?: string | null;
+  /**
    * Specifies the event time (in Epoch).
    * @type {number}
    * @memberof LogSummary
