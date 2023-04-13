@@ -23,23 +23,17 @@ export interface PatchExternalProviderFacebookOptionsRequest {
    */
   sync_user_profile_always?: boolean;
   /**
-   * Specifies whether to use the default settings.
-   * @type {boolean}
-   * @memberof PatchExternalProviderFacebookOptionsRequest
-   */
-  use_default_settings?: boolean;
-  /**
    * Client Id issued for the customer by provider
    * @type {string}
    * @memberof PatchExternalProviderFacebookOptionsRequest
    */
-  client_id?: string | null;
+  client_id?: string;
   /**
    * Client Secret issued for the customer by provider
    * @type {string}
    * @memberof PatchExternalProviderFacebookOptionsRequest
    */
-  client_secret?: string | null;
+  client_secret?: string;
   /**
    * List of provider scopes to be obtained
    * @type {string[]}

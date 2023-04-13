@@ -23,23 +23,17 @@ export interface ExternalProviderAppleOptions {
    */
   sync_user_profile_always: boolean;
   /**
-   * Specifies whether to use the default settings.
-   * @type {boolean}
-   * @memberof ExternalProviderAppleOptions
-   */
-  use_default_settings: boolean;
-  /**
    * Client Id issued for the customer by provider
    * @type {string}
    * @memberof ExternalProviderAppleOptions
    */
-  client_id?: string | null;
+  client_id: string;
   /**
    * Client Secret issued for the customer by provider
    * @type {string}
    * @memberof ExternalProviderAppleOptions
    */
-  client_secret?: string | null;
+  client_secret: string;
   /**
    * List of provider scopes to be obtained
    * @type {string[]}
@@ -57,11 +51,11 @@ export interface ExternalProviderAppleOptions {
    * @type {string}
    * @memberof ExternalProviderAppleOptions
    */
-  team_id?: string | null;
+  team_id: string;
   /**
    * Apple generated keyId
    * @type {string}
    * @memberof ExternalProviderAppleOptions
    */
-  key_id?: string | null;
+  key_id: string;
 }
