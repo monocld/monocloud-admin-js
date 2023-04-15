@@ -15,5 +15,5 @@ export interface AccountProtectionUserUnblockEmailOptions {
    * @type {number}
    * @memberof AccountProtectionUserUnblockEmailOptions
    */
-  link_expiry: number;
+  expiry: number;
 }

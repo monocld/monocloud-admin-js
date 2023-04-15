@@ -7,55 +7,37 @@ import { BrandingGenericEmailTemplateOptions } from './branding-generic-email-te
  */
 export interface BrandingEmailOptions {
   /**
-   * Magic Link SignIn Branding Options
-   * @type {BrandingGenericEmailTemplateOptions}
-   * @memberof BrandingEmailOptions
-   */
-  magic_link_sign_in: BrandingGenericEmailTemplateOptions;
-  /**
-   * Email Code SignIn Branding Options
-   * @type {BrandingGenericEmailTemplateOptions}
-   * @memberof BrandingEmailOptions
-   */
-  email_code_sign_in: BrandingGenericEmailTemplateOptions;
-  /**
-   * Magic Link Verification Branding Options
-   * @type {BrandingGenericEmailTemplateOptions}
-   * @memberof BrandingEmailOptions
-   */
-  magic_link_verification: BrandingGenericEmailTemplateOptions;
-  /**
-   * Email Code Verification Branding Options
-   * @type {BrandingGenericEmailTemplateOptions}
-   * @memberof BrandingEmailOptions
-   */
-  email_code_verification: BrandingGenericEmailTemplateOptions;
-  /**
    * Welcome Email Branding Options
    * @type {BrandingGenericEmailTemplateOptions}
    * @memberof BrandingEmailOptions
    */
   welcome: BrandingGenericEmailTemplateOptions;
   /**
-   * User Lockout Branding Options
+   * User Blocked Email Branding Options
    * @type {BrandingGenericEmailTemplateOptions}
    * @memberof BrandingEmailOptions
    */
-  magic_link_user_unblock: BrandingGenericEmailTemplateOptions;
+  user_blocked: BrandingGenericEmailTemplateOptions;
   /**
-   * Magic Link Password Reset Branding Options
+   * Sign In Email Branding Options
    * @type {BrandingGenericEmailTemplateOptions}
    * @memberof BrandingEmailOptions
    */
-  magic_link_password_reset: BrandingGenericEmailTemplateOptions;
+  sign_in: BrandingGenericEmailTemplateOptions;
   /**
-   * Email Code Password Reset Branding Options
+   * Verification Email Branding Options
    * @type {BrandingGenericEmailTemplateOptions}
    * @memberof BrandingEmailOptions
    */
-  email_code_password_reset: BrandingGenericEmailTemplateOptions;
+  verification: BrandingGenericEmailTemplateOptions;
   /**
-   * Password Updated Branding Options
+   * Password Reset Email Branding Options
+   * @type {BrandingGenericEmailTemplateOptions}
+   * @memberof BrandingEmailOptions
+   */
+  password_reset: BrandingGenericEmailTemplateOptions;
+  /**
+   * Password Updated Email Branding Options
    * @type {BrandingGenericEmailTemplateOptions}
    * @memberof BrandingEmailOptions
    */

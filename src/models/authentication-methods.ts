@@ -12,15 +12,11 @@ export const AuthenticationMethods = {
   /**
    *
    */
-  EmailCode: 'email_code',
+  Email: 'email',
   /**
    *
    */
-  MagicLink: 'magic_link',
-  /**
-   *
-   */
-  SmsCode: 'sms_code',
+  Phone: 'phone',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

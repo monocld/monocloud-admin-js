@@ -7,21 +7,21 @@ import { PatchBrandingGenericCustomSmsOptionsRequest } from './patch-branding-ge
  */
 export interface PatchBrandingSmsOptionsRequest {
   /**
-   * Sms Code SignIn Branding Options
+   * SignIn Sms Code Branding Options
    * @type {PatchBrandingGenericCustomSmsOptionsRequest}
    * @memberof PatchBrandingSmsOptionsRequest
    */
-  sms_code_sign_in?: PatchBrandingGenericCustomSmsOptionsRequest;
+  sign_in?: PatchBrandingGenericCustomSmsOptionsRequest;
   /**
-   * Sms Code Verification Branding Options
+   * Verification Sms Code Branding Options
    * @type {PatchBrandingGenericCustomSmsOptionsRequest}
    * @memberof PatchBrandingSmsOptionsRequest
    */
-  sms_code_verification?: PatchBrandingGenericCustomSmsOptionsRequest;
+  verification?: PatchBrandingGenericCustomSmsOptionsRequest;
   /**
-   * Sms Code Password Reset Branding Options
+   * Password Reset Sms Code Branding Options
    * @type {PatchBrandingGenericCustomSmsOptionsRequest}
    * @memberof PatchBrandingSmsOptionsRequest
    */
-  sms_code_password_reset?: PatchBrandingGenericCustomSmsOptionsRequest;
+  password_reset?: PatchBrandingGenericCustomSmsOptionsRequest;
 }

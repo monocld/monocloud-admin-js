@@ -7,21 +7,21 @@ import { BrandingGenericSmsTemplateOptions } from './branding-generic-sms-templa
  */
 export interface BrandingSmsOptions {
   /**
-   * Sms Code SignIn Branding Options
+   * SignIn Sms Code Branding Options
    * @type {BrandingGenericSmsTemplateOptions}
    * @memberof BrandingSmsOptions
    */
-  sms_code_sign_in: BrandingGenericSmsTemplateOptions;
+  sign_in: BrandingGenericSmsTemplateOptions;
   /**
-   * Sms Code Verification Branding Options
+   * Verification Sms Code Branding Options
    * @type {BrandingGenericSmsTemplateOptions}
    * @memberof BrandingSmsOptions
    */
-  sms_code_verification: BrandingGenericSmsTemplateOptions;
+  verification: BrandingGenericSmsTemplateOptions;
   /**
-   * Sms Code Password Reset Branding Options
+   * Password Reset Sms Code Branding Options
    * @type {BrandingGenericSmsTemplateOptions}
    * @memberof BrandingSmsOptions
    */
-  sms_code_password_reset: BrandingGenericSmsTemplateOptions;
+  password_reset: BrandingGenericSmsTemplateOptions;
 }

@@ -15,5 +15,5 @@ export interface AuthenticationMethodPasswordExpirationOptions {
    * @type {number}
    * @memberof AuthenticationMethodPasswordExpirationOptions
    */
-  expiration_period: number;
+  expiry: number;
 }

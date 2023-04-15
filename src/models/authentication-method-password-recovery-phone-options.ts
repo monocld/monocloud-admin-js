@@ -11,15 +11,15 @@ export interface AuthenticationMethodPasswordRecoveryPhoneOptions {
    */
   enabled: boolean;
   /**
-   * Code expiration time in seconds.
+   * Specifies the expiration period of the code (in seconds)
    * @type {number}
    * @memberof AuthenticationMethodPasswordRecoveryPhoneOptions
    */
-  otp_expiry: number;
+  expiry: number;
   /**
-   * Code length is chosen from this option
+   * Specifies the length of the code
    * @type {number}
    * @memberof AuthenticationMethodPasswordRecoveryPhoneOptions
    */
-  otp_length: number;
+  code_length: number;
 }

@@ -1,7 +1,6 @@
-import { AuthenticationMethodEmailCodeOptions } from './authentication-method-email-code-options';
-import { AuthenticationMethodMagicLinkOptions } from './authentication-method-magic-link-options';
+import { AuthenticationMethodEmailOptions } from './authentication-method-email-options';
 import { AuthenticationMethodPasswordOptions } from './authentication-method-password-options';
-import { AuthenticationMethodSmsCodeOptions } from './authentication-method-sms-code-options';
+import { AuthenticationMethodPhoneOptions } from './authentication-method-phone-options';
 
 /**
  * The Authentication Method response class
@@ -16,21 +15,15 @@ export interface AuthenticationMethodOptions {
    */
   password: AuthenticationMethodPasswordOptions;
   /**
-   * Sms Code Authentication Method Settings
-   * @type {AuthenticationMethodSmsCodeOptions}
+   * Phone Authentication Method Settings
+   * @type {AuthenticationMethodPhoneOptions}
    * @memberof AuthenticationMethodOptions
    */
-  sms_code: AuthenticationMethodSmsCodeOptions;
+  phone: AuthenticationMethodPhoneOptions;
   /**
-   * Magic Link Authentication Method Settings
-   * @type {AuthenticationMethodMagicLinkOptions}
+   * Email Authentication Method Settings
+   * @type {AuthenticationMethodEmailOptions}
    * @memberof AuthenticationMethodOptions
    */
-  magic_link: AuthenticationMethodMagicLinkOptions;
-  /**
-   * Email Code Authentication Method Settings
-   * @type {AuthenticationMethodEmailCodeOptions}
-   * @memberof AuthenticationMethodOptions
-   */
-  email_code: AuthenticationMethodEmailCodeOptions;
+  email: AuthenticationMethodEmailOptions;
 }

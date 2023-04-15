@@ -7,55 +7,37 @@ import { PatchBrandingGenericCustomEmailOptionsRequest } from './patch-branding-
  */
 export interface PatchBrandingEmailOptionsRequest {
   /**
-   * Magic Link SignIn Branding Options
-   * @type {PatchBrandingGenericCustomEmailOptionsRequest}
-   * @memberof PatchBrandingEmailOptionsRequest
-   */
-  magic_link_sign_in?: PatchBrandingGenericCustomEmailOptionsRequest;
-  /**
-   * Email Code SignIn Branding Options
-   * @type {PatchBrandingGenericCustomEmailOptionsRequest}
-   * @memberof PatchBrandingEmailOptionsRequest
-   */
-  email_code_sign_in?: PatchBrandingGenericCustomEmailOptionsRequest;
-  /**
-   * Magic Link Verification Branding Options
-   * @type {PatchBrandingGenericCustomEmailOptionsRequest}
-   * @memberof PatchBrandingEmailOptionsRequest
-   */
-  magic_link_verification?: PatchBrandingGenericCustomEmailOptionsRequest;
-  /**
-   * Email Code Verification Branding Options
-   * @type {PatchBrandingGenericCustomEmailOptionsRequest}
-   * @memberof PatchBrandingEmailOptionsRequest
-   */
-  email_code_verification?: PatchBrandingGenericCustomEmailOptionsRequest;
-  /**
    * Welcome Email Branding Options
    * @type {PatchBrandingGenericCustomEmailOptionsRequest}
    * @memberof PatchBrandingEmailOptionsRequest
    */
   welcome?: PatchBrandingGenericCustomEmailOptionsRequest;
   /**
-   * User Lockout Branding Options
+   * User Blocked Email Branding Options
    * @type {PatchBrandingGenericCustomEmailOptionsRequest}
    * @memberof PatchBrandingEmailOptionsRequest
    */
-  magic_link_user_unblock?: PatchBrandingGenericCustomEmailOptionsRequest;
+  user_blocked?: PatchBrandingGenericCustomEmailOptionsRequest;
   /**
-   * Magic Link Password Reset Branding Options
+   * Sign In Email Branding Options
    * @type {PatchBrandingGenericCustomEmailOptionsRequest}
    * @memberof PatchBrandingEmailOptionsRequest
    */
-  magic_link_password_reset?: PatchBrandingGenericCustomEmailOptionsRequest;
+  sign_in?: PatchBrandingGenericCustomEmailOptionsRequest;
   /**
-   * Email Code Password Reset Branding Options
+   * Verification Email Branding Options
    * @type {PatchBrandingGenericCustomEmailOptionsRequest}
    * @memberof PatchBrandingEmailOptionsRequest
    */
-  email_code_password_reset?: PatchBrandingGenericCustomEmailOptionsRequest;
+  verification?: PatchBrandingGenericCustomEmailOptionsRequest;
   /**
-   * Password Updated Branding Options
+   * Password Reset Email Branding Options
+   * @type {PatchBrandingGenericCustomEmailOptionsRequest}
+   * @memberof PatchBrandingEmailOptionsRequest
+   */
+  password_reset?: PatchBrandingGenericCustomEmailOptionsRequest;
+  /**
+   * Password Updated Email Branding Options
    * @type {PatchBrandingGenericCustomEmailOptionsRequest}
    * @memberof PatchBrandingEmailOptionsRequest
    */

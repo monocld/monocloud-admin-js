@@ -11,13 +11,13 @@ export interface PatchAuthenticationGeneralPhoneVerificationOptionsRequest {
    */
   verify_at_sign_up?: boolean;
   /**
-   * Sms verification expiration time in seconds.
+   * Specifies the expiration period of the code (in seconds)
    * @type {number}
    * @memberof PatchAuthenticationGeneralPhoneVerificationOptionsRequest
    */
-  expiration?: number;
+  expiry?: number;
   /**
-   * Sms Code length is chosen from this option
+   * Specifies the length of the code
    * @type {number}
    * @memberof PatchAuthenticationGeneralPhoneVerificationOptionsRequest
    */

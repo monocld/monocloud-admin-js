@@ -25,7 +25,7 @@ export interface AuthenticationGeneralPhoneOptions {
    */
   required_at_sign_up: boolean;
   /**
-   * Sms verification related to Sign Up
+   * Phone verification related to Sign Up
    * @type {AuthenticationGeneralPhoneVerificationOptions}
    * @memberof AuthenticationGeneralPhoneOptions
    */

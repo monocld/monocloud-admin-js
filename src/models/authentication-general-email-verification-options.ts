@@ -11,13 +11,13 @@ export interface AuthenticationGeneralEmailVerificationOptions {
    */
   verify_at_sign_up: boolean;
   /**
-   * Email expiration time in seconds.
+   * Specifies the expiration period of the code (in seconds)
    * @type {number}
    * @memberof AuthenticationGeneralEmailVerificationOptions
    */
-  expiration: number;
+  expiry: number;
   /**
-   * If Email Code is Selected, Code length is chosen from this option
+   * Specifies the length of the code
    * @type {number}
    * @memberof AuthenticationGeneralEmailVerificationOptions
    */

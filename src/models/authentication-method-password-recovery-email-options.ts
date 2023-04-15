@@ -1,4 +1,4 @@
-import { TokenSendTypes } from './token-send-types';
+import { VerificationTypes } from './verification-types';
 
 /**
  * The Authentication Method Password Recovery Email response class
@@ -13,21 +13,27 @@ export interface AuthenticationMethodPasswordRecoveryEmailOptions {
    */
   enabled: boolean;
   /**
-   * Specifies the recovery mode.
-   * @type {TokenSendTypes}
+   * Verification type that should be used for email password reset
+   * @type {VerificationTypes}
    * @memberof AuthenticationMethodPasswordRecoveryEmailOptions
    */
-  mode: TokenSendTypes;
+  verification_type: VerificationTypes;
   /**
-   * Email expiration time in seconds.
+   * Allow password reset flow to resume in a different browser
+   * @type {boolean}
+   * @memberof AuthenticationMethodPasswordRecoveryEmailOptions
+   */
+  allow_cross_browser: boolean;
+  /**
+   * Specifies the expiration period of the email (in seconds)
    * @type {number}
    * @memberof AuthenticationMethodPasswordRecoveryEmailOptions
    */
-  otp_expiry: number;
+  expiry: number;
   /**
-   * If Email Code is Selected, Code length is chosen from this option
+   * Specifies the length of the code
    * @type {number}
    * @memberof AuthenticationMethodPasswordRecoveryEmailOptions
    */
-  otp_length: number;
+  code_length: number;
 }

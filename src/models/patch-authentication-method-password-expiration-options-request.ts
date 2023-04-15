@@ -15,5 +15,5 @@ export interface PatchAuthenticationMethodPasswordExpirationOptionsRequest {
    * @type {number}
    * @memberof PatchAuthenticationMethodPasswordExpirationOptionsRequest
    */
-  expiration_period?: number;
+  expiry?: number;
 }

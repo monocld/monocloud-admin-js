@@ -15,5 +15,5 @@ export interface PatchAccountProtectionUserUnblockEmailOptionsRequest {
    * @type {number}
    * @memberof PatchAccountProtectionUserUnblockEmailOptionsRequest
    */
-  link_expiry?: number;
+  expiry?: number;
 }
