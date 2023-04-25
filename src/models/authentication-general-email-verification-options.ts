@@ -1,3 +1,5 @@
+import { VerificationTypes } from './verification-types';
+
 /**
  * The Authentication General Email Verification Options Response class
  * @export
@@ -10,6 +12,18 @@ export interface AuthenticationGeneralEmailVerificationOptions {
    * @memberof AuthenticationGeneralEmailVerificationOptions
    */
   verify_at_sign_up: boolean;
+  /**
+   * Specifies the type of verification tokens to be sent
+   * @type {VerificationTypes}
+   * @memberof AuthenticationGeneralEmailVerificationOptions
+   */
+  verification_type: VerificationTypes;
+  /**
+   * Allow sign up/sign in flow to resume in a different browser
+   * @type {boolean}
+   * @memberof AuthenticationGeneralEmailVerificationOptions
+   */
+  allow_cross_browser: boolean;
   /**
    * Specifies the expiration period of the code (in seconds)
    * @type {number}
