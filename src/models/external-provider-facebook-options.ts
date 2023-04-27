@@ -46,10 +46,4 @@ export interface ExternalProviderFacebookOptions {
    * @memberof ExternalProviderFacebookOptions
    */
   trust_email_verified_scope: boolean;
-  /**
-   * Required claims from facebook
-   * @type {string[]}
-   * @memberof ExternalProviderFacebookOptions
-   */
-  fields?: string[] | null;
 }

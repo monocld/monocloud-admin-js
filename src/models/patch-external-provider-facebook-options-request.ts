@@ -46,10 +46,4 @@ export interface PatchExternalProviderFacebookOptionsRequest {
    * @memberof PatchExternalProviderFacebookOptionsRequest
    */
   trust_email_verified_scope?: boolean;
-  /**
-   * Required claims from facebook
-   * @type {string[]}
-   * @memberof PatchExternalProviderFacebookOptionsRequest
-   */
-  fields?: string[] | null;
 }

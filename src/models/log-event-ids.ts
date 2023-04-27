@@ -40,6 +40,14 @@ export const LogEventIds = {
   /**
    *
    */
+  CertificateAuthenticationSuccess: 'certificate_authentication_success',
+  /**
+   *
+   */
+  CertificateAuthenticationFailure: 'certificate_authentication_failure',
+  /**
+   *
+   */
   UserLogoutSuccess: 'user_logout_success',
   /**
    *
@@ -159,6 +167,19 @@ export const LogEventIds = {
    *
    */
   UserPasswordResetNotificationSent: 'user_password_reset_notification_sent',
+  /**
+   *
+   */
+  UserBlockedNotificationSent: 'user_blocked_notification_sent',
+  /**
+   *
+   */
+  UserWelcomeNotificationSent: 'user_welcome_notification_sent',
+  /**
+   *
+   */
+  UserPasswordUpdatedNotificationSent:
+    'user_password_updated_notification_sent',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
