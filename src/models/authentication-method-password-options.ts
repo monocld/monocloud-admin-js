@@ -1,4 +1,3 @@
-import { AuthenticationMethodPasswordExpirationOptions } from './authentication-method-password-expiration-options';
 import { AuthenticationMethodPasswordRecoveryOptions } from './authentication-method-password-recovery-options';
 import { AuthenticationMethodPasswordReuseOptions } from './authentication-method-password-reuse-options';
 import { AuthenticationMethodPasswordStrengthOptions } from './authentication-method-password-strength-options';
@@ -39,12 +38,6 @@ export interface AuthenticationMethodPasswordOptions {
    * @memberof AuthenticationMethodPasswordOptions
    */
   reuse: AuthenticationMethodPasswordReuseOptions;
-  /**
-   * Password Expiration Options
-   * @type {AuthenticationMethodPasswordExpirationOptions}
-   * @memberof AuthenticationMethodPasswordOptions
-   */
-  expiration: AuthenticationMethodPasswordExpirationOptions;
   /**
    * Password Recovery Options
    * @type {AuthenticationMethodPasswordRecoveryOptions}

@@ -1,4 +1,3 @@
-import { PatchAuthenticationMethodPasswordExpirationOptionsRequest } from './patch-authentication-method-password-expiration-options-request';
 import { PatchAuthenticationMethodPasswordRecoveryOptionsRequest } from './patch-authentication-method-password-recovery-options-request';
 import { PatchAuthenticationMethodPasswordReuseOptionsRequest } from './patch-authentication-method-password-reuse-options-request';
 import { PatchAuthenticationMethodPasswordStrengthOptionsRequest } from './patch-authentication-method-password-strength-options-request';
@@ -39,12 +38,6 @@ export interface PatchAuthenticationMethodPasswordOptionsRequest {
    * @memberof PatchAuthenticationMethodPasswordOptionsRequest
    */
   reuse?: PatchAuthenticationMethodPasswordReuseOptionsRequest;
-  /**
-   * Password Expiration Options
-   * @type {PatchAuthenticationMethodPasswordExpirationOptionsRequest}
-   * @memberof PatchAuthenticationMethodPasswordOptionsRequest
-   */
-  expiration?: PatchAuthenticationMethodPasswordExpirationOptionsRequest;
   /**
    * Password Recovery Options
    * @type {PatchAuthenticationMethodPasswordRecoveryOptionsRequest}
