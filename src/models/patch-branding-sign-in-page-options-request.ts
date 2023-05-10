@@ -1,4 +1,4 @@
-import { ExternalIDPs } from './external-idps';
+import { ExternalAuthenticators } from './external-authenticators';
 
 /**
  * The Patch SignIn Page Options Request class
@@ -20,8 +20,8 @@ export interface PatchBrandingSignInPageOptionsRequest {
   external_sign_in_methods_first?: boolean;
   /**
    * Order of the External SigIn methods buttons
-   * @type {ExternalIDPs[]}
+   * @type {ExternalAuthenticators[]}
    * @memberof PatchBrandingSignInPageOptionsRequest
    */
-  external_sign_in_methods_order?: ExternalIDPs[];
+  external_sign_in_methods_order?: ExternalAuthenticators[];
 }

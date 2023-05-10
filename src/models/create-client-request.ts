@@ -1,8 +1,7 @@
 import { AccessTokenTypes } from './access-token-types';
-import { AuthenticationMethods } from './authentication-methods';
+import { Authenticators } from './authenticators';
 import { CreateSecretRequest } from './create-secret-request';
 import { DeviceFlowCodeTypes } from './device-flow-code-types';
-import { ExternalIDPs } from './external-idps';
 import { GrantTypes } from './grant-types';
 import { RefreshTokenExpirationTypes } from './refresh-token-expiration-types';
 import { RefreshTokenUsageTypes } from './refresh-token-usage-types';
@@ -219,23 +218,11 @@ export interface CreateClientRequest {
    */
   access_token_type: AccessTokenTypes;
   /**
-   * Specifies whether the local login (Username / Password) is allowed for this client.
-   * @type {boolean}
+   * Specifies which authenticators can be used with this client (if list is empty all authenticators are allowed)
+   * @type {Authenticators[]}
    * @memberof CreateClientRequest
    */
-  enable_local_login: boolean;
-  /**
-   * Specifies which authentication providers can be used with this client (if list is empty all providers are allowed)
-   * @type {ExternalIDPs[]}
-   * @memberof CreateClientRequest
-   */
-  identity_provider_restrictions: ExternalIDPs[];
-  /**
-   * Specifies which authentication methods can be used with this client (if list is empty all methods are allowed)
-   * @type {AuthenticationMethods[]}
-   * @memberof CreateClientRequest
-   */
-  authentication_method_restrictions: AuthenticationMethods[];
+  authenticator_restrictions: Authenticators[];
   /**
    * Specifies whether JWT access tokens should include an identifier
    * @type {boolean}

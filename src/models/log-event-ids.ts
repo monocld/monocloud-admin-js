@@ -104,7 +104,7 @@ export const LogEventIds = {
   /**
    *
    */
-  UserNewAuthenticationMethodAdded: 'user_new_authentication_method_added',
+  UserNewAuthenticatorAdded: 'user_new_authenticator_added',
   /**
    *
    */
