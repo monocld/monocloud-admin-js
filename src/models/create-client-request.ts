@@ -266,6 +266,12 @@ export interface CreateClientRequest {
    */
   user_code_type: DeviceFlowCodeTypes;
   /**
+   * Specifies the length of code that will be generated for the device code flow
+   * @type {number}
+   * @memberof CreateClientRequest
+   */
+  device_code_length: number;
+  /**
    * Specifies the device code lifetime.
    * @type {number}
    * @memberof CreateClientRequest

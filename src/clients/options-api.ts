@@ -4,12 +4,10 @@ import {
   AuthenticationOptions,
   BrandingOptions,
   CommunicationOptions,
-  DeviceFlowOptions,
   MtlsOptions,
   PatchAuthenticationOptionsRequest,
   PatchBrandingOptionsRequest,
   PatchCommunicationOptionsRequest,
-  PatchDeviceFlowOptionsRequest,
   PatchMtlsOptionsRequest,
 } from '../models';
 
@@ -70,26 +68,6 @@ export class OptionsClient extends MonoCloudClientBase {
     request.url = url;
 
     return this.processRequest<CommunicationOptions>(request);
-  }
-
-  /**
-   *
-   * @summary Get DeviceFlow Options
-   * @returns DeviceFlowOptions - Success
-   * @throws {MonoCloudException}
-   * @memberof OptionsClient
-   *
-   */
-  public findDeviceFlowOptions(): Promise<
-    MonoCloudResponse<DeviceFlowOptions>
-  > {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
-    const url = `/options/device_flow`;
-
-    request.url = url;
-
-    return this.processRequest<DeviceFlowOptions>(request);
   }
 
   /**
@@ -177,29 +155,6 @@ export class OptionsClient extends MonoCloudClientBase {
     request.data = JSON.stringify(patchCommunicationOptionsRequest);
 
     return this.processRequest<CommunicationOptions>(request);
-  }
-
-  /**
-   *
-   * @summary Update DeviceFlow Options
-   * @param {PatchDeviceFlowOptionsRequest} patchDeviceFlowOptionsRequest Request Body
-   * @returns DeviceFlowOptions - Success
-   * @throws {MonoCloudException}
-   * @memberof OptionsClient
-   *
-   */
-  public patchDeviceFlowOptions(
-    patchDeviceFlowOptionsRequest: PatchDeviceFlowOptionsRequest
-  ): Promise<MonoCloudResponse<DeviceFlowOptions>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
-    const url = `/options/device_flow`;
-
-    request.url = url;
-
-    request.data = JSON.stringify(patchDeviceFlowOptionsRequest);
-
-    return this.processRequest<DeviceFlowOptions>(request);
   }
 
   /**

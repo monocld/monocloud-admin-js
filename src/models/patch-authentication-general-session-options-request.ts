@@ -1,4 +1,5 @@
-import { RememberMeModes } from './remember-me-modes';
+import { ExpirationTypes } from './expiration-types';
+import { SessionPersistenceModes } from './session-persistence-modes';
 
 /**
  * The Patch General Session Authentication Options Request class
@@ -7,19 +8,25 @@ import { RememberMeModes } from './remember-me-modes';
  */
 export interface PatchAuthenticationGeneralSessionOptionsRequest {
   /**
-   * RememberMe Mode
-   * @type {RememberMeModes}
+   * Persistence Mode of the session.
+   * @type {SessionPersistenceModes}
    * @memberof PatchAuthenticationGeneralSessionOptionsRequest
    */
-  remember_me_mode?: RememberMeModes;
+  persistence_mode?: SessionPersistenceModes;
   /**
-   * Specifies the duration in minutes after which the user session will expire in accordance with the remember me mode.
+   * Expiration Type
+   * @type {ExpirationTypes}
+   * @memberof PatchAuthenticationGeneralSessionOptionsRequest
+   */
+  expiration_type?: ExpirationTypes;
+  /**
+   * Specifies the duration in minutes after which the user session will expire in accordance with the expiration type.
    * @type {number}
    * @memberof PatchAuthenticationGeneralSessionOptionsRequest
    */
   remember_me_duration?: number;
   /**
-   * Specifies the duration in minutes after which the user session will expire regardless of the remember me mode.
+   * Specifies the duration in minutes after which the user session will expire regardless of the expiration type.
    * @type {number}
    * @memberof PatchAuthenticationGeneralSessionOptionsRequest
    */

@@ -272,6 +272,12 @@ export interface Client {
    */
   user_code_type: DeviceFlowCodeTypes;
   /**
+   * Specifies the length of code that will be generated for the device code flow
+   * @type {number}
+   * @memberof Client
+   */
+  device_code_length: number;
+  /**
    * Specifies the device code lifetime.
    * @type {number}
    * @memberof Client

@@ -4,11 +4,7 @@
  * @enum {string}
  */
 
-export const RememberMeModes = {
-  /**
-   * The session will expire when the browser is closed.
-   */
-  Off: 'off',
+export const ExpirationTypes = {
   /**
    * On each interaction of the user with the authorization server, the lifetime of the session will be renewed (by the amount specified in &quot;Remember Me Duration&quot; parameter). The lifetime will not exceed the time specified in the &quot;Logout After&quot; parameter
    */
@@ -20,5 +16,5 @@ export const RememberMeModes = {
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export type RememberMeModes =
-  (typeof RememberMeModes)[keyof typeof RememberMeModes];
+export type ExpirationTypes =
+  (typeof ExpirationTypes)[keyof typeof ExpirationTypes];
