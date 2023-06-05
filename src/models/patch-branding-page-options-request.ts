@@ -1,5 +1,3 @@
-import { PatchBrandingSignInPageOptionsRequest } from './patch-branding-sign-in-page-options-request';
-
 /**
  * The Patch Branding Page Options Request class
  * @export
@@ -36,10 +34,4 @@ export interface PatchBrandingPageOptionsRequest {
    * @memberof PatchBrandingPageOptionsRequest
    */
   primary_color?: string;
-  /**
-   * Sign In Page Branding Options
-   * @type {PatchBrandingSignInPageOptionsRequest}
-   * @memberof PatchBrandingPageOptionsRequest
-   */
-  sign_in?: PatchBrandingSignInPageOptionsRequest;
 }

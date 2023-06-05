@@ -1,5 +1,3 @@
-import { BrandingSignInPageOptions } from './branding-sign-in-page-options';
-
 /**
  * The Branding Page Options response class
  * @export
@@ -36,10 +34,4 @@ export interface BrandingPageOptions {
    * @memberof BrandingPageOptions
    */
   primary_color: string;
-  /**
-   * Sign In Page Branding Options
-   * @type {BrandingSignInPageOptions}
-   * @memberof BrandingPageOptions
-   */
-  sign_in: BrandingSignInPageOptions;
 }

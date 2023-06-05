@@ -27,6 +27,12 @@ export interface PatchAuthenticationMethodPasswordOptionsRequest {
    */
   enable_password_updated_email?: boolean;
   /**
+   * If enabled password will be prompted on the same screen as the username.
+   * @type {boolean}
+   * @memberof PatchAuthenticationMethodPasswordOptionsRequest
+   */
+  prompt_password_on_initial_screen?: boolean;
+  /**
    * Password Strength Options
    * @type {PatchAuthenticationMethodPasswordStrengthOptionsRequest}
    * @memberof PatchAuthenticationMethodPasswordOptionsRequest

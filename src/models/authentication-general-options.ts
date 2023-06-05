@@ -2,6 +2,7 @@ import { AuthenticationGeneralEmailOptions } from './authentication-general-emai
 import { AuthenticationGeneralPhoneOptions } from './authentication-general-phone-options';
 import { AuthenticationGeneralSessionOptions } from './authentication-general-session-options';
 import { AuthenticationGeneralUsernameOptions } from './authentication-general-username-options';
+import { ExternalAuthenticators } from './external-authenticators';
 
 /**
  * The Authentication General Options response class
@@ -15,6 +16,18 @@ export interface AuthenticationGeneralOptions {
    * @memberof AuthenticationGeneralOptions
    */
   consent_required_for_offline_access: boolean;
+  /**
+   * If enabled, External SigIn Methods are shown on top and the Primary SigIn method is shown on bottom.
+   * @type {boolean}
+   * @memberof AuthenticationGeneralOptions
+   */
+  external_sign_in_methods_first: boolean;
+  /**
+   * Order of the External SigIn methods buttons
+   * @type {ExternalAuthenticators[]}
+   * @memberof AuthenticationGeneralOptions
+   */
+  external_sign_in_methods_order: ExternalAuthenticators[];
   /**
    * General User Session Options.
    * @type {AuthenticationGeneralSessionOptions}

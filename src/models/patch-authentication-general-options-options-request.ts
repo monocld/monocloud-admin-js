@@ -1,3 +1,4 @@
+import { ExternalAuthenticators } from './external-authenticators';
 import { PatchAuthenticationGeneralEmailOptionsRequest } from './patch-authentication-general-email-options-request';
 import { PatchAuthenticationGeneralPhoneOptionsRequest } from './patch-authentication-general-phone-options-request';
 import { PatchAuthenticationGeneralSessionOptionsRequest } from './patch-authentication-general-session-options-request';
@@ -15,6 +16,18 @@ export interface PatchAuthenticationGeneralOptionsOptionsRequest {
    * @memberof PatchAuthenticationGeneralOptionsOptionsRequest
    */
   consent_required_for_offline_access?: boolean;
+  /**
+   * If enabled, External SigIn Methods are shown on top and the Primary SigIn method is shown on bottom.
+   * @type {boolean}
+   * @memberof PatchAuthenticationGeneralOptionsOptionsRequest
+   */
+  external_sign_in_methods_first?: boolean;
+  /**
+   * Order of the External SigIn methods buttons
+   * @type {ExternalAuthenticators[]}
+   * @memberof PatchAuthenticationGeneralOptionsOptionsRequest
+   */
+  external_sign_in_methods_order?: ExternalAuthenticators[];
   /**
    * General User Session Options.
    * @type {PatchAuthenticationGeneralSessionOptionsRequest}
