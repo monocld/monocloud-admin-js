@@ -1,6 +1,7 @@
 import { LogEventCategories } from './log-event-categories';
 import { LogEventIds } from './log-event-ids';
 import { LogEventTypes } from './log-event-types';
+import { LogRequestMetadata } from './log-request-metadata';
 
 /**
  * The Log response class.
@@ -59,17 +60,11 @@ export interface Log {
    */
   time_stamp: number;
   /**
-   * The Remote Ip Address.
-   * @type {string}
+   * The Request metadata.
+   * @type {LogRequestMetadata}
    * @memberof Log
    */
-  remote_ip_address?: string | null;
-  /**
-   * The User Agent.
-   * @type {string}
-   * @memberof Log
-   */
-  user_agent?: string | null;
+  metadata: LogRequestMetadata;
   /**
    * Specifies if the log was triggered by a user interactive process.
    * @type {boolean}

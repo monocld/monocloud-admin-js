@@ -68,6 +68,7 @@ export * from './log';
 export * from './log-event-categories';
 export * from './log-event-ids';
 export * from './log-event-types';
+export * from './log-request-metadata';
 export * from './log-summary';
 export * from './logout-options';
 export * from './mtls-options';
