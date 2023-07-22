@@ -1,0 +1,63 @@
+import { AuthenticatorsAppleOptions } from './authenticators-apple-options';
+import { AuthenticatorsEmailOptions } from './authenticators-email-options';
+import { AuthenticatorsFacebookOptions } from './authenticators-facebook-options';
+import { AuthenticatorsGoogleOptions } from './authenticators-google-options';
+import { AuthenticatorsPasswordOptions } from './authenticators-password-options';
+import { AuthenticatorsPhoneOptions } from './authenticators-phone-options';
+import { ExternalAuthenticators } from './external-authenticators';
+
+/**
+ * The Authenticators Options response class
+ * @export
+ * @interface AuthenticatorsOptions
+ */
+export interface AuthenticatorsOptions {
+  /**
+   * If enabled, External SigIn Methods are shown on top and the Primary SigIn method is shown on bottom.
+   * @type {boolean}
+   * @memberof AuthenticatorsOptions
+   */
+  external_sign_in_methods_first: boolean;
+  /**
+   * Order of the External SigIn methods buttons
+   * @type {ExternalAuthenticators[]}
+   * @memberof AuthenticatorsOptions
+   */
+  external_sign_in_methods_order: ExternalAuthenticators[];
+  /**
+   * Password Authenticator Settings
+   * @type {AuthenticatorsPasswordOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  password: AuthenticatorsPasswordOptions;
+  /**
+   * Email Authenticator Settings
+   * @type {AuthenticatorsEmailOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  email: AuthenticatorsEmailOptions;
+  /**
+   * Phone Authenticator Settings
+   * @type {AuthenticatorsPhoneOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  phone: AuthenticatorsPhoneOptions;
+  /**
+   * Google Authenticator Settings
+   * @type {AuthenticatorsGoogleOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  google?: AuthenticatorsGoogleOptions | null;
+  /**
+   * Apple Authenticator Settings
+   * @type {AuthenticatorsAppleOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  apple?: AuthenticatorsAppleOptions | null;
+  /**
+   * Facebook Authenticator Settings
+   * @type {AuthenticatorsFacebookOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  facebook?: AuthenticatorsFacebookOptions | null;
+}

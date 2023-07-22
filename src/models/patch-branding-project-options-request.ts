@@ -11,12 +11,6 @@ export interface PatchBrandingProjectOptionsRequest {
    */
   default_url?: string | null;
   /**
-   * Privacy Url
-   * @type {string}
-   * @memberof PatchBrandingProjectOptionsRequest
-   */
-  privacy_url?: string | null;
-  /**
    * Support Url
    * @type {string}
    * @memberof PatchBrandingProjectOptionsRequest
@@ -28,10 +22,4 @@ export interface PatchBrandingProjectOptionsRequest {
    * @memberof PatchBrandingProjectOptionsRequest
    */
   support_email?: string | null;
-  /**
-   * Terms Url
-   * @type {string}
-   * @memberof PatchBrandingProjectOptionsRequest
-   */
-  terms_url?: string | null;
 }

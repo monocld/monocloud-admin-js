@@ -1,8 +1,10 @@
 import { PatchAccountProtectionOptionsRequest } from './patch-account-protection-options-request';
-import { PatchAuthenticationGeneralOptionsOptionsRequest } from './patch-authentication-general-options-options-request';
-import { PatchAuthenticationMethodOptionsRequest } from './patch-authentication-method-options-request';
-import { PatchExternalProviderOptionsRequest } from './patch-external-provider-options-request';
+import { PatchAuthenticatorsOptionsRequest } from './patch-authenticators-options-request';
+import { PatchConsentOptionsRequest } from './patch-consent-options-request';
+import { PatchIdentifiersOptionsRequest } from './patch-identifiers-options-request';
 import { PatchLogoutOptionsRequest } from './patch-logout-options-request';
+import { PatchRecoveryMethodsOptionsRequest } from './patch-recovery-methods-options-request';
+import { PatchSessionOptionsRequest } from './patch-session-options-request';
 import { PatchSignUpOptionsRequest } from './patch-sign-up-options-request';
 
 /**
@@ -18,23 +20,35 @@ export interface PatchAuthenticationOptionsRequest {
    */
   account_protection?: PatchAccountProtectionOptionsRequest;
   /**
-   * Authentication Method Options
-   * @type {PatchAuthenticationMethodOptionsRequest}
+   * Authenticators Options
+   * @type {PatchAuthenticatorsOptionsRequest}
    * @memberof PatchAuthenticationOptionsRequest
    */
-  authentication_methods?: PatchAuthenticationMethodOptionsRequest;
+  authenticators?: PatchAuthenticatorsOptionsRequest;
   /**
-   * External Provider Options
-   * @type {PatchExternalProviderOptionsRequest}
+   * Identifiers Options
+   * @type {PatchIdentifiersOptionsRequest}
    * @memberof PatchAuthenticationOptionsRequest
    */
-  external_providers?: PatchExternalProviderOptionsRequest;
+  identifiers?: PatchIdentifiersOptionsRequest;
   /**
-   * Authentication General Options
-   * @type {PatchAuthenticationGeneralOptionsOptionsRequest}
+   * Recovery Methods Options
+   * @type {PatchRecoveryMethodsOptionsRequest}
    * @memberof PatchAuthenticationOptionsRequest
    */
-  general?: PatchAuthenticationGeneralOptionsOptionsRequest;
+  recovery_methods?: PatchRecoveryMethodsOptionsRequest;
+  /**
+   * Consent Options
+   * @type {PatchConsentOptionsRequest}
+   * @memberof PatchAuthenticationOptionsRequest
+   */
+  consent?: PatchConsentOptionsRequest;
+  /**
+   * Session Options
+   * @type {PatchSessionOptionsRequest}
+   * @memberof PatchAuthenticationOptionsRequest
+   */
+  session?: PatchSessionOptionsRequest;
   /**
    * Logout Options
    * @type {PatchLogoutOptionsRequest}
