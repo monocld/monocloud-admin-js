@@ -45,13 +45,13 @@ export interface TrustStoreCertificateParsed {
    * @type {{ [key: string]: string; }}
    * @memberof TrustStoreCertificateParsed
    */
-  subject: { [key: string]: string };
+  subject: Record<string, string>;
   /**
    * The subject distinguished names from the certificate authority that issued the X.509 certificate.
    * @type {{ [key: string]: string; }}
    * @memberof TrustStoreCertificateParsed
    */
-  issuer: { [key: string]: string };
+  issuer: Record<string, string>;
   /**
    * The serial number of the certificate as a hexadecimal string.
    * @type {string}

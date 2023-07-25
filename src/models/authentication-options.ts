@@ -1,8 +1,10 @@
 import { AccountProtectionOptions } from './account-protection-options';
-import { AuthenticationGeneralOptions } from './authentication-general-options';
-import { AuthenticationMethodOptions } from './authentication-method-options';
-import { ExternalProviderOptions } from './external-provider-options';
+import { AuthenticatorsOptions } from './authenticators-options';
+import { ConsentOptions } from './consent-options';
+import { IdentifiersOptions } from './identifiers-options';
 import { LogoutOptions } from './logout-options';
+import { RecoveryMethodsOptions } from './recovery-methods-options';
+import { SessionOptions } from './session-options';
 import { SignUpOptions } from './sign-up-options';
 
 /**
@@ -18,23 +20,35 @@ export interface AuthenticationOptions {
    */
   account_protection: AccountProtectionOptions;
   /**
-   * Authentication Method Options
-   * @type {AuthenticationMethodOptions}
+   * Authenticators Options
+   * @type {AuthenticatorsOptions}
    * @memberof AuthenticationOptions
    */
-  authentication_methods: AuthenticationMethodOptions;
+  authenticators: AuthenticatorsOptions;
   /**
-   * External Provider Options
-   * @type {ExternalProviderOptions}
+   * Identifiers Options
+   * @type {IdentifiersOptions}
    * @memberof AuthenticationOptions
    */
-  external_providers: ExternalProviderOptions;
+  identifiers: IdentifiersOptions;
   /**
-   * Authentication General Options
-   * @type {AuthenticationGeneralOptions}
+   * Recovery Methods Options
+   * @type {RecoveryMethodsOptions}
    * @memberof AuthenticationOptions
    */
-  general: AuthenticationGeneralOptions;
+  recovery_methods: RecoveryMethodsOptions;
+  /**
+   * Consent Options
+   * @type {ConsentOptions}
+   * @memberof AuthenticationOptions
+   */
+  consent: ConsentOptions;
+  /**
+   * Session Options
+   * @type {SessionOptions}
+   * @memberof AuthenticationOptions
+   */
+  session: SessionOptions;
   /**
    * Logout Options
    * @type {LogoutOptions}

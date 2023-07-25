@@ -17,6 +17,18 @@ export interface PatchSignUpOptionsRequest {
    */
   require_explicit_user_agreement?: boolean;
   /**
+   * Privacy Url
+   * @type {string}
+   * @memberof PatchSignUpOptionsRequest
+   */
+  privacy_url?: string | null;
+  /**
+   * Terms Url
+   * @type {string}
+   * @memberof PatchSignUpOptionsRequest
+   */
+  terms_url?: string | null;
+  /**
    * Send an email to user at the time of signup.
    * @type {boolean}
    * @memberof PatchSignUpOptionsRequest

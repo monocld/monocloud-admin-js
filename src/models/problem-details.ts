@@ -41,5 +41,5 @@ export interface ProblemDetails {
    * @type {{ [key: string]: string[]; }}
    * @memberof ProblemDetails
    */
-  errors?: { [key: string]: string[] } | null;
+  errors?: Record<string, string[]> | null;
 }

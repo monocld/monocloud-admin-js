@@ -45,7 +45,7 @@ export interface TrustStoreRevocationParsed {
    * @type {{ [key: string]: string; }}
    * @memberof TrustStoreRevocationParsed
    */
-  issuer: { [key: string]: string };
+  issuer: Record<string, string>;
   /**
    * Specifies the last update time (in Epoch) of the crl.
    * @type {number}

@@ -25,6 +25,18 @@ export interface SignUpOptions {
    */
   require_explicit_user_agreement: boolean;
   /**
+   * Privacy Url
+   * @type {string}
+   * @memberof SignUpOptions
+   */
+  privacy_url?: string | null;
+  /**
+   * Terms Url
+   * @type {string}
+   * @memberof SignUpOptions
+   */
+  terms_url?: string | null;
+  /**
    * Send an email to user at the time of signup.
    * @type {boolean}
    * @memberof SignUpOptions

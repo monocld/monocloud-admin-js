@@ -4,7 +4,8 @@
     "airbnb-base",
     "airbnb-typescript/base",
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
     "plugin:prettier/recommended"
   ],
   "plugins": [
@@ -36,6 +37,9 @@
       "warn"
     ],
     "import/prefer-default-export": [
+      "off"
+    ],
+    "@typescript-eslint/no-unsafe-member-access": [
       "off"
     ],
     "@typescript-eslint/no-unused-vars": [

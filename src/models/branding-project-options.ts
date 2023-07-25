@@ -11,12 +11,6 @@ export interface BrandingProjectOptions {
    */
   default_url?: string | null;
   /**
-   * Privacy Url
-   * @type {string}
-   * @memberof BrandingProjectOptions
-   */
-  privacy_url?: string | null;
-  /**
    * Support Url
    * @type {string}
    * @memberof BrandingProjectOptions
@@ -28,10 +22,4 @@ export interface BrandingProjectOptions {
    * @memberof BrandingProjectOptions
    */
   support_email?: string | null;
-  /**
-   * Terms Url
-   * @type {string}
-   * @memberof BrandingProjectOptions
-   */
-  terms_url?: string | null;
 }

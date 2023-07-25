@@ -227,7 +227,7 @@ export interface PatchClientRequest {
    * @type {{ [key: string]: any; }}
    * @memberof PatchClientRequest
    */
-  claims?: { [key: string]: any };
+  claims?: Record<string, any>;
   /**
    * Specifies whether client claims should be always included in the access tokens - or only for client credentials flow.
    * @type {boolean}
