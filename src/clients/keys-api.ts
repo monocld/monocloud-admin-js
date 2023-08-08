@@ -38,28 +38,6 @@ export class KeysClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Revoke Current Key
-   * @param {string} keyId Key Id
-   * @returns No Content
-   * @throws {MonoCloudException}
-   * @memberof KeysClient
-   *
-   */
-  public revokeKey(keyId: string): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'PUT' };
-
-    const url = `/keys/{keyId}/revoke`.replace(
-      `{${'keyId'}}`,
-      encodeURIComponent(String(keyId))
-    );
-
-    request.url = url;
-
-    return this.processRequest<null>(request);
-  }
-
-  /**
-   *
    * @summary Rotate Current Key
    * @param {string} keyId Key Id
    * @returns No Content
@@ -70,8 +48,30 @@ export class KeysClient extends MonoCloudClientBase {
   public rotateKey(keyId: string): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'PUT' };
 
-    const url = `/keys/{keyId}/rotate`.replace(
-      `{${'keyId'}}`,
+    const url = `/keys/{key_id}/rotate`.replace(
+      `{${'key_id'}}`,
+      encodeURIComponent(String(keyId))
+    );
+
+    request.url = url;
+
+    return this.processRequest<null>(request);
+  }
+
+  /**
+   *
+   * @summary Revoke Current Key
+   * @param {string} keyId Key Id
+   * @returns No Content
+   * @throws {MonoCloudException}
+   * @memberof KeysClient
+   *
+   */
+  public revokeKey(keyId: string): Promise<MonoCloudResponse<null>> {
+    const request: AxiosRequestConfig = { method: 'PUT' };
+
+    const url = `/keys/{key_id}/revoke`.replace(
+      `{${'key_id'}}`,
       encodeURIComponent(String(keyId))
     );
 

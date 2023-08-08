@@ -34,62 +34,6 @@ export class OptionsClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Get Branding Options
-   * @returns BrandingOptions - Success
-   * @throws {MonoCloudException}
-   * @memberof OptionsClient
-   *
-   */
-  public findBrandingOptions(): Promise<MonoCloudResponse<BrandingOptions>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
-    const url = `/options/branding`;
-
-    request.url = url;
-
-    return this.processRequest<BrandingOptions>(request);
-  }
-
-  /**
-   *
-   * @summary Get Communication Options
-   * @returns CommunicationOptions - Success
-   * @throws {MonoCloudException}
-   * @memberof OptionsClient
-   *
-   */
-  public findCommunicationOptions(): Promise<
-    MonoCloudResponse<CommunicationOptions>
-  > {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
-    const url = `/options/communication`;
-
-    request.url = url;
-
-    return this.processRequest<CommunicationOptions>(request);
-  }
-
-  /**
-   *
-   * @summary Get Mtls Options
-   * @returns MtlsOptions - Success
-   * @throws {MonoCloudException}
-   * @memberof OptionsClient
-   *
-   */
-  public findMtlsOptions(): Promise<MonoCloudResponse<MtlsOptions>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
-    const url = `/options/mtls`;
-
-    request.url = url;
-
-    return this.processRequest<MtlsOptions>(request);
-  }
-
-  /**
-   *
    * @summary Update Authentication Options
    * @param {PatchAuthenticationOptionsRequest} patchAuthenticationOptionsRequest Request Body
    * @returns AuthenticationOptions - Success
@@ -109,6 +53,24 @@ export class OptionsClient extends MonoCloudClientBase {
     request.data = JSON.stringify(patchAuthenticationOptionsRequest);
 
     return this.processRequest<AuthenticationOptions>(request);
+  }
+
+  /**
+   *
+   * @summary Get Branding Options
+   * @returns BrandingOptions - Success
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   *
+   */
+  public findBrandingOptions(): Promise<MonoCloudResponse<BrandingOptions>> {
+    const request: AxiosRequestConfig = { method: 'GET' };
+
+    const url = `/options/branding`;
+
+    request.url = url;
+
+    return this.processRequest<BrandingOptions>(request);
   }
 
   /**
@@ -136,6 +98,26 @@ export class OptionsClient extends MonoCloudClientBase {
 
   /**
    *
+   * @summary Get Communication Options
+   * @returns CommunicationOptions - Success
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   *
+   */
+  public findCommunicationOptions(): Promise<
+    MonoCloudResponse<CommunicationOptions>
+  > {
+    const request: AxiosRequestConfig = { method: 'GET' };
+
+    const url = `/options/communication`;
+
+    request.url = url;
+
+    return this.processRequest<CommunicationOptions>(request);
+  }
+
+  /**
+   *
    * @summary Update Communication Options
    * @param {PatchCommunicationOptionsRequest} patchCommunicationOptionsRequest Request Body
    * @returns CommunicationOptions - Success
@@ -155,6 +137,24 @@ export class OptionsClient extends MonoCloudClientBase {
     request.data = JSON.stringify(patchCommunicationOptionsRequest);
 
     return this.processRequest<CommunicationOptions>(request);
+  }
+
+  /**
+   *
+   * @summary Get Mtls Options
+   * @returns MtlsOptions - Success
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   *
+   */
+  public findMtlsOptions(): Promise<MonoCloudResponse<MtlsOptions>> {
+    const request: AxiosRequestConfig = { method: 'GET' };
+
+    const url = `/options/mtls`;
+
+    request.url = url;
+
+    return this.processRequest<MtlsOptions>(request);
   }
 
   /**

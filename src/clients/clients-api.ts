@@ -12,53 +12,24 @@ import {
 export class ClientsClient extends MonoCloudClientBase {
   /**
    *
-   * @summary Create a Client
-   * @param {CreateClientRequest} createClientRequest Request Body
-   * @returns Client - Created
+   * @summary Find a Client by Id
+   * @param {string} id Client Id
+   * @returns Client - Success
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
    */
-  public createClient(
-    createClientRequest: CreateClientRequest
-  ): Promise<MonoCloudResponse<Client>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
+  public findClientById(id: string): Promise<MonoCloudResponse<Client>> {
+    const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/clients`;
-
-    request.url = url;
-
-    request.data = JSON.stringify(createClientRequest);
-
-    return this.processRequest<Client>(request);
-  }
-
-  /**
-   *
-   * @summary Create a Client Secret
-   * @param {string} clientId Client Id
-   * @param {CreateSecretRequest} createSecretRequest Request Body
-   * @returns Secret - Created
-   * @throws {MonoCloudException}
-   * @memberof ClientsClient
-   *
-   */
-  public createClientSecret(
-    clientId: string,
-    createSecretRequest: CreateSecretRequest
-  ): Promise<MonoCloudResponse<Secret>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
-    const url = `/clients/{clientId}/secrets`.replace(
-      `{${'clientId'}}`,
-      encodeURIComponent(String(clientId))
+    const url = `/clients/{id}`.replace(
+      `{${'id'}}`,
+      encodeURIComponent(String(id))
     );
 
     request.url = url;
 
-    request.data = JSON.stringify(createSecretRequest);
-
-    return this.processRequest<Secret>(request);
+    return this.processRequest<Client>(request);
   }
 
   /**
@@ -85,40 +56,19 @@ export class ClientsClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Delete a Client Secret
-   * @param {string} clientId Client Id
-   * @param {string} secretId Secret Id
-   * @returns No Content
-   * @throws {MonoCloudException}
-   * @memberof ClientsClient
-   *
-   */
-  public deleteClientSecret(
-    clientId: string,
-    secretId: string
-  ): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'DELETE' };
-
-    const url = `/clients/{clientId}/secrets/{secretId}`
-      .replace(`{${'clientId'}}`, encodeURIComponent(String(clientId)))
-      .replace(`{${'secretId'}}`, encodeURIComponent(String(secretId)));
-
-    request.url = url;
-
-    return this.processRequest<null>(request);
-  }
-
-  /**
-   *
-   * @summary Find a Client by Id
+   * @summary Update a Client
    * @param {string} id Client Id
+   * @param {PatchClientRequest} patchClientRequest Request Body
    * @returns Client - Success
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
    */
-  public findClientById(id: string): Promise<MonoCloudResponse<Client>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
+  public patchClient(
+    id: string,
+    patchClientRequest: PatchClientRequest
+  ): Promise<MonoCloudResponse<Client>> {
+    const request: AxiosRequestConfig = { method: 'PATCH' };
 
     const url = `/clients/{id}`.replace(
       `{${'id'}}`,
@@ -126,6 +76,8 @@ export class ClientsClient extends MonoCloudClientBase {
     );
 
     request.url = url;
+
+    request.data = JSON.stringify(patchClientRequest);
 
     return this.processRequest<Client>(request);
   }
@@ -146,13 +98,38 @@ export class ClientsClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<SecretValue>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/clients/{clientId}/secrets/{secretId}`
-      .replace(`{${'clientId'}}`, encodeURIComponent(String(clientId)))
-      .replace(`{${'secretId'}}`, encodeURIComponent(String(secretId)));
+    const url = `/clients/{client_id}/secrets/{secret_id}`
+      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
+      .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)));
 
     request.url = url;
 
     return this.processRequest<SecretValue>(request);
+  }
+
+  /**
+   *
+   * @summary Delete a Client Secret
+   * @param {string} clientId Client Id
+   * @param {string} secretId Secret Id
+   * @returns No Content
+   * @throws {MonoCloudException}
+   * @memberof ClientsClient
+   *
+   */
+  public deleteClientSecret(
+    clientId: string,
+    secretId: string
+  ): Promise<MonoCloudResponse<null>> {
+    const request: AxiosRequestConfig = { method: 'DELETE' };
+
+    const url = `/clients/{client_id}/secrets/{secret_id}`
+      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
+      .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)));
+
+    request.url = url;
+
+    return this.processRequest<null>(request);
   }
 
   /**
@@ -190,29 +167,52 @@ export class ClientsClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Update a Client
-   * @param {string} id Client Id
-   * @param {PatchClientRequest} patchClientRequest Request Body
-   * @returns Client - Success
+   * @summary Create a Client
+   * @param {CreateClientRequest} createClientRequest Request Body
+   * @returns Client - Created
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
    */
-  public patchClient(
-    id: string,
-    patchClientRequest: PatchClientRequest
+  public createClient(
+    createClientRequest: CreateClientRequest
   ): Promise<MonoCloudResponse<Client>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
+    const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/clients/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+    const url = `/clients`;
+
+    request.url = url;
+
+    request.data = JSON.stringify(createClientRequest);
+
+    return this.processRequest<Client>(request);
+  }
+
+  /**
+   *
+   * @summary Create a Client Secret
+   * @param {string} clientId Client Id
+   * @param {CreateSecretRequest} createSecretRequest Request Body
+   * @returns Secret - Created
+   * @throws {MonoCloudException}
+   * @memberof ClientsClient
+   *
+   */
+  public createClientSecret(
+    clientId: string,
+    createSecretRequest: CreateSecretRequest
+  ): Promise<MonoCloudResponse<Secret>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/clients/{client_id}/secrets`.replace(
+      `{${'client_id'}}`,
+      encodeURIComponent(String(clientId))
     );
 
     request.url = url;
 
-    request.data = JSON.stringify(patchClientRequest);
+    request.data = JSON.stringify(createSecretRequest);
 
-    return this.processRequest<Client>(request);
+    return this.processRequest<Secret>(request);
   }
 }

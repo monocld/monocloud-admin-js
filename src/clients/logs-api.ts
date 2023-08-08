@@ -5,28 +5,6 @@ import { Log, LogSummary } from '../models';
 export class LogsClient extends MonoCloudClientBase {
   /**
    *
-   * @summary Find a Log by Id
-   * @param {string} id Log Id
-   * @returns Log - Success
-   * @throws {MonoCloudException}
-   * @memberof LogsClient
-   *
-   */
-  public findLogById(id: string): Promise<MonoCloudResponse<Log>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
-    const url = `/logs/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
-    );
-
-    request.url = url;
-
-    return this.processRequest<Log>(request);
-  }
-
-  /**
-   *
    * @summary Get all Log Summary
    * @param {number} [page]
    * @param {number} [size]
@@ -56,5 +34,27 @@ export class LogsClient extends MonoCloudClientBase {
     }
 
     return this.processRequest<LogSummary[]>(request);
+  }
+
+  /**
+   *
+   * @summary Find a Log by Id
+   * @param {string} id Log Id
+   * @returns Log - Success
+   * @throws {MonoCloudException}
+   * @memberof LogsClient
+   *
+   */
+  public findLogById(id: string): Promise<MonoCloudResponse<Log>> {
+    const request: AxiosRequestConfig = { method: 'GET' };
+
+    const url = `/logs/{id}`.replace(
+      `{${'id'}}`,
+      encodeURIComponent(String(id))
+    );
+
+    request.url = url;
+
+    return this.processRequest<Log>(request);
   }
 }

@@ -4,8 +4,8 @@
     "airbnb-base",
     "airbnb-typescript/base",
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended-type-checked",
-    "plugin:@typescript-eslint/stylistic-type-checked",
+    "plugin:@typescript-eslint/strict",
+    "plugin:@typescript-eslint/stylistic",
     "plugin:prettier/recommended"
   ],
   "plugins": [
@@ -14,7 +14,7 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": true
   },
   "rules": {
     "unused-imports/no-unused-imports": "error",
@@ -52,6 +52,9 @@
       "error"
     ],
     "@typescript-eslint/no-explicit-any": [
+      "off"
+    ],
+    "@typescript-eslint/prefer-for-of": [
       "off"
     ]
   }
