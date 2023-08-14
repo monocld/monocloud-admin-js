@@ -135,8 +135,8 @@ export class ClientsClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get all the Clients
-   * @param {number} [page]
-   * @param {number} [size]
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
    * @returns Client[] - Success
    * @throws {MonoCloudException}
    * @memberof ClientsClient

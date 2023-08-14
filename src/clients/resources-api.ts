@@ -366,8 +366,8 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get all the Api Resources
-   * @param {number} [page]
-   * @param {number} [size]
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
    * @returns ApiResource[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
@@ -422,8 +422,8 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get all the Api Scopes
-   * @param {number} [page]
-   * @param {number} [size]
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
    * @returns ApiScope[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
@@ -478,8 +478,8 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get all the Identity Resources
-   * @param {number} [page]
-   * @param {number} [size]
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
    * @returns IdentityResource[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
@@ -534,8 +534,8 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get all the Claim Resources
-   * @param {number} [page]
-   * @param {number} [size]
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
    * @returns ClaimResource[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient

@@ -6,8 +6,8 @@ export class KeysClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get All Valid Keys
-   * @param {number} [page]
-   * @param {number} [size]
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
    * @returns KeyMaterial[] - Success
    * @throws {MonoCloudException}
    * @memberof KeysClient

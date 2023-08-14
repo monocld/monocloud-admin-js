@@ -6,8 +6,8 @@ export class LogsClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get all Log Summary
-   * @param {number} [page]
-   * @param {number} [size]
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
    * @returns LogSummary[] - Success
    * @throws {MonoCloudException}
    * @memberof LogsClient
