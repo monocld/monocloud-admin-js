@@ -29,6 +29,10 @@ export const Authenticators = {
    *
    */
   Facebook: 'facebook',
+  /**
+   *
+   */
+  Microsoft: 'microsoft',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

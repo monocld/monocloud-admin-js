@@ -2,6 +2,7 @@ import { AuthenticatorsAppleOptions } from './authenticators-apple-options';
 import { AuthenticatorsEmailOptions } from './authenticators-email-options';
 import { AuthenticatorsFacebookOptions } from './authenticators-facebook-options';
 import { AuthenticatorsGoogleOptions } from './authenticators-google-options';
+import { AuthenticatorsMicrosoftOptions } from './authenticators-microsoft-options';
 import { AuthenticatorsPasswordOptions } from './authenticators-password-options';
 import { AuthenticatorsPhoneOptions } from './authenticators-phone-options';
 import { ExternalAuthenticators } from './external-authenticators';
@@ -60,4 +61,10 @@ export interface AuthenticatorsOptions {
    * @memberof AuthenticatorsOptions
    */
   facebook?: AuthenticatorsFacebookOptions | null;
+  /**
+   * Microsoft Authenticator Settings
+   * @type {AuthenticatorsMicrosoftOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  microsoft?: AuthenticatorsMicrosoftOptions | null;
 }
