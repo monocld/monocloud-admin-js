@@ -40,10 +40,4 @@ export interface PatchAuthenticatorsMicrosoftOptionsRequest {
    * @memberof PatchAuthenticatorsMicrosoftOptionsRequest
    */
   scopes?: string[] | null;
-  /**
-   * Specifies if we should trust the email verified scope received from the external provider.
-   * @type {boolean}
-   * @memberof PatchAuthenticatorsMicrosoftOptionsRequest
-   */
-  trust_email_verified_scope?: boolean;
 }
