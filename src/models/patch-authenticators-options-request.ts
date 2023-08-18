@@ -2,6 +2,7 @@ import { ExternalAuthenticators } from './external-authenticators';
 import { PatchAuthenticatorsAppleOptionsRequest } from './patch-authenticators-apple-options-request';
 import { PatchAuthenticatorsEmailOptionsRequest } from './patch-authenticators-email-options-request';
 import { PatchAuthenticatorsFacebookOptionsRequest } from './patch-authenticators-facebook-options-request';
+import { PatchAuthenticatorsGitHubOptionsRequest } from './patch-authenticators-git-hub-options-request';
 import { PatchAuthenticatorsGoogleOptionsRequest } from './patch-authenticators-google-options-request';
 import { PatchAuthenticatorsMicrosoftOptionsRequest } from './patch-authenticators-microsoft-options-request';
 import { PatchAuthenticatorsPasswordOptionsRequest } from './patch-authenticators-password-options-request';
@@ -67,4 +68,10 @@ export interface PatchAuthenticatorsOptionsRequest {
    * @memberof PatchAuthenticatorsOptionsRequest
    */
   microsoft?: PatchAuthenticatorsMicrosoftOptionsRequest | null;
+  /**
+   * GitHub Authenticator Settings
+   * @type {PatchAuthenticatorsGitHubOptionsRequest}
+   * @memberof PatchAuthenticatorsOptionsRequest
+   */
+  github?: PatchAuthenticatorsGitHubOptionsRequest | null;
 }

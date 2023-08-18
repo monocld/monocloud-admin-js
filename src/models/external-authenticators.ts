@@ -21,6 +21,10 @@ export const ExternalAuthenticators = {
    *
    */
   Microsoft: 'microsoft',
+  /**
+   *
+   */
+  Github: 'github',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

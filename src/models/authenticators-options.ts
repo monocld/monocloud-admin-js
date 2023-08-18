@@ -1,6 +1,7 @@
 import { AuthenticatorsAppleOptions } from './authenticators-apple-options';
 import { AuthenticatorsEmailOptions } from './authenticators-email-options';
 import { AuthenticatorsFacebookOptions } from './authenticators-facebook-options';
+import { AuthenticatorsGitHubOptions } from './authenticators-git-hub-options';
 import { AuthenticatorsGoogleOptions } from './authenticators-google-options';
 import { AuthenticatorsMicrosoftOptions } from './authenticators-microsoft-options';
 import { AuthenticatorsPasswordOptions } from './authenticators-password-options';
@@ -67,4 +68,10 @@ export interface AuthenticatorsOptions {
    * @memberof AuthenticatorsOptions
    */
   microsoft?: AuthenticatorsMicrosoftOptions | null;
+  /**
+   * GitHub Authenticator Settings
+   * @type {AuthenticatorsGitHubOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  github?: AuthenticatorsGitHubOptions | null;
 }
