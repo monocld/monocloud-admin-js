@@ -40,4 +40,10 @@ export interface PatchAuthenticatorsFacebookOptionsRequest {
    * @memberof PatchAuthenticatorsFacebookOptionsRequest
    */
   scopes?: string[] | null;
+  /**
+   * Specifies if we should treat the email received from the external provider as verified.
+   * @type {boolean}
+   * @memberof PatchAuthenticatorsFacebookOptionsRequest
+   */
+  treat_email_as_verified?: boolean;
 }

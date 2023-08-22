@@ -40,4 +40,10 @@ export interface PatchAuthenticatorsMicrosoftOptionsRequest {
    * @memberof PatchAuthenticatorsMicrosoftOptionsRequest
    */
   scopes?: string[] | null;
+  /**
+   * Specifies if we should treat the email received from the external provider as verified.
+   * @type {boolean}
+   * @memberof PatchAuthenticatorsMicrosoftOptionsRequest
+   */
+  treat_email_as_verified?: boolean;
 }

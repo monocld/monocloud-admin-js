@@ -40,4 +40,10 @@ export interface AuthenticatorsFacebookOptions {
    * @memberof AuthenticatorsFacebookOptions
    */
   scopes?: string[] | null;
+  /**
+   * Specifies if we should treat the email received from the external provider as verified.
+   * @type {boolean}
+   * @memberof AuthenticatorsFacebookOptions
+   */
+  treat_email_as_verified: boolean;
 }
