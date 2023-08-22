@@ -8,6 +8,7 @@ import { PatchAuthenticatorsGoogleOptionsRequest } from './patch-authenticators-
 import { PatchAuthenticatorsMicrosoftOptionsRequest } from './patch-authenticators-microsoft-options-request';
 import { PatchAuthenticatorsPasswordOptionsRequest } from './patch-authenticators-password-options-request';
 import { PatchAuthenticatorsPhoneOptionsRequest } from './patch-authenticators-phone-options-request';
+import { PatchAuthenticatorsTwitterOptionsRequest } from './patch-authenticators-twitter-options-request';
 
 /**
  * The Patch Authenticators Options Request class
@@ -81,4 +82,10 @@ export interface PatchAuthenticatorsOptionsRequest {
    * @memberof PatchAuthenticatorsOptionsRequest
    */
   gitlab?: PatchAuthenticatorsGitLabOptionsRequest | null;
+  /**
+   * Twitter Authenticator Settings
+   * @type {PatchAuthenticatorsTwitterOptionsRequest}
+   * @memberof PatchAuthenticatorsOptionsRequest
+   */
+  twitter?: PatchAuthenticatorsTwitterOptionsRequest | null;
 }
