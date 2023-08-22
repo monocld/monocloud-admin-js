@@ -3,6 +3,7 @@ import { PatchAuthenticatorsAppleOptionsRequest } from './patch-authenticators-a
 import { PatchAuthenticatorsEmailOptionsRequest } from './patch-authenticators-email-options-request';
 import { PatchAuthenticatorsFacebookOptionsRequest } from './patch-authenticators-facebook-options-request';
 import { PatchAuthenticatorsGitHubOptionsRequest } from './patch-authenticators-git-hub-options-request';
+import { PatchAuthenticatorsGitLabOptionsRequest } from './patch-authenticators-git-lab-options-request';
 import { PatchAuthenticatorsGoogleOptionsRequest } from './patch-authenticators-google-options-request';
 import { PatchAuthenticatorsMicrosoftOptionsRequest } from './patch-authenticators-microsoft-options-request';
 import { PatchAuthenticatorsPasswordOptionsRequest } from './patch-authenticators-password-options-request';
@@ -74,4 +75,10 @@ export interface PatchAuthenticatorsOptionsRequest {
    * @memberof PatchAuthenticatorsOptionsRequest
    */
   github?: PatchAuthenticatorsGitHubOptionsRequest | null;
+  /**
+   * GitLab Authenticator Settings
+   * @type {PatchAuthenticatorsGitLabOptionsRequest}
+   * @memberof PatchAuthenticatorsOptionsRequest
+   */
+  gitlab?: PatchAuthenticatorsGitLabOptionsRequest | null;
 }

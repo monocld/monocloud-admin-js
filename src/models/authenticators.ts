@@ -37,6 +37,10 @@ export const Authenticators = {
    *
    */
   Github: 'github',
+  /**
+   *
+   */
+  Gitlab: 'gitlab',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
