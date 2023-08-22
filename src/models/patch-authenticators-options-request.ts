@@ -1,5 +1,6 @@
 import { ExternalAuthenticators } from './external-authenticators';
 import { PatchAuthenticatorsAppleOptionsRequest } from './patch-authenticators-apple-options-request';
+import { PatchAuthenticatorsDiscordOptionsRequest } from './patch-authenticators-discord-options-request';
 import { PatchAuthenticatorsEmailOptionsRequest } from './patch-authenticators-email-options-request';
 import { PatchAuthenticatorsFacebookOptionsRequest } from './patch-authenticators-facebook-options-request';
 import { PatchAuthenticatorsGitHubOptionsRequest } from './patch-authenticators-git-hub-options-request';
@@ -81,4 +82,10 @@ export interface PatchAuthenticatorsOptionsRequest {
    * @memberof PatchAuthenticatorsOptionsRequest
    */
   gitlab?: PatchAuthenticatorsGitLabOptionsRequest | null;
+  /**
+   * Discord Authenticator Settings
+   * @type {PatchAuthenticatorsDiscordOptionsRequest}
+   * @memberof PatchAuthenticatorsOptionsRequest
+   */
+  discord?: PatchAuthenticatorsDiscordOptionsRequest | null;
 }

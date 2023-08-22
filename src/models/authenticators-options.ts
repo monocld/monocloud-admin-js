@@ -1,4 +1,5 @@
 import { AuthenticatorsAppleOptions } from './authenticators-apple-options';
+import { AuthenticatorsDiscordOptions } from './authenticators-discord-options';
 import { AuthenticatorsEmailOptions } from './authenticators-email-options';
 import { AuthenticatorsFacebookOptions } from './authenticators-facebook-options';
 import { AuthenticatorsGitHubOptions } from './authenticators-git-hub-options';
@@ -81,4 +82,10 @@ export interface AuthenticatorsOptions {
    * @memberof AuthenticatorsOptions
    */
   gitlab?: AuthenticatorsGitLabOptions | null;
+  /**
+   * Discord Authenticator Settings
+   * @type {AuthenticatorsDiscordOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  discord?: AuthenticatorsDiscordOptions | null;
 }
