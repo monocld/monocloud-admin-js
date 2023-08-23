@@ -8,6 +8,7 @@ import { AuthenticatorsGoogleOptions } from './authenticators-google-options';
 import { AuthenticatorsMicrosoftOptions } from './authenticators-microsoft-options';
 import { AuthenticatorsPasswordOptions } from './authenticators-password-options';
 import { AuthenticatorsPhoneOptions } from './authenticators-phone-options';
+import { AuthenticatorsTwitterOptions } from './authenticators-twitter-options';
 import { ExternalAuthenticators } from './external-authenticators';
 
 /**
@@ -88,4 +89,10 @@ export interface AuthenticatorsOptions {
    * @memberof AuthenticatorsOptions
    */
   discord?: AuthenticatorsDiscordOptions | null;
+  /**
+   * Twitter Authenticator Settings
+   * @type {AuthenticatorsTwitterOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  twitter?: AuthenticatorsTwitterOptions | null;
 }
