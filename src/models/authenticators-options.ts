@@ -5,6 +5,7 @@ import { AuthenticatorsFacebookOptions } from './authenticators-facebook-options
 import { AuthenticatorsGitHubOptions } from './authenticators-git-hub-options';
 import { AuthenticatorsGitLabOptions } from './authenticators-git-lab-options';
 import { AuthenticatorsGoogleOptions } from './authenticators-google-options';
+import { AuthenticatorsLinkedInOptions } from './authenticators-linked-in-options';
 import { AuthenticatorsMicrosoftOptions } from './authenticators-microsoft-options';
 import { AuthenticatorsPasswordOptions } from './authenticators-password-options';
 import { AuthenticatorsPhoneOptions } from './authenticators-phone-options';
@@ -95,4 +96,10 @@ export interface AuthenticatorsOptions {
    * @memberof AuthenticatorsOptions
    */
   twitter?: AuthenticatorsTwitterOptions | null;
+  /**
+   * LinkedIn Authenticator Settings
+   * @type {AuthenticatorsLinkedInOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  linkedin?: AuthenticatorsLinkedInOptions | null;
 }

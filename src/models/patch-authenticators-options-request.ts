@@ -6,6 +6,7 @@ import { PatchAuthenticatorsFacebookOptionsRequest } from './patch-authenticator
 import { PatchAuthenticatorsGitHubOptionsRequest } from './patch-authenticators-git-hub-options-request';
 import { PatchAuthenticatorsGitLabOptionsRequest } from './patch-authenticators-git-lab-options-request';
 import { PatchAuthenticatorsGoogleOptionsRequest } from './patch-authenticators-google-options-request';
+import { PatchAuthenticatorsLinkedInOptionsRequest } from './patch-authenticators-linked-in-options-request';
 import { PatchAuthenticatorsMicrosoftOptionsRequest } from './patch-authenticators-microsoft-options-request';
 import { PatchAuthenticatorsPasswordOptionsRequest } from './patch-authenticators-password-options-request';
 import { PatchAuthenticatorsPhoneOptionsRequest } from './patch-authenticators-phone-options-request';
@@ -95,4 +96,10 @@ export interface PatchAuthenticatorsOptionsRequest {
    * @memberof PatchAuthenticatorsOptionsRequest
    */
   twitter?: PatchAuthenticatorsTwitterOptionsRequest | null;
+  /**
+   * LinkedIn Authenticator Settings
+   * @type {PatchAuthenticatorsLinkedInOptionsRequest}
+   * @memberof PatchAuthenticatorsOptionsRequest
+   */
+  linkedin?: PatchAuthenticatorsLinkedInOptionsRequest | null;
 }
