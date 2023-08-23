@@ -33,6 +33,10 @@ export const ExternalAuthenticators = {
    *
    */
   Discord: 'discord',
+  /**
+   *
+   */
+  Twitter: 'twitter',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

@@ -45,6 +45,10 @@ export const Authenticators = {
    *
    */
   Discord: 'discord',
+  /**
+   *
+   */
+  Twitter: 'twitter',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
