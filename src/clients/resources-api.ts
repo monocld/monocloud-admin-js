@@ -368,6 +368,8 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Get all the Api Resources
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
+   * @param {string} [filter] Value by which the resources needs to be filtered.
+   * @param {string} [sort] Value by results will be sorted.
    * @returns ApiResource[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
@@ -375,7 +377,9 @@ export class ResourcesClient extends MonoCloudClientBase {
    */
   public getAllApiResources(
     page?: number,
-    size?: number
+    size?: number,
+    filter?: string,
+    sort?: string
   ): Promise<MonoCloudResponse<ApiResource[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
@@ -391,6 +395,14 @@ export class ResourcesClient extends MonoCloudClientBase {
 
     if (size !== undefined && size !== null) {
       request.params.size = String(size);
+    }
+
+    if (filter !== undefined && filter !== null) {
+      request.params.filter = String(filter);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.params.sort = String(sort);
     }
 
     return this.processRequest<ApiResource[]>(request);
@@ -424,6 +436,8 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Get all the Api Scopes
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
+   * @param {string} [filter] Value by which the resources needs to be filtered.
+   * @param {string} [sort] Value by results will be sorted.
    * @returns ApiScope[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
@@ -431,7 +445,9 @@ export class ResourcesClient extends MonoCloudClientBase {
    */
   public getAllApiScopes(
     page?: number,
-    size?: number
+    size?: number,
+    filter?: string,
+    sort?: string
   ): Promise<MonoCloudResponse<ApiScope[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
@@ -447,6 +463,14 @@ export class ResourcesClient extends MonoCloudClientBase {
 
     if (size !== undefined && size !== null) {
       request.params.size = String(size);
+    }
+
+    if (filter !== undefined && filter !== null) {
+      request.params.filter = String(filter);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.params.sort = String(sort);
     }
 
     return this.processRequest<ApiScope[]>(request);
@@ -480,6 +504,8 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Get all the Identity Resources
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
+   * @param {string} [filter] Value by which the resources needs to be filtered.
+   * @param {string} [sort] Value by results will be sorted.
    * @returns IdentityResource[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
@@ -487,7 +513,9 @@ export class ResourcesClient extends MonoCloudClientBase {
    */
   public getAllIdentityResources(
     page?: number,
-    size?: number
+    size?: number,
+    filter?: string,
+    sort?: string
   ): Promise<MonoCloudResponse<IdentityResource[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
@@ -503,6 +531,14 @@ export class ResourcesClient extends MonoCloudClientBase {
 
     if (size !== undefined && size !== null) {
       request.params.size = String(size);
+    }
+
+    if (filter !== undefined && filter !== null) {
+      request.params.filter = String(filter);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.params.sort = String(sort);
     }
 
     return this.processRequest<IdentityResource[]>(request);
@@ -536,6 +572,8 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @summary Get all the Claim Resources
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
+   * @param {string} [filter] Value by which the resources needs to be filtered.
+   * @param {string} [sort] Value by results will be sorted.
    * @returns ClaimResource[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
@@ -543,7 +581,9 @@ export class ResourcesClient extends MonoCloudClientBase {
    */
   public getAllClaimResources(
     page?: number,
-    size?: number
+    size?: number,
+    filter?: string,
+    sort?: string
   ): Promise<MonoCloudResponse<ClaimResource[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
@@ -559,6 +599,14 @@ export class ResourcesClient extends MonoCloudClientBase {
 
     if (size !== undefined && size !== null) {
       request.params.size = String(size);
+    }
+
+    if (filter !== undefined && filter !== null) {
+      request.params.filter = String(filter);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.params.sort = String(sort);
     }
 
     return this.processRequest<ClaimResource[]>(request);
