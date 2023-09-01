@@ -25,44 +25,20 @@ export class MonoCloudAdminClient {
 
   public readonly trustStore: TrustStoreClient;
 
-  private constructor(
-    options: MonoCloudConfig,
-    baseDomain: string,
-    instance?: AxiosInstance
-  ) {
-    this.clients = new ClientsClient(
-      options,
-      `https://${baseDomain}`,
-      instance
-    );
+  private constructor(options: MonoCloudConfig, instance?: AxiosInstance) {
+    this.clients = new ClientsClient(options, instance);
 
-    this.keys = new KeysClient(options, `https://${baseDomain}`, instance);
+    this.keys = new KeysClient(options, instance);
 
-    this.logs = new LogsClient(options, `https://${baseDomain}`, instance);
+    this.logs = new LogsClient(options, instance);
 
-    this.options = new OptionsClient(
-      options,
-      `https://${baseDomain}`,
-      instance
-    );
+    this.options = new OptionsClient(options, instance);
 
-    this.resources = new ResourcesClient(
-      options,
-      `https://${baseDomain}`,
-      instance
-    );
+    this.resources = new ResourcesClient(options, instance);
 
-    this.tenants = new TenantsClient(
-      options,
-      `https://${baseDomain}`,
-      instance
-    );
+    this.tenants = new TenantsClient(options, instance);
 
-    this.trustStore = new TrustStoreClient(
-      options,
-      `https://${baseDomain}`,
-      instance
-    );
+    this.trustStore = new TrustStoreClient(options, instance);
   }
 
   public static init(
@@ -72,8 +48,8 @@ export class MonoCloudAdminClient {
     const envTimeout = parseInt(process.env.MC_MANAGE_TIMEOUT ?? '', 10);
 
     const opt: MonoCloudConfig = {
+      domain: options?.domain ?? process.env.MC_DOMAIN ?? '',
       apiKey: options?.apiKey ?? process.env.MC_MANAGE_API_KEY ?? '',
-      tenantId: options?.tenantId ?? process.env.MC_TENANT_ID ?? '',
       config: options?.config ?? {
         retry: options?.config?.retry ?? process.env.MC_MANAGE_RETRY === 'true',
         timeout:
@@ -84,10 +60,6 @@ export class MonoCloudAdminClient {
       },
     };
 
-    return new MonoCloudAdminClient(
-      opt,
-      process.env.MC_MANAGE_BASE_DOMAIN ?? 'api.monocloud.com',
-      instance
-    );
+    return new MonoCloudAdminClient(opt, instance);
   }
 }
