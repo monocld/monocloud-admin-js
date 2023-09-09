@@ -6,7 +6,6 @@ import {
   LogsClient,
   OptionsClient,
   ResourcesClient,
-  TenantsClient,
   TrustStoreClient,
 } from './clients';
 
@@ -21,8 +20,6 @@ export class MonoCloudAdminClient {
 
   public readonly resources: ResourcesClient;
 
-  public readonly tenants: TenantsClient;
-
   public readonly trustStore: TrustStoreClient;
 
   private constructor(options: MonoCloudConfig, instance?: AxiosInstance) {
@@ -35,8 +32,6 @@ export class MonoCloudAdminClient {
     this.options = new OptionsClient(options, instance);
 
     this.resources = new ResourcesClient(options, instance);
-
-    this.tenants = new TenantsClient(options, instance);
 
     this.trustStore = new TrustStoreClient(options, instance);
   }
