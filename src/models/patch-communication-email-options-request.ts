@@ -18,4 +18,16 @@ export interface PatchCommunicationEmailOptionsRequest {
    * @memberof PatchCommunicationEmailOptionsRequest
    */
   use_internal_keys?: boolean;
+  /**
+   * From Email Address
+   * @type {string}
+   * @memberof PatchCommunicationEmailOptionsRequest
+   */
+  from_email?: string | null;
+  /**
+   * From Name
+   * @type {string}
+   * @memberof PatchCommunicationEmailOptionsRequest
+   */
+  from_name?: string | null;
 }

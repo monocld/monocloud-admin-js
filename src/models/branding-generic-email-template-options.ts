@@ -11,18 +11,6 @@ export interface BrandingGenericEmailTemplateOptions {
    */
   use_custom_template: boolean;
   /**
-   * From Email Address
-   * @type {string}
-   * @memberof BrandingGenericEmailTemplateOptions
-   */
-  from_email?: string | null;
-  /**
-   * From Name
-   * @type {string}
-   * @memberof BrandingGenericEmailTemplateOptions
-   */
-  from_name?: string | null;
-  /**
    * Specifies the text to be used as the email subject
    * @type {string}
    * @memberof BrandingGenericEmailTemplateOptions

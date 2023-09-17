@@ -11,18 +11,6 @@ export interface PatchBrandingGenericCustomEmailOptionsRequest {
    */
   use_custom_template?: boolean;
   /**
-   * From Email Address
-   * @type {string}
-   * @memberof PatchBrandingGenericCustomEmailOptionsRequest
-   */
-  from_email?: string | null;
-  /**
-   * From Name
-   * @type {string}
-   * @memberof PatchBrandingGenericCustomEmailOptionsRequest
-   */
-  from_name?: string | null;
-  /**
    * Specifies the text to be used as the email subject
    * @type {string}
    * @memberof PatchBrandingGenericCustomEmailOptionsRequest

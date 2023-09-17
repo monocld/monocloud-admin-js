@@ -18,4 +18,22 @@ export interface CommunicationEmailOptions {
    * @memberof CommunicationEmailOptions
    */
   use_internal_keys: boolean;
+  /**
+   * Default email address from where the emails will be sent.
+   * @type {string}
+   * @memberof CommunicationEmailOptions
+   */
+  default_from_email: string;
+  /**
+   * From Email Address
+   * @type {string}
+   * @memberof CommunicationEmailOptions
+   */
+  from_email?: string | null;
+  /**
+   * From Name
+   * @type {string}
+   * @memberof CommunicationEmailOptions
+   */
+  from_name?: string | null;
 }
