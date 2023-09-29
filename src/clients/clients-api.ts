@@ -137,6 +137,8 @@ export class ClientsClient extends MonoCloudClientBase {
    * @summary Get all the Clients
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
+   * @param {string} [filter] Value by which the resources needs to be filtered.
+   * @param {string} [sort] Value by results will be sorted.
    * @returns Client[] - Success
    * @throws {MonoCloudException}
    * @memberof ClientsClient
@@ -144,7 +146,9 @@ export class ClientsClient extends MonoCloudClientBase {
    */
   public getAllClients(
     page?: number,
-    size?: number
+    size?: number,
+    filter?: string,
+    sort?: string
   ): Promise<MonoCloudResponse<Client[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
@@ -160,6 +164,14 @@ export class ClientsClient extends MonoCloudClientBase {
 
     if (size !== undefined && size !== null) {
       request.params.size = String(size);
+    }
+
+    if (filter !== undefined && filter !== null) {
+      request.params.filter = String(filter);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.params.sort = String(sort);
     }
 
     return this.processRequest<Client[]>(request);

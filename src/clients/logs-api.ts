@@ -8,6 +8,8 @@ export class LogsClient extends MonoCloudClientBase {
    * @summary Get all Log Summary
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
+   * @param {string} [filter] Value by which the resources needs to be filtered.
+   * @param {string} [sort] Value by results will be sorted.
    * @returns LogSummary[] - Success
    * @throws {MonoCloudException}
    * @memberof LogsClient
@@ -15,7 +17,9 @@ export class LogsClient extends MonoCloudClientBase {
    */
   public getAllLogs(
     page?: number,
-    size?: number
+    size?: number,
+    filter?: string,
+    sort?: string
   ): Promise<MonoCloudResponse<LogSummary[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
@@ -31,6 +35,14 @@ export class LogsClient extends MonoCloudClientBase {
 
     if (size !== undefined && size !== null) {
       request.params.size = String(size);
+    }
+
+    if (filter !== undefined && filter !== null) {
+      request.params.filter = String(filter);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.params.sort = String(sort);
     }
 
     return this.processRequest<LogSummary[]>(request);
