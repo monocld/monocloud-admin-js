@@ -100,6 +100,14 @@ export const LogEventIds = {
   /**
    *
    */
+  UserSessionExtended: 'user_session_extended',
+  /**
+   *
+   */
+  UserSessionMetadataUpdated: 'user_session_metadata_updated',
+  /**
+   *
+   */
   UserSignUpSuccess: 'user_sign_up_success',
   /**
    *

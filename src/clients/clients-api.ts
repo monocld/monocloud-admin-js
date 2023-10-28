@@ -137,8 +137,8 @@ export class ClientsClient extends MonoCloudClientBase {
    * @summary Get all the Clients
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
-   * @param {string} [filter] Value by which the resources needs to be filtered.
-   * @param {string} [sort] Value by results will be sorted.
+   * @param {string} [filter] Value by which the clients needs to be filtered.
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'client_name\', and \'creation_time\'
    * @returns Client[] - Success
    * @throws {MonoCloudException}
    * @memberof ClientsClient

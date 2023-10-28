@@ -1,0 +1,67 @@
+/**
+ * The Branding Page Layout Options response class
+ * @export
+ * @interface BrandingPageLayoutOptions
+ */
+export interface BrandingPageLayoutOptions {
+  /**
+   * Specifies the background of the page
+   * @type {string}
+   * @memberof BrandingPageLayoutOptions
+   */
+  background: string;
+  /**
+   * Specifies the size of the card (in Pixels)
+   * @type {number}
+   * @memberof BrandingPageLayoutOptions
+   */
+  card_width: number;
+  /**
+   * Specifies position of the card relative to the page
+   * @type {string}
+   * @memberof BrandingPageLayoutOptions
+   */
+  card_position: string;
+  /**
+   * Specifies the offset (in Pixels) used to position the card horizontally on the page
+   * @type {number}
+   * @memberof BrandingPageLayoutOptions
+   */
+  card_x_offset: number;
+  /**
+   * Specifies the background of the card
+   * @type {string}
+   * @memberof BrandingPageLayoutOptions
+   */
+  card_background: string;
+  /**
+   * Specifies the padding (in Pixels) to be applied to the card
+   * @type {number}
+   * @memberof BrandingPageLayoutOptions
+   */
+  card_padding: number;
+  /**
+   * Specifies the border width (in Pixels) of the card
+   * @type {number}
+   * @memberof BrandingPageLayoutOptions
+   */
+  card_border_width: number;
+  /**
+   * Specifies the border radius (in Pixels) of the card
+   * @type {number}
+   * @memberof BrandingPageLayoutOptions
+   */
+  card_border_radius: number;
+  /**
+   * Specifies the border color (in Hex) of the card
+   * @type {string}
+   * @memberof BrandingPageLayoutOptions
+   */
+  card_border_color: string;
+  /**
+   * Specifies the box-shadow of the card
+   * @type {string}
+   * @memberof BrandingPageLayoutOptions
+   */
+  card_shadow: string;
+}

@@ -1,3 +1,13 @@
+import { BrandingPageButtonOptions } from './branding-page-button-options';
+import { BrandingPageCheckboxOptions } from './branding-page-checkbox-options';
+import { BrandingPageCodeOptions } from './branding-page-code-options';
+import { BrandingPageInputOptions } from './branding-page-input-options';
+import { BrandingPageLayoutOptions } from './branding-page-layout-options';
+import { BrandingPageLinkOptions } from './branding-page-link-options';
+import { BrandingPageLogoOptions } from './branding-page-logo-options';
+import { BrandingPageProviderButtonOptions } from './branding-page-provider-button-options';
+import { BrandingPageTextOptions } from './branding-page-text-options';
+
 /**
  * The Branding Page Options response class
  * @export
@@ -5,33 +15,63 @@
  */
 export interface BrandingPageOptions {
   /**
-   * Specifies the background css string to be used for pages
-   * @type {string}
-   * @memberof BrandingPageOptions
-   */
-  background: string;
-  /**
-   * Specifies the error colour to be used for pages
-   * @type {string}
-   * @memberof BrandingPageOptions
-   */
-  error_color: string;
-  /**
-   * Specifies Uri used for the favicon
+   * Specifies Uri of the favicon that will be used on all pages
    * @type {string}
    * @memberof BrandingPageOptions
    */
   favicon_uri?: string | null;
   /**
-   * Specifies Uri used for the logo
-   * @type {string}
+   * Page Branding Logo Options
+   * @type {BrandingPageLogoOptions}
    * @memberof BrandingPageOptions
    */
-  logo_uri?: string | null;
+  logo: BrandingPageLogoOptions;
   /**
-   * Specifies the primary colour to be used for pages
-   * @type {string}
+   * Page Branding Layout Options
+   * @type {BrandingPageLayoutOptions}
    * @memberof BrandingPageOptions
    */
-  primary_color: string;
+  layout: BrandingPageLayoutOptions;
+  /**
+   * Page Branding Link Options
+   * @type {BrandingPageLinkOptions}
+   * @memberof BrandingPageOptions
+   */
+  link: BrandingPageLinkOptions;
+  /**
+   * Page Branding Link Options
+   * @type {BrandingPageInputOptions}
+   * @memberof BrandingPageOptions
+   */
+  input: BrandingPageInputOptions;
+  /**
+   * Page Branding Checkbox Options
+   * @type {BrandingPageCheckboxOptions}
+   * @memberof BrandingPageOptions
+   */
+  checkbox: BrandingPageCheckboxOptions;
+  /**
+   * Page Branding Button Options
+   * @type {BrandingPageButtonOptions}
+   * @memberof BrandingPageOptions
+   */
+  button: BrandingPageButtonOptions;
+  /**
+   * Page Branding Provider Button Options
+   * @type {BrandingPageProviderButtonOptions}
+   * @memberof BrandingPageOptions
+   */
+  provider_button: BrandingPageProviderButtonOptions;
+  /**
+   * Page Branding Code Options
+   * @type {BrandingPageCodeOptions}
+   * @memberof BrandingPageOptions
+   */
+  code: BrandingPageCodeOptions;
+  /**
+   * Page Branding Text Options
+   * @type {BrandingPageTextOptions}
+   * @memberof BrandingPageOptions
+   */
+  text: BrandingPageTextOptions;
 }

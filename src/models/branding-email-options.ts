@@ -19,23 +19,59 @@ export interface BrandingEmailOptions {
    */
   user_blocked: BrandingGenericEmailTemplateOptions;
   /**
-   * Sign In Email Branding Options
+   * Sign In Email Code Branding Options
    * @type {BrandingGenericEmailTemplateOptions}
    * @memberof BrandingEmailOptions
    */
-  sign_in: BrandingGenericEmailTemplateOptions;
+  sign_in_code: BrandingGenericEmailTemplateOptions;
   /**
-   * Verification Email Branding Options
+   * Sign In Email Link Branding Options
    * @type {BrandingGenericEmailTemplateOptions}
    * @memberof BrandingEmailOptions
    */
-  verification: BrandingGenericEmailTemplateOptions;
+  sign_in_link: BrandingGenericEmailTemplateOptions;
   /**
-   * Password Reset Email Branding Options
+   * Sign In Email Code and Link Branding Options
    * @type {BrandingGenericEmailTemplateOptions}
    * @memberof BrandingEmailOptions
    */
-  password_reset: BrandingGenericEmailTemplateOptions;
+  sign_in_code_and_link: BrandingGenericEmailTemplateOptions;
+  /**
+   * Verification Email Code Branding Options
+   * @type {BrandingGenericEmailTemplateOptions}
+   * @memberof BrandingEmailOptions
+   */
+  verification_code: BrandingGenericEmailTemplateOptions;
+  /**
+   * Verification Email Link Branding Options
+   * @type {BrandingGenericEmailTemplateOptions}
+   * @memberof BrandingEmailOptions
+   */
+  verification_link: BrandingGenericEmailTemplateOptions;
+  /**
+   * Verification Email Code and Link Branding Options
+   * @type {BrandingGenericEmailTemplateOptions}
+   * @memberof BrandingEmailOptions
+   */
+  verification_code_and_link: BrandingGenericEmailTemplateOptions;
+  /**
+   * Password Reset Email Code Branding Options
+   * @type {BrandingGenericEmailTemplateOptions}
+   * @memberof BrandingEmailOptions
+   */
+  password_reset_code: BrandingGenericEmailTemplateOptions;
+  /**
+   * Password Reset Email Link Branding Options
+   * @type {BrandingGenericEmailTemplateOptions}
+   * @memberof BrandingEmailOptions
+   */
+  password_reset_link: BrandingGenericEmailTemplateOptions;
+  /**
+   * Password Reset Email Code and Link Branding Options
+   * @type {BrandingGenericEmailTemplateOptions}
+   * @memberof BrandingEmailOptions
+   */
+  password_reset_code_and_link: BrandingGenericEmailTemplateOptions;
   /**
    * Password Updated Email Branding Options
    * @type {BrandingGenericEmailTemplateOptions}

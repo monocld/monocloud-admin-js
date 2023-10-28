@@ -369,7 +369,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
    * @param {string} [filter] Value by which the resources needs to be filtered.
-   * @param {string} [sort] Value by results will be sorted.
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'name\', \'display_name\', \'description\', and \'creation_time\'
    * @returns ApiResource[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
@@ -437,7 +437,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
    * @param {string} [filter] Value by which the resources needs to be filtered.
-   * @param {string} [sort] Value by results will be sorted.
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'name\', \'display_name\', \'description\', and \'creation_time\'
    * @returns ApiScope[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
@@ -505,7 +505,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
    * @param {string} [filter] Value by which the resources needs to be filtered.
-   * @param {string} [sort] Value by results will be sorted.
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'name\', \'display_name\', \'description\', and \'creation_time\'
    * @returns IdentityResource[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
@@ -573,7 +573,7 @@ export class ResourcesClient extends MonoCloudClientBase {
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
    * @param {string} [filter] Value by which the resources needs to be filtered.
-   * @param {string} [sort] Value by results will be sorted.
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'name\', \'display_name\', \'description\', and \'creation_time\'
    * @returns ClaimResource[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient

@@ -1,3 +1,13 @@
+import { PatchBrandingPageButtonOptionsRequest } from './patch-branding-page-button-options-request';
+import { PatchBrandingPageCheckboxOptionsRequest } from './patch-branding-page-checkbox-options-request';
+import { PatchBrandingPageCodeOptionsRequest } from './patch-branding-page-code-options-request';
+import { PatchBrandingPageInputOptionsRequest } from './patch-branding-page-input-options-request';
+import { PatchBrandingPageLayoutOptionsRequest } from './patch-branding-page-layout-options-request';
+import { PatchBrandingPageLinkOptionsRequest } from './patch-branding-page-link-options-request';
+import { PatchBrandingPageLogoOptionsRequest } from './patch-branding-page-logo-options-request';
+import { PatchBrandingPageProviderButtonOptionsRequest } from './patch-branding-page-provider-button-options-request';
+import { PatchBrandingPageTextOptionsRequest } from './patch-branding-page-text-options-request';
+
 /**
  * The Patch Branding Page Options Request class
  * @export
@@ -5,33 +15,63 @@
  */
 export interface PatchBrandingPageOptionsRequest {
   /**
-   * Specifies the background css string to be used for pages
-   * @type {string}
-   * @memberof PatchBrandingPageOptionsRequest
-   */
-  background?: string;
-  /**
-   * Specifies the error colour to be used for pages
-   * @type {string}
-   * @memberof PatchBrandingPageOptionsRequest
-   */
-  error_color?: string;
-  /**
-   * Specifies Uri used for the favicon
+   * Specifies Uri of the favicon that will be used on all pages
    * @type {string}
    * @memberof PatchBrandingPageOptionsRequest
    */
   favicon_uri?: string | null;
   /**
-   * Specifies Uri used for the logo
-   * @type {string}
+   * Page Branding Logo Options
+   * @type {PatchBrandingPageLogoOptionsRequest}
    * @memberof PatchBrandingPageOptionsRequest
    */
-  logo_uri?: string | null;
+  logo?: PatchBrandingPageLogoOptionsRequest;
   /**
-   * Specifies the primary colour to be used for pages
-   * @type {string}
+   * Page Branding Layout Options
+   * @type {PatchBrandingPageLayoutOptionsRequest}
    * @memberof PatchBrandingPageOptionsRequest
    */
-  primary_color?: string;
+  layout?: PatchBrandingPageLayoutOptionsRequest;
+  /**
+   * Page Branding Link Options
+   * @type {PatchBrandingPageLinkOptionsRequest}
+   * @memberof PatchBrandingPageOptionsRequest
+   */
+  link?: PatchBrandingPageLinkOptionsRequest;
+  /**
+   * Page Branding Link Options
+   * @type {PatchBrandingPageInputOptionsRequest}
+   * @memberof PatchBrandingPageOptionsRequest
+   */
+  input?: PatchBrandingPageInputOptionsRequest;
+  /**
+   * Page Branding Checkbox Options
+   * @type {PatchBrandingPageCheckboxOptionsRequest}
+   * @memberof PatchBrandingPageOptionsRequest
+   */
+  checkbox?: PatchBrandingPageCheckboxOptionsRequest;
+  /**
+   * Page Branding Button Options
+   * @type {PatchBrandingPageButtonOptionsRequest}
+   * @memberof PatchBrandingPageOptionsRequest
+   */
+  button?: PatchBrandingPageButtonOptionsRequest;
+  /**
+   * Page Branding Provider Button Options
+   * @type {PatchBrandingPageProviderButtonOptionsRequest}
+   * @memberof PatchBrandingPageOptionsRequest
+   */
+  provider_button?: PatchBrandingPageProviderButtonOptionsRequest;
+  /**
+   * Page Branding Code Options
+   * @type {PatchBrandingPageCodeOptionsRequest}
+   * @memberof PatchBrandingPageOptionsRequest
+   */
+  code?: PatchBrandingPageCodeOptionsRequest;
+  /**
+   * Page Branding Text Options
+   * @type {PatchBrandingPageTextOptionsRequest}
+   * @memberof PatchBrandingPageOptionsRequest
+   */
+  text?: PatchBrandingPageTextOptionsRequest;
 }
