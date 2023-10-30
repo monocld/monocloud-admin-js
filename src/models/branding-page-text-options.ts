@@ -9,13 +9,13 @@ export interface BrandingPageTextOptions {
    * @type {number}
    * @memberof BrandingPageTextOptions
    */
-  base_font_size: number;
+  regular_font_size: number;
   /**
    * Specifies the font weight of the regule text
    * @type {number}
    * @memberof BrandingPageTextOptions
    */
-  base_font_weight: number;
+  regular_font_weight: number;
   /**
    * Specifies the font size (in Rem) of the small text
    * @type {number}
