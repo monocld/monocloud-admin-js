@@ -1,3 +1,5 @@
+import { PatchBrandingGenericPageBackgroundOptionsRequest } from './patch-branding-generic-page-background-options-request';
+
 /**
  * The Patch Branding Page Checkbox Options Request class
  * @export
@@ -6,10 +8,10 @@
 export interface PatchBrandingPageCheckboxOptionsRequest {
   /**
    * Specifies the background of the checkbox
-   * @type {string}
+   * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
    * @memberof PatchBrandingPageCheckboxOptionsRequest
    */
-  background?: string;
+  background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
    * Specifies the border radius (in pixels) of the checkbox
    * @type {number}
@@ -29,11 +31,11 @@ export interface PatchBrandingPageCheckboxOptionsRequest {
    */
   border_width?: number;
   /**
-   * Specifies the background of the checbox when it is in the hover state
-   * @type {string}
+   * Specifies the background of the checkbox when it is in the hover state
+   * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
    * @memberof PatchBrandingPageCheckboxOptionsRequest
    */
-  hover_background?: string;
+  hover_background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
    * Specifies the border color (in Hex) of the checkbox when it is in the focused state
    * @type {string}
@@ -48,16 +50,16 @@ export interface PatchBrandingPageCheckboxOptionsRequest {
   focus_border_width?: number;
   /**
    * Specifies the background of the checkbox when it is in the disabled state
-   * @type {string}
+   * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
    * @memberof PatchBrandingPageCheckboxOptionsRequest
    */
-  disabled_background?: string;
+  disabled_background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
    * Specifies the background of the checkbox when it is in the checked state
-   * @type {string}
+   * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
    * @memberof PatchBrandingPageCheckboxOptionsRequest
    */
-  checked_background?: string;
+  checked_background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
    * Specifies the border color (in Hex) of the checkbox when it is in the checked state
    * @type {string}

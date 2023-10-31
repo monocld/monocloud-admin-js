@@ -1,3 +1,6 @@
+import { PatchBrandingGenericPageBackgroundOptionsRequest } from './patch-branding-generic-page-background-options-request';
+import { PatchBrandingGenericPageShadowOptionsRequest } from './patch-branding-generic-page-shadow-options-request';
+
 /**
  * The Patch Branding Page Button Options Request class
  * @export
@@ -36,16 +39,16 @@ export interface PatchBrandingPageButtonOptionsRequest {
   border_width?: number;
   /**
    * Specifies the box-shadow of the button
-   * @type {string}
+   * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageButtonOptionsRequest
    */
-  shadow?: string;
+  shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
   /**
    * Specifies the background of the button
-   * @type {string}
+   * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
    * @memberof PatchBrandingPageButtonOptionsRequest
    */
-  background?: string;
+  background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
    * Specifies the color (in Hex) of the text contained in the button
    * @type {string}
@@ -66,16 +69,16 @@ export interface PatchBrandingPageButtonOptionsRequest {
   hover_border_width?: number;
   /**
    * Specifies the box-shadow of the button when it is in the hover state
-   * @type {string}
+   * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageButtonOptionsRequest
    */
-  hover_shadow?: string;
+  hover_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
   /**
    * Specifies the background of the button when it is in the hover state
-   * @type {string}
+   * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
    * @memberof PatchBrandingPageButtonOptionsRequest
    */
-  hover_background?: string;
+  hover_background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
    * Specifies the color (in Hex) of the text contained in the button when it is in the hover state
    * @type {string}
@@ -96,10 +99,10 @@ export interface PatchBrandingPageButtonOptionsRequest {
   outline_border_width?: number;
   /**
    * Specifies the box-shadow of the outline type button
-   * @type {string}
+   * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageButtonOptionsRequest
    */
-  outline_shadow?: string;
+  outline_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
   /**
    * Specifies the color (in Hex) of the text contained in the outline type button
    * @type {string}
@@ -120,10 +123,10 @@ export interface PatchBrandingPageButtonOptionsRequest {
   outline_hover_border_width?: number;
   /**
    * Specifies the box-shadow of the outline type button when it is in the hover state
-   * @type {string}
+   * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageButtonOptionsRequest
    */
-  outline_hover_shadow?: string;
+  outline_hover_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
   /**
    * Specifies the color (in Hex) of the text contained in the outline type button when it is in the hover state
    * @type {string}

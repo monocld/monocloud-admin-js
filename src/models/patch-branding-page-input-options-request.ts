@@ -1,3 +1,6 @@
+import { PatchBrandingGenericPageBackgroundOptionsRequest } from './patch-branding-generic-page-background-options-request';
+import { PatchBrandingGenericPageShadowOptionsRequest } from './patch-branding-generic-page-shadow-options-request';
+
 /**
  * The Patch Branding Page Input Options Request class
  * @export
@@ -18,10 +21,10 @@ export interface PatchBrandingPageInputOptionsRequest {
   text_color?: string;
   /**
    * Specifies the background of the input box
-   * @type {string}
+   * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
    * @memberof PatchBrandingPageInputOptionsRequest
    */
-  background?: string;
+  background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
    * Specifies the border radius (in Pixels) of the input box
    * @type {number}
@@ -42,10 +45,10 @@ export interface PatchBrandingPageInputOptionsRequest {
   border_width?: number;
   /**
    * Specifies the box-shadow of the input box
-   * @type {string}
+   * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageInputOptionsRequest
    */
-  shadow?: string;
+  shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
   /**
    * Specifies the border color (in Hex) of the input box
    * @type {string}
@@ -60,10 +63,10 @@ export interface PatchBrandingPageInputOptionsRequest {
   focus_border_width?: number;
   /**
    * Specifies the box-shadow of the input box when it is in the focused state
-   * @type {string}
+   * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageInputOptionsRequest
    */
-  focus_shadow?: string;
+  focus_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
   /**
    * Specifies the text color (in Hex) of the input box when it is in the focused state
    * @type {string}
@@ -84,14 +87,14 @@ export interface PatchBrandingPageInputOptionsRequest {
   focus_label_color?: string;
   /**
    * Specifies the box-shadow of the input box when it is in the error state
-   * @type {string}
+   * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageInputOptionsRequest
    */
-  error_shadow?: string;
+  error_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
   /**
    * Specifies the box-shadow of the input when it is in the error and focused state
-   * @type {string}
+   * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageInputOptionsRequest
    */
-  error_focus_shadow?: string;
+  error_focus_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
 }

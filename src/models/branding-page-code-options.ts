@@ -1,3 +1,5 @@
+import { BrandingGenericPageBackgroundOptions } from './branding-generic-page-background-options';
+
 /**
  * The Branding Page Code Options response class
  * @export
@@ -30,10 +32,10 @@ export interface BrandingPageCodeOptions {
   letter_spacing: number;
   /**
    * Specifies the background of the code box
-   * @type {string}
+   * @type {BrandingGenericPageBackgroundOptions}
    * @memberof BrandingPageCodeOptions
    */
-  background: string;
+  background: BrandingGenericPageBackgroundOptions;
   /**
    * Specifies the border width (in Pixels) of the code box
    * @type {number}

@@ -1,3 +1,5 @@
+import { PatchBrandingGenericPageBackgroundOptionsRequest } from './patch-branding-generic-page-background-options-request';
+
 /**
  * The Patch Branding Page Code Options Request class
  * @export
@@ -30,10 +32,10 @@ export interface PatchBrandingPageCodeOptionsRequest {
   letter_spacing?: number;
   /**
    * Specifies the background of the code box
-   * @type {string}
+   * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
    * @memberof PatchBrandingPageCodeOptionsRequest
    */
-  background?: string;
+  background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
    * Specifies the border width (in Pixels) of the code box
    * @type {number}

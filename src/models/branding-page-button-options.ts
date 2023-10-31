@@ -1,3 +1,6 @@
+import { BrandingGenericPageBackgroundOptions } from './branding-generic-page-background-options';
+import { BrandingGenericPageShadowOptions } from './branding-generic-page-shadow-options';
+
 /**
  * The Branding Page Button Options response class
  * @export
@@ -36,16 +39,16 @@ export interface BrandingPageButtonOptions {
   border_width: number;
   /**
    * Specifies the box-shadow of the button
-   * @type {string}
+   * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageButtonOptions
    */
-  shadow: string;
+  shadow?: BrandingGenericPageShadowOptions | null;
   /**
    * Specifies the background of the button
-   * @type {string}
+   * @type {BrandingGenericPageBackgroundOptions}
    * @memberof BrandingPageButtonOptions
    */
-  background: string;
+  background: BrandingGenericPageBackgroundOptions;
   /**
    * Specifies the color (in Hex) of the text contained in the button
    * @type {string}
@@ -66,16 +69,16 @@ export interface BrandingPageButtonOptions {
   hover_border_width: number;
   /**
    * Specifies the box-shadow of the button when it is in the hover state
-   * @type {string}
+   * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageButtonOptions
    */
-  hover_shadow: string;
+  hover_shadow?: BrandingGenericPageShadowOptions | null;
   /**
    * Specifies the background of the button when it is in the hover state
-   * @type {string}
+   * @type {BrandingGenericPageBackgroundOptions}
    * @memberof BrandingPageButtonOptions
    */
-  hover_background: string;
+  hover_background: BrandingGenericPageBackgroundOptions;
   /**
    * Specifies the color (in Hex) of the text contained in the button when it is in the hover state
    * @type {string}
@@ -96,10 +99,10 @@ export interface BrandingPageButtonOptions {
   outline_border_width: number;
   /**
    * Specifies the box-shadow of the outline type button
-   * @type {string}
+   * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageButtonOptions
    */
-  outline_shadow: string;
+  outline_shadow?: BrandingGenericPageShadowOptions | null;
   /**
    * Specifies the color (in Hex) of the text contained in the outline type button
    * @type {string}
@@ -120,10 +123,10 @@ export interface BrandingPageButtonOptions {
   outline_hover_border_width: number;
   /**
    * Specifies the box-shadow of the outline type button when it is in the hover state
-   * @type {string}
+   * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageButtonOptions
    */
-  outline_hover_shadow: string;
+  outline_hover_shadow?: BrandingGenericPageShadowOptions | null;
   /**
    * Specifies the color (in Hex) of the text contained in the outline type button when it is in the hover state
    * @type {string}

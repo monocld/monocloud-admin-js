@@ -1,3 +1,6 @@
+import { PatchBrandingGenericPageBackgroundOptionsRequest } from './patch-branding-generic-page-background-options-request';
+import { PatchBrandingGenericPageShadowOptionsRequest } from './patch-branding-generic-page-shadow-options-request';
+
 /**
  * The Patch Branding Page Provider Button Options Request class
  * @export
@@ -24,16 +27,16 @@ export interface PatchBrandingPageProviderButtonOptionsRequest {
   border_width?: number;
   /**
    * Specifies the box-shadow of the login provider buttons
-   * @type {string}
+   * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageProviderButtonOptionsRequest
    */
-  shadow?: string;
+  shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
   /**
    * Specifies the background of the login provider buttons
-   * @type {string}
+   * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
    * @memberof PatchBrandingPageProviderButtonOptionsRequest
    */
-  background?: string;
+  background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
    * Specifies the color (in Hex) of the text contained in the login provider buttons
    * @type {string}
@@ -60,16 +63,16 @@ export interface PatchBrandingPageProviderButtonOptionsRequest {
   hover_border_width?: number;
   /**
    * Specifies the box-shadow of the login provider buttons when in the hover state
-   * @type {string}
+   * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageProviderButtonOptionsRequest
    */
-  hover_shadow?: string;
+  hover_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
   /**
    * Specifies the background of the login provider buttons when in the hover state
-   * @type {string}
+   * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
    * @memberof PatchBrandingPageProviderButtonOptionsRequest
    */
-  hover_background?: string;
+  hover_background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
    * Specifies the color (in Hex) of the text contained in the login provider buttons when in the hover state
    * @type {string}

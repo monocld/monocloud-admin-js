@@ -1,3 +1,6 @@
+import { PatchBrandingGenericPageBackgroundOptionsRequest } from './patch-branding-generic-page-background-options-request';
+import { PatchBrandingGenericPageShadowOptionsRequest } from './patch-branding-generic-page-shadow-options-request';
+
 /**
  * The Patch Branding Page Layout Options Request class
  * @export
@@ -6,10 +9,10 @@
 export interface PatchBrandingPageLayoutOptionsRequest {
   /**
    * Specifies the background of the page
-   * @type {string}
+   * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
    * @memberof PatchBrandingPageLayoutOptionsRequest
    */
-  background?: string;
+  background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
    * Specifies the size of the card (in Pixels)
    * @type {number}
@@ -30,10 +33,10 @@ export interface PatchBrandingPageLayoutOptionsRequest {
   card_x_offset?: number;
   /**
    * Specifies the background of the card
-   * @type {string}
+   * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
    * @memberof PatchBrandingPageLayoutOptionsRequest
    */
-  card_background?: string;
+  card_background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
    * Specifies the padding (in Pixels) to be applied to the card
    * @type {number}
@@ -60,8 +63,8 @@ export interface PatchBrandingPageLayoutOptionsRequest {
   card_border_color?: string;
   /**
    * Specifies the box-shadow of the card
-   * @type {string}
+   * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageLayoutOptionsRequest
    */
-  card_shadow?: string;
+  card_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
 }

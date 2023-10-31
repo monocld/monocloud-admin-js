@@ -1,3 +1,6 @@
+import { BrandingGenericPageBackgroundOptions } from './branding-generic-page-background-options';
+import { BrandingGenericPageShadowOptions } from './branding-generic-page-shadow-options';
+
 /**
  * The Branding Page Input Options response class
  * @export
@@ -18,10 +21,10 @@ export interface BrandingPageInputOptions {
   text_color: string;
   /**
    * Specifies the background of the input box
-   * @type {string}
+   * @type {BrandingGenericPageBackgroundOptions}
    * @memberof BrandingPageInputOptions
    */
-  background: string;
+  background: BrandingGenericPageBackgroundOptions;
   /**
    * Specifies the border radius (in Pixels) of the input box
    * @type {number}
@@ -42,10 +45,10 @@ export interface BrandingPageInputOptions {
   border_width: number;
   /**
    * Specifies the box-shadow of the input box
-   * @type {string}
+   * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageInputOptions
    */
-  shadow: string;
+  shadow?: BrandingGenericPageShadowOptions | null;
   /**
    * Specifies the border color (in Hex) of the input box
    * @type {string}
@@ -60,10 +63,10 @@ export interface BrandingPageInputOptions {
   focus_border_width: number;
   /**
    * Specifies the box-shadow of the input box when it is in the focused state
-   * @type {string}
+   * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageInputOptions
    */
-  focus_shadow: string;
+  focus_shadow?: BrandingGenericPageShadowOptions | null;
   /**
    * Specifies the text color (in Hex) of the input box when it is in the focused state
    * @type {string}
@@ -84,14 +87,14 @@ export interface BrandingPageInputOptions {
   focus_label_color: string;
   /**
    * Specifies the box-shadow of the input box when it is in the error state
-   * @type {string}
+   * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageInputOptions
    */
-  error_shadow: string;
+  error_shadow?: BrandingGenericPageShadowOptions | null;
   /**
    * Specifies the box-shadow of the input when it is in the error and focused state
-   * @type {string}
+   * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageInputOptions
    */
-  error_focus_shadow: string;
+  error_focus_shadow?: BrandingGenericPageShadowOptions | null;
 }

@@ -1,3 +1,6 @@
+import { BrandingGenericPageBackgroundOptions } from './branding-generic-page-background-options';
+import { BrandingGenericPageShadowOptions } from './branding-generic-page-shadow-options';
+
 /**
  * The Branding Page Provider Button Options response class
  * @export
@@ -24,16 +27,16 @@ export interface BrandingPageProviderButtonOptions {
   border_width: number;
   /**
    * Specifies the box-shadow of the login provider buttons
-   * @type {string}
+   * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageProviderButtonOptions
    */
-  shadow: string;
+  shadow?: BrandingGenericPageShadowOptions | null;
   /**
    * Specifies the background of the login provider buttons
-   * @type {string}
+   * @type {BrandingGenericPageBackgroundOptions}
    * @memberof BrandingPageProviderButtonOptions
    */
-  background: string;
+  background: BrandingGenericPageBackgroundOptions;
   /**
    * Specifies the color (in Hex) of the text contained in the login provider buttons
    * @type {string}
@@ -60,16 +63,16 @@ export interface BrandingPageProviderButtonOptions {
   hover_border_width: number;
   /**
    * Specifies the box-shadow of the login provider buttons when in the hover state
-   * @type {string}
+   * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageProviderButtonOptions
    */
-  hover_shadow: string;
+  hover_shadow?: BrandingGenericPageShadowOptions | null;
   /**
    * Specifies the background of the login provider buttons when in the hover state
-   * @type {string}
+   * @type {BrandingGenericPageBackgroundOptions}
    * @memberof BrandingPageProviderButtonOptions
    */
-  hover_background: string;
+  hover_background: BrandingGenericPageBackgroundOptions;
   /**
    * Specifies the color (in Hex) of the text contained in the login provider buttons when in the hover state
    * @type {string}

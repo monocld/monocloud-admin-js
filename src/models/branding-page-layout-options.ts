@@ -1,3 +1,6 @@
+import { BrandingGenericPageBackgroundOptions } from './branding-generic-page-background-options';
+import { BrandingGenericPageShadowOptions } from './branding-generic-page-shadow-options';
+
 /**
  * The Branding Page Layout Options response class
  * @export
@@ -6,10 +9,10 @@
 export interface BrandingPageLayoutOptions {
   /**
    * Specifies the background of the page
-   * @type {string}
+   * @type {BrandingGenericPageBackgroundOptions}
    * @memberof BrandingPageLayoutOptions
    */
-  background: string;
+  background: BrandingGenericPageBackgroundOptions;
   /**
    * Specifies the size of the card (in Pixels)
    * @type {number}
@@ -30,10 +33,10 @@ export interface BrandingPageLayoutOptions {
   card_x_offset: number;
   /**
    * Specifies the background of the card
-   * @type {string}
+   * @type {BrandingGenericPageBackgroundOptions}
    * @memberof BrandingPageLayoutOptions
    */
-  card_background: string;
+  card_background: BrandingGenericPageBackgroundOptions;
   /**
    * Specifies the padding (in Pixels) to be applied to the card
    * @type {number}
@@ -60,8 +63,8 @@ export interface BrandingPageLayoutOptions {
   card_border_color: string;
   /**
    * Specifies the box-shadow of the card
-   * @type {string}
+   * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageLayoutOptions
    */
-  card_shadow: string;
+  card_shadow?: BrandingGenericPageShadowOptions | null;
 }

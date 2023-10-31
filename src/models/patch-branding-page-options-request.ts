@@ -19,7 +19,7 @@ export interface PatchBrandingPageOptionsRequest {
    * @type {string}
    * @memberof PatchBrandingPageOptionsRequest
    */
-  favicon_uri?: string | null;
+  favicon_uri?: string;
   /**
    * Page Branding Logo Options
    * @type {PatchBrandingPageLogoOptionsRequest}

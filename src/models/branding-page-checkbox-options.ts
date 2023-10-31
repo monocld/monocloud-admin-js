@@ -1,3 +1,5 @@
+import { BrandingGenericPageBackgroundOptions } from './branding-generic-page-background-options';
+
 /**
  * The Branding Page Checkbox Options response class
  * @export
@@ -6,10 +8,10 @@
 export interface BrandingPageCheckboxOptions {
   /**
    * Specifies the background of the checkbox
-   * @type {string}
+   * @type {BrandingGenericPageBackgroundOptions}
    * @memberof BrandingPageCheckboxOptions
    */
-  background: string;
+  background: BrandingGenericPageBackgroundOptions;
   /**
    * Specifies the border radius (in pixels) of the checkbox
    * @type {number}
@@ -29,11 +31,11 @@ export interface BrandingPageCheckboxOptions {
    */
   border_width: number;
   /**
-   * Specifies the background of the checbox when it is in the hover state
-   * @type {string}
+   * Specifies the background of the checkbox when it is in the hover state
+   * @type {BrandingGenericPageBackgroundOptions}
    * @memberof BrandingPageCheckboxOptions
    */
-  hover_background: string;
+  hover_background: BrandingGenericPageBackgroundOptions;
   /**
    * Specifies the border color (in Hex) of the checkbox when it is in the focused state
    * @type {string}
@@ -48,16 +50,16 @@ export interface BrandingPageCheckboxOptions {
   focus_border_width: number;
   /**
    * Specifies the background of the checkbox when it is in the disabled state
-   * @type {string}
+   * @type {BrandingGenericPageBackgroundOptions}
    * @memberof BrandingPageCheckboxOptions
    */
-  disabled_background: string;
+  disabled_background: BrandingGenericPageBackgroundOptions;
   /**
    * Specifies the background of the checkbox when it is in the checked state
-   * @type {string}
+   * @type {BrandingGenericPageBackgroundOptions}
    * @memberof BrandingPageCheckboxOptions
    */
-  checked_background: string;
+  checked_background: BrandingGenericPageBackgroundOptions;
   /**
    * Specifies the border color (in Hex) of the checkbox when it is in the checked state
    * @type {string}
