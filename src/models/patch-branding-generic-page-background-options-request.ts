@@ -15,5 +15,5 @@ export interface PatchBrandingGenericPageBackgroundOptionsRequest {
    * @type {string}
    * @memberof PatchBrandingGenericPageBackgroundOptionsRequest
    */
-  image?: string;
+  image?: string | null;
 }
