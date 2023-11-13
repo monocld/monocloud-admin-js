@@ -37,17 +37,17 @@ export interface PatchBrandingPageCheckboxOptionsRequest {
    */
   hover_background?: PatchBrandingGenericPageBackgroundOptionsRequest;
   /**
-   * Specifies the border color (in Hex) of the checkbox when it is in the focused state
+   * Specifies the border color (in Hex) of the checkbox when it is in the hover state
    * @type {string}
    * @memberof PatchBrandingPageCheckboxOptionsRequest
    */
-  focus_border_color?: string;
+  hover_border_color?: string;
   /**
-   * Specifies the border width (in Pixels) of the checkbox when it is in the focused state
+   * Specifies the border width (in Pixels) of the checkbox when it is in the hover state
    * @type {number}
    * @memberof PatchBrandingPageCheckboxOptionsRequest
    */
-  focus_border_width?: number;
+  hover_border_width?: number;
   /**
    * Specifies the background of the checkbox when it is in the disabled state
    * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
