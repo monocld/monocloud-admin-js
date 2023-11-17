@@ -1,25 +1,25 @@
 /**
- * The Identity Claim response class
+ * The Create Scope Claim Request class
  * @export
- * @interface IdentityClaim
+ * @interface CreateScopeClaimRequest
  */
-export interface IdentityClaim {
+export interface CreateScopeClaimRequest {
   /**
    * Specifies the name of the claim.
    * @type {string}
-   * @memberof IdentityClaim
+   * @memberof CreateScopeClaimRequest
    */
   claim: string;
   /**
    * Specifies whether the claim will be included in the Identity Token.
    * @type {boolean}
-   * @memberof IdentityClaim
+   * @memberof CreateScopeClaimRequest
    */
   include_in_identity_token: boolean;
   /**
    * Specifies whether the claim will be returned from the user info endpoint.
    * @type {boolean}
-   * @memberof IdentityClaim
+   * @memberof CreateScopeClaimRequest
    */
   include_in_user_info: boolean;
 }

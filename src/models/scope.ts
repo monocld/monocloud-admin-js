@@ -1,81 +1,88 @@
-import { IdentityClaim } from './identity-claim';
+import { ScopeClaim } from './scope-claim';
+import { ScopeTypes } from './scope-types';
 
 /**
- * The Identity Resource response class
+ * The Scope Resource response class
  * @export
- * @interface IdentityResource
+ * @interface Scope
  */
-export interface IdentityResource {
+export interface Scope {
   /**
    * Unique ID of the Resource
    * @type {string}
-   * @memberof IdentityResource
+   * @memberof Scope
    */
   id: string;
   /**
    * Specifies if the resource is enabled.
    * @type {boolean}
-   * @memberof IdentityResource
+   * @memberof Scope
    */
   enabled: boolean;
   /**
    * The unique name of the resource. This is the value a client will use for the scope parameter in the authorize request.
    * @type {string}
-   * @memberof IdentityResource
+   * @memberof Scope
    */
   name: string;
   /**
    * Display Name for the Resource
    * @type {string}
-   * @memberof IdentityResource
+   * @memberof Scope
    */
   display_name?: string | null;
   /**
    * A brief description about the Resource
    * @type {string}
-   * @memberof IdentityResource
+   * @memberof Scope
    */
   description?: string | null;
   /**
    * Specifies whether this resource is shown in the discovery document.
    * @type {boolean}
-   * @memberof IdentityResource
+   * @memberof Scope
    */
   show_in_discovery_document: boolean;
   /**
    * Specifies the creation time of the resource (in Epoch).
    * @type {number}
-   * @memberof IdentityResource
+   * @memberof Scope
    */
   creation_time: number;
   /**
    * Specifies the last update time of the resource (in Epoch).
    * @type {number}
-   * @memberof IdentityResource
+   * @memberof Scope
    */
   last_updated: number;
   /**
+   * Specifies the type of scope
+   * @type {ScopeTypes}
+   * @memberof Scope
+   */
+  type: ScopeTypes;
+  /**
    * Specifies whether the user can de-select the scope on the consent screen (if such a feature is implemented in the consent screen).
    * @type {boolean}
-   * @memberof IdentityResource
+   * @memberof Scope
    */
   required: boolean;
   /**
    * Specifies whether the consent screen will emphasize this scope (if such a feature is implemented in the consent screen). Use this setting for sensitive or important scopes.
    * @type {boolean}
-   * @memberof IdentityResource
+   * @memberof Scope
    */
   emphasize: boolean;
   /**
    * Specifies whether it\'s a built-in identity resource.
    * @type {boolean}
-   * @memberof IdentityResource
+   * @memberof Scope
    */
   is_default: boolean;
   /**
-   * List of associated user claim types that should be included in the Identity token or as returned from the User Info Endpoint.
-   * @type {IdentityClaim[]}
-   * @memberof IdentityResource
+   * List of associated user claim types that should be included in the Identity token, Access Token or as returned from the User Info Endpoint.
+   * @type {ScopeClaim[]}
+   * @memberof Scope
    */
-  user_claims: IdentityClaim[];
+  user_claims: ScopeClaim[];
 }
