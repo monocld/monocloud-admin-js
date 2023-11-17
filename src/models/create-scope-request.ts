@@ -14,12 +14,6 @@ export interface CreateScopeRequest {
    */
   enabled: boolean;
   /**
-   * The unique name of the resource. This is the value a client will use for the scope parameter in the authorize request.
-   * @type {string}
-   * @memberof CreateScopeRequest
-   */
-  name: string;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof CreateScopeRequest
@@ -37,6 +31,12 @@ export interface CreateScopeRequest {
    * @memberof CreateScopeRequest
    */
   show_in_discovery_document: boolean;
+  /**
+   * The unique name of the scope. This is the value a client will use for the scope parameter in the authorize request.
+   * @type {string}
+   * @memberof CreateScopeRequest
+   */
+  name: string;
   /**
    * Specifies the type of scope
    * @type {ScopeTypes}

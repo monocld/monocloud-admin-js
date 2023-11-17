@@ -13,12 +13,6 @@ export interface PatchScopeRequest {
    */
   enabled?: boolean;
   /**
-   * The unique name of the resource. This is the value a client will use for the scope parameter in the authorize request.
-   * @type {string}
-   * @memberof PatchScopeRequest
-   */
-  name?: string;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof PatchScopeRequest
@@ -36,6 +30,12 @@ export interface PatchScopeRequest {
    * @memberof PatchScopeRequest
    */
   show_in_discovery_document?: boolean;
+  /**
+   * The unique name of the scope. This is the value a client will use for the scope parameter in the authorize request.
+   * @type {string}
+   * @memberof PatchScopeRequest
+   */
+  name?: string;
   /**
    * Specifies whether the user can de-select the scope on the consent screen (if such a feature is implemented in the consent screen).
    * @type {boolean}

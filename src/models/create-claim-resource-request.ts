@@ -11,12 +11,6 @@ export interface CreateClaimResourceRequest {
    */
   enabled: boolean;
   /**
-   * The unique name of the resource. This is the value a client will use for the scope parameter in the authorize request.
-   * @type {string}
-   * @memberof CreateClaimResourceRequest
-   */
-  name: string;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof CreateClaimResourceRequest
@@ -34,6 +28,12 @@ export interface CreateClaimResourceRequest {
    * @memberof CreateClaimResourceRequest
    */
   show_in_discovery_document: boolean;
+  /**
+   * The unique name of the claim.
+   * @type {string}
+   * @memberof CreateClaimResourceRequest
+   */
+  name: string;
   /**
    * Specifies the source of the claim.
    * @type {string}

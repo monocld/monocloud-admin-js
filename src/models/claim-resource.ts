@@ -17,12 +17,6 @@ export interface ClaimResource {
    */
   enabled: boolean;
   /**
-   * The unique name of the resource. This is the value a client will use for the scope parameter in the authorize request.
-   * @type {string}
-   * @memberof ClaimResource
-   */
-  name: string;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof ClaimResource
@@ -52,6 +46,12 @@ export interface ClaimResource {
    * @memberof ClaimResource
    */
   last_updated: number;
+  /**
+   * The unique name of the claim.
+   * @type {string}
+   * @memberof ClaimResource
+   */
+  name: string;
   /**
    * Specifies the source of the claim.
    * @type {string}

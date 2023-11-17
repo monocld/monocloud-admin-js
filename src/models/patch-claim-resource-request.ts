@@ -11,12 +11,6 @@ export interface PatchClaimResourceRequest {
    */
   enabled?: boolean;
   /**
-   * The unique name of the resource. This is the value a client will use for the scope parameter in the authorize request.
-   * @type {string}
-   * @memberof PatchClaimResourceRequest
-   */
-  name?: string;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof PatchClaimResourceRequest
@@ -34,6 +28,12 @@ export interface PatchClaimResourceRequest {
    * @memberof PatchClaimResourceRequest
    */
   show_in_discovery_document?: boolean;
+  /**
+   * The unique name of the claim.
+   * @type {string}
+   * @memberof PatchClaimResourceRequest
+   */
+  name?: string;
   /**
    * Specifies the source of the claim.
    * @type {string}

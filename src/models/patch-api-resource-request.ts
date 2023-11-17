@@ -11,12 +11,6 @@ export interface PatchApiResourceRequest {
    */
   enabled?: boolean;
   /**
-   * The unique name of the resource. This is the value a client will use for the scope parameter in the authorize request.
-   * @type {string}
-   * @memberof PatchApiResourceRequest
-   */
-  name?: string;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof PatchApiResourceRequest
