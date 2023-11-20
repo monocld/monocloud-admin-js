@@ -1,4 +1,5 @@
 import { SignUpCustomFieldOptions } from './sign-up-custom-field-options';
+import { SignUpGenericRestrictionsOptions } from './sign-up-generic-restrictions-options';
 
 /**
  * The SignUp Options response class
@@ -42,4 +43,16 @@ export interface SignUpOptions {
    * @memberof SignUpOptions
    */
   enable_welcome_email: boolean;
+  /**
+   * The whitelist Restriction Options.
+   * @type {SignUpGenericRestrictionsOptions}
+   * @memberof SignUpOptions
+   */
+  whitelist: SignUpGenericRestrictionsOptions;
+  /**
+   * The blacklist Restriction Options.
+   * @type {SignUpGenericRestrictionsOptions}
+   * @memberof SignUpOptions
+   */
+  blacklist: SignUpGenericRestrictionsOptions;
 }

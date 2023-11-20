@@ -1,3 +1,5 @@
+import { PatchSignUpRestrictionsOptionsRequest } from './patch-sign-up-restrictions-options-request';
+
 /**
  * The Patch SignUp Options Request class
  * @export
@@ -34,4 +36,16 @@ export interface PatchSignUpOptionsRequest {
    * @memberof PatchSignUpOptionsRequest
    */
   enable_welcome_email?: boolean;
+  /**
+   * The whitelist Restriction Options.
+   * @type {PatchSignUpRestrictionsOptionsRequest}
+   * @memberof PatchSignUpOptionsRequest
+   */
+  whitelist?: PatchSignUpRestrictionsOptionsRequest;
+  /**
+   * The blacklist Restriction Options.
+   * @type {PatchSignUpRestrictionsOptionsRequest}
+   * @memberof PatchSignUpOptionsRequest
+   */
+  blacklist?: PatchSignUpRestrictionsOptionsRequest;
 }
