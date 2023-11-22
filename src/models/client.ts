@@ -152,6 +152,12 @@ export interface Client {
    */
   back_channel_logout_session_required: boolean;
   /**
+   * Specifies whether to bind the tokens issued for the client with the user session. If set to true tokens / grants associated with the session will be invalidated when the user logs out or when the session expires
+   * @type {boolean}
+   * @memberof Client
+   */
+  bind_tokens_to_session: boolean;
+  /**
    * Specifies whether the client can request refresh tokens (by requesting the offline_access scope)
    * @type {boolean}
    * @memberof Client
