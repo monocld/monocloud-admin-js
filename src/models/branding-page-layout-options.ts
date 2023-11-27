@@ -26,6 +26,18 @@ export interface BrandingPageLayoutOptions {
    */
   card_position: string;
   /**
+   * Specifies the column in which the card will be positioned on the grid
+   * @type {number}
+   * @memberof BrandingPageLayoutOptions
+   */
+  card_grid_column: number;
+  /**
+   * Specifies how many columns the card will occupy on the grid
+   * @type {number}
+   * @memberof BrandingPageLayoutOptions
+   */
+  card_grid_span: number;
+  /**
    * Specifies the offset (in Pixels) used to position the card horizontally on the page
    * @type {number}
    * @memberof BrandingPageLayoutOptions
