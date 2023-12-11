@@ -1,6 +1,6 @@
 {
   "name": "@monocloud/admin-js",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "MonoCloud Admin JavaScript SDK",
   "keywords": [
     "monocloud",
@@ -10,11 +10,11 @@
   ],
   "homepage": "https://www.monocloud.com",
   "bugs": {
-    "url": "https://github.com/monocld/monocloud-admin-js/issues"
+    "url": "https://github.com/MonoCld/monocloud-admin-js/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/monocld/monocloud-admin-js.git"
+    "url": "git+https://github.com/MonoCld/monocloud-admin-js.git"
   },
   "license": "MIT",
   "author": {
