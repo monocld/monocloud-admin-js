@@ -7,7 +7,7 @@ export interface ProblemDetails {
   [key: string]: any;
 
   /**
-   * A URI reference [RFC3986] that identifies the problem type. This specification encourages that, when  de-referenced, it provide human-readable documentation for the problem type.
+   * A URI reference [RFC3986] that identifies the problem type. This specification encourages that, when de-referenced, it provide human-readable documentation for the problem type.
    * @type {string}
    * @memberof ProblemDetails
    */
