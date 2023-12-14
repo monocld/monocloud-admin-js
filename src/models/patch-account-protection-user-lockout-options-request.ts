@@ -36,7 +36,7 @@ export interface PatchAccountProtectionUserLockoutOptionsRequest {
    * @type {string[]}
    * @memberof PatchAccountProtectionUserLockoutOptionsRequest
    */
-  allowed_ips?: string[] | null;
+  allowed_ips?: string[];
   /**
    * Types of Lockouts to enable per User Account
    * @type {UserLockoutTypes}

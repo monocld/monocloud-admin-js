@@ -48,7 +48,7 @@ export interface PatchBrandingPageInputOptionsRequest {
    * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageInputOptionsRequest
    */
-  shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
+  shadow?: PatchBrandingGenericPageShadowOptionsRequest;
   /**
    * Specifies the border color (in Hex) of the input box
    * @type {string}
@@ -66,7 +66,7 @@ export interface PatchBrandingPageInputOptionsRequest {
    * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageInputOptionsRequest
    */
-  focus_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
+  focus_shadow?: PatchBrandingGenericPageShadowOptionsRequest;
   /**
    * Specifies the text color (in Hex) of the input box when it is in the focused state
    * @type {string}
@@ -90,11 +90,11 @@ export interface PatchBrandingPageInputOptionsRequest {
    * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageInputOptionsRequest
    */
-  error_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
+  error_shadow?: PatchBrandingGenericPageShadowOptionsRequest;
   /**
    * Specifies the box-shadow of the input when it is in the error and focused state
    * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageInputOptionsRequest
    */
-  error_focus_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
+  error_focus_shadow?: PatchBrandingGenericPageShadowOptionsRequest;
 }

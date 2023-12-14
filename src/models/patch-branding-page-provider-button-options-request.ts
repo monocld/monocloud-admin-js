@@ -30,7 +30,7 @@ export interface PatchBrandingPageProviderButtonOptionsRequest {
    * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageProviderButtonOptionsRequest
    */
-  shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
+  shadow?: PatchBrandingGenericPageShadowOptionsRequest;
   /**
    * Specifies the background of the login provider buttons
    * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
@@ -66,7 +66,7 @@ export interface PatchBrandingPageProviderButtonOptionsRequest {
    * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageProviderButtonOptionsRequest
    */
-  hover_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
+  hover_shadow?: PatchBrandingGenericPageShadowOptionsRequest;
   /**
    * Specifies the background of the login provider buttons when in the hover state
    * @type {PatchBrandingGenericPageBackgroundOptionsRequest}

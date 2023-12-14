@@ -78,5 +78,5 @@ export interface PatchBrandingPageLayoutOptionsRequest {
    * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageLayoutOptionsRequest
    */
-  card_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
+  card_shadow?: PatchBrandingGenericPageShadowOptionsRequest;
 }

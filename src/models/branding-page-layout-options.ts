@@ -78,5 +78,5 @@ export interface BrandingPageLayoutOptions {
    * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageLayoutOptions
    */
-  card_shadow?: BrandingGenericPageShadowOptions | null;
+  card_shadow: BrandingGenericPageShadowOptions;
 }

@@ -48,7 +48,7 @@ export interface BrandingPageInputOptions {
    * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageInputOptions
    */
-  shadow?: BrandingGenericPageShadowOptions | null;
+  shadow: BrandingGenericPageShadowOptions;
   /**
    * Specifies the border color (in Hex) of the input box
    * @type {string}
@@ -66,7 +66,7 @@ export interface BrandingPageInputOptions {
    * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageInputOptions
    */
-  focus_shadow?: BrandingGenericPageShadowOptions | null;
+  focus_shadow: BrandingGenericPageShadowOptions;
   /**
    * Specifies the text color (in Hex) of the input box when it is in the focused state
    * @type {string}
@@ -90,11 +90,11 @@ export interface BrandingPageInputOptions {
    * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageInputOptions
    */
-  error_shadow?: BrandingGenericPageShadowOptions | null;
+  error_shadow: BrandingGenericPageShadowOptions;
   /**
    * Specifies the box-shadow of the input when it is in the error and focused state
    * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageInputOptions
    */
-  error_focus_shadow?: BrandingGenericPageShadowOptions | null;
+  error_focus_shadow: BrandingGenericPageShadowOptions;
 }

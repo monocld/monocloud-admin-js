@@ -175,11 +175,11 @@ export interface PatchClientRequest {
    */
   authorization_code_lifetime?: number;
   /**
-   * Lifetime of a user consent in seconds
+   * Lifetime of a user consent in seconds. Set to 0 for no expiration.
    * @type {number}
    * @memberof PatchClientRequest
    */
-  consent_lifetime?: number | null;
+  consent_lifetime?: number;
   /**
    * Maximum lifetime of a refresh token in seconds
    * @type {number}
@@ -245,7 +245,7 @@ export interface PatchClientRequest {
    * @type {string}
    * @memberof PatchClientRequest
    */
-  client_claims_prefix?: string | null;
+  client_claims_prefix?: string;
   /**
    * The allowed CORS origins for JavaScript clients.
    * @type {string[]}
@@ -253,11 +253,11 @@ export interface PatchClientRequest {
    */
   allowed_cors_origins?: string[];
   /**
-   * The maximum duration (in seconds) since the last time the user authenticated. You can adjust the lifetime of a session token to control when and how often a user is required to reenter credentials instead of being silently authenticated, when using a web application.
+   * The maximum duration (in seconds) since the last time the user authenticated. You can adjust the lifetime of a session token to control when and how often a user is required to reenter credentials instead of being silently authenticated, when using a web application. Set to 0 for no restriction.
    * @type {number}
    * @memberof PatchClientRequest
    */
-  user_sso_lifetime?: number | null;
+  user_sso_lifetime?: number;
   /**
    * Specifies the type of code that will be generated for the device code flow
    * @type {DeviceFlowCodeTypes}

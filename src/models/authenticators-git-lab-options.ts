@@ -39,7 +39,7 @@ export interface AuthenticatorsGitLabOptions {
    * @type {string[]}
    * @memberof AuthenticatorsGitLabOptions
    */
-  scopes?: string[] | null;
+  scopes: string[];
   /**
    * Specifies if we should trust the email verified scope received from the external provider.
    * @type {boolean}

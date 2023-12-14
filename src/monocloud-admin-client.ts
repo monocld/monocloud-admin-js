@@ -40,13 +40,13 @@ export class MonoCloudAdminClient {
     options?: MonoCloudConfig,
     instance?: AxiosInstance
   ): MonoCloudAdminClient {
-    const envTimeout = parseInt(process.env.MC_MANAGE_TIMEOUT ?? '', 10);
+    const envTimeout = parseInt(process.env.MC_ADMIN_TIMEOUT ?? '', 10);
 
     const opt: MonoCloudConfig = {
-      domain: options?.domain ?? process.env.MC_DOMAIN ?? '',
-      apiKey: options?.apiKey ?? process.env.MC_MANAGE_API_KEY ?? '',
+      domain: options?.domain ?? process.env.MC_ADMIN_DOMAIN ?? '',
+      apiKey: options?.apiKey ?? process.env.MC_ADMIN_API_KEY ?? '',
       config: options?.config ?? {
-        retry: options?.config?.retry ?? process.env.MC_MANAGE_RETRY === 'true',
+        retry: options?.config?.retry ?? process.env.MC_ADMIN_RETRY === 'true',
         timeout:
           options?.config?.timeout ??
           (Number.isInteger(envTimeout) && envTimeout > 0)

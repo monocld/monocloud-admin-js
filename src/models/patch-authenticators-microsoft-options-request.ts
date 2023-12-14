@@ -39,7 +39,7 @@ export interface PatchAuthenticatorsMicrosoftOptionsRequest {
    * @type {string[]}
    * @memberof PatchAuthenticatorsMicrosoftOptionsRequest
    */
-  scopes?: string[] | null;
+  scopes?: string[];
   /**
    * Specifies if we should treat the email received from the external provider as verified.
    * @type {boolean}

@@ -30,7 +30,7 @@ export interface BrandingPageProviderButtonOptions {
    * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageProviderButtonOptions
    */
-  shadow?: BrandingGenericPageShadowOptions | null;
+  shadow: BrandingGenericPageShadowOptions;
   /**
    * Specifies the background of the login provider buttons
    * @type {BrandingGenericPageBackgroundOptions}
@@ -66,7 +66,7 @@ export interface BrandingPageProviderButtonOptions {
    * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageProviderButtonOptions
    */
-  hover_shadow?: BrandingGenericPageShadowOptions | null;
+  hover_shadow: BrandingGenericPageShadowOptions;
   /**
    * Specifies the background of the login provider buttons when in the hover state
    * @type {BrandingGenericPageBackgroundOptions}

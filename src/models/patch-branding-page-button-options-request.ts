@@ -42,7 +42,7 @@ export interface PatchBrandingPageButtonOptionsRequest {
    * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageButtonOptionsRequest
    */
-  shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
+  shadow?: PatchBrandingGenericPageShadowOptionsRequest;
   /**
    * Specifies the background of the button
    * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
@@ -72,7 +72,7 @@ export interface PatchBrandingPageButtonOptionsRequest {
    * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageButtonOptionsRequest
    */
-  hover_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
+  hover_shadow?: PatchBrandingGenericPageShadowOptionsRequest;
   /**
    * Specifies the background of the button when it is in the hover state
    * @type {PatchBrandingGenericPageBackgroundOptionsRequest}
@@ -102,7 +102,7 @@ export interface PatchBrandingPageButtonOptionsRequest {
    * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageButtonOptionsRequest
    */
-  outline_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
+  outline_shadow?: PatchBrandingGenericPageShadowOptionsRequest;
   /**
    * Specifies the color (in Hex) of the text contained in the outline type button
    * @type {string}
@@ -126,7 +126,7 @@ export interface PatchBrandingPageButtonOptionsRequest {
    * @type {PatchBrandingGenericPageShadowOptionsRequest}
    * @memberof PatchBrandingPageButtonOptionsRequest
    */
-  outline_hover_shadow?: PatchBrandingGenericPageShadowOptionsRequest | null;
+  outline_hover_shadow?: PatchBrandingGenericPageShadowOptionsRequest;
   /**
    * Specifies the color (in Hex) of the text contained in the outline type button when it is in the hover state
    * @type {string}

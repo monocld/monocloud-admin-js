@@ -36,7 +36,7 @@ export interface AccountProtectionUserLockoutOptions {
    * @type {string[]}
    * @memberof AccountProtectionUserLockoutOptions
    */
-  allowed_ips?: string[] | null;
+  allowed_ips: string[];
   /**
    * Types of Lockouts to enable per User Account
    * @type {UserLockoutTypes}

@@ -42,7 +42,7 @@ export interface BrandingPageButtonOptions {
    * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageButtonOptions
    */
-  shadow?: BrandingGenericPageShadowOptions | null;
+  shadow: BrandingGenericPageShadowOptions;
   /**
    * Specifies the background of the button
    * @type {BrandingGenericPageBackgroundOptions}
@@ -72,7 +72,7 @@ export interface BrandingPageButtonOptions {
    * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageButtonOptions
    */
-  hover_shadow?: BrandingGenericPageShadowOptions | null;
+  hover_shadow: BrandingGenericPageShadowOptions;
   /**
    * Specifies the background of the button when it is in the hover state
    * @type {BrandingGenericPageBackgroundOptions}
@@ -102,7 +102,7 @@ export interface BrandingPageButtonOptions {
    * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageButtonOptions
    */
-  outline_shadow?: BrandingGenericPageShadowOptions | null;
+  outline_shadow: BrandingGenericPageShadowOptions;
   /**
    * Specifies the color (in Hex) of the text contained in the outline type button
    * @type {string}
@@ -126,7 +126,7 @@ export interface BrandingPageButtonOptions {
    * @type {BrandingGenericPageShadowOptions}
    * @memberof BrandingPageButtonOptions
    */
-  outline_hover_shadow?: BrandingGenericPageShadowOptions | null;
+  outline_hover_shadow: BrandingGenericPageShadowOptions;
   /**
    * Specifies the color (in Hex) of the text contained in the outline type button when it is in the hover state
    * @type {string}
