@@ -6,7 +6,6 @@ import {
   AddTrustStoreRevocationsRequest,
   TrustStore,
   TrustStoreCertificate,
-  TrustStoreParsed,
   TrustStoreRevocation,
 } from '../models';
 
@@ -27,24 +26,6 @@ export class TrustStoreClient extends MonoCloudClientBase {
     request.url = url;
 
     return this.processRequest<TrustStore>(request);
-  }
-
-  /**
-   *
-   * @summary Get Truststore Chains
-   * @returns TrustStoreParsed - Success
-   * @throws {MonoCloudException}
-   * @memberof TrustStoreClient
-   *
-   */
-  public getTrustStoreChains(): Promise<MonoCloudResponse<TrustStoreParsed>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
-    const url = `/truststore/chains`;
-
-    request.url = url;
-
-    return this.processRequest<TrustStoreParsed>(request);
   }
 
   /**
