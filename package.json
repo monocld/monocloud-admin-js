@@ -1,6 +1,6 @@
 {
   "name": "@monocloud/admin-js",
-  "version": "0.8.8",
+  "version": "0.8.9",
   "description": "MonoCloud Admin JavaScript SDK",
   "keywords": [
     "monocloud",
@@ -36,7 +36,7 @@
     "test": "eslint tests --fix --quiet && jest"
   },
   "dependencies": {
-    "@monocloud/sdk-js-core": "0.1.8",
+    "@monocloud/sdk-js-core": "0.1.9",
     "axios": "1.6.5"
   },
   "devDependencies": {

@@ -1,5 +1,9 @@
 import { AxiosRequestConfig } from 'axios';
-import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
+import {
+  MonoCloudClientBase,
+  MonoCloudResponse,
+  MonoCloudPageResponse,
+} from '@monocloud/sdk-js-core';
 import {
   ApiResource,
   ClaimResource,
@@ -303,7 +307,7 @@ export class ResourcesClient extends MonoCloudClientBase {
     size?: number,
     filter?: string,
     sort?: string
-  ): Promise<MonoCloudResponse<ApiResource[]>> {
+  ): Promise<MonoCloudPageResponse<ApiResource[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/resources/api_resources`;
@@ -328,7 +332,7 @@ export class ResourcesClient extends MonoCloudClientBase {
       request.params.sort = String(sort);
     }
 
-    return this.processRequest<ApiResource[]>(request);
+    return this.processPaginatedRequest<ApiResource[]>(request);
   }
 
   /**
@@ -373,7 +377,7 @@ export class ResourcesClient extends MonoCloudClientBase {
     size?: number,
     filter?: string,
     sort?: string
-  ): Promise<MonoCloudResponse<Scope[]>> {
+  ): Promise<MonoCloudPageResponse<Scope[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/resources/scopes`;
@@ -402,7 +406,7 @@ export class ResourcesClient extends MonoCloudClientBase {
       request.params.sort = String(sort);
     }
 
-    return this.processRequest<Scope[]>(request);
+    return this.processPaginatedRequest<Scope[]>(request);
   }
 
   /**
@@ -445,7 +449,7 @@ export class ResourcesClient extends MonoCloudClientBase {
     size?: number,
     filter?: string,
     sort?: string
-  ): Promise<MonoCloudResponse<ClaimResource[]>> {
+  ): Promise<MonoCloudPageResponse<ClaimResource[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/resources/claim_resources`;
@@ -470,7 +474,7 @@ export class ResourcesClient extends MonoCloudClientBase {
       request.params.sort = String(sort);
     }
 
-    return this.processRequest<ClaimResource[]>(request);
+    return this.processPaginatedRequest<ClaimResource[]>(request);
   }
 
   /**

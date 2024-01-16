@@ -1,5 +1,9 @@
 import { AxiosRequestConfig } from 'axios';
-import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
+import {
+  MonoCloudClientBase,
+  MonoCloudResponse,
+  MonoCloudPageResponse,
+} from '@monocloud/sdk-js-core';
 import {
   Client,
   CreateClientRequest,
@@ -149,7 +153,7 @@ export class ClientsClient extends MonoCloudClientBase {
     size?: number,
     filter?: string,
     sort?: string
-  ): Promise<MonoCloudResponse<Client[]>> {
+  ): Promise<MonoCloudPageResponse<Client[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/clients`;
@@ -174,7 +178,7 @@ export class ClientsClient extends MonoCloudClientBase {
       request.params.sort = String(sort);
     }
 
-    return this.processRequest<Client[]>(request);
+    return this.processPaginatedRequest<Client[]>(request);
   }
 
   /**
