@@ -104,6 +104,24 @@ export interface CreateClientRequest {
    */
   require_request_object: boolean;
   /**
+   * Specifies whether Pushed Authorization Requests are required for authorization.
+   * @type {boolean}
+   * @memberof CreateClientRequest
+   */
+  require_pushed_authorization_requests: boolean;
+  /**
+   * Specifies whether the client will be able to use any redirect uri  and not be restricted to the whitelisted ones.
+   * @type {boolean}
+   * @memberof CreateClientRequest
+   */
+  allow_any_pushed_authorization_redirect_uri: boolean;
+  /**
+   * Specifies the expiration period of the Authorization Request in seconds.
+   * @type {number}
+   * @memberof CreateClientRequest
+   */
+  authorization_request_lifetime: number;
+  /**
    * Controls whether access tokens are transmitted via the browser for this client. This can prevent accidental leakage of access tokens when multiple response types are allowed.
    * @type {boolean}
    * @memberof CreateClientRequest

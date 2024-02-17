@@ -2,11 +2,12 @@ import { AxiosRequestConfig } from 'axios';
 import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
 import {
   AddBannedThumbprintsRequest,
-  AddTrustStoreCertificatesRequest,
-  AddTrustStoreRevocationsRequest,
+  CreateTrustStoreCertificateRequest,
+  CreateTrustStoreRevocationRequest,
   TrustStore,
   TrustStoreCertificate,
   TrustStoreRevocation,
+  UpdateTrustStoreRevocationRequest,
 } from '../models';
 
 export class TrustStoreClient extends MonoCloudClientBase {
@@ -30,15 +31,15 @@ export class TrustStoreClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Add Certificates to truststore
-   * @param {AddTrustStoreCertificatesRequest} addTrustStoreCertificatesRequest Request Body
+   * @summary Add a Certificates to truststore
+   * @param {CreateTrustStoreCertificateRequest} createTrustStoreCertificateRequest Request Body
    * @returns TrustStore - Success
    * @throws {MonoCloudException}
    * @memberof TrustStoreClient
    *
    */
-  public addCertificates(
-    addTrustStoreCertificatesRequest: AddTrustStoreCertificatesRequest
+  public addCertificate(
+    createTrustStoreCertificateRequest: CreateTrustStoreCertificateRequest
   ): Promise<MonoCloudResponse<TrustStore>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
@@ -46,7 +47,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
 
     request.url = url;
 
-    request.data = JSON.stringify(addTrustStoreCertificatesRequest);
+    request.data = JSON.stringify(createTrustStoreCertificateRequest);
 
     return this.processRequest<TrustStore>(request);
   }
@@ -123,15 +124,15 @@ export class TrustStoreClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Add Certificate Revocations to truststore
-   * @param {AddTrustStoreRevocationsRequest} addTrustStoreRevocationsRequest Request Body
+   * @summary Add a Certificate Revocation to truststore
+   * @param {CreateTrustStoreRevocationRequest} createTrustStoreRevocationRequest Request Body
    * @returns TrustStore - Success
    * @throws {MonoCloudException}
    * @memberof TrustStoreClient
    *
    */
-  public addCertificateRevocations(
-    addTrustStoreRevocationsRequest: AddTrustStoreRevocationsRequest
+  public addCertificateRevocation(
+    createTrustStoreRevocationRequest: CreateTrustStoreRevocationRequest
   ): Promise<MonoCloudResponse<TrustStore>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
@@ -139,7 +140,7 @@ export class TrustStoreClient extends MonoCloudClientBase {
 
     request.url = url;
 
-    request.data = JSON.stringify(addTrustStoreRevocationsRequest);
+    request.data = JSON.stringify(createTrustStoreRevocationRequest);
 
     return this.processRequest<TrustStore>(request);
   }
@@ -214,6 +215,34 @@ export class TrustStoreClient extends MonoCloudClientBase {
     request.url = url;
 
     return this.processRequest<null>(request);
+  }
+
+  /**
+   *
+   * @summary Update a Certificate Revocation
+   * @param {string} id Certificate Revocation Id
+   * @param {UpdateTrustStoreRevocationRequest} updateTrustStoreRevocationRequest Update certificate revocation request
+   * @returns TrustStoreRevocation - Success
+   * @throws {MonoCloudException}
+   * @memberof TrustStoreClient
+   *
+   */
+  public updateCertificateRevocation(
+    id: string,
+    updateTrustStoreRevocationRequest: UpdateTrustStoreRevocationRequest
+  ): Promise<MonoCloudResponse<TrustStoreRevocation>> {
+    const request: AxiosRequestConfig = { method: 'PATCH' };
+
+    const url = `/truststore/revocations/{id}`.replace(
+      `{${'id'}}`,
+      encodeURIComponent(String(id))
+    );
+
+    request.url = url;
+
+    request.data = JSON.stringify(updateTrustStoreRevocationRequest);
+
+    return this.processRequest<TrustStoreRevocation>(request);
   }
 
   /**

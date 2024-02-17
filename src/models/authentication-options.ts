@@ -3,6 +3,7 @@ import { AuthenticatorsOptions } from './authenticators-options';
 import { ConsentOptions } from './consent-options';
 import { IdentifiersOptions } from './identifiers-options';
 import { LogoutOptions } from './logout-options';
+import { PushedAuthorizationOptions } from './pushed-authorization-options';
 import { RecoveryMethodsOptions } from './recovery-methods-options';
 import { SessionOptions } from './session-options';
 import { SignUpOptions } from './sign-up-options';
@@ -13,6 +14,12 @@ import { SignUpOptions } from './sign-up-options';
  * @interface AuthenticationOptions
  */
 export interface AuthenticationOptions {
+  /**
+   * Pushed Authorization Request Options
+   * @type {PushedAuthorizationOptions}
+   * @memberof AuthenticationOptions
+   */
+  pushed_authorization: PushedAuthorizationOptions;
   /**
    * Account Protection Options
    * @type {AccountProtectionOptions}

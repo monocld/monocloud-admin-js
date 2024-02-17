@@ -120,6 +120,14 @@ export const LogEventIds = {
   /**
    *
    */
+  ParSuccess: 'par_success',
+  /**
+   *
+   */
+  ParFailure: 'par_failure',
+  /**
+   *
+   */
   TokenIssuedSuccess: 'token_issued_success',
   /**
    *
