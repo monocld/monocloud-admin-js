@@ -1,31 +1,41 @@
 import {
   MonoCloudConfig,
   MonoCloudResponse,
-  ModelStateError,
-  ModelStateException,
-  BadRequestException,
-  ForbiddenException,
   MonoCloudException,
-  NotFoundException,
-  ResourceExhaustedException,
-  ServerErrorException,
-  UnauthorizedException,
-  ConflictException,
+  MonoCloudBadRequestException,
+  MonoCloudConflictException,
+  MonoCloudErrorCodeValidationException,
+  MonoCloudForbiddenException,
+  MonoCloudKeyValidationException,
+  MonoCloudModelStateException,
+  MonoCloudNotFoundException,
+  MonoCloudRequestException,
+  MonoCloudResourceExhaustedException,
+  MonoCloudServerException,
+  MonoCloudUnauthorizedException,
+  ErrorCodeValidationError,
+  ErrorCodeValidationProblemDetails,
+  KeyValidationProblemDetails,
 } from '@monocloud/sdk-js-core';
 import { MonoCloudAdminClient } from './monocloud-admin-client';
 
 export { MonoCloudAdminClient, MonoCloudResponse };
-export type { MonoCloudConfig, ModelStateError };
+export type { MonoCloudConfig, ErrorCodeValidationError };
 export {
-  BadRequestException,
-  ForbiddenException,
   MonoCloudException,
-  NotFoundException,
-  ResourceExhaustedException,
-  ServerErrorException,
-  UnauthorizedException,
-  ModelStateException,
-  ConflictException,
+  MonoCloudBadRequestException,
+  MonoCloudConflictException,
+  MonoCloudErrorCodeValidationException,
+  MonoCloudForbiddenException,
+  MonoCloudKeyValidationException,
+  MonoCloudModelStateException,
+  MonoCloudNotFoundException,
+  MonoCloudRequestException,
+  MonoCloudResourceExhaustedException,
+  MonoCloudServerException,
+  MonoCloudUnauthorizedException,
+  ErrorCodeValidationProblemDetails,
+  KeyValidationProblemDetails,
 };
 export * from './clients';
 export * from './models';

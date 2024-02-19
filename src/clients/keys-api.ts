@@ -1,5 +1,9 @@
 import { AxiosRequestConfig } from 'axios';
-import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
+import {
+  MonoCloudClientBase,
+  MonoCloudResponse,
+  MonoCloudPageResponse,
+} from '@monocloud/sdk-js-core';
 import { KeyMaterial } from '../models';
 
 export class KeysClient extends MonoCloudClientBase {
@@ -16,7 +20,7 @@ export class KeysClient extends MonoCloudClientBase {
   public getAllKeyMaterials(
     page?: number,
     size?: number
-  ): Promise<MonoCloudResponse<KeyMaterial[]>> {
+  ): Promise<MonoCloudPageResponse<KeyMaterial[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/keys`;
@@ -33,7 +37,7 @@ export class KeysClient extends MonoCloudClientBase {
       request.params.size = String(size);
     }
 
-    return this.processRequest<KeyMaterial[]>(request);
+    return this.processPaginatedRequest<KeyMaterial[]>(request);
   }
 
   /**

@@ -1,5 +1,9 @@
 import { AxiosRequestConfig } from 'axios';
-import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
+import {
+  MonoCloudClientBase,
+  MonoCloudResponse,
+  MonoCloudPageResponse,
+} from '@monocloud/sdk-js-core';
 import { Log, LogSummary } from '../models';
 
 export class LogsClient extends MonoCloudClientBase {
@@ -20,7 +24,7 @@ export class LogsClient extends MonoCloudClientBase {
     size?: number,
     filter?: string,
     sort?: string
-  ): Promise<MonoCloudResponse<LogSummary[]>> {
+  ): Promise<MonoCloudPageResponse<LogSummary[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/logs`;
@@ -45,7 +49,7 @@ export class LogsClient extends MonoCloudClientBase {
       request.params.sort = String(sort);
     }
 
-    return this.processRequest<LogSummary[]>(request);
+    return this.processPaginatedRequest<LogSummary[]>(request);
   }
 
   /**
