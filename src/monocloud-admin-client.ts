@@ -1,5 +1,4 @@
-import { AxiosInstance } from 'axios';
-import { MonoCloudConfig } from '@monocloud/sdk-js-core';
+import { MonoCloudConfig, Fetcher } from '@monocloud/sdk-js-core';
 import {
   ClientsClient,
   KeysClient,
@@ -22,23 +21,23 @@ export class MonoCloudAdminClient {
 
   public readonly trustStore: TrustStoreClient;
 
-  private constructor(options: MonoCloudConfig, instance?: AxiosInstance) {
-    this.clients = new ClientsClient(options, instance);
+  private constructor(options: MonoCloudConfig, fetcher?: Fetcher) {
+    this.clients = new ClientsClient(options, fetcher);
 
-    this.keys = new KeysClient(options, instance);
+    this.keys = new KeysClient(options, fetcher);
 
-    this.logs = new LogsClient(options, instance);
+    this.logs = new LogsClient(options, fetcher);
 
-    this.options = new OptionsClient(options, instance);
+    this.options = new OptionsClient(options, fetcher);
 
-    this.resources = new ResourcesClient(options, instance);
+    this.resources = new ResourcesClient(options, fetcher);
 
-    this.trustStore = new TrustStoreClient(options, instance);
+    this.trustStore = new TrustStoreClient(options, fetcher);
   }
 
   public static init(
     options?: MonoCloudConfig,
-    instance?: AxiosInstance
+    fetcher?: Fetcher
   ): MonoCloudAdminClient {
     const envTimeout = parseInt(process.env.MC_ADMIN_TIMEOUT ?? '', 10);
 
@@ -46,7 +45,6 @@ export class MonoCloudAdminClient {
       domain: options?.domain ?? process.env.MC_ADMIN_DOMAIN ?? '',
       apiKey: options?.apiKey ?? process.env.MC_ADMIN_API_KEY ?? '',
       config: options?.config ?? {
-        retry: options?.config?.retry ?? process.env.MC_ADMIN_RETRY === 'true',
         timeout:
           options?.config?.timeout ??
           (Number.isInteger(envTimeout) && envTimeout > 0)
@@ -55,6 +53,6 @@ export class MonoCloudAdminClient {
       },
     };
 
-    return new MonoCloudAdminClient(opt, instance);
+    return new MonoCloudAdminClient(opt, fetcher);
   }
 }

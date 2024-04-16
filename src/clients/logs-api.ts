@@ -1,8 +1,8 @@
-import { AxiosRequestConfig } from 'axios';
 import {
   MonoCloudClientBase,
   MonoCloudResponse,
   MonoCloudPageResponse,
+  MonoCloudRequest,
 } from '@monocloud/sdk-js-core';
 import { Log, LogSummary } from '../models';
 
@@ -25,28 +25,26 @@ export class LogsClient extends MonoCloudClientBase {
     filter?: string,
     sort?: string
   ): Promise<MonoCloudPageResponse<LogSummary[]>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/logs`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
-    request.params = {};
+    request.queryParams = {};
 
     if (page !== undefined && page !== null) {
-      request.params.page = String(page);
+      request.queryParams.page = String(page);
     }
 
     if (size !== undefined && size !== null) {
-      request.params.size = String(size);
+      request.queryParams.size = String(size);
     }
 
     if (filter !== undefined && filter !== null) {
-      request.params.filter = String(filter);
+      request.queryParams.filter = String(filter);
     }
 
     if (sort !== undefined && sort !== null) {
-      request.params.sort = String(sort);
+      request.queryParams.sort = String(sort);
     }
 
     return this.processPaginatedRequest<LogSummary[]>(request);
@@ -62,14 +60,12 @@ export class LogsClient extends MonoCloudClientBase {
    *
    */
   public findLogById(id: string): Promise<MonoCloudResponse<Log>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/logs/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<Log>(request);
   }

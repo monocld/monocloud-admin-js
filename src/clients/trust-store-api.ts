@@ -1,5 +1,8 @@
-import { AxiosRequestConfig } from 'axios';
-import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
+import {
+  MonoCloudClientBase,
+  MonoCloudResponse,
+  MonoCloudRequest,
+} from '@monocloud/sdk-js-core';
 import {
   AddBannedThumbprintsRequest,
   CreateTrustStoreCertificateRequest,
@@ -20,11 +23,9 @@ export class TrustStoreClient extends MonoCloudClientBase {
    *
    */
   public getTrustStore(): Promise<MonoCloudResponse<TrustStore>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/truststore`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<TrustStore>(request);
   }
@@ -41,13 +42,11 @@ export class TrustStoreClient extends MonoCloudClientBase {
   public addCertificate(
     createTrustStoreCertificateRequest: CreateTrustStoreCertificateRequest
   ): Promise<MonoCloudResponse<TrustStore>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/truststore/certificates`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(createTrustStoreCertificateRequest);
+    request.body = createTrustStoreCertificateRequest;
 
     return this.processRequest<TrustStore>(request);
   }
@@ -64,14 +63,12 @@ export class TrustStoreClient extends MonoCloudClientBase {
   public enableCertificate(
     id: string
   ): Promise<MonoCloudResponse<TrustStoreCertificate>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/truststore/certificates/{id}/enable`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
     return this.processRequest<TrustStoreCertificate>(request);
   }
@@ -88,14 +85,12 @@ export class TrustStoreClient extends MonoCloudClientBase {
   public disableCertificate(
     id: string
   ): Promise<MonoCloudResponse<TrustStoreCertificate>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/truststore/certificates/{id}/disable`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
     return this.processRequest<TrustStoreCertificate>(request);
   }
@@ -110,14 +105,12 @@ export class TrustStoreClient extends MonoCloudClientBase {
    *
    */
   public deleteCertificate(id: string): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'DELETE' };
-
     const url = `/truststore/certificates/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'DELETE', url };
 
     return this.processRequest<null>(request);
   }
@@ -134,13 +127,11 @@ export class TrustStoreClient extends MonoCloudClientBase {
   public addCertificateRevocation(
     createTrustStoreRevocationRequest: CreateTrustStoreRevocationRequest
   ): Promise<MonoCloudResponse<TrustStore>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/truststore/revocations`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(createTrustStoreRevocationRequest);
+    request.body = createTrustStoreRevocationRequest;
 
     return this.processRequest<TrustStore>(request);
   }
@@ -157,14 +148,12 @@ export class TrustStoreClient extends MonoCloudClientBase {
   public enableCertificateRevocation(
     id: string
   ): Promise<MonoCloudResponse<TrustStoreRevocation>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/truststore/revocations/{id}/enable`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
     return this.processRequest<TrustStoreRevocation>(request);
   }
@@ -181,14 +170,12 @@ export class TrustStoreClient extends MonoCloudClientBase {
   public disableCertificateRevocation(
     id: string
   ): Promise<MonoCloudResponse<TrustStoreRevocation>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/truststore/revocations/{id}/disable`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
     return this.processRequest<TrustStoreRevocation>(request);
   }
@@ -205,14 +192,12 @@ export class TrustStoreClient extends MonoCloudClientBase {
   public deleteCertificateRevocation(
     id: string
   ): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'DELETE' };
-
     const url = `/truststore/revocations/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'DELETE', url };
 
     return this.processRequest<null>(request);
   }
@@ -231,16 +216,14 @@ export class TrustStoreClient extends MonoCloudClientBase {
     id: string,
     updateTrustStoreRevocationRequest: UpdateTrustStoreRevocationRequest
   ): Promise<MonoCloudResponse<TrustStoreRevocation>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
     const url = `/truststore/revocations/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.data = JSON.stringify(updateTrustStoreRevocationRequest);
+    request.body = updateTrustStoreRevocationRequest;
 
     return this.processRequest<TrustStoreRevocation>(request);
   }
@@ -257,13 +240,11 @@ export class TrustStoreClient extends MonoCloudClientBase {
   public addBannedThumbprints(
     addBannedThumbprintsRequest: AddBannedThumbprintsRequest
   ): Promise<MonoCloudResponse<TrustStore>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/truststore/thumbprints`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(addBannedThumbprintsRequest);
+    request.body = addBannedThumbprintsRequest;
 
     return this.processRequest<TrustStore>(request);
   }
@@ -280,14 +261,12 @@ export class TrustStoreClient extends MonoCloudClientBase {
   public deleteBannedThumbprint(
     thumbprint: string
   ): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'DELETE' };
-
     const url = `/truststore/thumbprints/{thumbprint}`.replace(
       `{${'thumbprint'}}`,
       encodeURIComponent(String(thumbprint))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'DELETE', url };
 
     return this.processRequest<null>(request);
   }

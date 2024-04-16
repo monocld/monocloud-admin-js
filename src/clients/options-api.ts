@@ -1,5 +1,8 @@
-import { AxiosRequestConfig } from 'axios';
-import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
+import {
+  MonoCloudClientBase,
+  MonoCloudResponse,
+  MonoCloudRequest,
+} from '@monocloud/sdk-js-core';
 import {
   AuthenticationOptions,
   BrandingOptions,
@@ -23,11 +26,9 @@ export class OptionsClient extends MonoCloudClientBase {
   public findAuthenticationOptions(): Promise<
     MonoCloudResponse<AuthenticationOptions>
   > {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/options/authentication`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<AuthenticationOptions>(request);
   }
@@ -44,13 +45,11 @@ export class OptionsClient extends MonoCloudClientBase {
   public patchAuthenticationOptions(
     patchAuthenticationOptionsRequest: PatchAuthenticationOptionsRequest
   ): Promise<MonoCloudResponse<AuthenticationOptions>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
     const url = `/options/authentication`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.data = JSON.stringify(patchAuthenticationOptionsRequest);
+    request.body = patchAuthenticationOptionsRequest;
 
     return this.processRequest<AuthenticationOptions>(request);
   }
@@ -64,11 +63,9 @@ export class OptionsClient extends MonoCloudClientBase {
    *
    */
   public findBrandingOptions(): Promise<MonoCloudResponse<BrandingOptions>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/options/branding`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<BrandingOptions>(request);
   }
@@ -85,13 +82,11 @@ export class OptionsClient extends MonoCloudClientBase {
   public patchBrandingOptions(
     patchBrandingOptionsRequest: PatchBrandingOptionsRequest
   ): Promise<MonoCloudResponse<BrandingOptions>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
     const url = `/options/branding`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.data = JSON.stringify(patchBrandingOptionsRequest);
+    request.body = patchBrandingOptionsRequest;
 
     return this.processRequest<BrandingOptions>(request);
   }
@@ -107,11 +102,9 @@ export class OptionsClient extends MonoCloudClientBase {
   public findCommunicationOptions(): Promise<
     MonoCloudResponse<CommunicationOptions>
   > {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/options/communication`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<CommunicationOptions>(request);
   }
@@ -128,13 +121,11 @@ export class OptionsClient extends MonoCloudClientBase {
   public patchCommunicationOptions(
     patchCommunicationOptionsRequest: PatchCommunicationOptionsRequest
   ): Promise<MonoCloudResponse<CommunicationOptions>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
     const url = `/options/communication`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.data = JSON.stringify(patchCommunicationOptionsRequest);
+    request.body = patchCommunicationOptionsRequest;
 
     return this.processRequest<CommunicationOptions>(request);
   }
@@ -148,11 +139,9 @@ export class OptionsClient extends MonoCloudClientBase {
    *
    */
   public findMtlsOptions(): Promise<MonoCloudResponse<MtlsOptions>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/options/mtls`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<MtlsOptions>(request);
   }
@@ -169,13 +158,11 @@ export class OptionsClient extends MonoCloudClientBase {
   public patchMtlsOptions(
     patchMtlsOptionsRequest: PatchMtlsOptionsRequest
   ): Promise<MonoCloudResponse<MtlsOptions>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
     const url = `/options/mtls`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.data = JSON.stringify(patchMtlsOptionsRequest);
+    request.body = patchMtlsOptionsRequest;
 
     return this.processRequest<MtlsOptions>(request);
   }

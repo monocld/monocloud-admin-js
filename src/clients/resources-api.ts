@@ -1,8 +1,8 @@
-import { AxiosRequestConfig } from 'axios';
 import {
   MonoCloudClientBase,
   MonoCloudResponse,
   MonoCloudPageResponse,
+  MonoCloudRequest,
 } from '@monocloud/sdk-js-core';
 import {
   ApiResource,
@@ -32,14 +32,12 @@ export class ResourcesClient extends MonoCloudClientBase {
   public findApiResourceById(
     id: string
   ): Promise<MonoCloudResponse<ApiResource>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/resources/api_resources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<ApiResource>(request);
   }
@@ -54,14 +52,12 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public deleteApiResource(id: string): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'DELETE' };
-
     const url = `/resources/api_resources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'DELETE', url };
 
     return this.processRequest<null>(request);
   }
@@ -80,16 +76,14 @@ export class ResourcesClient extends MonoCloudClientBase {
     id: string,
     patchApiResourceRequest: PatchApiResourceRequest
   ): Promise<MonoCloudResponse<ApiResource>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
     const url = `/resources/api_resources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.data = JSON.stringify(patchApiResourceRequest);
+    request.body = patchApiResourceRequest;
 
     return this.processRequest<ApiResource>(request);
   }
@@ -108,13 +102,11 @@ export class ResourcesClient extends MonoCloudClientBase {
     resourceId: string,
     secretId: string
   ): Promise<MonoCloudResponse<SecretValue>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/resources/api_resources/{resource_id}/secrets/{secret_id}`
       .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
       .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)));
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<SecretValue>(request);
   }
@@ -133,13 +125,11 @@ export class ResourcesClient extends MonoCloudClientBase {
     resourceId: string,
     secretId: string
   ): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'DELETE' };
-
     const url = `/resources/api_resources/{resource_id}/secrets/{secret_id}`
       .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
       .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)));
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'DELETE', url };
 
     return this.processRequest<null>(request);
   }
@@ -154,14 +144,12 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public findScopeById(id: string): Promise<MonoCloudResponse<Scope>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/resources/scopes/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<Scope>(request);
   }
@@ -176,14 +164,12 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public deleteScope(id: string): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'DELETE' };
-
     const url = `/resources/scopes/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'DELETE', url };
 
     return this.processRequest<null>(request);
   }
@@ -202,16 +188,14 @@ export class ResourcesClient extends MonoCloudClientBase {
     id: string,
     patchScopeRequest: PatchScopeRequest
   ): Promise<MonoCloudResponse<Scope>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
     const url = `/resources/scopes/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.data = JSON.stringify(patchScopeRequest);
+    request.body = patchScopeRequest;
 
     return this.processRequest<Scope>(request);
   }
@@ -228,14 +212,12 @@ export class ResourcesClient extends MonoCloudClientBase {
   public findClaimResourceById(
     id: string
   ): Promise<MonoCloudResponse<ClaimResource>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/resources/claim_resources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<ClaimResource>(request);
   }
@@ -250,14 +232,12 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public deleteClaimResource(id: string): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'DELETE' };
-
     const url = `/resources/claim_resources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'DELETE', url };
 
     return this.processRequest<null>(request);
   }
@@ -276,16 +256,14 @@ export class ResourcesClient extends MonoCloudClientBase {
     id: string,
     patchClaimResourceRequest: PatchClaimResourceRequest
   ): Promise<MonoCloudResponse<ClaimResource>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
     const url = `/resources/claim_resources/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.data = JSON.stringify(patchClaimResourceRequest);
+    request.body = patchClaimResourceRequest;
 
     return this.processRequest<ClaimResource>(request);
   }
@@ -308,28 +286,26 @@ export class ResourcesClient extends MonoCloudClientBase {
     filter?: string,
     sort?: string
   ): Promise<MonoCloudPageResponse<ApiResource[]>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/resources/api_resources`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
-    request.params = {};
+    request.queryParams = {};
 
     if (page !== undefined && page !== null) {
-      request.params.page = String(page);
+      request.queryParams.page = String(page);
     }
 
     if (size !== undefined && size !== null) {
-      request.params.size = String(size);
+      request.queryParams.size = String(size);
     }
 
     if (filter !== undefined && filter !== null) {
-      request.params.filter = String(filter);
+      request.queryParams.filter = String(filter);
     }
 
     if (sort !== undefined && sort !== null) {
-      request.params.sort = String(sort);
+      request.queryParams.sort = String(sort);
     }
 
     return this.processPaginatedRequest<ApiResource[]>(request);
@@ -347,13 +323,11 @@ export class ResourcesClient extends MonoCloudClientBase {
   public createApiResource(
     createApiResourceRequest: CreateApiResourceRequest
   ): Promise<MonoCloudResponse<ApiResource>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/resources/api_resources`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(createApiResourceRequest);
+    request.body = createApiResourceRequest;
 
     return this.processRequest<ApiResource>(request);
   }
@@ -378,32 +352,30 @@ export class ResourcesClient extends MonoCloudClientBase {
     filter?: string,
     sort?: string
   ): Promise<MonoCloudPageResponse<Scope[]>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/resources/scopes`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
-    request.params = {};
+    request.queryParams = {};
 
     if (type !== undefined && type !== null) {
-      request.params.type = String(type);
+      request.queryParams.type = String(type);
     }
 
     if (page !== undefined && page !== null) {
-      request.params.page = String(page);
+      request.queryParams.page = String(page);
     }
 
     if (size !== undefined && size !== null) {
-      request.params.size = String(size);
+      request.queryParams.size = String(size);
     }
 
     if (filter !== undefined && filter !== null) {
-      request.params.filter = String(filter);
+      request.queryParams.filter = String(filter);
     }
 
     if (sort !== undefined && sort !== null) {
-      request.params.sort = String(sort);
+      request.queryParams.sort = String(sort);
     }
 
     return this.processPaginatedRequest<Scope[]>(request);
@@ -421,13 +393,11 @@ export class ResourcesClient extends MonoCloudClientBase {
   public createScope(
     createScopeRequest: CreateScopeRequest
   ): Promise<MonoCloudResponse<Scope>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/resources/scopes`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(createScopeRequest);
+    request.body = createScopeRequest;
 
     return this.processRequest<Scope>(request);
   }
@@ -450,28 +420,26 @@ export class ResourcesClient extends MonoCloudClientBase {
     filter?: string,
     sort?: string
   ): Promise<MonoCloudPageResponse<ClaimResource[]>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/resources/claim_resources`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
-    request.params = {};
+    request.queryParams = {};
 
     if (page !== undefined && page !== null) {
-      request.params.page = String(page);
+      request.queryParams.page = String(page);
     }
 
     if (size !== undefined && size !== null) {
-      request.params.size = String(size);
+      request.queryParams.size = String(size);
     }
 
     if (filter !== undefined && filter !== null) {
-      request.params.filter = String(filter);
+      request.queryParams.filter = String(filter);
     }
 
     if (sort !== undefined && sort !== null) {
-      request.params.sort = String(sort);
+      request.queryParams.sort = String(sort);
     }
 
     return this.processPaginatedRequest<ClaimResource[]>(request);
@@ -489,13 +457,11 @@ export class ResourcesClient extends MonoCloudClientBase {
   public createClaimResource(
     createClaimResourceRequest: CreateClaimResourceRequest
   ): Promise<MonoCloudResponse<ClaimResource>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/resources/claim_resources`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(createClaimResourceRequest);
+    request.body = createClaimResourceRequest;
 
     return this.processRequest<ClaimResource>(request);
   }
@@ -514,16 +480,14 @@ export class ResourcesClient extends MonoCloudClientBase {
     resourceId: string,
     createSecretRequest: CreateSecretRequest
   ): Promise<MonoCloudResponse<Secret>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/resources/api_resources/{resource_id}/secrets`.replace(
       `{${'resource_id'}}`,
       encodeURIComponent(String(resourceId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(createSecretRequest);
+    request.body = createSecretRequest;
 
     return this.processRequest<Secret>(request);
   }
