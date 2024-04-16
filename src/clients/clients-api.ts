@@ -1,8 +1,8 @@
-import { AxiosRequestConfig } from 'axios';
 import {
   MonoCloudClientBase,
   MonoCloudResponse,
   MonoCloudPageResponse,
+  MonoCloudRequest,
 } from '@monocloud/sdk-js-core';
 import {
   Client,
@@ -24,14 +24,12 @@ export class ClientsClient extends MonoCloudClientBase {
    *
    */
   public findClientById(id: string): Promise<MonoCloudResponse<Client>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/clients/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<Client>(request);
   }
@@ -46,14 +44,12 @@ export class ClientsClient extends MonoCloudClientBase {
    *
    */
   public deleteClient(id: string): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'DELETE' };
-
     const url = `/clients/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'DELETE', url };
 
     return this.processRequest<null>(request);
   }
@@ -72,16 +68,14 @@ export class ClientsClient extends MonoCloudClientBase {
     id: string,
     patchClientRequest: PatchClientRequest
   ): Promise<MonoCloudResponse<Client>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
     const url = `/clients/{id}`.replace(
       `{${'id'}}`,
       encodeURIComponent(String(id))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.data = JSON.stringify(patchClientRequest);
+    request.body = patchClientRequest;
 
     return this.processRequest<Client>(request);
   }
@@ -100,13 +94,11 @@ export class ClientsClient extends MonoCloudClientBase {
     clientId: string,
     secretId: string
   ): Promise<MonoCloudResponse<SecretValue>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/clients/{client_id}/secrets/{secret_id}`
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
       .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)));
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<SecretValue>(request);
   }
@@ -125,13 +117,11 @@ export class ClientsClient extends MonoCloudClientBase {
     clientId: string,
     secretId: string
   ): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'DELETE' };
-
     const url = `/clients/{client_id}/secrets/{secret_id}`
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
       .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)));
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'DELETE', url };
 
     return this.processRequest<null>(request);
   }
@@ -154,28 +144,26 @@ export class ClientsClient extends MonoCloudClientBase {
     filter?: string,
     sort?: string
   ): Promise<MonoCloudPageResponse<Client[]>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/clients`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
-    request.params = {};
+    request.queryParams = {};
 
     if (page !== undefined && page !== null) {
-      request.params.page = String(page);
+      request.queryParams.page = String(page);
     }
 
     if (size !== undefined && size !== null) {
-      request.params.size = String(size);
+      request.queryParams.size = String(size);
     }
 
     if (filter !== undefined && filter !== null) {
-      request.params.filter = String(filter);
+      request.queryParams.filter = String(filter);
     }
 
     if (sort !== undefined && sort !== null) {
-      request.params.sort = String(sort);
+      request.queryParams.sort = String(sort);
     }
 
     return this.processPaginatedRequest<Client[]>(request);
@@ -193,13 +181,11 @@ export class ClientsClient extends MonoCloudClientBase {
   public createClient(
     createClientRequest: CreateClientRequest
   ): Promise<MonoCloudResponse<Client>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/clients`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(createClientRequest);
+    request.body = createClientRequest;
 
     return this.processRequest<Client>(request);
   }
@@ -218,16 +204,14 @@ export class ClientsClient extends MonoCloudClientBase {
     clientId: string,
     createSecretRequest: CreateSecretRequest
   ): Promise<MonoCloudResponse<Secret>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/clients/{client_id}/secrets`.replace(
       `{${'client_id'}}`,
       encodeURIComponent(String(clientId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(createSecretRequest);
+    request.body = createSecretRequest;
 
     return this.processRequest<Secret>(request);
   }

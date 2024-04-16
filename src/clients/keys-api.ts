@@ -1,8 +1,8 @@
-import { AxiosRequestConfig } from 'axios';
 import {
   MonoCloudClientBase,
   MonoCloudResponse,
   MonoCloudPageResponse,
+  MonoCloudRequest,
 } from '@monocloud/sdk-js-core';
 import { KeyMaterial } from '../models';
 
@@ -21,20 +21,18 @@ export class KeysClient extends MonoCloudClientBase {
     page?: number,
     size?: number
   ): Promise<MonoCloudPageResponse<KeyMaterial[]>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/keys`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
-    request.params = {};
+    request.queryParams = {};
 
     if (page !== undefined && page !== null) {
-      request.params.page = String(page);
+      request.queryParams.page = String(page);
     }
 
     if (size !== undefined && size !== null) {
-      request.params.size = String(size);
+      request.queryParams.size = String(size);
     }
 
     return this.processPaginatedRequest<KeyMaterial[]>(request);
@@ -50,14 +48,12 @@ export class KeysClient extends MonoCloudClientBase {
    *
    */
   public rotateKey(keyId: string): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'PUT' };
-
     const url = `/keys/{key_id}/rotate`.replace(
       `{${'key_id'}}`,
       encodeURIComponent(String(keyId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PUT', url };
 
     return this.processRequest<null>(request);
   }
@@ -72,14 +68,12 @@ export class KeysClient extends MonoCloudClientBase {
    *
    */
   public revokeKey(keyId: string): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'PUT' };
-
     const url = `/keys/{key_id}/revoke`.replace(
       `{${'key_id'}}`,
       encodeURIComponent(String(keyId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PUT', url };
 
     return this.processRequest<null>(request);
   }

@@ -16,11 +16,12 @@ import {
   ErrorCodeValidationError,
   ErrorCodeValidationProblemDetails,
   KeyValidationProblemDetails,
+  Fetcher,
 } from '@monocloud/sdk-js-core';
 import { MonoCloudAdminClient } from './monocloud-admin-client';
 
 export { MonoCloudAdminClient, MonoCloudResponse };
-export type { MonoCloudConfig, ErrorCodeValidationError };
+export type { MonoCloudConfig, ErrorCodeValidationError, Fetcher };
 export {
   MonoCloudException,
   MonoCloudBadRequestException,
