@@ -267,4 +267,16 @@ describe('MonoCloud Admin SDK Tests', () => {
       );
     }
   });
+
+  test('No content should handle correctly', async () => {
+    nockInst
+      .delete('/api/clients/1')
+      .reply(204, {}, { 'Content-Type': 'application/problem+json' });
+
+    const result = await client.clients.deleteClient('1');
+
+    nockInst.done();
+
+    expect(result.status).toBe(204);
+  });
 });
