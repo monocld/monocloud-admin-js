@@ -1,6 +1,5 @@
 import { AccountProtectionOptions } from './account-protection-options';
 import { AuthenticatorsOptions } from './authenticators-options';
-import { ConsentOptions } from './consent-options';
 import { IdentifiersOptions } from './identifiers-options';
 import { LogoutOptions } from './logout-options';
 import { RecoveryMethodsOptions } from './recovery-methods-options';
@@ -37,12 +36,6 @@ export interface AuthenticationOptions {
    * @memberof AuthenticationOptions
    */
   recovery_methods: RecoveryMethodsOptions;
-  /**
-   * Consent Options
-   * @type {ConsentOptions}
-   * @memberof AuthenticationOptions
-   */
-  consent: ConsentOptions;
   /**
    * Session Options
    * @type {SessionOptions}

@@ -55,6 +55,12 @@ export interface PatchClientRequest {
    */
   require_consent?: boolean;
   /**
+   * Specifies whether to show the consent screen when the offline_access scope is requested (regardless of RememberConsent)
+   * @type {boolean}
+   * @memberof PatchClientRequest
+   */
+  always_require_consent_for_offline_access?: boolean;
+  /**
    * Specifies whether user can choose to store consent decisions
    * @type {RememberConsentTypes}
    * @memberof PatchClientRequest

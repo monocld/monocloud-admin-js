@@ -1,6 +1,5 @@
 import { PatchAccountProtectionOptionsRequest } from './patch-account-protection-options-request';
 import { PatchAuthenticatorsOptionsRequest } from './patch-authenticators-options-request';
-import { PatchConsentOptionsRequest } from './patch-consent-options-request';
 import { PatchIdentifiersOptionsRequest } from './patch-identifiers-options-request';
 import { PatchLogoutOptionsRequest } from './patch-logout-options-request';
 import { PatchRecoveryMethodsOptionsRequest } from './patch-recovery-methods-options-request';
@@ -37,12 +36,6 @@ export interface PatchAuthenticationOptionsRequest {
    * @memberof PatchAuthenticationOptionsRequest
    */
   recovery_methods?: PatchRecoveryMethodsOptionsRequest;
-  /**
-   * Consent Options
-   * @type {PatchConsentOptionsRequest}
-   * @memberof PatchAuthenticationOptionsRequest
-   */
-  consent?: PatchConsentOptionsRequest;
   /**
    * Session Options
    * @type {PatchSessionOptionsRequest}
