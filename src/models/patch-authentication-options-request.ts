@@ -2,6 +2,7 @@ import { PatchAccountProtectionOptionsRequest } from './patch-account-protection
 import { PatchAuthenticatorsOptionsRequest } from './patch-authenticators-options-request';
 import { PatchIdentifiersOptionsRequest } from './patch-identifiers-options-request';
 import { PatchLogoutOptionsRequest } from './patch-logout-options-request';
+import { PatchPushedAuthorizationOptionsRequest } from './patch-pushed-authorization-options-request';
 import { PatchRecoveryMethodsOptionsRequest } from './patch-recovery-methods-options-request';
 import { PatchSessionOptionsRequest } from './patch-session-options-request';
 import { PatchSignUpOptionsRequest } from './patch-sign-up-options-request';
@@ -12,6 +13,12 @@ import { PatchSignUpOptionsRequest } from './patch-sign-up-options-request';
  * @interface PatchAuthenticationOptionsRequest
  */
 export interface PatchAuthenticationOptionsRequest {
+  /**
+   * Pushed Authorization Request Options
+   * @type {PatchPushedAuthorizationOptionsRequest}
+   * @memberof PatchAuthenticationOptionsRequest
+   */
+  pushed_authorization?: PatchPushedAuthorizationOptionsRequest;
   /**
    * Account Protection Options
    * @type {PatchAccountProtectionOptionsRequest}
