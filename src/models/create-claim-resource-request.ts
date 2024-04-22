@@ -9,7 +9,7 @@ export interface CreateClaimResourceRequest {
    * @type {boolean}
    * @memberof CreateClaimResourceRequest
    */
-  enabled: boolean;
+  enabled?: boolean;
   /**
    * Display Name for the Resource
    * @type {string}
@@ -27,7 +27,7 @@ export interface CreateClaimResourceRequest {
    * @type {boolean}
    * @memberof CreateClaimResourceRequest
    */
-  show_in_discovery_document: boolean;
+  show_in_discovery_document?: boolean;
   /**
    * The unique name of the claim.
    * @type {string}
@@ -45,11 +45,11 @@ export interface CreateClaimResourceRequest {
    * @type {boolean}
    * @memberof CreateClaimResourceRequest
    */
-  required: boolean;
+  required?: boolean;
   /**
    * Specifies whether the consent screen will emphasize this claim (if such a feature is implemented in the consent screen). Use this setting for sensitive or important scopes.
    * @type {boolean}
    * @memberof CreateClaimResourceRequest
    */
-  emphasize: boolean;
+  emphasize?: boolean;
 }

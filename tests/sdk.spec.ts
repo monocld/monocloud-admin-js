@@ -279,4 +279,59 @@ describe('MonoCloud Admin SDK Tests', () => {
 
     expect(result.status).toBe(204);
   });
+
+  test('Problem json content type with any suffix should handle correctly', async () => {
+    nockInst.post('/api/clients').reply(
+      422,
+      {
+        type: 'https://httpstatuses.io/422#validation-error',
+        title: 'Unprocessable Entity',
+        status: 422,
+        errors: {
+          client_name: ['should not be empty'],
+          description: ['should not be more than 200 characters'],
+        },
+        traceId: '00-cd3f24e893675e2dae242875e99e7c85-296286fe1c04c085-01',
+      },
+      { 'Content-Type': 'application/problem+json#suffix' }
+    );
+
+    try {
+      await client.clients.createClient({} as CreateClientRequest);
+      throw new Error('Invalid');
+    } catch (error: unknown) {
+      expect(error).toBeInstanceOf(MonoCloudKeyValidationException);
+      const err = error as MonoCloudKeyValidationException;
+      expect(err.message).toContain('Unprocessable Entity');
+      expect(Object.keys(err.errors).length).toBe(2);
+      expect(err.errors.client_name?.[0]).toBe('should not be empty');
+      expect(err.errors.description?.[0]).toBe(
+        'should not be more than 200 characters'
+      );
+      expect(err.response).not.toBeFalsy();
+      expect(err.response!.type).toBe(
+        'https://httpstatuses.io/422#validation-error'
+      );
+      expect(err.response!.status).toBe(422);
+      expect(err.response!.title).toBe('Unprocessable Entity');
+      expect(err.response!.traceId).toBe(
+        '00-cd3f24e893675e2dae242875e99e7c85-296286fe1c04c085-01'
+      );
+    }
+  });
+
+  test('Should return proper response instance on success', async () => {
+    nockInst.get('/api/clients').reply(200, [{}, {}, {}], {
+      header1: 'value1',
+      header2: 'value2',
+    });
+
+    const result = await client.clients.getAllClients();
+
+    expect(result.status).toBe(200);
+    expect(result.result.length).toBe(3);
+    expect(Object.keys(result.headers).length).toBeGreaterThan(2);
+    expect(result.headers.header1).toBe('value1');
+    expect(result.headers.header2).toBe('value2');
+  });
 });

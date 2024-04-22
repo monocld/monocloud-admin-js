@@ -15,11 +15,11 @@ export interface CreateScopeClaimRequest {
    * @type {boolean}
    * @memberof CreateScopeClaimRequest
    */
-  include_in_identity_token: boolean;
+  include_in_identity_token?: boolean;
   /**
    * Specifies whether the claim will be returned from the user info endpoint.
    * @type {boolean}
    * @memberof CreateScopeClaimRequest
    */
-  include_in_user_info: boolean;
+  include_in_user_info?: boolean;
 }
