@@ -9,7 +9,7 @@ export interface CreateTrustStoreRevocationRequest {
    * @type {boolean}
    * @memberof CreateTrustStoreRevocationRequest
    */
-  enabled: boolean;
+  enabled?: boolean;
   /**
    * Certificate Crl Value.
    * @type {string}

@@ -29,5 +29,5 @@ export interface CreateSecretRequest {
    * @type {SecretTypes}
    * @memberof CreateSecretRequest
    */
-  type: SecretTypes;
+  type?: SecretTypes;
 }

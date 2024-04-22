@@ -11,7 +11,7 @@ export interface CreateApiResourceRequest {
    * @type {boolean}
    * @memberof CreateApiResourceRequest
    */
-  enabled: boolean;
+  enabled?: boolean;
   /**
    * Display Name for the Resource
    * @type {string}
@@ -29,7 +29,7 @@ export interface CreateApiResourceRequest {
    * @type {boolean}
    * @memberof CreateApiResourceRequest
    */
-  show_in_discovery_document: boolean;
+  show_in_discovery_document?: boolean;
   /**
    * The audience that will be added to the outgoing access token.
    * @type {string}
@@ -41,7 +41,7 @@ export interface CreateApiResourceRequest {
    * @type {CreateSecretRequest[]}
    * @memberof CreateApiResourceRequest
    */
-  api_secrets: CreateSecretRequest[];
+  api_secrets?: CreateSecretRequest[];
   /**
    * List of API scope names.
    * @type {string[]}

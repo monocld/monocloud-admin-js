@@ -9,7 +9,7 @@ export interface CreateTrustStoreCertificateRequest {
    * @type {boolean}
    * @memberof CreateTrustStoreCertificateRequest
    */
-  enabled: boolean;
+  enabled?: boolean;
   /**
    * Certificate Value.
    * @type {string}

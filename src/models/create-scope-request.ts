@@ -12,7 +12,7 @@ export interface CreateScopeRequest {
    * @type {boolean}
    * @memberof CreateScopeRequest
    */
-  enabled: boolean;
+  enabled?: boolean;
   /**
    * Display Name for the Resource
    * @type {string}
@@ -30,7 +30,7 @@ export interface CreateScopeRequest {
    * @type {boolean}
    * @memberof CreateScopeRequest
    */
-  show_in_discovery_document: boolean;
+  show_in_discovery_document?: boolean;
   /**
    * The unique name of the scope. This is the value a client will use for the scope parameter in the authorize request.
    * @type {string}
@@ -42,19 +42,19 @@ export interface CreateScopeRequest {
    * @type {ScopeTypes}
    * @memberof CreateScopeRequest
    */
-  type: ScopeTypes;
+  type?: ScopeTypes;
   /**
    * Specifies whether the user can de-select the scope on the consent screen (if such a feature is implemented in the consent screen).
    * @type {boolean}
    * @memberof CreateScopeRequest
    */
-  required: boolean;
+  required?: boolean;
   /**
    * Specifies whether the consent screen will emphasize this scope (if such a feature is implemented in the consent screen). Use this setting for sensitive or important scopes.
    * @type {boolean}
    * @memberof CreateScopeRequest
    */
-  emphasize: boolean;
+  emphasize?: boolean;
   /**
    * List of associated user claim types that should be included in the Identity token, Access Token or as returned from the User Info Endpoint.
    * @type {CreateScopeClaimRequest[]}
