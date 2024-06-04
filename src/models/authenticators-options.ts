@@ -10,6 +10,7 @@ import { AuthenticatorsMicrosoftOptions } from './authenticators-microsoft-optio
 import { AuthenticatorsPasswordOptions } from './authenticators-password-options';
 import { AuthenticatorsPhoneOptions } from './authenticators-phone-options';
 import { AuthenticatorsTwitterOptions } from './authenticators-twitter-options';
+import { AuthenticatorsXeroOptions } from './authenticators-xero-options';
 import { ExternalAuthenticators } from './external-authenticators';
 
 /**
@@ -102,4 +103,10 @@ export interface AuthenticatorsOptions {
    * @memberof AuthenticatorsOptions
    */
   linkedin?: AuthenticatorsLinkedInOptions | null;
+  /**
+   * Xero Authenticator Settings
+   * @type {AuthenticatorsXeroOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  xero?: AuthenticatorsXeroOptions | null;
 }
