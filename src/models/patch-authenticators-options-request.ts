@@ -11,6 +11,7 @@ import { PatchAuthenticatorsMicrosoftOptionsRequest } from './patch-authenticato
 import { PatchAuthenticatorsPasswordOptionsRequest } from './patch-authenticators-password-options-request';
 import { PatchAuthenticatorsPhoneOptionsRequest } from './patch-authenticators-phone-options-request';
 import { PatchAuthenticatorsTwitterOptionsRequest } from './patch-authenticators-twitter-options-request';
+import { PatchAuthenticatorsXeroOptionsRequest } from './patch-authenticators-xero-options-request';
 
 /**
  * The Patch Authenticators Options Request class
@@ -102,4 +103,10 @@ export interface PatchAuthenticatorsOptionsRequest {
    * @memberof PatchAuthenticatorsOptionsRequest
    */
   linkedin?: PatchAuthenticatorsLinkedInOptionsRequest | null;
+  /**
+   * Xero Authenticator Settings
+   * @type {PatchAuthenticatorsXeroOptionsRequest}
+   * @memberof PatchAuthenticatorsOptionsRequest
+   */
+  xero?: PatchAuthenticatorsXeroOptionsRequest | null;
 }
