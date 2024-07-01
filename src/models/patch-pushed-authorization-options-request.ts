@@ -5,6 +5,12 @@
  */
 export interface PatchPushedAuthorizationOptionsRequest {
   /**
+   * Specifies whether Pushed Authorization Requests are enabled.
+   * @type {boolean}
+   * @memberof PatchPushedAuthorizationOptionsRequest
+   */
+  enable_pushed_authorization_requests?: boolean;
+  /**
    * Specifies whether Pushed Authorization Requests are required for authorization.
    * @type {boolean}
    * @memberof PatchPushedAuthorizationOptionsRequest

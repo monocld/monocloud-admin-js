@@ -1,3 +1,4 @@
+export * from './branding-api';
 export * from './clients-api';
 export * from './keys-api';
 export * from './logs-api';

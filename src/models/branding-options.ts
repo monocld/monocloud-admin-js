@@ -33,4 +33,16 @@ export interface BrandingOptions {
    * @memberof BrandingOptions
    */
   project: BrandingProjectOptions;
+  /**
+   * Specifies the creation time of the Branding Options (in Epoch).
+   * @type {number}
+   * @memberof BrandingOptions
+   */
+  creation_time: number;
+  /**
+   * Specifies the last update time of the Branding Options (in Epoch).
+   * @type {number}
+   * @memberof BrandingOptions
+   */
+  last_updated: number;
 }

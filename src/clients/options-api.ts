@@ -5,11 +5,9 @@ import {
 } from '@monocloud/sdk-js-core';
 import {
   AuthenticationOptions,
-  BrandingOptions,
   CommunicationOptions,
   MtlsOptions,
   PatchAuthenticationOptionsRequest,
-  PatchBrandingOptionsRequest,
   PatchCommunicationOptionsRequest,
   PatchMtlsOptionsRequest,
 } from '../models';
@@ -52,43 +50,6 @@ export class OptionsClient extends MonoCloudClientBase {
     request.body = patchAuthenticationOptionsRequest;
 
     return this.processRequest<AuthenticationOptions>(request);
-  }
-
-  /**
-   *
-   * @summary Get Branding Options
-   * @returns BrandingOptions - Success
-   * @throws {MonoCloudException}
-   * @memberof OptionsClient
-   *
-   */
-  public findBrandingOptions(): Promise<MonoCloudResponse<BrandingOptions>> {
-    const url = `/options/branding`;
-
-    const request: MonoCloudRequest = { method: 'GET', url };
-
-    return this.processRequest<BrandingOptions>(request);
-  }
-
-  /**
-   *
-   * @summary Update Branding Options
-   * @param {PatchBrandingOptionsRequest} patchBrandingOptionsRequest Request Body
-   * @returns BrandingOptions - Success
-   * @throws {MonoCloudException}
-   * @memberof OptionsClient
-   *
-   */
-  public patchBrandingOptions(
-    patchBrandingOptionsRequest: PatchBrandingOptionsRequest
-  ): Promise<MonoCloudResponse<BrandingOptions>> {
-    const url = `/options/branding`;
-
-    const request: MonoCloudRequest = { method: 'PATCH', url };
-
-    request.body = patchBrandingOptionsRequest;
-
-    return this.processRequest<BrandingOptions>(request);
   }
 
   /**

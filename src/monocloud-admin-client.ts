@@ -1,5 +1,6 @@
 import { MonoCloudConfig, Fetcher } from '@monocloud/sdk-js-core';
 import {
+  BrandingClient,
   ClientsClient,
   KeysClient,
   LogsClient,
@@ -9,6 +10,8 @@ import {
 } from './clients';
 
 export class MonoCloudAdminClient {
+  public readonly branding: BrandingClient;
+
   public readonly clients: ClientsClient;
 
   public readonly keys: KeysClient;
@@ -22,6 +25,8 @@ export class MonoCloudAdminClient {
   public readonly trustStore: TrustStoreClient;
 
   private constructor(options: MonoCloudConfig, fetcher?: Fetcher) {
+    this.branding = new BrandingClient(options, fetcher);
+
     this.clients = new ClientsClient(options, fetcher);
 
     this.keys = new KeysClient(options, fetcher);
