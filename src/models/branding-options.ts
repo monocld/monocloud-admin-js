@@ -1,3 +1,4 @@
+import { BrandingAnalyticsOptions } from './branding-analytics-options';
 import { BrandingEmailOptions } from './branding-email-options';
 import { BrandingPageOptions } from './branding-page-options';
 import { BrandingProjectOptions } from './branding-project-options';
@@ -33,6 +34,12 @@ export interface BrandingOptions {
    * @memberof BrandingOptions
    */
   project: BrandingProjectOptions;
+  /**
+   * Analytics Branding Options
+   * @type {BrandingAnalyticsOptions}
+   * @memberof BrandingOptions
+   */
+  analytics: BrandingAnalyticsOptions;
   /**
    * Specifies the creation time of the Branding Options (in Epoch).
    * @type {number}

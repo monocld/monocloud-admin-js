@@ -1,3 +1,4 @@
+import { PatchBrandingAnalyticsOptionsRequest } from './patch-branding-analytics-options-request';
 import { PatchBrandingEmailOptionsRequest } from './patch-branding-email-options-request';
 import { PatchBrandingPageOptionsRequest } from './patch-branding-page-options-request';
 import { PatchBrandingProjectOptionsRequest } from './patch-branding-project-options-request';
@@ -33,4 +34,10 @@ export interface PatchBrandingOptionsRequest {
    * @memberof PatchBrandingOptionsRequest
    */
   project?: PatchBrandingProjectOptionsRequest;
+  /**
+   * Analytics Branding Options
+   * @type {PatchBrandingAnalyticsOptionsRequest}
+   * @memberof PatchBrandingOptionsRequest
+   */
+  analytics?: PatchBrandingAnalyticsOptionsRequest;
 }
