@@ -1,6 +1,6 @@
 {
   "name": "@monocloud/admin-js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "MonoCloud Admin JavaScript SDK",
   "keywords": [
     "monocloud",

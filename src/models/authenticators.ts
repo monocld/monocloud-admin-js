@@ -20,6 +20,10 @@ export const Authenticators = {
   /**
    *
    */
+  Passkey: 'passkey',
+  /**
+   *
+   */
   Google: 'google',
   /**
    *
