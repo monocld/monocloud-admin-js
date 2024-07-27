@@ -51,8 +51,8 @@ export class MonoCloudAdminClient {
       apiKey: options?.apiKey ?? process.env.MC_ADMIN_API_KEY ?? '',
       config: options?.config ?? {
         timeout:
-          options?.config?.timeout ??
-          (Number.isInteger(envTimeout) && envTimeout > 0)
+          (options?.config?.timeout ??
+          (Number.isInteger(envTimeout) && envTimeout > 0))
             ? envTimeout
             : undefined,
       },

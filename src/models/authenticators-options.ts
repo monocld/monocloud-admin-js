@@ -7,6 +7,7 @@ import { AuthenticatorsGitLabOptions } from './authenticators-git-lab-options';
 import { AuthenticatorsGoogleOptions } from './authenticators-google-options';
 import { AuthenticatorsLinkedInOptions } from './authenticators-linked-in-options';
 import { AuthenticatorsMicrosoftOptions } from './authenticators-microsoft-options';
+import { AuthenticatorsPasskeyOptions } from './authenticators-passkey-options';
 import { AuthenticatorsPasswordOptions } from './authenticators-password-options';
 import { AuthenticatorsPhoneOptions } from './authenticators-phone-options';
 import { AuthenticatorsTwitterOptions } from './authenticators-twitter-options';
@@ -37,6 +38,12 @@ export interface AuthenticatorsOptions {
    * @memberof AuthenticatorsOptions
    */
   password: AuthenticatorsPasswordOptions;
+  /**
+   * Passkey Authenticator Settings
+   * @type {AuthenticatorsPasskeyOptions}
+   * @memberof AuthenticatorsOptions
+   */
+  passkey: AuthenticatorsPasskeyOptions;
   /**
    * Email Authenticator Settings
    * @type {AuthenticatorsEmailOptions}

@@ -8,6 +8,7 @@ import { PatchAuthenticatorsGitLabOptionsRequest } from './patch-authenticators-
 import { PatchAuthenticatorsGoogleOptionsRequest } from './patch-authenticators-google-options-request';
 import { PatchAuthenticatorsLinkedInOptionsRequest } from './patch-authenticators-linked-in-options-request';
 import { PatchAuthenticatorsMicrosoftOptionsRequest } from './patch-authenticators-microsoft-options-request';
+import { PatchAuthenticatorsPasskeyOptionsRequest } from './patch-authenticators-passkey-options-request';
 import { PatchAuthenticatorsPasswordOptionsRequest } from './patch-authenticators-password-options-request';
 import { PatchAuthenticatorsPhoneOptionsRequest } from './patch-authenticators-phone-options-request';
 import { PatchAuthenticatorsTwitterOptionsRequest } from './patch-authenticators-twitter-options-request';
@@ -37,6 +38,12 @@ export interface PatchAuthenticatorsOptionsRequest {
    * @memberof PatchAuthenticatorsOptionsRequest
    */
   password?: PatchAuthenticatorsPasswordOptionsRequest;
+  /**
+   * Passkey Authenticator Settings
+   * @type {PatchAuthenticatorsPasskeyOptionsRequest}
+   * @memberof PatchAuthenticatorsOptionsRequest
+   */
+  passkey?: PatchAuthenticatorsPasskeyOptionsRequest;
   /**
    * Email Authenticator Settings
    * @type {PatchAuthenticatorsEmailOptionsRequest}

@@ -12,6 +12,10 @@ export const Authenticators = {
   /**
    *
    */
+  Passkey: 'passkey',
+  /**
+   *
+   */
   Email: 'email',
   /**
    *
