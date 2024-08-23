@@ -46,6 +46,7 @@ export * from './branding-sms-options';
 export * from './certificate-types';
 export * from './claim-resource';
 export * from './client';
+export * from './client-group';
 export * from './communication-email-options';
 export * from './communication-email-send-grid-options';
 export * from './communication-options';

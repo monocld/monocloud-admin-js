@@ -335,7 +335,6 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get all the Scopes
-   * @param {string} [type] The type of scope by which the results should be filtered. Allowed values are \'api\' & \'identity\'
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
    * @param {string} [filter] Value by which the resources needs to be filtered.
@@ -346,7 +345,6 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public getAllScopes(
-    type?: string,
     page?: number,
     size?: number,
     filter?: string,
@@ -357,10 +355,6 @@ export class ResourcesClient extends MonoCloudClientBase {
     const request: MonoCloudRequest = { method: 'GET', url };
 
     request.queryParams = {};
-
-    if (type !== undefined && type !== null) {
-      request.queryParams.type = String(type);
-    }
 
     if (page !== undefined && page !== null) {
       request.queryParams.page = String(page);

@@ -196,6 +196,54 @@ export const LogEventIds = {
    */
   UserPasswordUpdatedNotificationSent:
     'user_password_updated_notification_sent',
+  /**
+   *
+   */
+  UserCreatedAuditEvent: 'user_created_audit_event',
+  /**
+   *
+   */
+  UserUpdatedAuditEvent: 'user_updated_audit_event',
+  /**
+   *
+   */
+  UserDeletedAuditEvent: 'user_deleted_audit_event',
+  /**
+   *
+   */
+  UserEnabledAuditEvent: 'user_enabled_audit_event',
+  /**
+   *
+   */
+  UserDisabledAuditEvent: 'user_disabled_audit_event',
+  /**
+   *
+   */
+  GroupCreatedAuditEvent: 'group_created_audit_event',
+  /**
+   *
+   */
+  GroupUpdatedAuditEvent: 'group_updated_audit_event',
+  /**
+   *
+   */
+  GroupDeletedAuditEvent: 'group_deleted_audit_event',
+  /**
+   *
+   */
+  GroupAssignedUserAuditEvent: 'group_assigned_user_audit_event',
+  /**
+   *
+   */
+  GroupUnassignedUserAuditEvent: 'group_unassigned_user_audit_event',
+  /**
+   *
+   */
+  GroupAssignedClientAuditEvent: 'group_assigned_client_audit_event',
+  /**
+   *
+   */
+  GroupUnassignedClientAuditEvent: 'group_unassigned_client_audit_event',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

@@ -6,6 +6,7 @@ import {
 } from '@monocloud/sdk-js-core';
 import {
   Client,
+  ClientGroup,
   CreateClientRequest,
   CreateSecretRequest,
   PatchClientRequest,
@@ -214,5 +215,164 @@ export class ClientsClient extends MonoCloudClientBase {
     request.body = createSecretRequest;
 
     return this.processRequest<Secret>(request);
+  }
+
+  /**
+   *
+   * @summary Finds a Client Group by Id
+   * @param {string} clientId Client Id
+   * @param {string} groupId Group Id
+   * @returns ClientGroup - Success
+   * @throws {MonoCloudException}
+   * @memberof ClientsClient
+   *
+   */
+  public findClientGroup(
+    clientId: string,
+    groupId: string
+  ): Promise<MonoCloudResponse<ClientGroup>> {
+    const url = `/clients/{client_id}/groups/{group_id}`
+      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
+      .replace(`{${'group_id'}}`, encodeURIComponent(String(groupId)));
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<ClientGroup>(request);
+  }
+
+  /**
+   *
+   * @summary Assigns a group to a client
+   * @param {string} clientId Client Id
+   * @param {string} groupId Group Id
+   * @returns Created
+   * @throws {MonoCloudException}
+   * @memberof ClientsClient
+   *
+   */
+  public assignGroupToClient(
+    clientId: string,
+    groupId: string
+  ): Promise<MonoCloudResponse<null>> {
+    const url = `/clients/{client_id}/groups/{group_id}`
+      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
+      .replace(`{${'group_id'}}`, encodeURIComponent(String(groupId)));
+
+    const request: MonoCloudRequest = { method: 'POST', url };
+
+    return this.processRequest<null>(request);
+  }
+
+  /**
+   *
+   * @summary Remove a group from a client
+   * @param {string} clientId Client Id
+   * @param {string} groupId Group Id
+   * @returns No Content
+   * @throws {MonoCloudException}
+   * @memberof ClientsClient
+   *
+   */
+  public removeGroupFromClient(
+    clientId: string,
+    groupId: string
+  ): Promise<MonoCloudResponse<null>> {
+    const url = `/clients/{client_id}/groups/{group_id}`
+      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
+      .replace(`{${'group_id'}}`, encodeURIComponent(String(groupId)));
+
+    const request: MonoCloudRequest = { method: 'DELETE', url };
+
+    return this.processRequest<null>(request);
+  }
+
+  /**
+   *
+   * @summary Gets all Groups assigned to a client
+   * @param {string} clientId Client Id
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key value is \'creation_time\'
+   * @returns ClientGroup[] - Success
+   * @throws {MonoCloudException}
+   * @memberof ClientsClient
+   *
+   */
+  public getAllClientGroups(
+    clientId: string,
+    page?: number,
+    size?: number,
+    sort?: string
+  ): Promise<MonoCloudResponse<ClientGroup[]>> {
+    const url = `/clients/{client_id}/groups`.replace(
+      `{${'client_id'}}`,
+      encodeURIComponent(String(clientId))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    request.queryParams = {};
+
+    if (page !== undefined && page !== null) {
+      request.queryParams.page = String(page);
+    }
+
+    if (size !== undefined && size !== null) {
+      request.queryParams.size = String(size);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.queryParams.sort = String(sort);
+    }
+
+    return this.processRequest<ClientGroup[]>(request);
+  }
+
+  /**
+   *
+   * @summary Get all Clients assigned to a Group
+   * @param {string} groupId Group Id
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
+   * @param {string} [filter] Value by which the clients needs to be filtered.
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'client_name\', and \'creation_time\'
+   * @returns Client[] - Success
+   * @throws {MonoCloudException}
+   * @memberof ClientsClient
+   *
+   */
+  public getAllGroupAssignedClients(
+    groupId: string,
+    page?: number,
+    size?: number,
+    filter?: string,
+    sort?: string
+  ): Promise<MonoCloudPageResponse<Client[]>> {
+    const url = `/clients/groups/{group_id}/assigned`.replace(
+      `{${'group_id'}}`,
+      encodeURIComponent(String(groupId))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    request.queryParams = {};
+
+    if (page !== undefined && page !== null) {
+      request.queryParams.page = String(page);
+    }
+
+    if (size !== undefined && size !== null) {
+      request.queryParams.size = String(size);
+    }
+
+    if (filter !== undefined && filter !== null) {
+      request.queryParams.filter = String(filter);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.queryParams.sort = String(sort);
+    }
+
+    return this.processPaginatedRequest<Client[]>(request);
   }
 }

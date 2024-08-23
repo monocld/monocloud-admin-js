@@ -1,4 +1,5 @@
 import { LogEventCategories } from './log-event-categories';
+import { LogEventIds } from './log-event-ids';
 import { LogEventTypes } from './log-event-types';
 
 /**
@@ -32,6 +33,12 @@ export interface LogSummary {
    */
   event_type: LogEventTypes;
   /**
+   * Log event Id.
+   * @type {LogEventIds}
+   * @memberof LogSummary
+   */
+  event_id: LogEventIds;
+  /**
    * The Activity Id.
    * @type {string}
    * @memberof LogSummary
@@ -44,9 +51,21 @@ export interface LogSummary {
    */
   time_stamp: number;
   /**
+   * Specifies if the log was triggered by a user interactive process.
+   * @type {boolean}
+   * @memberof LogSummary
+   */
+  interactive: boolean;
+  /**
    * The client Id.
    * @type {string}
    * @memberof LogSummary
    */
   client_id?: string | null;
+  /**
+   * The Client Name.
+   * @type {string}
+   * @memberof LogSummary
+   */
+  client_name?: string | null;
 }
