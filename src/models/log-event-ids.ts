@@ -244,6 +244,18 @@ export const LogEventIds = {
    *
    */
   GroupUnassignedClientAuditEvent: 'group_unassigned_client_audit_event',
+  /**
+   *
+   */
+  TenantCreated: 'tenant_created',
+  /**
+   *
+   */
+  TenantPendingDeletion: 'tenant_pending_deletion',
+  /**
+   *
+   */
+  TenantPermanentlyDeleted: 'tenant_permanently_deleted',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
