@@ -1,9 +1,14 @@
-import { LogEventCategories } from './log-event-categories';
-import { LogEventIds } from './log-event-ids';
-import { LogEventTypes } from './log-event-types';
+import { EventCodes } from './event-codes';
+import { EventTypes } from './event-types';
+import { LogActor } from './log-actor';
+import { LogCategories } from './log-categories';
+import { LogClient } from './log-client';
+import { LogRequest } from './log-request';
+import { LogSystem } from './log-system';
+import { LogTarget } from './log-target';
 
 /**
- * The Log Summary response class
+ * The Log Summary response
  * @export
  * @interface LogSummary
  */
@@ -15,11 +20,17 @@ export interface LogSummary {
    */
   id: string;
   /**
-   * Log Category
-   * @type {LogEventCategories}
+   * Specifies the event time (in Epoch).
+   * @type {number}
    * @memberof LogSummary
    */
-  category: LogEventCategories;
+  time_stamp: number;
+  /**
+   * Log Category
+   * @type {LogCategories}
+   * @memberof LogSummary
+   */
+  category: LogCategories;
   /**
    * Log Name.
    * @type {string}
@@ -27,45 +38,69 @@ export interface LogSummary {
    */
   name: string;
   /**
+   * Log Description.
+   * @type {string}
+   * @memberof LogSummary
+   */
+  description: string;
+  /**
    * Log Type.
-   * @type {LogEventTypes}
+   * @type {EventTypes}
    * @memberof LogSummary
    */
-  event_type: LogEventTypes;
+  type: EventTypes;
   /**
-   * Log event Id.
-   * @type {LogEventIds}
+   * Log code.
+   * @type {EventCodes}
    * @memberof LogSummary
    */
-  event_id: LogEventIds;
+  code: EventCodes;
   /**
-   * The Activity Id.
+   * Message
    * @type {string}
    * @memberof LogSummary
    */
-  activity_id?: string | null;
+  message?: string | null;
   /**
-   * Specifies the event time (in Epoch).
-   * @type {number}
+   * The system details
+   * @type {LogSystem}
    * @memberof LogSummary
    */
-  time_stamp: number;
+  system: LogSystem;
   /**
-   * Specifies if the log was triggered by a user interactive process.
-   * @type {boolean}
+   * The request details
+   * @type {LogRequest}
    * @memberof LogSummary
    */
-  interactive: boolean;
+  request: LogRequest;
   /**
-   * The client Id.
+   * The source of the request
    * @type {string}
    * @memberof LogSummary
    */
-  client_id?: string | null;
+  source?: string | null;
   /**
-   * The Client Name.
-   * @type {string}
+   * The actor who performed the action
+   * @type {LogActor}
    * @memberof LogSummary
    */
-  client_name?: string | null;
+  actor: LogActor;
+  /**
+   * List of targets
+   * @type {LogTarget[]}
+   * @memberof LogSummary
+   */
+  targets: LogTarget[];
+  /**
+   * The client details
+   * @type {LogClient}
+   * @memberof LogSummary
+   */
+  client?: LogClient | null;
+  /**
+   * The Log Details response
+   * @type {object}
+   * @memberof LogSummary
+   */
+  details?: object;
 }

@@ -13,7 +13,7 @@ export class LogsClient extends MonoCloudClientBase {
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
    * @param {string} [filter] Value by which the logs needs to be filtered.
-   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'time_stamp\', \'event_id\', \'event_type\', \'client_name\', and \'name\'
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'time_stamp\', \'category\', \'code\', \'type\', and \'name\'
    * @returns LogSummary[] - Success
    * @throws {MonoCloudException}
    * @memberof LogsClient

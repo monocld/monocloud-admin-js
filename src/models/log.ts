@@ -1,16 +1,18 @@
-import { LogEventCategories } from './log-event-categories';
-import { LogEventIds } from './log-event-ids';
-import { LogEventTypes } from './log-event-types';
-import { LogRequestMetadata } from './log-request-metadata';
+import { EventCodes } from './event-codes';
+import { EventTypes } from './event-types';
+import { LogActor } from './log-actor';
+import { LogCategories } from './log-categories';
+import { LogClient } from './log-client';
+import { LogRequest } from './log-request';
+import { LogSystem } from './log-system';
+import { LogTarget } from './log-target';
 
 /**
- * The Log response class.
+ * The Log response
  * @export
  * @interface Log
  */
 export interface Log {
-  [key: string]: any;
-
   /**
    * Unique identifier of the log
    * @type {string}
@@ -18,11 +20,17 @@ export interface Log {
    */
   id: string;
   /**
-   * Log Category
-   * @type {LogEventCategories}
+   * Specifies the event time (in Epoch).
+   * @type {number}
    * @memberof Log
    */
-  category: LogEventCategories;
+  time_stamp: number;
+  /**
+   * Log Category
+   * @type {LogCategories}
+   * @memberof Log
+   */
+  category: LogCategories;
   /**
    * Log Name.
    * @type {string}
@@ -30,17 +38,23 @@ export interface Log {
    */
   name: string;
   /**
-   * Log Type.
-   * @type {LogEventTypes}
+   * Log Description.
+   * @type {string}
    * @memberof Log
    */
-  event_type: LogEventTypes;
+  description: string;
   /**
-   * Log event Id.
-   * @type {LogEventIds}
+   * Log Type.
+   * @type {EventTypes}
    * @memberof Log
    */
-  event_id: LogEventIds;
+  type: EventTypes;
+  /**
+   * Log code.
+   * @type {EventCodes}
+   * @memberof Log
+   */
+  code: EventCodes;
   /**
    * Message
    * @type {string}
@@ -48,39 +62,45 @@ export interface Log {
    */
   message?: string | null;
   /**
-   * The Activity Id.
+   * The system details
+   * @type {LogSystem}
+   * @memberof Log
+   */
+  system: LogSystem;
+  /**
+   * The request details
+   * @type {LogRequest}
+   * @memberof Log
+   */
+  request: LogRequest;
+  /**
+   * The source of the request
    * @type {string}
    * @memberof Log
    */
-  activity_id?: string | null;
+  source?: string | null;
   /**
-   * Specifies the event time (in Epoch).
-   * @type {number}
+   * The actor who performed the action
+   * @type {LogActor}
    * @memberof Log
    */
-  time_stamp: number;
+  actor: LogActor;
   /**
-   * The Request metadata.
-   * @type {LogRequestMetadata}
+   * List of targets
+   * @type {LogTarget[]}
    * @memberof Log
    */
-  metadata: LogRequestMetadata;
+  targets: LogTarget[];
   /**
-   * Specifies if the log was triggered by a user interactive process.
-   * @type {boolean}
+   * The client details
+   * @type {LogClient}
    * @memberof Log
    */
-  interactive: boolean;
+  client?: LogClient | null;
   /**
-   * The client Id.
-   * @type {string}
+   * The Log Details response
+   * @type {object}
    * @memberof Log
    */
-  client_id?: string | null;
-  /**
-   * The Client Name.
-   * @type {string}
-   * @memberof Log
-   */
-  client_name?: string | null;
+  details?: object;
 }

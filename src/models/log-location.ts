@@ -1,73 +1,61 @@
 /**
- * The Log Request Metadata response class.
+ * The Log Location response
  * @export
- * @interface LogRequestMetadata
+ * @interface LogLocation
  */
-export interface LogRequestMetadata {
+export interface LogLocation {
   /**
    * The region of the request.
    * @type {string}
-   * @memberof LogRequestMetadata
+   * @memberof LogLocation
    */
   region?: string | null;
   /**
    * The region code of the request.
    * @type {string}
-   * @memberof LogRequestMetadata
+   * @memberof LogLocation
    */
   region_code?: string | null;
   /**
    * The city of the request.
    * @type {string}
-   * @memberof LogRequestMetadata
+   * @memberof LogLocation
    */
   city?: string | null;
   /**
    * The country of the request.
    * @type {string}
-   * @memberof LogRequestMetadata
+   * @memberof LogLocation
    */
   country?: string | null;
   /**
    * The continent of the request.
    * @type {string}
-   * @memberof LogRequestMetadata
+   * @memberof LogLocation
    */
   continent?: string | null;
   /**
    * The latitude of the request.
    * @type {string}
-   * @memberof LogRequestMetadata
+   * @memberof LogLocation
    */
   latitude?: string | null;
   /**
    * The longitude of the request.
    * @type {string}
-   * @memberof LogRequestMetadata
+   * @memberof LogLocation
    */
   longitude?: string | null;
   /**
    * The time zone of the request.
    * @type {string}
-   * @memberof LogRequestMetadata
+   * @memberof LogLocation
    */
   time_zone?: string | null;
   /**
    * The zip code of the request.
    * @type {string}
-   * @memberof LogRequestMetadata
+   * @memberof LogLocation
    */
   zip_code?: string | null;
-  /**
-   * The remote ip address of the request.
-   * @type {string}
-   * @memberof LogRequestMetadata
-   */
-  remote_ip_address: string;
-  /**
-   * The user agent of the request.
-   * @type {string}
-   * @memberof LogRequestMetadata
-   */
-  user_agent: string;
 }
