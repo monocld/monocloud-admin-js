@@ -15,12 +15,6 @@ import { PatchBrandingPageTextOptionsRequest } from './patch-branding-page-text-
  */
 export interface PatchBrandingPageOptionsRequest {
   /**
-   * Specifies Uri of the favicon that will be used on all pages
-   * @type {string}
-   * @memberof PatchBrandingPageOptionsRequest
-   */
-  favicon_uri?: string | null;
-  /**
    * Page Branding Logo Options
    * @type {PatchBrandingPageLogoOptionsRequest}
    * @memberof PatchBrandingPageOptionsRequest

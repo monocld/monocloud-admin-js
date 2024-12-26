@@ -15,12 +15,6 @@ import { BrandingPageTextOptions } from './branding-page-text-options';
  */
 export interface BrandingPageOptions {
   /**
-   * Specifies Uri of the favicon that will be used on all pages
-   * @type {string}
-   * @memberof BrandingPageOptions
-   */
-  favicon_uri?: string | null;
-  /**
    * Page Branding Logo Options
    * @type {BrandingPageLogoOptions}
    * @memberof BrandingPageOptions
