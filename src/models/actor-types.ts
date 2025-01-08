@@ -29,6 +29,14 @@ export const ActorTypes = {
    * A user
    */
   User: 'user',
+  /**
+   * Api
+   */
+  Api: 'api',
+  /**
+   * Client
+   */
+  Client: 'client',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

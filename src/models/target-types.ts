@@ -77,6 +77,10 @@ export const TargetTypes = {
    * A Key Material
    */
   KeyMaterial: 'key_material',
+  /**
+   * The System
+   */
+  System: 'system',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
