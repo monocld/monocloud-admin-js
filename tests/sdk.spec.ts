@@ -284,12 +284,25 @@ describe('MonoCloud Admin SDK Tests', () => {
   test('No content should handle correctly', async () => {
     nockInst
       .delete('/api/clients/1')
-      .reply(204, {}, { 'Content-Type': 'application/problem+json' });
+      .reply(204, {}, { 'Content-Type': 'application/json' });
 
     const result = await client.clients.deleteClient('1');
 
     nockInst.done();
 
     expect(result.status).toBe(204);
+  });
+
+  test('Empty body should handle correctly', async () => {
+    nockInst.post('/api/clients', { client_name: 'client' }).reply(201);
+
+    const result = await client.clients.createClient({
+      client_name: 'client',
+    } as CreateClientRequest);
+
+    nockInst.done();
+
+    expect(result.status).toBe(201);
+    expect(result.result).toBeNull();
   });
 });
