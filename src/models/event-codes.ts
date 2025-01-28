@@ -6,7 +6,7 @@
 
 export const EventCodes = {
   /**
-   * Authentication related events
+   *
    */
   AuthorizationFailure: 'authorization_failure',
   /**
@@ -86,7 +86,7 @@ export const EventCodes = {
    */
   UserLogout: 'user_logout',
   /**
-   * Token related events
+   *
    */
   TokenIssuedFailure: 'token_issued_failure',
   /**
@@ -108,14 +108,6 @@ export const EventCodes = {
   /**
    *
    */
-  ReferenceTokensUserDeleteAll: 'reference_tokens_user_delete_all',
-  /**
-   *
-   */
-  RefreshTokensUserDeleteAll: 'refresh_tokens_user_delete_all',
-  /**
-   * Consent related events
-   */
   ConsentGranted: 'consent_granted',
   /**
    *
@@ -123,10 +115,6 @@ export const EventCodes = {
   ConsentDenied: 'consent_denied',
   /**
    *
-   */
-  ConsentsUserDeletedAll: 'consents_user_deleted_all',
-  /**
-   * Block related events
    */
   IdentifierIpBlocked: 'identifier_ip_blocked',
   /**
@@ -154,7 +142,7 @@ export const EventCodes = {
    */
   UserAccountAllIpsUnblocked: 'user_account_all_ips_unblocked',
   /**
-   * User related events
+   *
    */
   UserCreated: 'user_created',
   /**
@@ -186,7 +174,7 @@ export const EventCodes = {
    */
   UserSessionsDeletedAll: 'user_sessions_deleted_all',
   /**
-   * Notification related events
+   *
    */
   SignInEmailSentEvent: 'sign_in_email_sent_event',
   /**
@@ -230,7 +218,7 @@ export const EventCodes = {
    */
   SmsSendFailure: 'sms_send_failure',
   /**
-   * Resources related events
+   *
    */
   ApiResourceCreated: 'api_resource_created',
   /**
@@ -250,7 +238,7 @@ export const EventCodes = {
    */
   ApiResourceSecretDeleted: 'api_resource_secret_deleted',
   /**
-   * Trust Store related events
+   *
    */
   TrustStoreCertificatesUpdated: 'trust_store_certificates_updated',
   /**
@@ -262,7 +250,7 @@ export const EventCodes = {
    */
   TrustStoreBannedThumbprintsUpdated: 'trust_store_banned_thumbprints_updated',
   /**
-   * Clients related events
+   *
    */
   ClientCreated: 'client_created',
   /**
@@ -290,7 +278,7 @@ export const EventCodes = {
    */
   ClientSecretDeleted: 'client_secret_deleted',
   /**
-   * Groups related events
+   *
    */
   GroupCreated: 'group_created',
   /**
@@ -302,9 +290,25 @@ export const EventCodes = {
    */
   GroupDeleted: 'group_deleted',
   /**
-   * Authorization Codes related events
+   *
    */
-  AuthorizationCodesUserDeleteAll: 'authorization_codes_user_delete_all',
+  UserGrantsUserDeletedAll: 'user_grants_user_deleted_all',
+  /**
+   *
+   */
+  AuthorizationCodeGrantDeleted: 'authorization_code_grant_deleted',
+  /**
+   *
+   */
+  UserConsentGrantDeleted: 'user_consent_grant_deleted',
+  /**
+   *
+   */
+  ReferenceTokenGrantDeleted: 'reference_token_grant_deleted',
+  /**
+   *
+   */
+  RefreshTokenGrantDeleted: 'refresh_token_grant_deleted',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

@@ -32,6 +32,12 @@ export interface PatchAuthenticatorsPasswordOptionsRequest {
    */
   prompt_password_on_initial_screen?: boolean;
   /**
+   * Specifies the expiration period of the password (in days)
+   * @type {number}
+   * @memberof PatchAuthenticatorsPasswordOptionsRequest
+   */
+  expiry?: number | null;
+  /**
    * Password Strength Options
    * @type {PatchAuthenticatorsPasswordStrengthOptionsRequest}
    * @memberof PatchAuthenticatorsPasswordOptionsRequest
