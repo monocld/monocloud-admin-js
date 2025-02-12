@@ -17,6 +17,12 @@ export interface PatchAuthenticatorsTwitterOptionsRequest {
    */
   enable_sign_up?: boolean;
   /**
+   * If set to true, will use the internal keys for authentication
+   * @type {boolean}
+   * @memberof PatchAuthenticatorsTwitterOptionsRequest
+   */
+  use_internal_keys?: boolean;
+  /**
    * If set to true, will sync the profile with each login
    * @type {boolean}
    * @memberof PatchAuthenticatorsTwitterOptionsRequest
@@ -27,13 +33,13 @@ export interface PatchAuthenticatorsTwitterOptionsRequest {
    * @type {string}
    * @memberof PatchAuthenticatorsTwitterOptionsRequest
    */
-  client_id?: string;
+  client_id?: string | null;
   /**
    * Client Secret issued for the customer by provider
    * @type {string}
    * @memberof PatchAuthenticatorsTwitterOptionsRequest
    */
-  client_secret?: string;
+  client_secret?: string | null;
   /**
    * Specifies if we should treat the email received from the external provider as verified.
    * @type {boolean}

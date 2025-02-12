@@ -17,6 +17,12 @@ export interface AuthenticatorsMicrosoftOptions {
    */
   enable_sign_up: boolean;
   /**
+   * If set to true, will use the internal keys for authentication
+   * @type {boolean}
+   * @memberof AuthenticatorsMicrosoftOptions
+   */
+  use_internal_keys: boolean;
+  /**
    * If set to true, will sync the profile with each login
    * @type {boolean}
    * @memberof AuthenticatorsMicrosoftOptions
@@ -27,13 +33,13 @@ export interface AuthenticatorsMicrosoftOptions {
    * @type {string}
    * @memberof AuthenticatorsMicrosoftOptions
    */
-  client_id: string;
+  client_id?: string | null;
   /**
    * Client Secret issued for the customer by provider
    * @type {string}
    * @memberof AuthenticatorsMicrosoftOptions
    */
-  client_secret: string;
+  client_secret?: string | null;
   /**
    * List of provider scopes to be obtained
    * @type {string[]}

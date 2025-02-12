@@ -17,6 +17,12 @@ export interface PatchAuthenticatorsGitLabOptionsRequest {
    */
   enable_sign_up?: boolean;
   /**
+   * If set to true, will use the internal keys for authentication
+   * @type {boolean}
+   * @memberof PatchAuthenticatorsGitLabOptionsRequest
+   */
+  use_internal_keys?: boolean;
+  /**
    * If set to true, will sync the profile with each login
    * @type {boolean}
    * @memberof PatchAuthenticatorsGitLabOptionsRequest
@@ -27,13 +33,13 @@ export interface PatchAuthenticatorsGitLabOptionsRequest {
    * @type {string}
    * @memberof PatchAuthenticatorsGitLabOptionsRequest
    */
-  client_id?: string;
+  client_id?: string | null;
   /**
    * Client Secret issued for the customer by provider
    * @type {string}
    * @memberof PatchAuthenticatorsGitLabOptionsRequest
    */
-  client_secret?: string;
+  client_secret?: string | null;
   /**
    * List of provider scopes to be obtained
    * @type {string[]}
