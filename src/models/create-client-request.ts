@@ -182,11 +182,17 @@ export interface CreateClientRequest {
    */
   allow_offline_access?: boolean;
   /**
-   * Specifies the scopes the client is allowed to access (by default a client has no access to any resources)
+   * Specifies the identity scopes the client is allowed to access (by default a client has no access to any resources)
    * @type {string[]}
    * @memberof CreateClientRequest
    */
-  allowed_scopes?: string[];
+  allowed_identity_scopes?: string[];
+  /**
+   * Specifies the api scopes the client is allowed to access (by default a client has no access to any resources)
+   * @type {string[]}
+   * @memberof CreateClientRequest
+   */
+  allowed_api_scopes?: string[];
   /**
    * Lifetime of identity token in seconds
    * @type {number}
