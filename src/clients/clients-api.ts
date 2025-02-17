@@ -303,7 +303,7 @@ export class ClientsClient extends MonoCloudClientBase {
     page?: number,
     size?: number,
     sort?: string
-  ): Promise<MonoCloudResponse<ClientGroup[]>> {
+  ): Promise<MonoCloudPageResponse<ClientGroup[]>> {
     const url = `/clients/{client_id}/groups`.replace(
       `{${'client_id'}}`,
       encodeURIComponent(String(clientId))
@@ -325,7 +325,7 @@ export class ClientsClient extends MonoCloudClientBase {
       request.queryParams.sort = String(sort);
     }
 
-    return this.processRequest<ClientGroup[]>(request);
+    return this.processPaginatedRequest<ClientGroup[]>(request);
   }
 
   /**
