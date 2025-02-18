@@ -1,4 +1,5 @@
 import { AccessTokenTypes } from './access-token-types';
+import { ApplicationTypes } from './application-types';
 import { Authenticators } from './authenticators';
 import { DeviceFlowCodeTypes } from './device-flow-code-types';
 import { GrantTypes } from './grant-types';
@@ -6,6 +7,7 @@ import { RefreshTokenExpirationTypes } from './refresh-token-expiration-types';
 import { RefreshTokenUsageTypes } from './refresh-token-usage-types';
 import { RememberConsentTypes } from './remember-consent-types';
 import { Secret } from './secret';
+import { TechTypes } from './tech-types';
 
 /**
  * The Client response class
@@ -25,6 +27,18 @@ export interface Client {
    * @memberof Client
    */
   enabled: boolean;
+  /**
+   * Specifies the preferred application type
+   * @type {ApplicationTypes}
+   * @memberof Client
+   */
+  app_type: ApplicationTypes;
+  /**
+   * Specifies the preferred technology type
+   * @type {TechTypes}
+   * @memberof Client
+   */
+  tech_type: TechTypes;
   /**
    * List of Client secrets (only relevant for flows that require a secret)
    * @type {Secret[]}

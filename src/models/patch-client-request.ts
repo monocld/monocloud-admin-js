@@ -1,10 +1,12 @@
 import { AccessTokenTypes } from './access-token-types';
+import { ApplicationTypes } from './application-types';
 import { Authenticators } from './authenticators';
 import { DeviceFlowCodeTypes } from './device-flow-code-types';
 import { GrantTypes } from './grant-types';
 import { RefreshTokenExpirationTypes } from './refresh-token-expiration-types';
 import { RefreshTokenUsageTypes } from './refresh-token-usage-types';
 import { RememberConsentTypes } from './remember-consent-types';
+import { TechTypes } from './tech-types';
 
 /**
  * The Patch Client class
@@ -18,6 +20,18 @@ export interface PatchClientRequest {
    * @memberof PatchClientRequest
    */
   enabled?: boolean;
+  /**
+   * Specifies the preferred application type
+   * @type {ApplicationTypes}
+   * @memberof PatchClientRequest
+   */
+  app_type?: ApplicationTypes;
+  /**
+   * Specifies the preferred technology type
+   * @type {TechTypes}
+   * @memberof PatchClientRequest
+   */
+  tech_type?: TechTypes;
   /**
    * If set to false, no client secret is needed to request tokens at the token endpoint
    * @type {boolean}

@@ -1,4 +1,5 @@
 import { AccessTokenTypes } from './access-token-types';
+import { ApplicationTypes } from './application-types';
 import { Authenticators } from './authenticators';
 import { CreateSecretRequest } from './create-secret-request';
 import { DeviceFlowCodeTypes } from './device-flow-code-types';
@@ -6,6 +7,7 @@ import { GrantTypes } from './grant-types';
 import { RefreshTokenExpirationTypes } from './refresh-token-expiration-types';
 import { RefreshTokenUsageTypes } from './refresh-token-usage-types';
 import { RememberConsentTypes } from './remember-consent-types';
+import { TechTypes } from './tech-types';
 
 /**
  * The Create Client class models an OpenID Connect or OAuth 2.0 client - e.g. a native application, a web application or a JS-based application.
@@ -19,6 +21,18 @@ export interface CreateClientRequest {
    * @memberof CreateClientRequest
    */
   enabled?: boolean;
+  /**
+   * Specifies the preferred application type
+   * @type {ApplicationTypes}
+   * @memberof CreateClientRequest
+   */
+  app_type?: ApplicationTypes;
+  /**
+   * Specifies the preferred technology type
+   * @type {TechTypes}
+   * @memberof CreateClientRequest
+   */
+  tech_type?: TechTypes;
   /**
    * List of Client secrets (only relevant for flows that require a secret)
    * @type {CreateSecretRequest[]}
