@@ -1,7 +1,7 @@
 import { SecretTypes } from './secret-types';
 
 /**
- * The Client Secret response class
+ * The Secret response class
  * @export
  * @interface Secret
  */
@@ -18,6 +18,12 @@ export interface Secret {
    * @memberof Secret
    */
   description?: string | null;
+  /**
+   * The raw secret
+   * @type {string}
+   * @memberof Secret
+   */
+  raw_value: string;
   /**
    * The expiration date of the secret (in Epoch)
    * @type {number}

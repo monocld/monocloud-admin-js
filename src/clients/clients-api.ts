@@ -11,7 +11,6 @@ import {
   CreateSecretRequest,
   PatchClientRequest,
   Secret,
-  SecretValue,
 } from '../models';
 
 export class ClientsClient extends MonoCloudClientBase {
@@ -83,10 +82,58 @@ export class ClientsClient extends MonoCloudClientBase {
 
   /**
    *
+   * @summary Gets all client secrets
+   * @param {string} clientId Client Id
+   * @returns Secret[] - Success
+   * @throws {MonoCloudException}
+   * @memberof ClientsClient
+   *
+   */
+  public getAllClientSecrets(
+    clientId: string
+  ): Promise<MonoCloudResponse<Secret[]>> {
+    const url = `/clients/{client_id}/secrets`.replace(
+      `{${'client_id'}}`,
+      encodeURIComponent(String(clientId))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<Secret[]>(request);
+  }
+
+  /**
+   *
+   * @summary Create a Client Secret
+   * @param {string} clientId Client Id
+   * @param {CreateSecretRequest} createSecretRequest Request Body
+   * @returns Secret - Created
+   * @throws {MonoCloudException}
+   * @memberof ClientsClient
+   *
+   */
+  public createClientSecret(
+    clientId: string,
+    createSecretRequest: CreateSecretRequest
+  ): Promise<MonoCloudResponse<Secret>> {
+    const url = `/clients/{client_id}/secrets`.replace(
+      `{${'client_id'}}`,
+      encodeURIComponent(String(clientId))
+    );
+
+    const request: MonoCloudRequest = { method: 'POST', url };
+
+    request.body = createSecretRequest;
+
+    return this.processRequest<Secret>(request);
+  }
+
+  /**
+   *
    * @summary Find a Client Secret by Id
    * @param {string} clientId Client Id
    * @param {string} secretId Secret Id
-   * @returns SecretValue - Success
+   * @returns Secret - Success
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
@@ -94,14 +141,14 @@ export class ClientsClient extends MonoCloudClientBase {
   public findClientSecretById(
     clientId: string,
     secretId: string
-  ): Promise<MonoCloudResponse<SecretValue>> {
+  ): Promise<MonoCloudResponse<Secret>> {
     const url = `/clients/{client_id}/secrets/{secret_id}`
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
       .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)));
 
     const request: MonoCloudRequest = { method: 'GET', url };
 
-    return this.processRequest<SecretValue>(request);
+    return this.processRequest<Secret>(request);
   }
 
   /**
@@ -189,32 +236,6 @@ export class ClientsClient extends MonoCloudClientBase {
     request.body = createClientRequest;
 
     return this.processRequest<Client>(request);
-  }
-
-  /**
-   *
-   * @summary Create a Client Secret
-   * @param {string} clientId Client Id
-   * @param {CreateSecretRequest} createSecretRequest Request Body
-   * @returns Secret - Created
-   * @throws {MonoCloudException}
-   * @memberof ClientsClient
-   *
-   */
-  public createClientSecret(
-    clientId: string,
-    createSecretRequest: CreateSecretRequest
-  ): Promise<MonoCloudResponse<Secret>> {
-    const url = `/clients/{client_id}/secrets`.replace(
-      `{${'client_id'}}`,
-      encodeURIComponent(String(clientId))
-    );
-
-    const request: MonoCloudRequest = { method: 'POST', url };
-
-    request.body = createSecretRequest;
-
-    return this.processRequest<Secret>(request);
   }
 
   /**

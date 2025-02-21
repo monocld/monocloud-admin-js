@@ -16,7 +16,6 @@ import {
   PatchScopeRequest,
   Scope,
   Secret,
-  SecretValue,
 } from '../models';
 
 export class ResourcesClient extends MonoCloudClientBase {
@@ -90,10 +89,58 @@ export class ResourcesClient extends MonoCloudClientBase {
 
   /**
    *
+   * @summary Gets all Api Resource Secrets
+   * @param {string} resourceId Resource Id
+   * @returns Secret[] - Success
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public getAllApiResourceSecrets(
+    resourceId: string
+  ): Promise<MonoCloudResponse<Secret[]>> {
+    const url = `/resources/api_resources/{resource_id}/secrets`.replace(
+      `{${'resource_id'}}`,
+      encodeURIComponent(String(resourceId))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<Secret[]>(request);
+  }
+
+  /**
+   *
+   * @summary Create an Api Resource Secret
+   * @param {string} resourceId Resource Id
+   * @param {CreateSecretRequest} createSecretRequest Request Body
+   * @returns Secret - Created
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public createApiResourceSecret(
+    resourceId: string,
+    createSecretRequest: CreateSecretRequest
+  ): Promise<MonoCloudResponse<Secret>> {
+    const url = `/resources/api_resources/{resource_id}/secrets`.replace(
+      `{${'resource_id'}}`,
+      encodeURIComponent(String(resourceId))
+    );
+
+    const request: MonoCloudRequest = { method: 'POST', url };
+
+    request.body = createSecretRequest;
+
+    return this.processRequest<Secret>(request);
+  }
+
+  /**
+   *
    * @summary Find an Api Resource Secret by Id
    * @param {string} resourceId Resource Id
    * @param {string} secretId Secret Id
-   * @returns SecretValue - Success
+   * @returns Secret - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
@@ -101,14 +148,14 @@ export class ResourcesClient extends MonoCloudClientBase {
   public findApiResourceSecretById(
     resourceId: string,
     secretId: string
-  ): Promise<MonoCloudResponse<SecretValue>> {
+  ): Promise<MonoCloudResponse<Secret>> {
     const url = `/resources/api_resources/{resource_id}/secrets/{secret_id}`
       .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
       .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)));
 
     const request: MonoCloudRequest = { method: 'GET', url };
 
-    return this.processRequest<SecretValue>(request);
+    return this.processRequest<Secret>(request);
   }
 
   /**
@@ -458,31 +505,5 @@ export class ResourcesClient extends MonoCloudClientBase {
     request.body = createClaimResourceRequest;
 
     return this.processRequest<ClaimResource>(request);
-  }
-
-  /**
-   *
-   * @summary Create an Api Resource Secret
-   * @param {string} resourceId Resource Id
-   * @param {CreateSecretRequest} createSecretRequest Request Body
-   * @returns Secret - Created
-   * @throws {MonoCloudException}
-   * @memberof ResourcesClient
-   *
-   */
-  public createApiResourceSecret(
-    resourceId: string,
-    createSecretRequest: CreateSecretRequest
-  ): Promise<MonoCloudResponse<Secret>> {
-    const url = `/resources/api_resources/{resource_id}/secrets`.replace(
-      `{${'resource_id'}}`,
-      encodeURIComponent(String(resourceId))
-    );
-
-    const request: MonoCloudRequest = { method: 'POST', url };
-
-    request.body = createSecretRequest;
-
-    return this.processRequest<Secret>(request);
   }
 }

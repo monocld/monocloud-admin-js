@@ -166,7 +166,6 @@ export * from './scope-claim';
 export * from './scope-types';
 export * from './secret';
 export * from './secret-types';
-export * from './secret-value';
 export * from './session-options';
 export * from './session-persistence-modes';
 export * from './sign-up-custom-field-options';

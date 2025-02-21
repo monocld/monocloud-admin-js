@@ -6,7 +6,6 @@ import { GrantTypes } from './grant-types';
 import { RefreshTokenExpirationTypes } from './refresh-token-expiration-types';
 import { RefreshTokenUsageTypes } from './refresh-token-usage-types';
 import { RememberConsentTypes } from './remember-consent-types';
-import { Secret } from './secret';
 import { TechTypes } from './tech-types';
 
 /**
@@ -39,12 +38,6 @@ export interface Client {
    * @memberof Client
    */
   tech_type: TechTypes;
-  /**
-   * List of Client secrets (only relevant for flows that require a secret)
-   * @type {Secret[]}
-   * @memberof Client
-   */
-  secrets: Secret[];
   /**
    * If set to false, no client secret is needed to request tokens at the token endpoint
    * @type {boolean}
