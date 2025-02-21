@@ -30,6 +30,10 @@ export const ActorTypes = {
    */
   User: 'user',
   /**
+   * An admin user
+   */
+  AdminUser: 'admin_user',
+  /**
    * Api
    */
   Api: 'api',
