@@ -13,12 +13,6 @@ export interface CreateSecretRequest {
    */
   description?: string | null;
   /**
-   * The secret
-   * @type {string}
-   * @memberof CreateSecretRequest
-   */
-  value: string;
-  /**
    * The expiration date of the secret (in Epoch)
    * @type {number}
    * @memberof CreateSecretRequest
@@ -30,4 +24,10 @@ export interface CreateSecretRequest {
    * @memberof CreateSecretRequest
    */
   type?: SecretTypes;
+  /**
+   * The secret
+   * @type {string}
+   * @memberof CreateSecretRequest
+   */
+  secret_value?: string | null;
 }

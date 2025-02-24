@@ -1,5 +1,3 @@
-import { Secret } from './secret';
-
 /**
  * The Api Resource response class
  * @export
@@ -54,12 +52,6 @@ export interface ApiResource {
    * @memberof ApiResource
    */
   audience: string;
-  /**
-   * The Api secret is used for the introspection endpoint. The API can authenticate with introspection using the API name and secret.
-   * @type {Secret[]}
-   * @memberof ApiResource
-   */
-  api_secrets: Secret[];
   /**
    * List of API scope names.
    * @type {string[]}

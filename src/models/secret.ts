@@ -19,12 +19,6 @@ export interface Secret {
    */
   description?: string | null;
   /**
-   * The raw secret
-   * @type {string}
-   * @memberof Secret
-   */
-  raw_value: string;
-  /**
    * The expiration date of the secret (in Epoch)
    * @type {number}
    * @memberof Secret
@@ -48,4 +42,10 @@ export interface Secret {
    * @memberof Secret
    */
   last_updated: number;
+  /**
+   * The secret
+   * @type {string}
+   * @memberof Secret
+   */
+  secret_value: string;
 }

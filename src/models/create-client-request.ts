@@ -1,7 +1,6 @@
 import { AccessTokenTypes } from './access-token-types';
 import { ApplicationTypes } from './application-types';
 import { Authenticators } from './authenticators';
-import { CreateSecretRequest } from './create-secret-request';
 import { DeviceFlowCodeTypes } from './device-flow-code-types';
 import { GrantTypes } from './grant-types';
 import { RefreshTokenExpirationTypes } from './refresh-token-expiration-types';
@@ -33,12 +32,6 @@ export interface CreateClientRequest {
    * @memberof CreateClientRequest
    */
   tech_type?: TechTypes;
-  /**
-   * List of Client secrets (only relevant for flows that require a secret)
-   * @type {CreateSecretRequest[]}
-   * @memberof CreateClientRequest
-   */
-  secrets?: CreateSecretRequest[];
   /**
    * If set to false, no client secret is needed to request tokens at the token endpoint
    * @type {boolean}
@@ -327,4 +320,10 @@ export interface CreateClientRequest {
    * @memberof CreateClientRequest
    */
   device_code_lifetime?: number;
+  /**
+   * Specifies whether to auto-generate a client secret.
+   * @type {boolean}
+   * @memberof CreateClientRequest
+   */
+  auto_generate_secret?: boolean;
 }

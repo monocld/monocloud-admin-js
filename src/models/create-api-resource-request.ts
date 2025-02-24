@@ -1,5 +1,3 @@
-import { CreateSecretRequest } from './create-secret-request';
-
 /**
  * The Create Api Resource class models an OpenID Connect or OAuth 2.0 api resource
  * @export
@@ -37,12 +35,6 @@ export interface CreateApiResourceRequest {
    */
   audience: string;
   /**
-   * The Api secret is used for the introspection endpoint. The API can authenticate with introspection using the API name and secret.
-   * @type {CreateSecretRequest[]}
-   * @memberof CreateApiResourceRequest
-   */
-  api_secrets?: CreateSecretRequest[];
-  /**
    * List of API scope names.
    * @type {string[]}
    * @memberof CreateApiResourceRequest
@@ -54,4 +46,10 @@ export interface CreateApiResourceRequest {
    * @memberof CreateApiResourceRequest
    */
   user_claims: string[];
+  /**
+   * Specifies whether to auto-generate an API secret.
+   * @type {boolean}
+   * @memberof CreateApiResourceRequest
+   */
+  auto_generate_secret?: boolean;
 }
