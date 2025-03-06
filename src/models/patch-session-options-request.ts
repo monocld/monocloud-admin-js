@@ -24,11 +24,11 @@ export interface PatchSessionOptionsRequest {
    * @type {number}
    * @memberof PatchSessionOptionsRequest
    */
-  remember_me_duration?: number;
+  sliding_session_lifetime?: number;
   /**
    * Specifies the duration in minutes after which the user session will expire regardless of the expiration type.
    * @type {number}
    * @memberof PatchSessionOptionsRequest
    */
-  logout_after?: number;
+  absolute_session_lifetime?: number;
 }
