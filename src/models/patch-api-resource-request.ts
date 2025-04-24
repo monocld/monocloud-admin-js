@@ -23,23 +23,17 @@ export interface PatchApiResourceRequest {
    */
   description?: string | null;
   /**
-   * Specifies whether this resource is shown in the discovery document.
-   * @type {boolean}
-   * @memberof PatchApiResourceRequest
-   */
-  show_in_discovery_document?: boolean;
-  /**
    * The audience that will be added to the outgoing access token.
    * @type {string}
    * @memberof PatchApiResourceRequest
    */
   audience?: string;
   /**
-   * List of API scope names.
-   * @type {string[]}
+   * Specifies whether the resource requires an exclusive access token.
+   * @type {boolean}
    * @memberof PatchApiResourceRequest
    */
-  scopes?: string[];
+  require_exclusive_token?: boolean;
   /**
    * List of associated user claim types that should be included in the Access token.
    * @type {string[]}

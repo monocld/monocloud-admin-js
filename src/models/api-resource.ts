@@ -29,12 +29,6 @@ export interface ApiResource {
    */
   description?: string | null;
   /**
-   * Specifies whether this resource is shown in the discovery document.
-   * @type {boolean}
-   * @memberof ApiResource
-   */
-  show_in_discovery_document: boolean;
-  /**
    * Specifies the creation time of the resource (in Epoch).
    * @type {number}
    * @memberof ApiResource
@@ -53,11 +47,11 @@ export interface ApiResource {
    */
   audience: string;
   /**
-   * List of API scope names.
-   * @type {string[]}
+   * Specifies whether the resource requires an exclusive access token.
+   * @type {boolean}
    * @memberof ApiResource
    */
-  scopes: string[];
+  require_exclusive_token: boolean;
   /**
    * List of associated user claim types that should be included in the Access token.
    * @type {string[]}

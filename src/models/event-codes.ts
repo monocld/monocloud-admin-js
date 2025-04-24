@@ -240,6 +240,18 @@ export const EventCodes = {
   /**
    *
    */
+  ApiResourceClientCreated: 'api_resource_client_created',
+  /**
+   *
+   */
+  ApiResourceClientRemoved: 'api_resource_client_removed',
+  /**
+   *
+   */
+  ApiResourceClientUpdated: 'api_resource_client_updated',
+  /**
+   *
+   */
   TrustStoreCertificatesUpdated: 'trust_store_certificates_updated',
   /**
    *

@@ -40,16 +40,4 @@ export interface PatchClaimResourceRequest {
    * @memberof PatchClaimResourceRequest
    */
   source?: string;
-  /**
-   * Specifies whether the user can de-select the claim on the consent screen (if such a feature is implemented in the consent screen).
-   * @type {boolean}
-   * @memberof PatchClaimResourceRequest
-   */
-  required?: boolean;
-  /**
-   * Specifies whether the consent screen will emphasize this claim (if such a feature is implemented in the consent screen). Use this setting for sensitive or important scopes.
-   * @type {boolean}
-   * @memberof PatchClaimResourceRequest
-   */
-  emphasize?: boolean;
 }

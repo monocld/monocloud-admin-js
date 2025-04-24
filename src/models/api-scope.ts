@@ -1,81 +1,79 @@
-import { ScopeClaim } from './scope-claim';
-
 /**
- * The Scope Resource response class
+ * The Api Scope Resource response class
  * @export
- * @interface Scope
+ * @interface ApiScope
  */
-export interface Scope {
+export interface ApiScope {
   /**
    * Unique ID of the Resource
    * @type {string}
-   * @memberof Scope
+   * @memberof ApiScope
    */
   id: string;
   /**
    * Specifies if the resource is enabled.
    * @type {boolean}
-   * @memberof Scope
+   * @memberof ApiScope
    */
   enabled: boolean;
   /**
    * Display Name for the Resource
    * @type {string}
-   * @memberof Scope
+   * @memberof ApiScope
    */
   display_name?: string | null;
   /**
    * A brief description about the Resource
    * @type {string}
-   * @memberof Scope
+   * @memberof ApiScope
    */
   description?: string | null;
   /**
-   * Specifies whether this resource is shown in the discovery document.
-   * @type {boolean}
-   * @memberof Scope
-   */
-  show_in_discovery_document: boolean;
-  /**
    * Specifies the creation time of the resource (in Epoch).
    * @type {number}
-   * @memberof Scope
+   * @memberof ApiScope
    */
   creation_time: number;
   /**
    * Specifies the last update time of the resource (in Epoch).
    * @type {number}
-   * @memberof Scope
+   * @memberof ApiScope
    */
   last_updated: number;
   /**
    * The unique name of the scope. This is the value a client will use for the scope parameter in the authorize request.
    * @type {string}
-   * @memberof Scope
+   * @memberof ApiScope
    */
   name: string;
   /**
    * Specifies whether the user can de-select the scope on the consent screen.
    * @type {boolean}
-   * @memberof Scope
+   * @memberof ApiScope
    */
   required: boolean;
   /**
    * Specifies whether the consent screen will emphasize this scope. Use this setting for sensitive or important scopes.
    * @type {boolean}
-   * @memberof Scope
+   * @memberof ApiScope
    */
   emphasize: boolean;
   /**
-   * Specifies whether it\'s a built-in identity scope.
+   * Specifies whether the scopes will automatically added to the token when the scope parameter is empty.
    * @type {boolean}
-   * @memberof Scope
+   * @memberof ApiScope
    */
   is_default: boolean;
   /**
-   * List of associated user claim types that should be included in the Identity token or as returned from the User Info Endpoint.
-   * @type {ScopeClaim[]}
-   * @memberof Scope
+   * List of associated user claim types that should be included in the Access Token.
+   * @type {string[]}
+   * @memberof ApiScope
    */
-  user_claims: ScopeClaim[];
+  user_claims: string[];
+  /**
+   * Specifies whether this resource is shown in the discovery document.
+   * @type {boolean}
+   * @memberof ApiScope
+   */
+  show_in_discovery_document: boolean;
 }

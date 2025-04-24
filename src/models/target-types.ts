@@ -74,6 +74,10 @@ export const TargetTypes = {
    */
   Scope: 'scope',
   /**
+   * An Api Scope
+   */
+  ApiScope: 'api_scope',
+  /**
    * A Key Material
    */
   KeyMaterial: 'key_material',

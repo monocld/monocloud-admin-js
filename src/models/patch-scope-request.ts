@@ -37,19 +37,19 @@ export interface PatchScopeRequest {
    */
   name?: string;
   /**
-   * Specifies whether the user can de-select the scope on the consent screen (if such a feature is implemented in the consent screen).
+   * Specifies whether the user can de-select the scope on the consent screen.
    * @type {boolean}
    * @memberof PatchScopeRequest
    */
   required?: boolean;
   /**
-   * Specifies whether the consent screen will emphasize this scope (if such a feature is implemented in the consent screen). Use this setting for sensitive or important scopes.
+   * Specifies whether the consent screen will emphasize this scope. Use this setting for sensitive or important scopes.
    * @type {boolean}
    * @memberof PatchScopeRequest
    */
   emphasize?: boolean;
   /**
-   * List of associated user claim types that should be included in the Identity token, Access Token or as returned from the User Info Endpoint.
+   * List of associated user claim types that should be included in the Identity token or as returned from the User Info Endpoint.
    * @type {CreateScopeClaimRequest[]}
    * @memberof PatchScopeRequest
    */

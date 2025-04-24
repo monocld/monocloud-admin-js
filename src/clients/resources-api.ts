@@ -6,12 +6,18 @@ import {
 } from '@monocloud/sdk-js-core';
 import {
   ApiResource,
+  ApiResourceClient,
+  ApiScope,
   ClaimResource,
+  CreateApiResourceClientRequest,
   CreateApiResourceRequest,
+  CreateApiScopeRequest,
   CreateClaimResourceRequest,
   CreateScopeRequest,
   CreateSecretRequest,
+  PatchApiResourceClientRequest,
   PatchApiResourceRequest,
+  PatchApiScopeRequest,
   PatchClaimResourceRequest,
   PatchScopeRequest,
   Scope,
@@ -179,6 +185,301 @@ export class ResourcesClient extends MonoCloudClientBase {
     const request: MonoCloudRequest = { method: 'DELETE', url };
 
     return this.processRequest<null>(request);
+  }
+
+  /**
+   *
+   * @summary Get all the Api Scopes
+   * @param {string} resourceId Api Resource Id
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
+   * @param {string} [filter] Value by which the resources needs to be filtered.
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'name\', \'display_name\', \'description\', and \'creation_time\'
+   * @returns ApiScope[] - Success
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public getAllApiScopes(
+    resourceId: string,
+    page?: number,
+    size?: number,
+    filter?: string,
+    sort?: string
+  ): Promise<MonoCloudPageResponse<ApiScope[]>> {
+    const url = `/resources/api_resources/{resource_id}/scopes`.replace(
+      `{${'resource_id'}}`,
+      encodeURIComponent(String(resourceId))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    request.queryParams = {};
+
+    if (page !== undefined && page !== null) {
+      request.queryParams.page = String(page);
+    }
+
+    if (size !== undefined && size !== null) {
+      request.queryParams.size = String(size);
+    }
+
+    if (filter !== undefined && filter !== null) {
+      request.queryParams.filter = String(filter);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.queryParams.sort = String(sort);
+    }
+
+    return this.processPaginatedRequest<ApiScope[]>(request);
+  }
+
+  /**
+   *
+   * @summary Create an Api Scope
+   * @param {string} resourceId Api Resource Id
+   * @param {CreateApiScopeRequest} createApiScopeRequest Request Body
+   * @returns ApiScope - Created
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public createApiScope(
+    resourceId: string,
+    createApiScopeRequest: CreateApiScopeRequest
+  ): Promise<MonoCloudResponse<ApiScope>> {
+    const url = `/resources/api_resources/{resource_id}/scopes`.replace(
+      `{${'resource_id'}}`,
+      encodeURIComponent(String(resourceId))
+    );
+
+    const request: MonoCloudRequest = { method: 'POST', url };
+
+    request.body = createApiScopeRequest;
+
+    return this.processRequest<ApiScope>(request);
+  }
+
+  /**
+   *
+   * @summary Find an Api Scope by Id
+   * @param {string} id Scope Id
+   * @param {string} resourceId Api Resource Id
+   * @returns ApiScope - Success
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public findApiScopeById(
+    id: string,
+    resourceId: string
+  ): Promise<MonoCloudResponse<ApiScope>> {
+    const url = `/resources/api_resources/{resource_id}/scopes/{id}`
+      .replace(`{${'id'}}`, encodeURIComponent(String(id)))
+      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)));
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<ApiScope>(request);
+  }
+
+  /**
+   *
+   * @summary Delete an Api Scope
+   * @param {string} id Scope Id
+   * @param {string} resourceId Api Resource Id
+   * @returns No Content
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public deleteApiScope(
+    id: string,
+    resourceId: string
+  ): Promise<MonoCloudResponse<null>> {
+    const url = `/resources/api_resources/{resource_id}/scopes/{id}`
+      .replace(`{${'id'}}`, encodeURIComponent(String(id)))
+      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)));
+
+    const request: MonoCloudRequest = { method: 'DELETE', url };
+
+    return this.processRequest<null>(request);
+  }
+
+  /**
+   *
+   * @summary Update an Api Scope
+   * @param {string} id Scope Id
+   * @param {string} resourceId Api Resource Id
+   * @param {PatchApiScopeRequest} patchApiScopeRequest Request Body
+   * @returns ApiScope - Success
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public patchApiScope(
+    id: string,
+    resourceId: string,
+    patchApiScopeRequest: PatchApiScopeRequest
+  ): Promise<MonoCloudResponse<ApiScope>> {
+    const url = `/resources/api_resources/{resource_id}/scopes/{id}`
+      .replace(`{${'id'}}`, encodeURIComponent(String(id)))
+      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)));
+
+    const request: MonoCloudRequest = { method: 'PATCH', url };
+
+    request.body = patchApiScopeRequest;
+
+    return this.processRequest<ApiScope>(request);
+  }
+
+  /**
+   *
+   * @summary Get all the Api Resource Client Associations
+   * @param {string} resourceId Api Resource Id
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'client_id\', \'creation_time\' and \'last_updated\'
+   * @returns ApiResourceClient[] - Success
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public getAllApiResourceClients(
+    resourceId: string,
+    page?: number,
+    size?: number,
+    sort?: string
+  ): Promise<MonoCloudPageResponse<ApiResourceClient[]>> {
+    const url = `/resources/api_resources/{resource_id}/clients`.replace(
+      `{${'resource_id'}}`,
+      encodeURIComponent(String(resourceId))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    request.queryParams = {};
+
+    if (page !== undefined && page !== null) {
+      request.queryParams.page = String(page);
+    }
+
+    if (size !== undefined && size !== null) {
+      request.queryParams.size = String(size);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.queryParams.sort = String(sort);
+    }
+
+    return this.processPaginatedRequest<ApiResourceClient[]>(request);
+  }
+
+  /**
+   *
+   * @summary Create an Api Resource Client Association
+   * @param {string} resourceId Api Resource Id
+   * @param {string} clientId Client Id
+   * @param {CreateApiResourceClientRequest} createApiResourceClientRequest Request Body
+   * @returns ApiResourceClient - Created
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public createApiResourceClient(
+    resourceId: string,
+    clientId: string,
+    createApiResourceClientRequest: CreateApiResourceClientRequest
+  ): Promise<MonoCloudResponse<ApiResourceClient>> {
+    const url = `/resources/api_resources/{resource_id}/clients`.replace(
+      `{${'resource_id'}}`,
+      encodeURIComponent(String(resourceId))
+    );
+
+    const request: MonoCloudRequest = { method: 'POST', url };
+
+    request.queryParams = {};
+
+    if (clientId !== undefined && clientId !== null) {
+      request.queryParams.client_id = String(clientId);
+    }
+    request.body = createApiResourceClientRequest;
+
+    return this.processRequest<ApiResourceClient>(request);
+  }
+
+  /**
+   *
+   * @summary Find an Api Resource Client Association
+   * @param {string} resourceId Api Resource Id
+   * @param {string} clientId Client Id
+   * @returns ApiResourceClient - Success
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public findApiResourceClient(
+    resourceId: string,
+    clientId: string
+  ): Promise<MonoCloudResponse<ApiResourceClient>> {
+    const url = `/resources/api_resources/{resource_id}/clients/{client_id}`
+      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
+      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<ApiResourceClient>(request);
+  }
+
+  /**
+   *
+   * @summary Remove an Api Resource Client Association
+   * @param {string} resourceId ResourceId Id
+   * @param {string} clientId Client Id
+   * @returns No Content
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public removeApiResourceClient(
+    resourceId: string,
+    clientId: string
+  ): Promise<MonoCloudResponse<null>> {
+    const url = `/resources/api_resources/{resource_id}/clients/{client_id}`
+      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
+      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
+
+    const request: MonoCloudRequest = { method: 'DELETE', url };
+
+    return this.processRequest<null>(request);
+  }
+
+  /**
+   *
+   * @summary Update an Api Resource Client Association
+   * @param {string} resourceId Api Resource Id
+   * @param {string} clientId Client Id
+   * @param {PatchApiResourceClientRequest} patchApiResourceClientRequest Request Body
+   * @returns ApiResourceClient - Success
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public patchApiResourceClient(
+    resourceId: string,
+    clientId: string,
+    patchApiResourceClientRequest: PatchApiResourceClientRequest
+  ): Promise<MonoCloudResponse<ApiResourceClient>> {
+    const url = `/resources/api_resources/{resource_id}/clients/{client_id}`
+      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
+      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
+
+    const request: MonoCloudRequest = { method: 'PATCH', url };
+
+    request.body = patchApiResourceClientRequest;
+
+    return this.processRequest<ApiResourceClient>(request);
   }
 
   /**

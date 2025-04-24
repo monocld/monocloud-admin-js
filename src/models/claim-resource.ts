@@ -59,18 +59,6 @@ export interface ClaimResource {
    */
   source: string;
   /**
-   * Specifies whether the user can de-select the claim on the consent screen (if such a feature is implemented in the consent screen).
-   * @type {boolean}
-   * @memberof ClaimResource
-   */
-  required: boolean;
-  /**
-   * Specifies whether the consent screen will emphasize this claim (if such a feature is implemented in the consent screen). Use this setting for sensitive or important scopes.
-   * @type {boolean}
-   * @memberof ClaimResource
-   */
-  emphasize: boolean;
-  /**
    * Specifies whether it\'s a built-in claim resource.
    * @type {boolean}
    * @memberof ClaimResource
