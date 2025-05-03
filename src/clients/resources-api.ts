@@ -336,6 +336,48 @@ export class ResourcesClient extends MonoCloudClientBase {
 
   /**
    *
+   * @summary Get all the Client Api Resource Associations
+   * @param {string} clientId Api Resource Id
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'client_id\', \'creation_time\' and \'last_updated\'
+   * @returns ApiResourceClient[] - Success
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public getAllClientApiResources(
+    clientId: string,
+    page?: number,
+    size?: number,
+    sort?: string
+  ): Promise<MonoCloudPageResponse<ApiResourceClient[]>> {
+    const url = `/resources/api_resources/clients/{client_id}`.replace(
+      `{${'client_id'}}`,
+      encodeURIComponent(String(clientId))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    request.queryParams = {};
+
+    if (page !== undefined && page !== null) {
+      request.queryParams.page = String(page);
+    }
+
+    if (size !== undefined && size !== null) {
+      request.queryParams.size = String(size);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.queryParams.sort = String(sort);
+    }
+
+    return this.processPaginatedRequest<ApiResourceClient[]>(request);
+  }
+
+  /**
+   *
    * @summary Get all the Api Resource Client Associations
    * @param {string} resourceId Api Resource Id
    * @param {number} [page] Page Number

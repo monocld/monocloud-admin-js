@@ -5,6 +5,12 @@
  */
 export interface ApiResourceClient {
   /**
+   * The resource Id
+   * @type {string}
+   * @memberof ApiResourceClient
+   */
+  resource_id: string;
+  /**
    * The client ID
    * @type {string}
    * @memberof ApiResourceClient
