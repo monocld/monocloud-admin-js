@@ -420,39 +420,6 @@ export class ResourcesClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Create an Api Resource Client Association
-   * @param {string} resourceId Api Resource Id
-   * @param {string} clientId Client Id
-   * @param {CreateApiResourceClientRequest} createApiResourceClientRequest Request Body
-   * @returns ApiResourceClient - Created
-   * @throws {MonoCloudException}
-   * @memberof ResourcesClient
-   *
-   */
-  public createApiResourceClient(
-    resourceId: string,
-    clientId: string,
-    createApiResourceClientRequest: CreateApiResourceClientRequest
-  ): Promise<MonoCloudResponse<ApiResourceClient>> {
-    const url = `/resources/api_resources/{resource_id}/clients`.replace(
-      `{${'resource_id'}}`,
-      encodeURIComponent(String(resourceId))
-    );
-
-    const request: MonoCloudRequest = { method: 'POST', url };
-
-    request.queryParams = {};
-
-    if (clientId !== undefined && clientId !== null) {
-      request.queryParams.client_id = String(clientId);
-    }
-    request.body = createApiResourceClientRequest;
-
-    return this.processRequest<ApiResourceClient>(request);
-  }
-
-  /**
-   *
    * @summary Find an Api Resource Client Association
    * @param {string} resourceId Api Resource Id
    * @param {string} clientId Client Id
@@ -470,6 +437,33 @@ export class ResourcesClient extends MonoCloudClientBase {
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
 
     const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<ApiResourceClient>(request);
+  }
+
+  /**
+   *
+   * @summary Create an Api Resource Client Association
+   * @param {string} resourceId Api Resource Id
+   * @param {string} clientId Client Id
+   * @param {CreateApiResourceClientRequest} createApiResourceClientRequest Request Body
+   * @returns ApiResourceClient - Created
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   *
+   */
+  public createApiResourceClient(
+    resourceId: string,
+    clientId: string,
+    createApiResourceClientRequest: CreateApiResourceClientRequest
+  ): Promise<MonoCloudResponse<ApiResourceClient>> {
+    const url = `/resources/api_resources/{resource_id}/clients/{client_id}`
+      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
+      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
+
+    const request: MonoCloudRequest = { method: 'POST', url };
+
+    request.body = createApiResourceClientRequest;
 
     return this.processRequest<ApiResourceClient>(request);
   }
