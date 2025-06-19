@@ -6,7 +6,7 @@ import {
   LogsClient,
   OptionsClient,
   ResourcesClient,
-  TrustStoreClient,
+  TrustStoresClient,
 } from './clients';
 
 export class MonoCloudAdminClient {
@@ -22,7 +22,7 @@ export class MonoCloudAdminClient {
 
   public readonly resources: ResourcesClient;
 
-  public readonly trustStore: TrustStoreClient;
+  public readonly trustStores: TrustStoresClient;
 
   private constructor(options: MonoCloudConfig, fetcher?: Fetcher) {
     this.branding = new BrandingClient(options, fetcher);
@@ -37,7 +37,7 @@ export class MonoCloudAdminClient {
 
     this.resources = new ResourcesClient(options, fetcher);
 
-    this.trustStore = new TrustStoreClient(options, fetcher);
+    this.trustStores = new TrustStoresClient(options, fetcher);
   }
 
   public static init(

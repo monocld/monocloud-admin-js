@@ -252,15 +252,31 @@ export const EventCodes = {
   /**
    *
    */
-  TrustStoreCertificatesUpdated: 'trust_store_certificates_updated',
+  TrustStoreCreated: 'trust_store_created',
   /**
    *
    */
-  TrustStoreRevocationsUpdated: 'trust_store_revocations_updated',
+  TrustStoreUpdated: 'trust_store_updated',
   /**
    *
    */
-  TrustStoreBannedThumbprintsUpdated: 'trust_store_banned_thumbprints_updated',
+  TrustStoreDeleted: 'trust_store_deleted',
+  /**
+   *
+   */
+  TrustStoreCertificateBanned: 'trust_store_certificate_banned',
+  /**
+   *
+   */
+  TrustStoreCertificateUnbanned: 'trust_store_certificate_unbanned',
+  /**
+   *
+   */
+  TrustStoreRevocationAdded: 'trust_store_revocation_added',
+  /**
+   *
+   */
+  TrustStoreRevocationRemoved: 'trust_store_revocation_removed',
   /**
    *
    */

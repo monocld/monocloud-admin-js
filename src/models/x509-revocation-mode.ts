@@ -10,6 +10,10 @@ export const X509RevocationMode = {
    */
   NoCheck: 'no_check',
   /**
+   * Will check for revocation with root CA and intermediary CAs
+   */
+  Online: 'online',
+  /**
    * Will check for revocation against the customer generated revocation list
    */
   Offline: 'offline',
