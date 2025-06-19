@@ -6,10 +6,8 @@ import {
 import {
   AuthenticationOptions,
   CommunicationOptions,
-  MtlsOptions,
   PatchAuthenticationOptionsRequest,
   PatchCommunicationOptionsRequest,
-  PatchMtlsOptionsRequest,
 } from '../models';
 
 export class OptionsClient extends MonoCloudClientBase {
@@ -89,42 +87,5 @@ export class OptionsClient extends MonoCloudClientBase {
     request.body = patchCommunicationOptionsRequest;
 
     return this.processRequest<CommunicationOptions>(request);
-  }
-
-  /**
-   *
-   * @summary Get Mtls Options
-   * @returns MtlsOptions - Success
-   * @throws {MonoCloudException}
-   * @memberof OptionsClient
-   *
-   */
-  public findMtlsOptions(): Promise<MonoCloudResponse<MtlsOptions>> {
-    const url = `/options/mtls`;
-
-    const request: MonoCloudRequest = { method: 'GET', url };
-
-    return this.processRequest<MtlsOptions>(request);
-  }
-
-  /**
-   *
-   * @summary Update Mtls Options
-   * @param {PatchMtlsOptionsRequest} patchMtlsOptionsRequest Request Body
-   * @returns MtlsOptions - Success
-   * @throws {MonoCloudException}
-   * @memberof OptionsClient
-   *
-   */
-  public patchMtlsOptions(
-    patchMtlsOptionsRequest: PatchMtlsOptionsRequest
-  ): Promise<MonoCloudResponse<MtlsOptions>> {
-    const url = `/options/mtls`;
-
-    const request: MonoCloudRequest = { method: 'PATCH', url };
-
-    request.body = patchMtlsOptionsRequest;
-
-    return this.processRequest<MtlsOptions>(request);
   }
 }
