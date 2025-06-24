@@ -13,6 +13,12 @@ export interface PatchTrustStoreRequest {
    */
   name?: string;
   /**
+   * Specifies if the trust store is enabled.
+   * @type {boolean}
+   * @memberof PatchTrustStoreRequest
+   */
+  enabled?: boolean;
+  /**
    * Specifies if the specific trust store metadata should be shown in the discovery endpoint.
    * @type {boolean}
    * @memberof PatchTrustStoreRequest
