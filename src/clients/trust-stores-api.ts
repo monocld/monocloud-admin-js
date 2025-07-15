@@ -11,6 +11,7 @@ import {
   CreateTrustStoreRequest,
   PatchTrustStoreRequest,
   TrustStore,
+  TrustStoreBasic,
 } from '../models';
 
 export class TrustStoresClient extends MonoCloudClientBase {
@@ -19,8 +20,8 @@ export class TrustStoresClient extends MonoCloudClientBase {
    * @summary Get All Trust Stores
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
-   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'issued_at\', \'creation_time\', and \'issuer_thumbprint\'
-   * @returns TrustStore[] - Success
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'name\', \'creation_time\', and \'last_updated\'
+   * @returns TrustStoreBasic[] - Success
    * @throws {MonoCloudException}
    * @memberof TrustStoresClient
    *
@@ -29,7 +30,7 @@ export class TrustStoresClient extends MonoCloudClientBase {
     page?: number,
     size?: number,
     sort?: string
-  ): Promise<MonoCloudPageResponse<TrustStore[]>> {
+  ): Promise<MonoCloudPageResponse<TrustStoreBasic[]>> {
     const url = `/truststores`;
 
     const request: MonoCloudRequest = { method: 'GET', url };
@@ -48,7 +49,7 @@ export class TrustStoresClient extends MonoCloudClientBase {
       request.queryParams.sort = String(sort);
     }
 
-    return this.processPaginatedRequest<TrustStore[]>(request);
+    return this.processPaginatedRequest<TrustStoreBasic[]>(request);
   }
 
   /**
