@@ -1,43 +1,57 @@
+import { DeltaRevocation } from './delta-revocation';
+
 /**
- * Certificate Revocation Response
+ * The Revocation Grouped response
  * @export
- * @interface CertificateRevocation
+ * @interface RevocationGrouped
  */
-export interface CertificateRevocation {
+export interface RevocationGrouped {
   /**
    * Revocation Id.
    * @type {string}
-   * @memberof CertificateRevocation
+   * @memberof RevocationGrouped
    */
   id: string;
   /**
    * Crl Pem Value.
    * @type {string}
-   * @memberof CertificateRevocation
+   * @memberof RevocationGrouped
    */
   value: string;
   /**
    * Thumbprint of the CA certificate the crl belongs to.
    * @type {string}
-   * @memberof CertificateRevocation
+   * @memberof RevocationGrouped
    */
   issuer_thumbprint: string;
   /**
    * Specifies the issued time of the revocation (in Epoch).
    * @type {number}
-   * @memberof CertificateRevocation
+   * @memberof RevocationGrouped
    */
   issued_at: number;
   /**
    * Specifies the next update of the revocation (in Epoch).
    * @type {number}
-   * @memberof CertificateRevocation
+   * @memberof RevocationGrouped
    */
   next_update?: number | null;
   /**
    * Specifies the creation time of the revocation (in Epoch).
    * @type {number}
-   * @memberof CertificateRevocation
+   * @memberof RevocationGrouped
    */
   creation_time: number;
+  /**
+   * The crl number.
+   * @type {number}
+   * @memberof RevocationGrouped
+   */
+  crl_number?: number | null;
+  /**
+   * List of delta revocations.
+   * @type {DeltaRevocation[]}
+   * @memberof RevocationGrouped
+   */
+  deltas: DeltaRevocation[];
 }

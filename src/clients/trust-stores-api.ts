@@ -10,6 +10,7 @@ import {
   CertificateRevocation,
   CreateTrustStoreRequest,
   PatchTrustStoreRequest,
+  RevocationGrouped,
   TrustStore,
   TrustStoreSummary,
 } from '../models';
@@ -172,7 +173,7 @@ export class TrustStoresClient extends MonoCloudClientBase {
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
    * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'name\', \'creation_time\', and \'last_updated\'
-   * @returns CertificateRevocation[] - Success
+   * @returns RevocationGrouped[] - Success
    * @throws {MonoCloudException}
    * @memberof TrustStoresClient
    *
@@ -182,7 +183,7 @@ export class TrustStoresClient extends MonoCloudClientBase {
     page?: number,
     size?: number,
     sort?: string
-  ): Promise<MonoCloudPageResponse<CertificateRevocation[]>> {
+  ): Promise<MonoCloudPageResponse<RevocationGrouped[]>> {
     const url = `/truststores/{trust_store_id}/revocations`.replace(
       `{${'trust_store_id'}}`,
       encodeURIComponent(String(trustStoreId))
@@ -204,7 +205,7 @@ export class TrustStoresClient extends MonoCloudClientBase {
       request.queryParams.sort = String(sort);
     }
 
-    return this.processPaginatedRequest<CertificateRevocation[]>(request);
+    return this.processPaginatedRequest<RevocationGrouped[]>(request);
   }
 
   /**
