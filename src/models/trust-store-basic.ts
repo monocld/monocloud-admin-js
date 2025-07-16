@@ -1,5 +1,3 @@
-import { TrustStoreStatus } from './trust-store-status';
-
 /**
  * Trust Store Basic Response
  * @export
@@ -54,10 +52,4 @@ export interface TrustStoreBasic {
    * @memberof TrustStoreBasic
    */
   last_updated: number;
-  /**
-   * Specifies the trust store status.
-   * @type {TrustStoreStatus}
-   * @memberof TrustStoreBasic
-   */
-  status: TrustStoreStatus;
 }

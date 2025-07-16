@@ -184,7 +184,6 @@ export * from './theme-names';
 export * from './trust-store';
 export * from './trust-store-basic';
 export * from './trust-store-options';
-export * from './trust-store-status';
 export * from './user-lockout-types';
 export * from './value-types';
 export * from './verification-types';
