@@ -1,55 +1,55 @@
 /**
- * Trust Store Basic Response
+ * Trust Store Summary Response
  * @export
- * @interface TrustStoreBasic
+ * @interface TrustStoreSummary
  */
-export interface TrustStoreBasic {
+export interface TrustStoreSummary {
   /**
    * Id of the trust store
    * @type {string}
-   * @memberof TrustStoreBasic
+   * @memberof TrustStoreSummary
    */
   id: string;
   /**
    * Name of the trust store
    * @type {string}
-   * @memberof TrustStoreBasic
+   * @memberof TrustStoreSummary
    */
   name: string;
   /**
    * Specifies if the trust store is enabled.
    * @type {boolean}
-   * @memberof TrustStoreBasic
+   * @memberof TrustStoreSummary
    */
   enabled: boolean;
   /**
    * Specifies if the trust store is the store used at the default MTLS endpoint.
    * @type {boolean}
-   * @memberof TrustStoreBasic
+   * @memberof TrustStoreSummary
    */
   is_default: boolean;
   /**
    * Specifies the number of certificates in the store.
    * @type {number}
-   * @memberof TrustStoreBasic
+   * @memberof TrustStoreSummary
    */
   certificate_count: number;
   /**
    * Specifies the number of banned thumbprints in the store.
    * @type {number}
-   * @memberof TrustStoreBasic
+   * @memberof TrustStoreSummary
    */
   banned_thumbprints_count: number;
   /**
    * Specifies the creation time of the trust store (in Epoch).
    * @type {number}
-   * @memberof TrustStoreBasic
+   * @memberof TrustStoreSummary
    */
   creation_time: number;
   /**
    * Specifies the last update time of the trust store (in Epoch).
    * @type {number}
-   * @memberof TrustStoreBasic
+   * @memberof TrustStoreSummary
    */
   last_updated: number;
 }
