@@ -1,4 +1,4 @@
-import { X509RevocationFlag } from './x509-revocation-flag';
+import { RevocationCheckDepth } from './revocation-check-depth';
 import { X509RevocationMode } from './x509-revocation-mode';
 
 /**
@@ -27,10 +27,10 @@ export interface TrustStoreOptions {
   revocation_mode: X509RevocationMode;
   /**
    * Specifies which X509 certificate in the chain should be checked for revocation.
-   * @type {X509RevocationFlag}
+   * @type {RevocationCheckDepth}
    * @memberof TrustStoreOptions
    */
-  revocation_flag: X509RevocationFlag;
+  revocation_check_depth: RevocationCheckDepth;
   /**
    * Specifies the skew in seconds for the CRL issued date and OCSP validation.
    * @type {number}
@@ -48,7 +48,7 @@ export interface TrustStoreOptions {
    * @type {number}
    * @memberof TrustStoreOptions
    */
-  crl_check_timeout: number;
+  online_crl_check_timeout: number;
   /**
    * Specifies the cache duration in seconds for the Certificate Authentication.
    * @type {number}
@@ -60,7 +60,7 @@ export interface TrustStoreOptions {
    * @type {number}
    * @memberof TrustStoreOptions
    */
-  crl_cache_duration: number;
+  online_crl_cache_duration: number;
   /**
    * Specifies the cache duration in seconds for the OCSP response.
    * @type {number}

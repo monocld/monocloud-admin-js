@@ -4,11 +4,15 @@
  * @enum {string}
  */
 
-export const X509RevocationFlag = {
+export const RevocationCheckDepth = {
   /**
    * Only the end certificate is checked for revocation
    */
   EndCertificateOnly: 'end_certificate_only',
+  /**
+   * The entire chain of certificates, except the root certificate is checked for revocation
+   */
+  ExcludeRoot: 'exclude_root',
   /**
    * The entire chain of certificates is checked for revocation
    */
@@ -16,5 +20,5 @@ export const X509RevocationFlag = {
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export type X509RevocationFlag =
-  (typeof X509RevocationFlag)[keyof typeof X509RevocationFlag];
+export type RevocationCheckDepth =
+  (typeof RevocationCheckDepth)[keyof typeof RevocationCheckDepth];
