@@ -1,4 +1,5 @@
 import { CommunicationSmsTwilioOptions } from './communication-sms-twilio-options';
+import { SmsProviders } from './sms-providers';
 
 /**
  * The Communication Sms Options response class
@@ -13,9 +14,9 @@ export interface CommunicationSmsOptions {
    */
   twilio?: CommunicationSmsTwilioOptions | null;
   /**
-   * Use the the internal keys to send Sms
-   * @type {boolean}
+   * Provider used to send Sms
+   * @type {SmsProviders}
    * @memberof CommunicationSmsOptions
    */
-  use_internal_keys: boolean;
+  provider: SmsProviders;
 }

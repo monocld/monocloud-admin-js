@@ -5,11 +5,11 @@
  */
 export interface BrandingGenericEmailTemplateOptions {
   /**
-   * Specifies whether to use the custom template.
+   * Specifies whether notifications should be send internally.
    * @type {boolean}
    * @memberof BrandingGenericEmailTemplateOptions
    */
-  use_custom_template: boolean;
+  send_notifications: boolean;
   /**
    * Specifies the text to be used as the email subject
    * @type {string}

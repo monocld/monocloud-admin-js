@@ -1,3 +1,4 @@
+import { EmailProviders } from './email-providers';
 import { PatchCommunicationEmailSendGridOptionsRequest } from './patch-communication-email-send-grid-options-request';
 
 /**
@@ -13,11 +14,11 @@ export interface PatchCommunicationEmailOptionsRequest {
    */
   send_grid?: PatchCommunicationEmailSendGridOptionsRequest | null;
   /**
-   * Use the the internal keys to send Emails
-   * @type {boolean}
+   * Provider used to send Emails
+   * @type {EmailProviders}
    * @memberof PatchCommunicationEmailOptionsRequest
    */
-  use_internal_keys?: boolean;
+  provider?: EmailProviders;
   /**
    * From Email Address
    * @type {string}

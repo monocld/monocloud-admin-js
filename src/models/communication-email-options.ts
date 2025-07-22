@@ -1,4 +1,5 @@
 import { CommunicationEmailSendGridOptions } from './communication-email-send-grid-options';
+import { EmailProviders } from './email-providers';
 
 /**
  * The Communication Email Options response class
@@ -13,11 +14,11 @@ export interface CommunicationEmailOptions {
    */
   send_grid?: CommunicationEmailSendGridOptions | null;
   /**
-   * Use the the internal keys to send Emails
-   * @type {boolean}
+   * Provider used to send Emails
+   * @type {EmailProviders}
    * @memberof CommunicationEmailOptions
    */
-  use_internal_keys: boolean;
+  provider: EmailProviders;
   /**
    * Default email address from where the emails will be sent.
    * @type {string}

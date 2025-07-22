@@ -1,4 +1,5 @@
 import { PatchCommunicationSmsTwilioOptionsRequest } from './patch-communication-sms-twilio-options-request';
+import { SmsProviders } from './sms-providers';
 
 /**
  * The Patch Communication Sms Options Request class
@@ -13,9 +14,9 @@ export interface PatchCommunicationSmsOptionsRequest {
    */
   twilio?: PatchCommunicationSmsTwilioOptionsRequest | null;
   /**
-   * Use the the internal keys to send Sms
-   * @type {boolean}
+   * Provider used to send Sms
+   * @type {SmsProviders}
    * @memberof PatchCommunicationSmsOptionsRequest
    */
-  use_internal_keys?: boolean;
+  provider?: SmsProviders;
 }

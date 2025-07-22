@@ -5,11 +5,11 @@
  */
 export interface BrandingGenericSmsTemplateOptions {
   /**
-   * Specifies whether to use the custom template.
+   * Specifies whether notifications should be send internally.
    * @type {boolean}
    * @memberof BrandingGenericSmsTemplateOptions
    */
-  use_custom_template: boolean;
+  send_notifications: boolean;
   /**
    * Custom LiquidJS template for the SMS
    * @type {string}
