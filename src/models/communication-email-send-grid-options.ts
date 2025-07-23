@@ -10,4 +10,16 @@ export interface CommunicationEmailSendGridOptions {
    * @memberof CommunicationEmailSendGridOptions
    */
   api_key: string;
+  /**
+   * From Email Address
+   * @type {string}
+   * @memberof CommunicationEmailSendGridOptions
+   */
+  from_email: string;
+  /**
+   * From Name
+   * @type {string}
+   * @memberof CommunicationEmailSendGridOptions
+   */
+  from_name?: string | null;
 }

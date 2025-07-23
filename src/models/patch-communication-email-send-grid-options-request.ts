@@ -10,4 +10,16 @@ export interface PatchCommunicationEmailSendGridOptionsRequest {
    * @memberof PatchCommunicationEmailSendGridOptionsRequest
    */
   api_key?: string;
+  /**
+   * From Email Address
+   * @type {string}
+   * @memberof PatchCommunicationEmailSendGridOptionsRequest
+   */
+  from_email?: string;
+  /**
+   * From Name
+   * @type {string}
+   * @memberof PatchCommunicationEmailSendGridOptionsRequest
+   */
+  from_name?: string | null;
 }

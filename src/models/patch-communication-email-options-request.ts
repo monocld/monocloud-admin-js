@@ -19,16 +19,4 @@ export interface PatchCommunicationEmailOptionsRequest {
    * @memberof PatchCommunicationEmailOptionsRequest
    */
   provider?: EmailProviders;
-  /**
-   * From Email Address
-   * @type {string}
-   * @memberof PatchCommunicationEmailOptionsRequest
-   */
-  from_email?: string | null;
-  /**
-   * From Name
-   * @type {string}
-   * @memberof PatchCommunicationEmailOptionsRequest
-   */
-  from_name?: string | null;
 }
