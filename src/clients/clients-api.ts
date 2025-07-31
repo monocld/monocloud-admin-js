@@ -17,16 +17,16 @@ export class ClientsClient extends MonoCloudClientBase {
   /**
    *
    * @summary Find a Client by Id
-   * @param {string} id Client Id
+   * @param {string} clientId Client Id
    * @returns Client - Success
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
    */
-  public findClientById(id: string): Promise<MonoCloudResponse<Client>> {
-    const url = `/clients/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+  public findClientById(clientId: string): Promise<MonoCloudResponse<Client>> {
+    const url = `/clients/{client_id}`.replace(
+      `{${'client_id'}}`,
+      encodeURIComponent(String(clientId))
     );
 
     const request: MonoCloudRequest = { method: 'GET', url };
@@ -37,16 +37,16 @@ export class ClientsClient extends MonoCloudClientBase {
   /**
    *
    * @summary Delete a Client
-   * @param {string} id Client Id
+   * @param {string} clientId Client Id
    * @returns No Content
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    *
    */
-  public deleteClient(id: string): Promise<MonoCloudResponse<null>> {
-    const url = `/clients/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+  public deleteClient(clientId: string): Promise<MonoCloudResponse<null>> {
+    const url = `/clients/{client_id}`.replace(
+      `{${'client_id'}}`,
+      encodeURIComponent(String(clientId))
     );
 
     const request: MonoCloudRequest = { method: 'DELETE', url };
@@ -57,7 +57,7 @@ export class ClientsClient extends MonoCloudClientBase {
   /**
    *
    * @summary Update a Client
-   * @param {string} id Client Id
+   * @param {string} clientId Client Id
    * @param {PatchClientRequest} patchClientRequest Request Body
    * @returns Client - Success
    * @throws {MonoCloudException}
@@ -65,12 +65,12 @@ export class ClientsClient extends MonoCloudClientBase {
    *
    */
   public patchClient(
-    id: string,
+    clientId: string,
     patchClientRequest: PatchClientRequest
   ): Promise<MonoCloudResponse<Client>> {
-    const url = `/clients/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+    const url = `/clients/{client_id}`.replace(
+      `{${'client_id'}}`,
+      encodeURIComponent(String(clientId))
     );
 
     const request: MonoCloudRequest = { method: 'PATCH', url };

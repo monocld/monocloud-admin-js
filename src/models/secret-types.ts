@@ -29,6 +29,10 @@ export const SecretTypes = {
    *
    */
   Jwk: 'jwk',
+  /**
+   *
+   */
+  JwtAssertionSharedSecret: 'jwt_assertion_shared_secret',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
