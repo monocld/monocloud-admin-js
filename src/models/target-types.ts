@@ -18,6 +18,10 @@ export const TargetTypes = {
    */
   TenantKey: 'tenant_key',
   /**
+   * Subscription
+   */
+  Subscription: 'subscription',
+  /**
    * A client
    */
   Client: 'client',

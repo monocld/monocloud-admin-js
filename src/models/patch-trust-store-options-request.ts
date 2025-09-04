@@ -8,7 +8,7 @@ import { X509RevocationMode } from './x509-revocation-mode';
  */
 export interface PatchTrustStoreOptionsRequest {
   /**
-   * If set to true, will validates whether the certificate is intended for authentication
+   * If set to true, will validate whether the certificate is intended for authentication
    * @type {boolean}
    * @memberof PatchTrustStoreOptionsRequest
    */

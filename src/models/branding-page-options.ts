@@ -15,6 +15,12 @@ import { BrandingPageTextOptions } from './branding-page-text-options';
  */
 export interface BrandingPageOptions {
   /**
+   * Specifies whether or not the MonoCloud watermark will be shown on the login pages
+   * @type {boolean}
+   * @memberof BrandingPageOptions
+   */
+  show_watermark: boolean;
+  /**
    * Page Branding Logo Options
    * @type {BrandingPageLogoOptions}
    * @memberof BrandingPageOptions

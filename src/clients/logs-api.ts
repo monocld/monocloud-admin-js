@@ -53,16 +53,16 @@ export class LogsClient extends MonoCloudClientBase {
   /**
    *
    * @summary Find a Log by Id
-   * @param {string} id Log Id
+   * @param {string} logId Log Id
    * @returns Log - Success
    * @throws {MonoCloudException}
    * @memberof LogsClient
    *
    */
-  public findLogById(id: string): Promise<MonoCloudResponse<Log>> {
-    const url = `/logs/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+  public findLogById(logId: string): Promise<MonoCloudResponse<Log>> {
+    const url = `/logs/{log_id}`.replace(
+      `{${'log_id'}}`,
+      encodeURIComponent(String(logId))
     );
 
     const request: MonoCloudRequest = { method: 'GET', url };
