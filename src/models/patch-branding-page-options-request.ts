@@ -15,6 +15,12 @@ import { PatchBrandingPageTextOptionsRequest } from './patch-branding-page-text-
  */
 export interface PatchBrandingPageOptionsRequest {
   /**
+   * Specifies whether or not the MonoCloud watermark will be shown on the login pages
+   * @type {boolean}
+   * @memberof PatchBrandingPageOptionsRequest
+   */
+  show_watermark?: boolean;
+  /**
    * Page Branding Logo Options
    * @type {PatchBrandingPageLogoOptionsRequest}
    * @memberof PatchBrandingPageOptionsRequest
