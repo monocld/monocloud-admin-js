@@ -8,39 +8,39 @@ export const SigningAlgorithms = {
   /**
    *
    */
-  Rs256: 'rs_256',
+  Rs256: 'rs256',
   /**
    *
    */
-  Rs384: 'rs_384',
+  Rs384: 'rs384',
   /**
    *
    */
-  Rs512: 'rs_512',
+  Rs512: 'rs512',
   /**
    *
    */
-  Ps256: 'ps_256',
+  Ps256: 'ps256',
   /**
    *
    */
-  Ps384: 'ps_384',
+  Ps384: 'ps384',
   /**
    *
    */
-  Ps512: 'ps_512',
+  Ps512: 'ps512',
   /**
    *
    */
-  Es256: 'es_256',
+  Es256: 'es256',
   /**
    *
    */
-  Es384: 'es_384',
+  Es384: 'es384',
   /**
    *
    */
-  Es512: 'es_512',
+  Es512: 'es512',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
