@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable import/no-extraneous-dependencies */
 import nock from 'nock';
 import {
   MonoCloudAdminClient,
