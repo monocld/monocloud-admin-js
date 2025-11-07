@@ -1,3 +1,4 @@
+import { BannedThumbprint } from './banned-thumbprint';
 import { TrustStoreOptions } from './trust-store-options';
 
 /**
@@ -44,10 +45,10 @@ export interface TrustStore {
   cert_chain: string;
   /**
    * A list of banned certificate thumbprints.
-   * @type {string[]}
+   * @type {BannedThumbprint[]}
    * @memberof TrustStore
    */
-  banned_thumbprints: string[];
+  banned_thumbprints: BannedThumbprint[];
   /**
    * The Trust store options
    * @type {TrustStoreOptions}

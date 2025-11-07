@@ -5,9 +5,15 @@
  */
 export interface BanTrustStoreCertificateRequest {
   /**
-   * Thumbprint of the certificate to be banned
+   * Unique thumbprint of the certificate.
    * @type {string}
    * @memberof BanTrustStoreCertificateRequest
    */
-  thumbprint: string;
+  value: string;
+  /**
+   * Specifies the reason for banning the certificate.
+   * @type {string}
+   * @memberof BanTrustStoreCertificateRequest
+   */
+  reason?: string | null;
 }
