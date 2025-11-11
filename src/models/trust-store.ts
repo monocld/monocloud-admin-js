@@ -43,12 +43,6 @@ export interface TrustStore {
    */
   cert_chain: string;
   /**
-   * A list of banned certificate thumbprints.
-   * @type {string[]}
-   * @memberof TrustStore
-   */
-  banned_thumbprints: string[];
-  /**
    * The Trust store options
    * @type {TrustStoreOptions}
    * @memberof TrustStore

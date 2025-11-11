@@ -29,6 +29,8 @@ export * from './authenticators-phone-options';
 export * from './authenticators-twitter-options';
 export * from './authenticators-xero-options';
 export * from './ban-trust-store-certificate-request';
+export * from './banned-certificate';
+export * from './banned-certificate-type';
 export * from './branding-email-options';
 export * from './branding-generic-email-template-options';
 export * from './branding-generic-page-background-options';

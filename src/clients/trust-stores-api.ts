@@ -7,6 +7,7 @@ import {
 import {
   AddCertificateRevocationRequest,
   BanTrustStoreCertificateRequest,
+  BannedCertificate,
   CertificateRevocation,
   CreateTrustStoreRequest,
   PatchTrustStoreRequest,
@@ -293,11 +294,33 @@ export class TrustStoresClient extends MonoCloudClientBase {
   }
 
   /**
+   * Retrieves a list of banned certificates for a trust store.
+   * @summary Get All Banned Certificates
+   * @param {string} trustStoreId Trust Store Id
+   * @returns BannedCertificate[] - Success
+   * @throws {MonoCloudException}
+   * @memberof TrustStoresClient
+   *
+   */
+  public getAllBannedCertificates(
+    trustStoreId: string
+  ): Promise<MonoCloudResponse<BannedCertificate[]>> {
+    const url = `/truststores/{trust_store_id}/banned_certificates`.replace(
+      `{${'trust_store_id'}}`,
+      encodeURIComponent(String(trustStoreId))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<BannedCertificate[]>(request);
+  }
+
+  /**
    *
    * @summary Ban a certificate thumbprint
    * @param {string} trustStoreId Trust Store Id
    * @param {BanTrustStoreCertificateRequest} banTrustStoreCertificateRequest Request Body
-   * @returns TrustStore - Success
+   * @returns BannedCertificate - Success
    * @throws {MonoCloudException}
    * @memberof TrustStoresClient
    *
@@ -305,8 +328,8 @@ export class TrustStoresClient extends MonoCloudClientBase {
   public banTrustStoreCertificate(
     trustStoreId: string,
     banTrustStoreCertificateRequest: BanTrustStoreCertificateRequest
-  ): Promise<MonoCloudResponse<TrustStore>> {
-    const url = `/truststores/{trust_store_id}/thumbprints`.replace(
+  ): Promise<MonoCloudResponse<BannedCertificate>> {
+    const url = `/truststores/{trust_store_id}/banned_certificates`.replace(
       `{${'trust_store_id'}}`,
       encodeURIComponent(String(trustStoreId))
     );
@@ -315,14 +338,14 @@ export class TrustStoresClient extends MonoCloudClientBase {
 
     request.body = banTrustStoreCertificateRequest;
 
-    return this.processRequest<TrustStore>(request);
+    return this.processRequest<BannedCertificate>(request);
   }
 
   /**
    *
    * @summary Unban a certificate thumbprint
    * @param {string} trustStoreId Trust Store Id
-   * @param {string} thumbprint Thumbprint
+   * @param {string} banId Thumbprint
    * @returns No Content
    * @throws {MonoCloudException}
    * @memberof TrustStoresClient
@@ -330,14 +353,14 @@ export class TrustStoresClient extends MonoCloudClientBase {
    */
   public unbanTrustStoreCertificate(
     trustStoreId: string,
-    thumbprint: string
+    banId: string
   ): Promise<MonoCloudResponse<null>> {
-    const url = `/truststores/{trust_store_id}/thumbprints/{thumbprint}`
+    const url = `/truststores/{trust_store_id}/banned_certificates/{ban_id}`
       .replace(
         `{${'trust_store_id'}}`,
         encodeURIComponent(String(trustStoreId))
       )
-      .replace(`{${'thumbprint'}}`, encodeURIComponent(String(thumbprint)));
+      .replace(`{${'ban_id'}}`, encodeURIComponent(String(banId)));
 
     const request: MonoCloudRequest = { method: 'DELETE', url };
 

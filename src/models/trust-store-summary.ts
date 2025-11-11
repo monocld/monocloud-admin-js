@@ -35,11 +35,11 @@ export interface TrustStoreSummary {
    */
   certificate_count: number;
   /**
-   * Specifies the number of banned thumbprints in the store.
+   * Specifies the number of banned certificates in the store.
    * @type {number}
    * @memberof TrustStoreSummary
    */
-  banned_thumbprints_count: number;
+  banned_certificates_count: number;
   /**
    * Specifies the creation time of the trust store (in Epoch).
    * @type {number}
