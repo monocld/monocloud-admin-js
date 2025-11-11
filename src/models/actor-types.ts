@@ -41,6 +41,10 @@ export const ActorTypes = {
    * Client
    */
   Client: 'client',
+  /**
+   * Certificate
+   */
+  Certificate: 'certificate',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
