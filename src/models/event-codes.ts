@@ -104,7 +104,11 @@ export const EventCodes = {
   /**
    *
    */
-  TokenRevoked: 'token_revoked',
+  TokenRevocationSuccess: 'token_revocation_success',
+  /**
+   *
+   */
+  TokenRevocationFailure: 'token_revocation_failure',
   /**
    *
    */

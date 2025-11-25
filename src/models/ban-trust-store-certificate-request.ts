@@ -19,9 +19,9 @@ export interface BanTrustStoreCertificateRequest {
    */
   reason?: string | null;
   /**
-   *
+   * Specifies the type of the banned certificate.
    * @type {BannedCertificateType}
    * @memberof BanTrustStoreCertificateRequest
    */
-  type: BannedCertificateType;
+  type?: BannedCertificateType;
 }
