@@ -13,12 +13,6 @@ export interface Scope {
    */
   id: string;
   /**
-   * Specifies if the resource is enabled.
-   * @type {boolean}
-   * @memberof Scope
-   */
-  enabled: boolean;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof Scope

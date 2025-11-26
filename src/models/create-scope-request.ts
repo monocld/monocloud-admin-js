@@ -7,12 +7,6 @@ import { CreateScopeClaimRequest } from './create-scope-claim-request';
  */
 export interface CreateScopeRequest {
   /**
-   * Specifies if the resource is enabled.
-   * @type {boolean}
-   * @memberof CreateScopeRequest
-   */
-  enabled?: boolean;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof CreateScopeRequest

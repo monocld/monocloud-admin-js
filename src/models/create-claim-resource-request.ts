@@ -5,12 +5,6 @@
  */
 export interface CreateClaimResourceRequest {
   /**
-   * Specifies if the resource is enabled.
-   * @type {boolean}
-   * @memberof CreateClaimResourceRequest
-   */
-  enabled?: boolean;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof CreateClaimResourceRequest

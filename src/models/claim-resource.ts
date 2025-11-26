@@ -11,12 +11,6 @@ export interface ClaimResource {
    */
   id: string;
   /**
-   * Specifies if the resource is enabled.
-   * @type {boolean}
-   * @memberof ClaimResource
-   */
-  enabled: boolean;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof ClaimResource

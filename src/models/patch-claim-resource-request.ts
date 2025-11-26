@@ -5,12 +5,6 @@
  */
 export interface PatchClaimResourceRequest {
   /**
-   * Specifies if the resource is enabled.
-   * @type {boolean}
-   * @memberof PatchClaimResourceRequest
-   */
-  enabled?: boolean;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof PatchClaimResourceRequest

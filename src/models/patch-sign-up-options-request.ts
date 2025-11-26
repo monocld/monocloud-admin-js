@@ -31,12 +31,6 @@ export interface PatchSignUpOptionsRequest {
    */
   terms_url?: string | null;
   /**
-   * Send an email to user at the time of signup.
-   * @type {boolean}
-   * @memberof PatchSignUpOptionsRequest
-   */
-  enable_welcome_email?: boolean;
-  /**
    * The whitelist Restriction Options.
    * @type {PatchSignUpRestrictionsOptionsRequest}
    * @memberof PatchSignUpOptionsRequest
