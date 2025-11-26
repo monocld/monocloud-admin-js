@@ -5,12 +5,6 @@
  */
 export interface PatchApiScopeRequest {
   /**
-   * Specifies if the resource is enabled.
-   * @type {boolean}
-   * @memberof PatchApiScopeRequest
-   */
-  enabled?: boolean;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof PatchApiScopeRequest

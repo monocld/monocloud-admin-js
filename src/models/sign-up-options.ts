@@ -38,12 +38,6 @@ export interface SignUpOptions {
    */
   terms_url?: string | null;
   /**
-   * Send an email to user at the time of signup.
-   * @type {boolean}
-   * @memberof SignUpOptions
-   */
-  enable_welcome_email: boolean;
-  /**
    * The whitelist Restriction Options.
    * @type {SignUpGenericRestrictionsOptions}
    * @memberof SignUpOptions

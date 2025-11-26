@@ -5,12 +5,6 @@
  */
 export interface CreateApiScopeRequest {
   /**
-   * Specifies if the resource is enabled.
-   * @type {boolean}
-   * @memberof CreateApiScopeRequest
-   */
-  enabled?: boolean;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof CreateApiScopeRequest

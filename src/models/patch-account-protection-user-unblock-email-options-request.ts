@@ -5,12 +5,6 @@
  */
 export interface PatchAccountProtectionUserUnblockEmailOptionsRequest {
   /**
-   * Enable User Unblock through Email.
-   * @type {boolean}
-   * @memberof PatchAccountProtectionUserUnblockEmailOptionsRequest
-   */
-  enabled?: boolean;
-  /**
    * Email expiration time in seconds.
    * @type {number}
    * @memberof PatchAccountProtectionUserUnblockEmailOptionsRequest

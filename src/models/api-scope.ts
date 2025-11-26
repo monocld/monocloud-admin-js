@@ -11,12 +11,6 @@ export interface ApiScope {
    */
   id: string;
   /**
-   * Specifies if the resource is enabled.
-   * @type {boolean}
-   * @memberof ApiScope
-   */
-  enabled: boolean;
-  /**
    * Display Name for the Resource
    * @type {string}
    * @memberof ApiScope
