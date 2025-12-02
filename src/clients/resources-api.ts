@@ -28,18 +28,18 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Find an Api Resource by Id
-   * @param {string} id Api Resource Id
+   * @param {string} apiId API Id
    * @returns ApiResource - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
   public findApiResourceById(
-    id: string
+    apiId: string
   ): Promise<MonoCloudResponse<ApiResource>> {
-    const url = `/resources/api_resources/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+    const url = `/resources/api_resources/{api_id}`.replace(
+      `{${'api_id'}}`,
+      encodeURIComponent(String(apiId))
     );
 
     const request: MonoCloudRequest = { method: 'GET', url };
@@ -50,16 +50,16 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Delete an Api Resource
-   * @param {string} id Api Resource Id
+   * @param {string} apiId API Id
    * @returns No Content
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
-  public deleteApiResource(id: string): Promise<MonoCloudResponse<null>> {
-    const url = `/resources/api_resources/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+  public deleteApiResource(apiId: string): Promise<MonoCloudResponse<null>> {
+    const url = `/resources/api_resources/{api_id}`.replace(
+      `{${'api_id'}}`,
+      encodeURIComponent(String(apiId))
     );
 
     const request: MonoCloudRequest = { method: 'DELETE', url };
@@ -70,7 +70,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Update an Api Resource
-   * @param {string} id Api Resource Id
+   * @param {string} apiId API Id
    * @param {PatchApiResourceRequest} patchApiResourceRequest Request Body
    * @returns ApiResource - Success
    * @throws {MonoCloudException}
@@ -78,12 +78,12 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public patchApiResource(
-    id: string,
+    apiId: string,
     patchApiResourceRequest: PatchApiResourceRequest
   ): Promise<MonoCloudResponse<ApiResource>> {
-    const url = `/resources/api_resources/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+    const url = `/resources/api_resources/{api_id}`.replace(
+      `{${'api_id'}}`,
+      encodeURIComponent(String(apiId))
     );
 
     const request: MonoCloudRequest = { method: 'PATCH', url };
@@ -96,18 +96,18 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Gets all Api Resource Secrets
-   * @param {string} resourceId Resource Id
+   * @param {string} apiId API Id
    * @returns Secret[] - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
   public getAllApiResourceSecrets(
-    resourceId: string
+    apiId: string
   ): Promise<MonoCloudResponse<Secret[]>> {
-    const url = `/resources/api_resources/{resource_id}/secrets`.replace(
-      `{${'resource_id'}}`,
-      encodeURIComponent(String(resourceId))
+    const url = `/resources/api_resources/{api_id}/secrets`.replace(
+      `{${'api_id'}}`,
+      encodeURIComponent(String(apiId))
     );
 
     const request: MonoCloudRequest = { method: 'GET', url };
@@ -118,7 +118,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Create an Api Resource Secret
-   * @param {string} resourceId Resource Id
+   * @param {string} apiId API Id
    * @param {CreateSecretRequest} createSecretRequest Request Body
    * @returns Secret - Created
    * @throws {MonoCloudException}
@@ -126,12 +126,12 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public createApiResourceSecret(
-    resourceId: string,
+    apiId: string,
     createSecretRequest: CreateSecretRequest
   ): Promise<MonoCloudResponse<Secret>> {
-    const url = `/resources/api_resources/{resource_id}/secrets`.replace(
-      `{${'resource_id'}}`,
-      encodeURIComponent(String(resourceId))
+    const url = `/resources/api_resources/{api_id}/secrets`.replace(
+      `{${'api_id'}}`,
+      encodeURIComponent(String(apiId))
     );
 
     const request: MonoCloudRequest = { method: 'POST', url };
@@ -144,20 +144,20 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Find an Api Resource Secret by Id
-   * @param {string} resourceId Resource Id
    * @param {string} secretId Secret Id
+   * @param {string} apiId API Id
    * @returns Secret - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
   public findApiResourceSecretById(
-    resourceId: string,
-    secretId: string
+    secretId: string,
+    apiId: string
   ): Promise<MonoCloudResponse<Secret>> {
-    const url = `/resources/api_resources/{resource_id}/secrets/{secret_id}`
-      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
-      .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)));
+    const url = `/resources/api_resources/{api_id}/secrets/{secret_id}`
+      .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)))
+      .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)));
 
     const request: MonoCloudRequest = { method: 'GET', url };
 
@@ -167,7 +167,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Delete an Api Resource Secret
-   * @param {string} resourceId ResourceId Id
+   * @param {string} apiId API Id
    * @param {string} secretId Secret Id
    * @returns No Content
    * @throws {MonoCloudException}
@@ -175,11 +175,11 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public deleteApiResourceSecret(
-    resourceId: string,
+    apiId: string,
     secretId: string
   ): Promise<MonoCloudResponse<null>> {
-    const url = `/resources/api_resources/{resource_id}/secrets/{secret_id}`
-      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
+    const url = `/resources/api_resources/{api_id}/secrets/{secret_id}`
+      .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
       .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)));
 
     const request: MonoCloudRequest = { method: 'DELETE', url };
@@ -190,7 +190,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get all the Api Scopes
-   * @param {string} resourceId Api Resource Id
+   * @param {string} apiId API Id
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
    * @param {string} [filter] Value by which the resources needs to be filtered.
@@ -201,15 +201,15 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public getAllApiScopes(
-    resourceId: string,
+    apiId: string,
     page?: number,
     size?: number,
     filter?: string,
     sort?: string
   ): Promise<MonoCloudPageResponse<ApiScope[]>> {
-    const url = `/resources/api_resources/{resource_id}/scopes`.replace(
-      `{${'resource_id'}}`,
-      encodeURIComponent(String(resourceId))
+    const url = `/resources/api_resources/{api_id}/scopes`.replace(
+      `{${'api_id'}}`,
+      encodeURIComponent(String(apiId))
     );
 
     const request: MonoCloudRequest = { method: 'GET', url };
@@ -238,7 +238,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Create an Api Scope
-   * @param {string} resourceId Api Resource Id
+   * @param {string} apiId API Id
    * @param {CreateApiScopeRequest} createApiScopeRequest Request Body
    * @returns ApiScope - Created
    * @throws {MonoCloudException}
@@ -246,12 +246,12 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public createApiScope(
-    resourceId: string,
+    apiId: string,
     createApiScopeRequest: CreateApiScopeRequest
   ): Promise<MonoCloudResponse<ApiScope>> {
-    const url = `/resources/api_resources/{resource_id}/scopes`.replace(
-      `{${'resource_id'}}`,
-      encodeURIComponent(String(resourceId))
+    const url = `/resources/api_resources/{api_id}/scopes`.replace(
+      `{${'api_id'}}`,
+      encodeURIComponent(String(apiId))
     );
 
     const request: MonoCloudRequest = { method: 'POST', url };
@@ -264,20 +264,20 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Find an Api Scope by Id
-   * @param {string} id Scope Id
-   * @param {string} resourceId Api Resource Id
+   * @param {string} scopeId Scope Id
+   * @param {string} apiId API Id
    * @returns ApiScope - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
   public findApiScopeById(
-    id: string,
-    resourceId: string
+    scopeId: string,
+    apiId: string
   ): Promise<MonoCloudResponse<ApiScope>> {
-    const url = `/resources/api_resources/{resource_id}/scopes/{id}`
-      .replace(`{${'id'}}`, encodeURIComponent(String(id)))
-      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)));
+    const url = `/resources/api_resources/{api_id}/scopes/{scope_id}`
+      .replace(`{${'scope_id'}}`, encodeURIComponent(String(scopeId)))
+      .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)));
 
     const request: MonoCloudRequest = { method: 'GET', url };
 
@@ -287,20 +287,20 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Delete an Api Scope
-   * @param {string} id Scope Id
-   * @param {string} resourceId Api Resource Id
+   * @param {string} scopeId Scope Id
+   * @param {string} apiId API Id
    * @returns No Content
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
   public deleteApiScope(
-    id: string,
-    resourceId: string
+    scopeId: string,
+    apiId: string
   ): Promise<MonoCloudResponse<null>> {
-    const url = `/resources/api_resources/{resource_id}/scopes/{id}`
-      .replace(`{${'id'}}`, encodeURIComponent(String(id)))
-      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)));
+    const url = `/resources/api_resources/{api_id}/scopes/{scope_id}`
+      .replace(`{${'scope_id'}}`, encodeURIComponent(String(scopeId)))
+      .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)));
 
     const request: MonoCloudRequest = { method: 'DELETE', url };
 
@@ -310,8 +310,8 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Update an Api Scope
-   * @param {string} id Scope Id
-   * @param {string} resourceId Api Resource Id
+   * @param {string} scopeId Scope Id
+   * @param {string} apiId API Id
    * @param {PatchApiScopeRequest} patchApiScopeRequest Request Body
    * @returns ApiScope - Success
    * @throws {MonoCloudException}
@@ -319,13 +319,13 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public patchApiScope(
-    id: string,
-    resourceId: string,
+    scopeId: string,
+    apiId: string,
     patchApiScopeRequest: PatchApiScopeRequest
   ): Promise<MonoCloudResponse<ApiScope>> {
-    const url = `/resources/api_resources/{resource_id}/scopes/{id}`
-      .replace(`{${'id'}}`, encodeURIComponent(String(id)))
-      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)));
+    const url = `/resources/api_resources/{api_id}/scopes/{scope_id}`
+      .replace(`{${'scope_id'}}`, encodeURIComponent(String(scopeId)))
+      .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)));
 
     const request: MonoCloudRequest = { method: 'PATCH', url };
 
@@ -337,7 +337,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get all the Client Api Resource Associations
-   * @param {string} clientId Api Resource Id
+   * @param {string} clientId Client Id
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
    * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'client_id\', \'creation_time\' and \'last_updated\'
@@ -379,7 +379,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get all the Api Resource Client Associations
-   * @param {string} resourceId Api Resource Id
+   * @param {string} apiId API Id
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
    * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'client_id\', \'creation_time\' and \'last_updated\'
@@ -389,14 +389,14 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public getAllApiResourceClients(
-    resourceId: string,
+    apiId: string,
     page?: number,
     size?: number,
     sort?: string
   ): Promise<MonoCloudPageResponse<ApiResourceClient[]>> {
-    const url = `/resources/api_resources/{resource_id}/clients`.replace(
-      `{${'resource_id'}}`,
-      encodeURIComponent(String(resourceId))
+    const url = `/resources/api_resources/{api_id}/clients`.replace(
+      `{${'api_id'}}`,
+      encodeURIComponent(String(apiId))
     );
 
     const request: MonoCloudRequest = { method: 'GET', url };
@@ -421,7 +421,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Find an Api Resource Client Association
-   * @param {string} resourceId Api Resource Id
+   * @param {string} apiId API Id
    * @param {string} clientId Client Id
    * @returns ApiResourceClient - Success
    * @throws {MonoCloudException}
@@ -429,11 +429,11 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public findApiResourceClient(
-    resourceId: string,
+    apiId: string,
     clientId: string
   ): Promise<MonoCloudResponse<ApiResourceClient>> {
-    const url = `/resources/api_resources/{resource_id}/clients/{client_id}`
-      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
+    const url = `/resources/api_resources/{api_id}/clients/{client_id}`
+      .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
 
     const request: MonoCloudRequest = { method: 'GET', url };
@@ -444,7 +444,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Create an Api Resource Client Association
-   * @param {string} resourceId Api Resource Id
+   * @param {string} apiId API Id
    * @param {string} clientId Client Id
    * @param {CreateApiResourceClientRequest} createApiResourceClientRequest Request Body
    * @returns ApiResourceClient - Created
@@ -453,12 +453,12 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public createApiResourceClient(
-    resourceId: string,
+    apiId: string,
     clientId: string,
     createApiResourceClientRequest: CreateApiResourceClientRequest
   ): Promise<MonoCloudResponse<ApiResourceClient>> {
-    const url = `/resources/api_resources/{resource_id}/clients/{client_id}`
-      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
+    const url = `/resources/api_resources/{api_id}/clients/{client_id}`
+      .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
 
     const request: MonoCloudRequest = { method: 'POST', url };
@@ -471,7 +471,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Remove an Api Resource Client Association
-   * @param {string} resourceId ResourceId Id
+   * @param {string} apiId API Id
    * @param {string} clientId Client Id
    * @returns No Content
    * @throws {MonoCloudException}
@@ -479,11 +479,11 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public removeApiResourceClient(
-    resourceId: string,
+    apiId: string,
     clientId: string
   ): Promise<MonoCloudResponse<null>> {
-    const url = `/resources/api_resources/{resource_id}/clients/{client_id}`
-      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
+    const url = `/resources/api_resources/{api_id}/clients/{client_id}`
+      .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
 
     const request: MonoCloudRequest = { method: 'DELETE', url };
@@ -494,7 +494,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Update an Api Resource Client Association
-   * @param {string} resourceId Api Resource Id
+   * @param {string} apiId API Id
    * @param {string} clientId Client Id
    * @param {PatchApiResourceClientRequest} patchApiResourceClientRequest Request Body
    * @returns ApiResourceClient - Success
@@ -503,12 +503,12 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public patchApiResourceClient(
-    resourceId: string,
+    apiId: string,
     clientId: string,
     patchApiResourceClientRequest: PatchApiResourceClientRequest
   ): Promise<MonoCloudResponse<ApiResourceClient>> {
-    const url = `/resources/api_resources/{resource_id}/clients/{client_id}`
-      .replace(`{${'resource_id'}}`, encodeURIComponent(String(resourceId)))
+    const url = `/resources/api_resources/{api_id}/clients/{client_id}`
+      .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
 
     const request: MonoCloudRequest = { method: 'PATCH', url };
@@ -521,16 +521,16 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Find a Scope by Id
-   * @param {string} id Scope Id
+   * @param {string} scopeId Scope Id
    * @returns Scope - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
-  public findScopeById(id: string): Promise<MonoCloudResponse<Scope>> {
-    const url = `/resources/scopes/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+  public findScopeById(scopeId: string): Promise<MonoCloudResponse<Scope>> {
+    const url = `/resources/scopes/{scope_id}`.replace(
+      `{${'scope_id'}}`,
+      encodeURIComponent(String(scopeId))
     );
 
     const request: MonoCloudRequest = { method: 'GET', url };
@@ -541,16 +541,16 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Delete a Scope
-   * @param {string} id Scope Id
+   * @param {string} scopeId Scope Id
    * @returns No Content
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
-  public deleteScope(id: string): Promise<MonoCloudResponse<null>> {
-    const url = `/resources/scopes/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+  public deleteScope(scopeId: string): Promise<MonoCloudResponse<null>> {
+    const url = `/resources/scopes/{scope_id}`.replace(
+      `{${'scope_id'}}`,
+      encodeURIComponent(String(scopeId))
     );
 
     const request: MonoCloudRequest = { method: 'DELETE', url };
@@ -561,7 +561,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Update a scope
-   * @param {string} id Scope Id
+   * @param {string} scopeId Scope Id
    * @param {PatchScopeRequest} patchScopeRequest Request Body
    * @returns Scope - Success
    * @throws {MonoCloudException}
@@ -569,12 +569,12 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public patchScope(
-    id: string,
+    scopeId: string,
     patchScopeRequest: PatchScopeRequest
   ): Promise<MonoCloudResponse<Scope>> {
-    const url = `/resources/scopes/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+    const url = `/resources/scopes/{scope_id}`.replace(
+      `{${'scope_id'}}`,
+      encodeURIComponent(String(scopeId))
     );
 
     const request: MonoCloudRequest = { method: 'PATCH', url };
@@ -587,18 +587,18 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Find an Claim Resource by Id
-   * @param {string} id Claim Resource Id
+   * @param {string} claimId Claim Id
    * @returns ClaimResource - Success
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
   public findClaimResourceById(
-    id: string
+    claimId: string
   ): Promise<MonoCloudResponse<ClaimResource>> {
-    const url = `/resources/claim_resources/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+    const url = `/resources/claim_resources/{claim_id}`.replace(
+      `{${'claim_id'}}`,
+      encodeURIComponent(String(claimId))
     );
 
     const request: MonoCloudRequest = { method: 'GET', url };
@@ -609,16 +609,18 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Delete an Claim Resource
-   * @param {string} id Claim Resource Id
+   * @param {string} claimId Claim Id
    * @returns No Content
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    *
    */
-  public deleteClaimResource(id: string): Promise<MonoCloudResponse<null>> {
-    const url = `/resources/claim_resources/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+  public deleteClaimResource(
+    claimId: string
+  ): Promise<MonoCloudResponse<null>> {
+    const url = `/resources/claim_resources/{claim_id}`.replace(
+      `{${'claim_id'}}`,
+      encodeURIComponent(String(claimId))
     );
 
     const request: MonoCloudRequest = { method: 'DELETE', url };
@@ -629,7 +631,7 @@ export class ResourcesClient extends MonoCloudClientBase {
   /**
    *
    * @summary Update an Claim Resource
-   * @param {string} id Claim Resource Id
+   * @param {string} claimId Claim Id
    * @param {PatchClaimResourceRequest} patchClaimResourceRequest Request Body
    * @returns ClaimResource - Success
    * @throws {MonoCloudException}
@@ -637,12 +639,12 @@ export class ResourcesClient extends MonoCloudClientBase {
    *
    */
   public patchClaimResource(
-    id: string,
+    claimId: string,
     patchClaimResourceRequest: PatchClaimResourceRequest
   ): Promise<MonoCloudResponse<ClaimResource>> {
-    const url = `/resources/claim_resources/{id}`.replace(
-      `{${'id'}}`,
-      encodeURIComponent(String(id))
+    const url = `/resources/claim_resources/{claim_id}`.replace(
+      `{${'claim_id'}}`,
+      encodeURIComponent(String(claimId))
     );
 
     const request: MonoCloudRequest = { method: 'PATCH', url };
